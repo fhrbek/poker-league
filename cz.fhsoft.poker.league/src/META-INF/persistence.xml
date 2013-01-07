@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+        http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd" version="1.0">
+
+    <persistence-unit name="poker.league.data" transaction-type="RESOURCE_LOCAL">
+    	<class>cz.fhsoft.poker.league.shared.model.v1.DataVersion</class>
+    	<class>cz.fhsoft.poker.league.shared.model.v1.IdentifiableEntity</class>
+    	<class>cz.fhsoft.poker.league.shared.model.v1.DescribedEntity</class>
+    	<class>cz.fhsoft.poker.league.shared.model.v1.PrizeMoneyRuleSet</class>
+    	<class>cz.fhsoft.poker.league.shared.model.v1.PrizeMoneyRule</class>
+    	<class>cz.fhsoft.poker.league.shared.model.v1.PrizeMoneyFormula</class>
+    	<class>cz.fhsoft.poker.league.shared.model.v1.Player</class>
+    	<class>cz.fhsoft.poker.league.shared.model.v1.Competition</class>
+    	<class>cz.fhsoft.poker.league.shared.model.v1.Tournament</class>
+    	<class>cz.fhsoft.poker.league.shared.model.v1.Invitation</class>
+    	<class>cz.fhsoft.poker.league.shared.model.v1.Game</class>
+    	<class>cz.fhsoft.poker.league.shared.model.v1.PlayerInGame</class>
+    	<properties>
+    		<property name="eclipselink.ddl-generation.output-mode" value="database"/>
+    		<property name="javax.persistence.jdbc.url" value="jdbc:google:rdbms://wittmannpokerleaguedata:wittmannpokerleague/wittmannpokerleague"/>
+    		<property name="javax.persistence.jdbc.user" value="wpldata"/>
+    		<property name="javax.persistence.jdbc.password" value="fullHouse"/>
+    		<property name="javax.persistence.jdbc.driver" value="com.google.cloud.sql.jdbc.Driver"/>
+    	</properties>
+    </persistence-unit>
+</persistence>

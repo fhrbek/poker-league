@@ -1,0 +1,12 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder
+    xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:cell="urn:import:com.google.gwt.user.cellview.client">
+	<ui:style>
+	</ui:style>
+	<g:FlowPanel>
+		<g:Label addStyleNames="pseudoLink" ui:field="newCompetition">Nová soutěž</g:Label>
+		<g:FlowPanel ui:field="competitionsContainer"/>
+	</g:FlowPanel>
+</ui:UiBinder> 

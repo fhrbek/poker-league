@@ -1,0 +1,715 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmi:id="_PDc0AFUzEeK6tYPrIe6zBQ" type="EcoreTools" measurementUnit="Pixel">
+  <children xmi:type="notation:Node" xmi:id="_PJzToFUzEeK6tYPrIe6zBQ" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_PLc5cFUzEeK6tYPrIe6zBQ" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_PLeHkFUzEeK6tYPrIe6zBQ" type="5001">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_PLeHkVUzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_PLeHklUzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_PLeHk1UzEeK6tYPrIe6zBQ"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_PLeuoFUzEeK6tYPrIe6zBQ" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_PLeuoVUzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_PLeuolUzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_PLeuo1UzEeK6tYPrIe6zBQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_PJzToVUzEeK6tYPrIe6zBQ" fontColor="4210752" fontName="Cantarell" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="PokerLeague.ecore#//Serializable"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_PJzTolUzEeK6tYPrIe6zBQ" x="413"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_PLfVsFUzEeK6tYPrIe6zBQ" type="1004">
+    <children xmi:type="notation:Node" xmi:id="_PLf8wFUzEeK6tYPrIe6zBQ" type="4008"/>
+    <children xmi:type="notation:Node" xmi:id="_PLgj0FUzEeK6tYPrIe6zBQ" type="4009"/>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_PLfVsVUzEeK6tYPrIe6zBQ" fontColor="4210752" fontName="Cantarell" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EDataType" href="PokerLeague.ecore#//Timestamp"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_PLfVslUzEeK6tYPrIe6zBQ" x="626"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_PLgj0VUzEeK6tYPrIe6zBQ" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_PLgj1FUzEeK6tYPrIe6zBQ" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_PLgj1VUzEeK6tYPrIe6zBQ" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_PMD9cFUzEeK6tYPrIe6zBQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="PokerLeague.ecore#//DataVersion/id"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_PMD9cVUzEeK6tYPrIe6zBQ"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_PMD9clUzEeK6tYPrIe6zBQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="PokerLeague.ecore#//DataVersion/currentVersion"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_PMD9c1UzEeK6tYPrIe6zBQ"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_PLhK4FUzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_PLhK4VUzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_PLhK4lUzEeK6tYPrIe6zBQ"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_PLhK41UzEeK6tYPrIe6zBQ" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_PLhK5FUzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_PLhK5VUzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_PLhK5lUzEeK6tYPrIe6zBQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_PLgj0lUzEeK6tYPrIe6zBQ" fontColor="4210752" fontName="Cantarell" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="PokerLeague.ecore#//DataVersion"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_PLgj01UzEeK6tYPrIe6zBQ" x="249" y="160"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_PMEkgFUzEeK6tYPrIe6zBQ" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_PMEkg1UzEeK6tYPrIe6zBQ" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_PMFLkFUzEeK6tYPrIe6zBQ" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_PMFLmFUzEeK6tYPrIe6zBQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="PokerLeague.ecore#//IdentifiableEntity/id"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_PMFLmVUzEeK6tYPrIe6zBQ"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_PMFyoFUzEeK6tYPrIe6zBQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="PokerLeague.ecore#//IdentifiableEntity/proxy"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_PMFyoVUzEeK6tYPrIe6zBQ"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_PMFyolUzEeK6tYPrIe6zBQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="PokerLeague.ecore#//IdentifiableEntity/obsolete"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_PMFyo1UzEeK6tYPrIe6zBQ"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_PMFLkVUzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_PMFLklUzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_PMFLk1UzEeK6tYPrIe6zBQ"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_PMFLlFUzEeK6tYPrIe6zBQ" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_PMFLlVUzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_PMFLllUzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_PMFLl1UzEeK6tYPrIe6zBQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_PMEkgVUzEeK6tYPrIe6zBQ" fontColor="4210752" fontName="Cantarell" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="PokerLeague.ecore#//IdentifiableEntity"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_PMEkglUzEeK6tYPrIe6zBQ" x="505" y="160"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_PMGZsFUzEeK6tYPrIe6zBQ" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_PMHAwFUzEeK6tYPrIe6zBQ" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_PMHAwVUzEeK6tYPrIe6zBQ" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_PMHAyVUzEeK6tYPrIe6zBQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="PokerLeague.ecore#//DescribedEntity/name"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_PMHAylUzEeK6tYPrIe6zBQ"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_PMHn0FUzEeK6tYPrIe6zBQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="PokerLeague.ecore#//DescribedEntity/description"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_PMHn0VUzEeK6tYPrIe6zBQ"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_PMHAwlUzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_PMHAw1UzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_PMHAxFUzEeK6tYPrIe6zBQ"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_PMHAxVUzEeK6tYPrIe6zBQ" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_PMHAxlUzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_PMHAx1UzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_PMHAyFUzEeK6tYPrIe6zBQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_PMGZsVUzEeK6tYPrIe6zBQ" fontColor="4210752" fontName="Cantarell" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="PokerLeague.ecore#//DescribedEntity"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_PMGZslUzEeK6tYPrIe6zBQ" x="127" y="313"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_PMHn0lUzEeK6tYPrIe6zBQ" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_PMHn1VUzEeK6tYPrIe6zBQ" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_PMHn1lUzEeK6tYPrIe6zBQ" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_PMIO5FUzEeK6tYPrIe6zBQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="PokerLeague.ecore#//Player/active"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_PMIO5VUzEeK6tYPrIe6zBQ"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_PMIO5lUzEeK6tYPrIe6zBQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="PokerLeague.ecore#//Player/nick"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_PMIO51UzEeK6tYPrIe6zBQ"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_PMI18FUzEeK6tYPrIe6zBQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="PokerLeague.ecore#//Player/firstName"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_PMI18VUzEeK6tYPrIe6zBQ"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_PMI18lUzEeK6tYPrIe6zBQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="PokerLeague.ecore#//Player/lastName"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_PMI181UzEeK6tYPrIe6zBQ"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_PMI19FUzEeK6tYPrIe6zBQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="PokerLeague.ecore#//Player/emailAddress"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_PMI19VUzEeK6tYPrIe6zBQ"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_PMHn11UzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_PMHn2FUzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_PMHn2VUzEeK6tYPrIe6zBQ"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_PMIO4FUzEeK6tYPrIe6zBQ" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_PMIO4VUzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_PMIO4lUzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_PMIO41UzEeK6tYPrIe6zBQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_PMHn01UzEeK6tYPrIe6zBQ" fontColor="4210752" fontName="Cantarell" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="PokerLeague.ecore#//Player"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_PMHn1FUzEeK6tYPrIe6zBQ" x="477" y="313"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_PMI19lUzEeK6tYPrIe6zBQ" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_PMJdAlUzEeK6tYPrIe6zBQ" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_PMJdA1UzEeK6tYPrIe6zBQ" type="5001">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_PMJdBFUzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_PMJdBVUzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_PMJdBlUzEeK6tYPrIe6zBQ"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_PMJdB1UzEeK6tYPrIe6zBQ" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_PMJdCFUzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_PMJdCVUzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_PMJdClUzEeK6tYPrIe6zBQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_PMJdAFUzEeK6tYPrIe6zBQ" fontColor="4210752" fontName="Cantarell" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="PokerLeague.ecore#//PrizeMoneyRuleSet"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_PMJdAVUzEeK6tYPrIe6zBQ" y="504"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_PMKEEFUzEeK6tYPrIe6zBQ" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_PMKEE1UzEeK6tYPrIe6zBQ" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_PMKEFFUzEeK6tYPrIe6zBQ" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_PMKrJ1UzEeK6tYPrIe6zBQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="PokerLeague.ecore#//PrizeMoneyRule/numberOfPlayers"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_PMKrKFUzEeK6tYPrIe6zBQ"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_PMKrIFUzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_PMKrIVUzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_PMKrIlUzEeK6tYPrIe6zBQ"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_PMKrI1UzEeK6tYPrIe6zBQ" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_PMKrJFUzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_PMKrJVUzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_PMKrJlUzEeK6tYPrIe6zBQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_PMKEEVUzEeK6tYPrIe6zBQ" fontColor="4210752" fontName="Cantarell" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="PokerLeague.ecore#//PrizeMoneyRule"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_PMKEElUzEeK6tYPrIe6zBQ" x="144" y="648"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_PMKrKVUzEeK6tYPrIe6zBQ" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_PMLSMFUzEeK6tYPrIe6zBQ" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_PMLSMVUzEeK6tYPrIe6zBQ" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_PML5QFUzEeK6tYPrIe6zBQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="PokerLeague.ecore#//PrizeMoneyFormula/rank"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_PML5QVUzEeK6tYPrIe6zBQ"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_PML5QlUzEeK6tYPrIe6zBQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="PokerLeague.ecore#//PrizeMoneyFormula/relativePrizeMoney"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_PML5Q1UzEeK6tYPrIe6zBQ"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_PMLSMlUzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_PMLSM1UzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_PMLSNFUzEeK6tYPrIe6zBQ"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_PMLSNVUzEeK6tYPrIe6zBQ" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_PMLSNlUzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_PMLSN1UzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_PMLSOFUzEeK6tYPrIe6zBQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_PMKrKlUzEeK6tYPrIe6zBQ" fontColor="4210752" fontName="Cantarell" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="PokerLeague.ecore#//PrizeMoneyFormula"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_PMKrK1UzEeK6tYPrIe6zBQ" x="197" y="504"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_PML5RFUzEeK6tYPrIe6zBQ" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_PMMgUFUzEeK6tYPrIe6zBQ" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_PMMgUVUzEeK6tYPrIe6zBQ" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_PMNHYFUzEeK6tYPrIe6zBQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="PokerLeague.ecore#//Competition/startDate"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_PMNHYVUzEeK6tYPrIe6zBQ"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_PMNHYlUzEeK6tYPrIe6zBQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="PokerLeague.ecore#//Competition/endDate"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_PMNHY1UzEeK6tYPrIe6zBQ"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_PMNHZFUzEeK6tYPrIe6zBQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="PokerLeague.ecore#//Competition/defaultBuyIn"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_PMNHZVUzEeK6tYPrIe6zBQ"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_PMNucFUzEeK6tYPrIe6zBQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="PokerLeague.ecore#//Competition/defaultMinPlayers"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_PMNucVUzEeK6tYPrIe6zBQ"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_PMOVgFUzEeK6tYPrIe6zBQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="PokerLeague.ecore#//Competition/defaultMaxPlayers"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_PMOVgVUzEeK6tYPrIe6zBQ"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_PMOVglUzEeK6tYPrIe6zBQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="PokerLeague.ecore#//Competition/defaultTournamentDeadline"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_PMOVg1UzEeK6tYPrIe6zBQ"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_PMMgUlUzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_PMMgU1UzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_PMMgVFUzEeK6tYPrIe6zBQ"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_PMMgVVUzEeK6tYPrIe6zBQ" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_PMMgVlUzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_PMMgV1UzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_PMMgWFUzEeK6tYPrIe6zBQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_PML5RVUzEeK6tYPrIe6zBQ" fontColor="4210752" fontName="Cantarell" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="PokerLeague.ecore#//Competition"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_PML5RlUzEeK6tYPrIe6zBQ" x="128" y="963"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_PMOVhFUzEeK6tYPrIe6zBQ" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_PMO8kFUzEeK6tYPrIe6zBQ" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_PMO8kVUzEeK6tYPrIe6zBQ" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_PMO8mVUzEeK6tYPrIe6zBQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="PokerLeague.ecore#//Tournament/defaultBuyIn"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_PMO8mlUzEeK6tYPrIe6zBQ"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_PMPjoFUzEeK6tYPrIe6zBQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="PokerLeague.ecore#//Tournament/tournamentStart"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_PMPjoVUzEeK6tYPrIe6zBQ"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_PMPjolUzEeK6tYPrIe6zBQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="PokerLeague.ecore#//Tournament/minPlayers"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_PMPjo1UzEeK6tYPrIe6zBQ"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_PMPjpFUzEeK6tYPrIe6zBQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="PokerLeague.ecore#//Tournament/maxPlayers"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_PMPjpVUzEeK6tYPrIe6zBQ"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_PMQKsFUzEeK6tYPrIe6zBQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="PokerLeague.ecore#//Tournament/deadline"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_PMQKsVUzEeK6tYPrIe6zBQ"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_PMO8klUzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_PMO8k1UzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_PMO8lFUzEeK6tYPrIe6zBQ"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_PMO8lVUzEeK6tYPrIe6zBQ" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_PMO8llUzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_PMO8l1UzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_PMO8mFUzEeK6tYPrIe6zBQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_PMOVhVUzEeK6tYPrIe6zBQ" fontColor="4210752" fontName="Cantarell" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="PokerLeague.ecore#//Tournament"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_PMOVhlUzEeK6tYPrIe6zBQ" x="604" y="772"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_PMQKslUzEeK6tYPrIe6zBQ" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_PMQKtVUzEeK6tYPrIe6zBQ" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_PMQxwFUzEeK6tYPrIe6zBQ" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_PMQxyFUzEeK6tYPrIe6zBQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="PokerLeague.ecore#//Invitation/reply"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_PMQxyVUzEeK6tYPrIe6zBQ"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_PMQxylUzEeK6tYPrIe6zBQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="PokerLeague.ecore#//Invitation/ordinal"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_PMQxy1UzEeK6tYPrIe6zBQ"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_PMQxwVUzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_PMQxwlUzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_PMQxw1UzEeK6tYPrIe6zBQ"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_PMQxxFUzEeK6tYPrIe6zBQ" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_PMQxxVUzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_PMQxxlUzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_PMQxx1UzEeK6tYPrIe6zBQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_PMQKs1UzEeK6tYPrIe6zBQ" fontColor="4210752" fontName="Cantarell" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="PokerLeague.ecore#//Invitation"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_PMQKtFUzEeK6tYPrIe6zBQ" x="832" y="504"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_PMRY0FUzEeK6tYPrIe6zBQ" type="1005">
+    <children xmi:type="notation:Node" xmi:id="_PMR_4FUzEeK6tYPrIe6zBQ" type="4010"/>
+    <children xmi:type="notation:Node" xmi:id="_PMSm8FUzEeK6tYPrIe6zBQ" type="5008">
+      <children xmi:type="notation:Node" xmi:id="_PMSm9FUzEeK6tYPrIe6zBQ" type="2006">
+        <element xmi:type="ecore:EEnumLiteral" href="PokerLeague.ecore#//InvitationReply/NO_REPLY"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_PMSm9VUzEeK6tYPrIe6zBQ"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_PMTOAFUzEeK6tYPrIe6zBQ" type="2006">
+        <element xmi:type="ecore:EEnumLiteral" href="PokerLeague.ecore#//InvitationReply/ACCEPTED"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_PMTOAVUzEeK6tYPrIe6zBQ"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_PMTOAlUzEeK6tYPrIe6zBQ" type="2006">
+        <element xmi:type="ecore:EEnumLiteral" href="PokerLeague.ecore#//InvitationReply/REJECTED"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_PMTOA1UzEeK6tYPrIe6zBQ"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_PMSm8VUzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_PMSm8lUzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_PMSm81UzEeK6tYPrIe6zBQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_PMRY0VUzEeK6tYPrIe6zBQ" fontColor="4210752" fontName="Cantarell" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EEnum" href="PokerLeague.ecore#//InvitationReply"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_PMRY0lUzEeK6tYPrIe6zBQ" x="942"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_PMTOBFUzEeK6tYPrIe6zBQ" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_PMT1EFUzEeK6tYPrIe6zBQ" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_PMT1EVUzEeK6tYPrIe6zBQ" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_PMT1GVUzEeK6tYPrIe6zBQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="PokerLeague.ecore#//Game/ordinal"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_PMT1GlUzEeK6tYPrIe6zBQ"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_PMUcIFUzEeK6tYPrIe6zBQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="PokerLeague.ecore#//Game/buyIn"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_PMUcIVUzEeK6tYPrIe6zBQ"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_PMT1ElUzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_PMT1E1UzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_PMT1FFUzEeK6tYPrIe6zBQ"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_PMT1FVUzEeK6tYPrIe6zBQ" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_PMT1FlUzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_PMT1F1UzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_PMT1GFUzEeK6tYPrIe6zBQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_PMTOBVUzEeK6tYPrIe6zBQ" fontColor="4210752" fontName="Cantarell" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="PokerLeague.ecore#//Game"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_PMTOBlUzEeK6tYPrIe6zBQ" x="635" y="638"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_PMUcIlUzEeK6tYPrIe6zBQ" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_PMVDMFUzEeK6tYPrIe6zBQ" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_PMVDMVUzEeK6tYPrIe6zBQ" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_PMVDOVUzEeK6tYPrIe6zBQ" type="2001">
+        <element xmi:type="ecore:EAttribute" href="PokerLeague.ecore#//PlayerInGame/rank"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_PMVDOlUzEeK6tYPrIe6zBQ"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_PMVDMlUzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_PMVDM1UzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_PMVDNFUzEeK6tYPrIe6zBQ"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_PMVDNVUzEeK6tYPrIe6zBQ" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_PMVDNlUzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_PMVDN1UzEeK6tYPrIe6zBQ"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_PMVDOFUzEeK6tYPrIe6zBQ"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_PMUcI1UzEeK6tYPrIe6zBQ" fontColor="4210752" fontName="Cantarell" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="PokerLeague.ecore#//PlayerInGame"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_PMUcJFUzEeK6tYPrIe6zBQ" x="637" y="504"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_PDc0AVUzEeK6tYPrIe6zBQ"/>
+  <element xmi:type="ecore:EPackage" href="PokerLeague.ecore#/"/>
+  <edges xmi:type="notation:Edge" xmi:id="_PMYtkFUzEeK6tYPrIe6zBQ" type="3003" source="_PLgj0VUzEeK6tYPrIe6zBQ" target="_PJzToFUzEeK6tYPrIe6zBQ">
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_PMYtkVUzEeK6tYPrIe6zBQ" routing="Rectilinear" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_PMYtklUzEeK6tYPrIe6zBQ" fontName="Cantarell"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_PMYtk1UzEeK6tYPrIe6zBQ" points="[0, 0, -100, 115]$[0, -30, -100, 85]$[100, -30, 0, 85]$[100, -115, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PbhVwVUzEeK6tYPrIe6zBQ" id="(0.5,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PbhVwlUzEeK6tYPrIe6zBQ" id="(0.3333333333333333,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_PMjFoFUzEeK6tYPrIe6zBQ" type="3003" source="_PMEkgFUzEeK6tYPrIe6zBQ" target="_PJzToFUzEeK6tYPrIe6zBQ">
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_PMjFoVUzEeK6tYPrIe6zBQ" routing="Rectilinear" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_PMjFolUzEeK6tYPrIe6zBQ" fontName="Cantarell"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_PMjFo1UzEeK6tYPrIe6zBQ" points="[0, 0, 100, 115]$[0, -30, 100, 85]$[-100, -30, 0, 85]$[-100, -115, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PbkZEVUzEeK6tYPrIe6zBQ" id="(0.5,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PblAIFUzEeK6tYPrIe6zBQ" id="(0.6666666666666666,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_PMjssFUzEeK6tYPrIe6zBQ" type="3003" source="_PMGZsFUzEeK6tYPrIe6zBQ" target="_PMEkgFUzEeK6tYPrIe6zBQ">
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_PMjssVUzEeK6tYPrIe6zBQ" routing="Rectilinear" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_PMjsslUzEeK6tYPrIe6zBQ" fontName="Cantarell"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_PMjss1UzEeK6tYPrIe6zBQ" points="[0, 0, -321, 60]$[0, -30, -321, 30]$[321, -30, 0, 30]$[321, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Pbh80FUzEeK6tYPrIe6zBQ" id="(0.5,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Pbh80VUzEeK6tYPrIe6zBQ" id="(0.125,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_PMjstFUzEeK6tYPrIe6zBQ" type="3003" source="_PMHn0lUzEeK6tYPrIe6zBQ" target="_PMEkgFUzEeK6tYPrIe6zBQ">
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_PMjstVUzEeK6tYPrIe6zBQ" routing="Rectilinear" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_PMjstlUzEeK6tYPrIe6zBQ" fontName="Cantarell"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_PMjst1UzEeK6tYPrIe6zBQ" points="[0, 0, 0, 60]$[0, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PblAIVUzEeK6tYPrIe6zBQ" id="(0.6227544910179641,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PblAIlUzEeK6tYPrIe6zBQ" id="(0.5,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_PMkTwFUzEeK6tYPrIe6zBQ" type="3002" source="_PMI19lUzEeK6tYPrIe6zBQ" target="_PMKEEFUzEeK6tYPrIe6zBQ">
+    <children xmi:type="notation:Node" xmi:id="_PMk60FUzEeK6tYPrIe6zBQ" type="4011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_PMk60VUzEeK6tYPrIe6zBQ" x="-10" y="-10"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_PMmI8FUzEeK6tYPrIe6zBQ" type="4012">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_PMmI8VUzEeK6tYPrIe6zBQ" x="10" y="10"/>
+    </children>
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_PMkTwVUzEeK6tYPrIe6zBQ" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_PMkTwlUzEeK6tYPrIe6zBQ" fontColor="4210752" fontName="Cantarell" fontHeight="10"/>
+    <element xmi:type="ecore:EReference" href="PokerLeague.ecore#//PrizeMoneyRuleSet/prizeMoneyRules"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_PMkTw1UzEeK6tYPrIe6zBQ" points="[0, 0, -202, -89]$[17, 28, -185, -61]$[202, 89, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PbgHoFUzEeK6tYPrIe6zBQ" id="(0.6642335766423357,1.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PbgusFUzEeK6tYPrIe6zBQ" id="(0.32941176470588235,0.0)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_PMmI8lUzEeK6tYPrIe6zBQ" type="3003" source="_PMI19lUzEeK6tYPrIe6zBQ" target="_PMGZsFUzEeK6tYPrIe6zBQ">
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_PMmI81UzEeK6tYPrIe6zBQ" routing="Rectilinear" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_PMmI9FUzEeK6tYPrIe6zBQ" fontName="Cantarell"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_PMmI9VUzEeK6tYPrIe6zBQ" points="[0, 0, -135, 117]$[0, -30, -135, 87]$[135, -30, 0, 87]$[135, -117, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PbgusVUzEeK6tYPrIe6zBQ" id="(0.49635036496350365,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PbhVwFUzEeK6tYPrIe6zBQ" id="(0.5,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_PMmwAFUzEeK6tYPrIe6zBQ" type="3002" source="_PMKEEFUzEeK6tYPrIe6zBQ" target="_PMI19lUzEeK6tYPrIe6zBQ">
+    <children xmi:type="notation:Node" xmi:id="_PMmwBFUzEeK6tYPrIe6zBQ" type="4011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_PMmwBVUzEeK6tYPrIe6zBQ" x="-10" y="-10"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_PMmwBlUzEeK6tYPrIe6zBQ" type="4012">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_PMmwB1UzEeK6tYPrIe6zBQ" x="10" y="10"/>
+    </children>
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_PMmwAVUzEeK6tYPrIe6zBQ" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_PMmwAlUzEeK6tYPrIe6zBQ" fontColor="4210752" fontName="Cantarell" fontHeight="10"/>
+    <element xmi:type="ecore:EReference" href="PokerLeague.ecore#//PrizeMoneyRule/prizeMoneyRuleSet"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_PMmwA1UzEeK6tYPrIe6zBQ" points="[0, 0, 197, 89]$[-197, -89, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PbdrYFUzEeK6tYPrIe6zBQ" id="(0.16470588235294117,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PbdrYVUzEeK6tYPrIe6zBQ" id="(0.49635036496350365,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_PMmwCFUzEeK6tYPrIe6zBQ" type="3002" source="_PMKEEFUzEeK6tYPrIe6zBQ" target="_PMKrKVUzEeK6tYPrIe6zBQ">
+    <children xmi:type="notation:Node" xmi:id="_PMnXEFUzEeK6tYPrIe6zBQ" type="4011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_PMnXEVUzEeK6tYPrIe6zBQ" x="-10" y="-10"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_PMnXElUzEeK6tYPrIe6zBQ" type="4012">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_PMnXE1UzEeK6tYPrIe6zBQ" x="10" y="10"/>
+    </children>
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_PMmwCVUzEeK6tYPrIe6zBQ" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_PMmwClUzEeK6tYPrIe6zBQ" fontColor="4210752" fontName="Cantarell" fontHeight="10"/>
+    <element xmi:type="ecore:EReference" href="PokerLeague.ecore#//PrizeMoneyRule/prizeMoneyFormulas"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_PMmwC1UzEeK6tYPrIe6zBQ" points="[0, 0, 0, 60]$[0, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PbeScFUzEeK6tYPrIe6zBQ" id="(0.5,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PbeScVUzEeK6tYPrIe6zBQ" id="(0.6906077348066298,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_PMnXFFUzEeK6tYPrIe6zBQ" type="3003" source="_PMKEEFUzEeK6tYPrIe6zBQ" target="_PMEkgFUzEeK6tYPrIe6zBQ">
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_PMnXFVUzEeK6tYPrIe6zBQ" routing="Rectilinear" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_PMnXFlUzEeK6tYPrIe6zBQ" fontName="Cantarell"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_PMnXF1UzEeK6tYPrIe6zBQ" points="[0, 0, -198, 385]$[0, -30, -198, 355]$[59, -30, -139, 355]$[59, -355, -139, 30]$[198, -355, 0, 30]$[198, -385, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Pbm1UlUzEeK6tYPrIe6zBQ" id="(0.7470588235294118,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PbncYFUzEeK6tYPrIe6zBQ" id="(0.375,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_PMn-IFUzEeK6tYPrIe6zBQ" type="3002" source="_PMKrKVUzEeK6tYPrIe6zBQ" target="_PMKEEFUzEeK6tYPrIe6zBQ">
+    <children xmi:type="notation:Node" xmi:id="_PMn-JFUzEeK6tYPrIe6zBQ" type="4011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_PMn-JVUzEeK6tYPrIe6zBQ" x="-10" y="-10"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_PMn-JlUzEeK6tYPrIe6zBQ" type="4012">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_PMn-J1UzEeK6tYPrIe6zBQ" x="10" y="10"/>
+    </children>
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_PMn-IVUzEeK6tYPrIe6zBQ" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_PMn-IlUzEeK6tYPrIe6zBQ" fontColor="4210752" fontName="Cantarell" fontHeight="10"/>
+    <element xmi:type="ecore:EReference" href="PokerLeague.ecore#//PrizeMoneyFormula/prizeMoneyRule"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_PMn-I1UzEeK6tYPrIe6zBQ" points="[0, 0, 0, -60]$[0, 60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PbbPIFUzEeK6tYPrIe6zBQ" id="(0.6906077348066298,1.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Pbb2MFUzEeK6tYPrIe6zBQ" id="(0.5,0.0)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_PMn-KFUzEeK6tYPrIe6zBQ" type="3003" source="_PMKrKVUzEeK6tYPrIe6zBQ" target="_PMEkgFUzEeK6tYPrIe6zBQ">
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_PMn-KVUzEeK6tYPrIe6zBQ" routing="Rectilinear" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_PMn-KlUzEeK6tYPrIe6zBQ" fontName="Cantarell"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_PMn-K1UzEeK6tYPrIe6zBQ" points="[0, 0, -256, 251]$[0, -30, -256, 221]$[105, -30, -151, 221]$[105, -221, -151, 30]$[256, -221, 0, 30]$[256, -251, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PbmOQFUzEeK6tYPrIe6zBQ" id="(0.4972375690607735,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PbmOQVUzEeK6tYPrIe6zBQ" id="(0.25,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_PMolMFUzEeK6tYPrIe6zBQ" type="3002" source="_PML5RFUzEeK6tYPrIe6zBQ" target="_PMI19lUzEeK6tYPrIe6zBQ">
+    <children xmi:type="notation:Node" xmi:id="_PMolNFUzEeK6tYPrIe6zBQ" type="4011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_PMolNVUzEeK6tYPrIe6zBQ" x="-10" y="-10"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_PMolNlUzEeK6tYPrIe6zBQ" type="4012">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_PMolN1UzEeK6tYPrIe6zBQ" x="10" y="10"/>
+    </children>
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_PMolMVUzEeK6tYPrIe6zBQ" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_PMolMlUzEeK6tYPrIe6zBQ" fontColor="4210752" fontName="Cantarell" fontHeight="10"/>
+    <element xmi:type="ecore:EReference" href="PokerLeague.ecore#//Competition/defaultPrizeMoneyRuleSet"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_PMolM1UzEeK6tYPrIe6zBQ" points="[0, 0, 183, 414]$[-269, -252, -86, 162]$[-269, -325, -86, 89]$[-183, -414, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PbqfsFUzEeK6tYPrIe6zBQ" id="(0.33047210300429186,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PbqfsVUzEeK6tYPrIe6zBQ" id="(0.16058394160583941,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_PMolOFUzEeK6tYPrIe6zBQ" type="3002" source="_PML5RFUzEeK6tYPrIe6zBQ" target="_PMOVhFUzEeK6tYPrIe6zBQ">
+    <children xmi:type="notation:Node" xmi:id="_PMolPFUzEeK6tYPrIe6zBQ" type="4011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_PMolPVUzEeK6tYPrIe6zBQ" x="-10" y="-10"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_PMpMQFUzEeK6tYPrIe6zBQ" type="4012">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_PMpMQVUzEeK6tYPrIe6zBQ" x="10" y="10"/>
+    </children>
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_PMolOVUzEeK6tYPrIe6zBQ" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_PMolOlUzEeK6tYPrIe6zBQ" fontColor="4210752" fontName="Cantarell" fontHeight="10"/>
+    <element xmi:type="ecore:EReference" href="PokerLeague.ecore#//Competition/tournaments"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_PMolO1UzEeK6tYPrIe6zBQ" points="[0, 0, -389, 60]$[389, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PbjyAVUzEeK6tYPrIe6zBQ" id="(0.6652360515021459,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PbkZEFUzEeK6tYPrIe6zBQ" id="(0.3300970873786408,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_PMpMQlUzEeK6tYPrIe6zBQ" type="3002" source="_PML5RFUzEeK6tYPrIe6zBQ" target="_PMHn0lUzEeK6tYPrIe6zBQ">
+    <children xmi:type="notation:Node" xmi:id="_PMpMRlUzEeK6tYPrIe6zBQ" type="4011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_PMpMR1UzEeK6tYPrIe6zBQ" x="-10" y="-10"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_PMpMSFUzEeK6tYPrIe6zBQ" type="4012">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_PMpMSVUzEeK6tYPrIe6zBQ" x="10" y="10"/>
+    </children>
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_PMpMQ1UzEeK6tYPrIe6zBQ" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_PMpMRFUzEeK6tYPrIe6zBQ" fontColor="4210752" fontName="Cantarell" fontHeight="10"/>
+    <element xmi:type="ecore:EReference" href="PokerLeague.ecore#//Competition/players"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_PMpMRVUzEeK6tYPrIe6zBQ" points="[0, 0, -263, 519]$[260, -252, -3, 267]$[262, -325, -1, 194]$[293, -386, 30, 133]$[293, -459, 30, 60]$[263, -519, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PbpRkFUzEeK6tYPrIe6zBQ" id="(0.4978540772532189,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PbpRkVUzEeK6tYPrIe6zBQ" id="(0.17964071856287425,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_PMpMSlUzEeK6tYPrIe6zBQ" type="3003" source="_PML5RFUzEeK6tYPrIe6zBQ" target="_PMGZsFUzEeK6tYPrIe6zBQ">
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_PMpMS1UzEeK6tYPrIe6zBQ" routing="Rectilinear" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_PMpMTFUzEeK6tYPrIe6zBQ" fontName="Cantarell"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_PMpMTVUzEeK6tYPrIe6zBQ" points="[0, 0, 1, 576]$[0, -30, 1, 546]$[-337, -30, -336, 546]$[-337, -489, -336, 87]$[-1, -489, 0, 87]$[-1, -576, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PboqgVUzEeK6tYPrIe6zBQ" id="(0.1630901287553648,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PboqglUzEeK6tYPrIe6zBQ" id="(0.25,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_PMpzUFUzEeK6tYPrIe6zBQ" type="3002" source="_PMOVhFUzEeK6tYPrIe6zBQ" target="_PMI19lUzEeK6tYPrIe6zBQ">
+    <children xmi:type="notation:Node" xmi:id="_PMqaYFUzEeK6tYPrIe6zBQ" type="4011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_PMqaYVUzEeK6tYPrIe6zBQ" x="-10" y="-10"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_PMqaYlUzEeK6tYPrIe6zBQ" type="4012">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_PMqaY1UzEeK6tYPrIe6zBQ" x="10" y="10"/>
+    </children>
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_PMpzUVUzEeK6tYPrIe6zBQ" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_PMpzUlUzEeK6tYPrIe6zBQ" fontColor="4210752" fontName="Cantarell" fontHeight="10"/>
+    <element xmi:type="ecore:EReference" href="PokerLeague.ecore#//Tournament/defaultPrizeMoneyRuleSet"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_PMpzU1UzEeK6tYPrIe6zBQ" points="[0, 0, 587, 225]$[-511, -40, 76, 185]$[-571, -124, 16, 101]$[-587, -225, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Pbp4oFUzEeK6tYPrIe6zBQ" id="(0.13592233009708737,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Pbp4oVUzEeK6tYPrIe6zBQ" id="(0.3284671532846715,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_PMqaZFUzEeK6tYPrIe6zBQ" type="3002" source="_PMOVhFUzEeK6tYPrIe6zBQ" target="_PMQKslUzEeK6tYPrIe6zBQ">
+    <children xmi:type="notation:Node" xmi:id="_PMqaaFUzEeK6tYPrIe6zBQ" type="4011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_PMqaaVUzEeK6tYPrIe6zBQ" x="-10" y="-10"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_PMqaalUzEeK6tYPrIe6zBQ" type="4012">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_PMqaa1UzEeK6tYPrIe6zBQ" x="10" y="10"/>
+    </children>
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_PMqaZVUzEeK6tYPrIe6zBQ" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_PMqaZlUzEeK6tYPrIe6zBQ" fontColor="4210752" fontName="Cantarell" fontHeight="10"/>
+    <element xmi:type="ecore:EReference" href="PokerLeague.ecore#//Tournament/invitations"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_PMqaZ1UzEeK6tYPrIe6zBQ" points="[0, 0, -133, 194]$[133, -61, 0, 133]$[133, -194, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PbrGwFUzEeK6tYPrIe6zBQ" id="(0.6067961165048543,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PbrGwVUzEeK6tYPrIe6zBQ" id="(0.18292682926829268,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_PMrBcFUzEeK6tYPrIe6zBQ" type="3002" source="_PMOVhFUzEeK6tYPrIe6zBQ" target="_PML5RFUzEeK6tYPrIe6zBQ">
+    <children xmi:type="notation:Node" xmi:id="_PMrBdFUzEeK6tYPrIe6zBQ" type="4011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_PMrBdVUzEeK6tYPrIe6zBQ" x="-10" y="-10"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_PMrBdlUzEeK6tYPrIe6zBQ" type="4012">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_PMrBd1UzEeK6tYPrIe6zBQ" x="10" y="10"/>
+    </children>
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_PMrBcVUzEeK6tYPrIe6zBQ" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_PMrBclUzEeK6tYPrIe6zBQ" fontColor="4210752" fontName="Cantarell" fontHeight="10"/>
+    <element xmi:type="ecore:EReference" href="PokerLeague.ecore#//Tournament/competition"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_PMrBc1UzEeK6tYPrIe6zBQ" points="[0, 0, 419, -60]$[-419, 60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PbfgkFUzEeK6tYPrIe6zBQ" id="(0.6650485436893204,1.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PbfgkVUzEeK6tYPrIe6zBQ" id="(0.8326180257510729,0.0)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_PMrBeFUzEeK6tYPrIe6zBQ" type="3002" source="_PMOVhFUzEeK6tYPrIe6zBQ" target="_PMTOBFUzEeK6tYPrIe6zBQ">
+    <children xmi:type="notation:Node" xmi:id="_PMrBfFUzEeK6tYPrIe6zBQ" type="4011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_PMrBfVUzEeK6tYPrIe6zBQ" x="-10" y="-10"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_PMrogFUzEeK6tYPrIe6zBQ" type="4012">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_PMrogVUzEeK6tYPrIe6zBQ" x="10" y="10"/>
+    </children>
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_PMrBeVUzEeK6tYPrIe6zBQ" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_PMrBelUzEeK6tYPrIe6zBQ" fontColor="4210752" fontName="Cantarell" fontHeight="10"/>
+    <element xmi:type="ecore:EReference" href="PokerLeague.ecore#//Tournament/games"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_PMrBe1UzEeK6tYPrIe6zBQ" points="[0, 0, 0, 60]$[0, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Pbe5gFUzEeK6tYPrIe6zBQ" id="(0.41262135922330095,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Pbe5gVUzEeK6tYPrIe6zBQ" id="(0.5,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_PMroglUzEeK6tYPrIe6zBQ" type="3003" source="_PMOVhFUzEeK6tYPrIe6zBQ" target="_PMGZsFUzEeK6tYPrIe6zBQ">
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_PMrog1UzEeK6tYPrIe6zBQ" routing="Rectilinear" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_PMrohFUzEeK6tYPrIe6zBQ" fontName="Cantarell"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_PMrohVUzEeK6tYPrIe6zBQ" points="[0, 0, 419, 385]$[0, -30, 419, 355]$[-71, -30, 348, 355]$[-71, -164, 348, 221]$[-206, -164, 213, 221]$[-206, -298, 213, 87]$[-419, -298, 0, 87]$[-419, -385, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PboDclUzEeK6tYPrIe6zBQ" id="(0.27184466019417475,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PboqgFUzEeK6tYPrIe6zBQ" id="(0.75,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_PMrohlUzEeK6tYPrIe6zBQ" type="3002" source="_PMQKslUzEeK6tYPrIe6zBQ" target="_PMOVhFUzEeK6tYPrIe6zBQ">
+    <children xmi:type="notation:Node" xmi:id="_PMroilUzEeK6tYPrIe6zBQ" type="4011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_PMroi1UzEeK6tYPrIe6zBQ" x="-10" y="-10"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_PMsPkFUzEeK6tYPrIe6zBQ" type="4012">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_PMsPkVUzEeK6tYPrIe6zBQ" x="10" y="10"/>
+    </children>
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_PMroh1UzEeK6tYPrIe6zBQ" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_PMroiFUzEeK6tYPrIe6zBQ" fontColor="4210752" fontName="Cantarell" fontHeight="10"/>
+    <element xmi:type="ecore:EReference" href="PokerLeague.ecore#//Invitation/tournament"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_PMroiVUzEeK6tYPrIe6zBQ" points="[0, 0, 160, -194]$[114, 60, 274, -134]$[114, 133, 274, -61]$[-160, 194, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Pbrt0FUzEeK6tYPrIe6zBQ" id="(0.5914634146341463,1.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Pbrt0VUzEeK6tYPrIe6zBQ" id="(0.8009708737864077,0.0)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_PMsPklUzEeK6tYPrIe6zBQ" type="3002" source="_PMQKslUzEeK6tYPrIe6zBQ" target="_PMHn0lUzEeK6tYPrIe6zBQ">
+    <children xmi:type="notation:Node" xmi:id="_PMsPllUzEeK6tYPrIe6zBQ" type="4011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_PMsPl1UzEeK6tYPrIe6zBQ" x="-10" y="-10"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_PMsPmFUzEeK6tYPrIe6zBQ" type="4012">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_PMsPmVUzEeK6tYPrIe6zBQ" x="10" y="10"/>
+    </children>
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_PMsPk1UzEeK6tYPrIe6zBQ" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_PMsPlFUzEeK6tYPrIe6zBQ" fontColor="4210752" fontName="Cantarell" fontHeight="10"/>
+    <element xmi:type="ecore:EReference" href="PokerLeague.ecore#//Invitation/player"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_PMsPlVUzEeK6tYPrIe6zBQ" points="[0, 0, 288, 60]$[-288, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PblnMFUzEeK6tYPrIe6zBQ" id="(0.32926829268292684,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PblnMVUzEeK6tYPrIe6zBQ" id="(0.7245508982035929,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_PMsPmlUzEeK6tYPrIe6zBQ" type="3003" source="_PMQKslUzEeK6tYPrIe6zBQ" target="_PMEkgFUzEeK6tYPrIe6zBQ">
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_PMsPm1UzEeK6tYPrIe6zBQ" routing="Rectilinear" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_PMsPnFUzEeK6tYPrIe6zBQ" fontName="Cantarell"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_PMsPnVUzEeK6tYPrIe6zBQ" points="[0, 0, 303, 251]$[0, -30, 303, 221]$[-124, -30, 179, 221]$[-124, -221, 179, 30]$[-303, -221, 0, 30]$[-303, -251, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PboDcFUzEeK6tYPrIe6zBQ" id="(0.6646341463414634,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PboDcVUzEeK6tYPrIe6zBQ" id="(0.875,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_PMs2oFUzEeK6tYPrIe6zBQ" type="3002" source="_PMTOBFUzEeK6tYPrIe6zBQ" target="_PMOVhFUzEeK6tYPrIe6zBQ">
+    <children xmi:type="notation:Node" xmi:id="_PMs2pFUzEeK6tYPrIe6zBQ" type="4011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_PMs2pVUzEeK6tYPrIe6zBQ" x="-10" y="-10"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_PMs2plUzEeK6tYPrIe6zBQ" type="4012">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_PMs2p1UzEeK6tYPrIe6zBQ" x="10" y="10"/>
+    </children>
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_PMs2oVUzEeK6tYPrIe6zBQ" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_PMs2olUzEeK6tYPrIe6zBQ" fontColor="4210752" fontName="Cantarell" fontHeight="10"/>
+    <element xmi:type="ecore:EReference" href="PokerLeague.ecore#//Game/tournament"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_PMs2o1UzEeK6tYPrIe6zBQ" points="[0, 0, 0, -60]$[0, 60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Pbh80lUzEeK6tYPrIe6zBQ" id="(0.5,1.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Pbij4FUzEeK6tYPrIe6zBQ" id="(0.41262135922330095,0.0)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_PMs2qFUzEeK6tYPrIe6zBQ" type="3002" source="_PMTOBFUzEeK6tYPrIe6zBQ" target="_PMI19lUzEeK6tYPrIe6zBQ">
+    <children xmi:type="notation:Node" xmi:id="_PMtdsFUzEeK6tYPrIe6zBQ" type="4011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_PMtdsVUzEeK6tYPrIe6zBQ" x="-10" y="-10"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_PMtdslUzEeK6tYPrIe6zBQ" type="4012">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_PMtds1UzEeK6tYPrIe6zBQ" x="10" y="10"/>
+    </children>
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_PMs2qVUzEeK6tYPrIe6zBQ" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_PMs2qlUzEeK6tYPrIe6zBQ" fontColor="4210752" fontName="Cantarell" fontHeight="10"/>
+    <element xmi:type="ecore:EReference" href="PokerLeague.ecore#//Game/prizeMoneyRuleSet"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_PMs2q1UzEeK6tYPrIe6zBQ" points="[0, 0, 548, 89]$[-514, -61, 34, 28]$[-548, -89, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Pbij4VUzEeK6tYPrIe6zBQ" id="(0.25,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PbjK8FUzEeK6tYPrIe6zBQ" id="(0.8321167883211679,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_PMtdtFUzEeK6tYPrIe6zBQ" type="3002" source="_PMTOBFUzEeK6tYPrIe6zBQ" target="_PMUcIlUzEeK6tYPrIe6zBQ">
+    <children xmi:type="notation:Node" xmi:id="_PMuEwFUzEeK6tYPrIe6zBQ" type="4011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_PMuEwVUzEeK6tYPrIe6zBQ" x="-10" y="-10"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_PMur0FUzEeK6tYPrIe6zBQ" type="4012">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_PMur0VUzEeK6tYPrIe6zBQ" x="10" y="10"/>
+    </children>
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_PMtdtVUzEeK6tYPrIe6zBQ" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_PMtdtlUzEeK6tYPrIe6zBQ" fontColor="4210752" fontName="Cantarell" fontHeight="10"/>
+    <element xmi:type="ecore:EReference" href="PokerLeague.ecore#//Game/playersInGame"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_PMtdt1UzEeK6tYPrIe6zBQ" points="[0, 0, 0, 79]$[0, -79, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PbjK8VUzEeK6tYPrIe6zBQ" id="(0.5,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PbjyAFUzEeK6tYPrIe6zBQ" id="(0.5,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_PMur0lUzEeK6tYPrIe6zBQ" type="3003" source="_PMTOBFUzEeK6tYPrIe6zBQ" target="_PMEkgFUzEeK6tYPrIe6zBQ">
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_PMur01UzEeK6tYPrIe6zBQ" routing="Rectilinear" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_PMur1FUzEeK6tYPrIe6zBQ" fontName="Cantarell"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_PMur1VUzEeK6tYPrIe6zBQ" points="[0, 0, 97, 385]$[0, -30, 97, 355]$[70, -30, 167, 355]$[70, -355, 167, 30]$[-97, -355, 0, 30]$[-97, -385, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PbncYVUzEeK6tYPrIe6zBQ" id="(0.75,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PbncYlUzEeK6tYPrIe6zBQ" id="(0.75,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_PMur1lUzEeK6tYPrIe6zBQ" type="3002" source="_PMUcIlUzEeK6tYPrIe6zBQ" target="_PMHn0lUzEeK6tYPrIe6zBQ">
+    <children xmi:type="notation:Node" xmi:id="_PMur2lUzEeK6tYPrIe6zBQ" type="4011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_PMvS4FUzEeK6tYPrIe6zBQ" x="-10" y="-10"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_PMvS4VUzEeK6tYPrIe6zBQ" type="4012">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_PMvS4lUzEeK6tYPrIe6zBQ" x="10" y="10"/>
+    </children>
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_PMur11UzEeK6tYPrIe6zBQ" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_PMur2FUzEeK6tYPrIe6zBQ" fontColor="4210752" fontName="Cantarell" fontHeight="10"/>
+    <element xmi:type="ecore:EReference" href="PokerLeague.ecore#//PlayerInGame/player"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_PMur2VUzEeK6tYPrIe6zBQ" points="[0, 0, 111, 60]$[-111, -60, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PbdEUFUzEeK6tYPrIe6zBQ" id="(0.25,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PbdEUVUzEeK6tYPrIe6zBQ" id="(0.4491017964071856,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_PMvS41UzEeK6tYPrIe6zBQ" type="3002" source="_PMUcIlUzEeK6tYPrIe6zBQ" target="_PMTOBFUzEeK6tYPrIe6zBQ">
+    <children xmi:type="notation:Node" xmi:id="_PMvS51UzEeK6tYPrIe6zBQ" type="4011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_PMvS6FUzEeK6tYPrIe6zBQ" x="-10" y="-10"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_PMvS6VUzEeK6tYPrIe6zBQ" type="4012">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_PMvS6lUzEeK6tYPrIe6zBQ" x="10" y="10"/>
+    </children>
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_PMvS5FUzEeK6tYPrIe6zBQ" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_PMvS5VUzEeK6tYPrIe6zBQ" fontColor="4210752" fontName="Cantarell" fontHeight="10"/>
+    <element xmi:type="ecore:EReference" href="PokerLeague.ecore#//PlayerInGame/game"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_PMvS5lUzEeK6tYPrIe6zBQ" points="[0, 0, 0, -79]$[0, 79, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PbcdQFUzEeK6tYPrIe6zBQ" id="(0.5,1.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_PbcdQVUzEeK6tYPrIe6zBQ" id="(0.5,0.0)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_PMvS61UzEeK6tYPrIe6zBQ" type="3003" source="_PMUcIlUzEeK6tYPrIe6zBQ" target="_PMEkgFUzEeK6tYPrIe6zBQ">
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_PMvS7FUzEeK6tYPrIe6zBQ" routing="Rectilinear" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_PMvS7VUzEeK6tYPrIe6zBQ" fontName="Cantarell"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_PMvS7lUzEeK6tYPrIe6zBQ" points="[0, 0, 89, 251]$[0, -221, 89, 30]$[-89, -221, 0, 30]$[-89, -251, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Pbm1UFUzEeK6tYPrIe6zBQ" id="(0.5,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Pbm1UVUzEeK6tYPrIe6zBQ" id="(0.625,1.0)"/>
+  </edges>
+</notation:Diagram>

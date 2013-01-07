@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<annotationsmodel:AnnotatedModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:annotationsmodel="http://www.eclipse.org/emf/texo/annotations/model" xmlns:modelannotations="http://www.eclipse.org/emf/texo/modelgenerator/modelannotations" xmlns:ormannotations="http://www.eclipse.org/emf/texo/orm/ormannotations">
+  <annotatedEPackages>
+    <ePackage href="PokerLeague.ecore#/"/>
+    <ePackageAnnotations xsi:type="modelannotations:EPackageModelGenAnnotation" generated="true" name="pokerleague" addRuntimeModelBehavior="false" packagePath="cz.fhsoft.poker.league.shared.model.v1" modelClassesPackagePath="cz.fhsoft.poker.league.shared.model.v1" qualifiedClassName="cz.fhsoft.poker.league.shared.model.v1.PokerleagueModelPackage" simpleClassName="PokerleagueModelPackage" simpleModelFactoryClassName="PokerleagueModelFactory" ecoreFileName="pokerleague.ecore" daoClassesPackagePath="cz.fhsoft.poker.league.shared.model.v1.dao" daoRootClass="org.eclipse.emf.texo.server.store.BaseDao"/>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="PokerLeague.ecore#//Serializable"/>
+      <eClassAnnotations xsi:type="modelannotations:EClassModelGenAnnotation" generated="true" name="Serializable" qualifiedClassName="java.io.Serializable" simpleClassName="Serializable" generateCode="false" ownerEPackageAnnotation="//@annotatedEPackages.0/@ePackageAnnotations.0" hasSuperEClass="false" serializable="false" abstract="true"/>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="PokerLeague.ecore#//DataVersion"/>
+      <eClassAnnotations xsi:type="modelannotations:EClassModelGenAnnotation" generated="true" name="DataVersion" qualifiedClassName="cz.fhsoft.poker.league.shared.model.v1.DataVersion" simpleClassName="DataVersion" generateCode="true" ownerEPackageAnnotation="//@annotatedEPackages.0/@ePackageAnnotations.0" hasSuperEClass="false" serializable="true" abstract="false">
+        <classImplements>java.io.Serializable</classImplements>
+      </eClassAnnotations>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="PokerLeague.ecore#//DataVersion/id"/>
+        <eAttributeAnnotations xsi:type="modelannotations:EAttributeModelGenAnnotation" generated="true" name="id" getter="getId" type="int" objectType="java.lang.Integer" itemType="java.lang.Integer" defaultValue="0" setter="setId" validJavaMemberName="id" many="false" useList="false" reference="false" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.1/@eClassAnnotations.0" boolean="false" primitive="true"/>
+        <eAttributeAnnotations xsi:type="ormannotations:EAttributeORMAnnotation">
+          <id/>
+        </eAttributeAnnotations>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="PokerLeague.ecore#//DataVersion/currentVersion"/>
+        <eAttributeAnnotations xsi:type="modelannotations:EAttributeModelGenAnnotation" generated="true" name="currentVersion" getter="getCurrentVersion" type="java.util.Date" objectType="java.util.Date" itemType="java.util.Date" defaultValue="null" setter="setCurrentVersion" validJavaMemberName="currentVersion" many="false" useList="false" reference="false" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.1/@eClassAnnotations.0" boolean="false" primitive="false"/>
+      </annotatedEStructuralFeatures>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEDataType">
+      <eDataType href="PokerLeague.ecore#//Timestamp"/>
+      <eDataTypeAnnotations xsi:type="modelannotations:EDataTypeModelGenAnnotation" generated="true" name="Timestamp" qualifiedClassName="java.util.Date" simpleClassName="Timestamp" generateCode="true" ownerEPackageAnnotation="//@annotatedEPackages.0/@ePackageAnnotations.0" instanceClassName="java.util.Date" objectClassName="java.util.Date" enum="false" dateType="true" automaticStringConversion="true" itemType="java.util.Date"/>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="PokerLeague.ecore#//IdentifiableEntity"/>
+      <eClassAnnotations xsi:type="modelannotations:EClassModelGenAnnotation" generated="true" name="IdentifiableEntity" qualifiedClassName="cz.fhsoft.poker.league.shared.model.v1.IdentifiableEntity" simpleClassName="IdentifiableEntity" generateCode="true" ownerEPackageAnnotation="//@annotatedEPackages.0/@ePackageAnnotations.0" hasSuperEClass="false" serializable="true" abstract="true">
+        <classImplements>java.io.Serializable</classImplements>
+      </eClassAnnotations>
+      <eClassAnnotations xsi:type="ormannotations:EClassORMAnnotation">
+        <inheritance strategy="TABLE_PER_CLASS"/>
+      </eClassAnnotations>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="PokerLeague.ecore#//IdentifiableEntity/id"/>
+        <eAttributeAnnotations xsi:type="modelannotations:EAttributeModelGenAnnotation" generated="true" name="id" getter="getId" type="int" objectType="java.lang.Integer" itemType="java.lang.Integer" defaultValue="0" setter="setId" validJavaMemberName="id" many="false" useList="false" reference="false" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.3/@eClassAnnotations.0" boolean="false" primitive="true"/>
+        <eAttributeAnnotations xsi:type="ormannotations:EAttributeORMAnnotation">
+          <id>
+            <generatedValue strategy="AUTO"/>
+          </id>
+        </eAttributeAnnotations>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="PokerLeague.ecore#//IdentifiableEntity/obsolete"/>
+        <eAttributeAnnotations xsi:type="modelannotations:EAttributeModelGenAnnotation" generated="true" name="obsolete" getter="isObsolete" type="boolean" objectType="java.lang.Boolean" itemType="java.lang.Boolean" defaultValue="false" setter="setObsolete" validJavaMemberName="obsolete" many="false" useList="false" reference="false" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.3/@eClassAnnotations.0" boolean="true" primitive="true"/>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="PokerLeague.ecore#//IdentifiableEntity/proxy"/>
+        <eAttributeAnnotations xsi:type="modelannotations:EAttributeModelGenAnnotation" generated="true" name="proxy" getter="isProxy" type="boolean" objectType="java.lang.Boolean" itemType="java.lang.Boolean" defaultValue="false" setter="setProxy" validJavaMemberName="proxy" many="false" useList="false" reference="false" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.3/@eClassAnnotations.0" boolean="true" primitive="true"/>
+        <eAttributeAnnotations xsi:type="ormannotations:EAttributeORMAnnotation">
+          <transient/>
+        </eAttributeAnnotations>
+      </annotatedEStructuralFeatures>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="PokerLeague.ecore#//DescribedEntity"/>
+      <eClassAnnotations xsi:type="modelannotations:EClassModelGenAnnotation" generated="true" name="DescribedEntity" qualifiedClassName="cz.fhsoft.poker.league.shared.model.v1.DescribedEntity" simpleClassName="DescribedEntity" generateCode="true" ownerEPackageAnnotation="//@annotatedEPackages.0/@ePackageAnnotations.0" hasSuperEClass="true" serializable="true" abstract="true" superEClass="//@annotatedEPackages.0/@annotatedEClassifiers.3/@eClassAnnotations.0">
+        <classExtends>cz.fhsoft.poker.league.shared.model.v1.IdentifiableEntity</classExtends>
+      </eClassAnnotations>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="PokerLeague.ecore#//DescribedEntity/name"/>
+        <eAttributeAnnotations xsi:type="modelannotations:EAttributeModelGenAnnotation" generated="true" name="name" getter="getName" type="java.lang.String" objectType="java.lang.String" itemType="java.lang.String" defaultValue="null" setter="setName" validJavaMemberName="name" many="false" useList="false" reference="false" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.4/@eClassAnnotations.0" boolean="false" primitive="false"/>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="PokerLeague.ecore#//DescribedEntity/description"/>
+        <eAttributeAnnotations xsi:type="modelannotations:EAttributeModelGenAnnotation" generated="true" name="description" getter="getDescription" type="java.lang.String" objectType="java.lang.String" itemType="java.lang.String" defaultValue="null" setter="setDescription" validJavaMemberName="description" many="false" useList="false" reference="false" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.4/@eClassAnnotations.0" boolean="false" primitive="false"/>
+      </annotatedEStructuralFeatures>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="PokerLeague.ecore#//Player"/>
+      <eClassAnnotations xsi:type="modelannotations:EClassModelGenAnnotation" generated="true" name="Player" qualifiedClassName="cz.fhsoft.poker.league.shared.model.v1.Player" simpleClassName="Player" generateCode="true" ownerEPackageAnnotation="//@annotatedEPackages.0/@ePackageAnnotations.0" hasSuperEClass="true" serializable="true" abstract="false" superEClass="//@annotatedEPackages.0/@annotatedEClassifiers.3/@eClassAnnotations.0">
+        <classExtends>cz.fhsoft.poker.league.shared.model.v1.IdentifiableEntity</classExtends>
+      </eClassAnnotations>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="PokerLeague.ecore#//Player/active"/>
+        <eAttributeAnnotations xsi:type="modelannotations:EAttributeModelGenAnnotation" generated="true" name="active" getter="isActive" type="boolean" objectType="java.lang.Boolean" itemType="java.lang.Boolean" defaultValue="false" setter="setActive" validJavaMemberName="active" many="false" useList="false" reference="false" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.5/@eClassAnnotations.0" boolean="true" primitive="true"/>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="PokerLeague.ecore#//Player/nick"/>
+        <eAttributeAnnotations xsi:type="modelannotations:EAttributeModelGenAnnotation" generated="true" name="nick" getter="getNick" type="java.lang.String" objectType="java.lang.String" itemType="java.lang.String" defaultValue="null" setter="setNick" validJavaMemberName="nick" many="false" useList="false" reference="false" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.5/@eClassAnnotations.0" boolean="false" primitive="false"/>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="PokerLeague.ecore#//Player/firstName"/>
+        <eAttributeAnnotations xsi:type="modelannotations:EAttributeModelGenAnnotation" generated="true" name="firstName" getter="getFirstName" type="java.lang.String" objectType="java.lang.String" itemType="java.lang.String" defaultValue="null" setter="setFirstName" validJavaMemberName="firstName" many="false" useList="false" reference="false" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.5/@eClassAnnotations.0" boolean="false" primitive="false"/>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="PokerLeague.ecore#//Player/lastName"/>
+        <eAttributeAnnotations xsi:type="modelannotations:EAttributeModelGenAnnotation" generated="true" name="lastName" getter="getLastName" type="java.lang.String" objectType="java.lang.String" itemType="java.lang.String" defaultValue="null" setter="setLastName" validJavaMemberName="lastName" many="false" useList="false" reference="false" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.5/@eClassAnnotations.0" boolean="false" primitive="false"/>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="PokerLeague.ecore#//Player/emailAddress"/>
+        <eAttributeAnnotations xsi:type="modelannotations:EAttributeModelGenAnnotation" generated="true" name="emailAddress" getter="getEmailAddress" type="java.lang.String" objectType="java.lang.String" itemType="java.lang.String" defaultValue="null" setter="setEmailAddress" validJavaMemberName="emailAddress" many="false" useList="false" reference="false" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.5/@eClassAnnotations.0" boolean="false" primitive="false"/>
+      </annotatedEStructuralFeatures>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="PokerLeague.ecore#//PrizeMoneyRuleSet"/>
+      <eClassAnnotations xsi:type="modelannotations:EClassModelGenAnnotation" generated="true" name="PrizeMoneyRuleSet" qualifiedClassName="cz.fhsoft.poker.league.shared.model.v1.PrizeMoneyRuleSet" simpleClassName="PrizeMoneyRuleSet" generateCode="true" ownerEPackageAnnotation="//@annotatedEPackages.0/@ePackageAnnotations.0" hasManyFeatures="true" hasSuperEClass="true" serializable="true" abstract="false" superEClass="//@annotatedEPackages.0/@annotatedEClassifiers.4/@eClassAnnotations.0">
+        <classExtends>cz.fhsoft.poker.league.shared.model.v1.DescribedEntity</classExtends>
+      </eClassAnnotations>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEReference">
+        <eReference href="PokerLeague.ecore#//PrizeMoneyRuleSet/prizeMoneyRules"/>
+        <eReferenceAnnotations xsi:type="modelannotations:EReferenceModelGenAnnotation" generated="true" name="prizeMoneyRules" getter="getPrizeMoneyRules" type="java.util.Set&lt;cz.fhsoft.poker.league.shared.model.v1.PrizeMoneyRule>" objectType="java.util.Set&lt;cz.fhsoft.poker.league.shared.model.v1.PrizeMoneyRule>" itemType="cz.fhsoft.poker.league.shared.model.v1.PrizeMoneyRule" defaultValue="new java.util.HashSet&lt;cz.fhsoft.poker.league.shared.model.v1.PrizeMoneyRule>()" setter="setPrizeMoneyRules" validJavaMemberName="prizeMoneyRules" many="true" useList="false" reference="true" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.6/@eClassAnnotations.0" generateSafeManyAccess="false" generateBidirectionalAssociationSupport="true"/>
+        <eReferenceAnnotations xsi:type="ormannotations:EReferenceORMAnnotation">
+          <oneToMany orphanRemoval="true"/>
+        </eReferenceAnnotations>
+      </annotatedEStructuralFeatures>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="PokerLeague.ecore#//PrizeMoneyRule"/>
+      <eClassAnnotations xsi:type="modelannotations:EClassModelGenAnnotation" generated="true" name="PrizeMoneyRule" qualifiedClassName="cz.fhsoft.poker.league.shared.model.v1.PrizeMoneyRule" simpleClassName="PrizeMoneyRule" generateCode="true" ownerEPackageAnnotation="//@annotatedEPackages.0/@ePackageAnnotations.0" hasManyFeatures="true" hasSuperEClass="true" serializable="true" abstract="false" superEClass="//@annotatedEPackages.0/@annotatedEClassifiers.3/@eClassAnnotations.0">
+        <classExtends>cz.fhsoft.poker.league.shared.model.v1.IdentifiableEntity</classExtends>
+      </eClassAnnotations>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEReference">
+        <eReference href="PokerLeague.ecore#//PrizeMoneyRule/prizeMoneyRuleSet"/>
+        <eReferenceAnnotations xsi:type="modelannotations:EReferenceModelGenAnnotation" generated="true" name="prizeMoneyRuleSet" getter="getPrizeMoneyRuleSet" type="cz.fhsoft.poker.league.shared.model.v1.PrizeMoneyRuleSet" objectType="cz.fhsoft.poker.league.shared.model.v1.PrizeMoneyRuleSet" itemType="cz.fhsoft.poker.league.shared.model.v1.PrizeMoneyRuleSet" defaultValue="null" setter="setPrizeMoneyRuleSet" validJavaMemberName="prizeMoneyRuleSet" many="false" useList="false" reference="true" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.7/@eClassAnnotations.0" generateSafeManyAccess="false" generateBidirectionalAssociationSupport="true"/>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="PokerLeague.ecore#//PrizeMoneyRule/numberOfPlayers"/>
+        <eAttributeAnnotations xsi:type="modelannotations:EAttributeModelGenAnnotation" generated="true" name="numberOfPlayers" getter="getNumberOfPlayers" type="int" objectType="java.lang.Integer" itemType="java.lang.Integer" defaultValue="0" setter="setNumberOfPlayers" validJavaMemberName="numberOfPlayers" many="false" useList="false" reference="false" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.7/@eClassAnnotations.0" boolean="false" primitive="true"/>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEReference">
+        <eReference href="PokerLeague.ecore#//PrizeMoneyRule/prizeMoneyFormulas"/>
+        <eReferenceAnnotations xsi:type="modelannotations:EReferenceModelGenAnnotation" generated="true" name="prizeMoneyFormulas" getter="getPrizeMoneyFormulas" type="java.util.Set&lt;cz.fhsoft.poker.league.shared.model.v1.PrizeMoneyFormula>" objectType="java.util.Set&lt;cz.fhsoft.poker.league.shared.model.v1.PrizeMoneyFormula>" itemType="cz.fhsoft.poker.league.shared.model.v1.PrizeMoneyFormula" defaultValue="new java.util.HashSet&lt;cz.fhsoft.poker.league.shared.model.v1.PrizeMoneyFormula>()" setter="setPrizeMoneyFormulas" validJavaMemberName="prizeMoneyFormulas" many="true" useList="false" reference="true" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.7/@eClassAnnotations.0" generateSafeManyAccess="false" generateBidirectionalAssociationSupport="true"/>
+        <eReferenceAnnotations xsi:type="ormannotations:EReferenceORMAnnotation">
+          <oneToMany orphanRemoval="true"/>
+        </eReferenceAnnotations>
+      </annotatedEStructuralFeatures>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="PokerLeague.ecore#//PrizeMoneyFormula"/>
+      <eClassAnnotations xsi:type="modelannotations:EClassModelGenAnnotation" generated="true" name="PrizeMoneyFormula" qualifiedClassName="cz.fhsoft.poker.league.shared.model.v1.PrizeMoneyFormula" simpleClassName="PrizeMoneyFormula" generateCode="true" ownerEPackageAnnotation="//@annotatedEPackages.0/@ePackageAnnotations.0" hasSuperEClass="true" serializable="true" abstract="false" superEClass="//@annotatedEPackages.0/@annotatedEClassifiers.3/@eClassAnnotations.0">
+        <classExtends>cz.fhsoft.poker.league.shared.model.v1.IdentifiableEntity</classExtends>
+      </eClassAnnotations>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEReference">
+        <eReference href="PokerLeague.ecore#//PrizeMoneyFormula/prizeMoneyRule"/>
+        <eReferenceAnnotations xsi:type="modelannotations:EReferenceModelGenAnnotation" generated="true" name="prizeMoneyRule" getter="getPrizeMoneyRule" type="cz.fhsoft.poker.league.shared.model.v1.PrizeMoneyRule" objectType="cz.fhsoft.poker.league.shared.model.v1.PrizeMoneyRule" itemType="cz.fhsoft.poker.league.shared.model.v1.PrizeMoneyRule" defaultValue="null" setter="setPrizeMoneyRule" validJavaMemberName="prizeMoneyRule" many="false" useList="false" reference="true" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.8/@eClassAnnotations.0" generateSafeManyAccess="false" generateBidirectionalAssociationSupport="true"/>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="PokerLeague.ecore#//PrizeMoneyFormula/rank"/>
+        <eAttributeAnnotations xsi:type="modelannotations:EAttributeModelGenAnnotation" generated="true" name="rank" getter="getRank" type="int" objectType="java.lang.Integer" itemType="java.lang.Integer" defaultValue="0" setter="setRank" validJavaMemberName="rank" many="false" useList="false" reference="false" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.8/@eClassAnnotations.0" boolean="false" primitive="true"/>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="PokerLeague.ecore#//PrizeMoneyFormula/relativePrizeMoney"/>
+        <eAttributeAnnotations xsi:type="modelannotations:EAttributeModelGenAnnotation" generated="true" name="relativePrizeMoney" getter="getRelativePrizeMoney" type="int" objectType="java.lang.Integer" itemType="java.lang.Integer" defaultValue="0" setter="setRelativePrizeMoney" validJavaMemberName="relativePrizeMoney" many="false" useList="false" reference="false" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.8/@eClassAnnotations.0" boolean="false" primitive="true"/>
+      </annotatedEStructuralFeatures>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="PokerLeague.ecore#//Competition"/>
+      <eClassAnnotations xsi:type="modelannotations:EClassModelGenAnnotation" generated="true" name="Competition" qualifiedClassName="cz.fhsoft.poker.league.shared.model.v1.Competition" simpleClassName="Competition" generateCode="true" ownerEPackageAnnotation="//@annotatedEPackages.0/@ePackageAnnotations.0" hasManyFeatures="true" hasSuperEClass="true" serializable="true" abstract="false" superEClass="//@annotatedEPackages.0/@annotatedEClassifiers.4/@eClassAnnotations.0">
+        <classExtends>cz.fhsoft.poker.league.shared.model.v1.DescribedEntity</classExtends>
+      </eClassAnnotations>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="PokerLeague.ecore#//Competition/startDate"/>
+        <eAttributeAnnotations xsi:type="modelannotations:EAttributeModelGenAnnotation" generated="true" name="startDate" getter="getStartDate" type="java.util.Date" objectType="java.util.Date" itemType="java.util.Date" defaultValue="null" setter="setStartDate" validJavaMemberName="startDate" many="false" useList="false" reference="false" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.9/@eClassAnnotations.0" boolean="false" primitive="false"/>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="PokerLeague.ecore#//Competition/endDate"/>
+        <eAttributeAnnotations xsi:type="modelannotations:EAttributeModelGenAnnotation" generated="true" name="endDate" getter="getEndDate" type="java.util.Date" objectType="java.util.Date" itemType="java.util.Date" defaultValue="null" setter="setEndDate" validJavaMemberName="endDate" many="false" useList="false" reference="false" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.9/@eClassAnnotations.0" boolean="false" primitive="false"/>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="PokerLeague.ecore#//Competition/defaultBuyIn"/>
+        <eAttributeAnnotations xsi:type="modelannotations:EAttributeModelGenAnnotation" generated="true" name="defaultBuyIn" getter="getDefaultBuyIn" type="int" objectType="java.lang.Integer" itemType="java.lang.Integer" defaultValue="0" setter="setDefaultBuyIn" validJavaMemberName="defaultBuyIn" many="false" useList="false" reference="false" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.9/@eClassAnnotations.0" boolean="false" primitive="true"/>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEReference">
+        <eReference href="PokerLeague.ecore#//Competition/defaultPrizeMoneyRuleSet"/>
+        <eReferenceAnnotations xsi:type="modelannotations:EReferenceModelGenAnnotation" generated="true" name="defaultPrizeMoneyRuleSet" getter="getDefaultPrizeMoneyRuleSet" type="cz.fhsoft.poker.league.shared.model.v1.PrizeMoneyRuleSet" objectType="cz.fhsoft.poker.league.shared.model.v1.PrizeMoneyRuleSet" itemType="cz.fhsoft.poker.league.shared.model.v1.PrizeMoneyRuleSet" defaultValue="null" setter="setDefaultPrizeMoneyRuleSet" validJavaMemberName="defaultPrizeMoneyRuleSet" many="false" useList="false" reference="true" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.9/@eClassAnnotations.0" generateSafeManyAccess="false" generateBidirectionalAssociationSupport="true"/>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="PokerLeague.ecore#//Competition/defaultMinPlayers"/>
+        <eAttributeAnnotations xsi:type="modelannotations:EAttributeModelGenAnnotation" generated="true" name="defaultMinPlayers" getter="getDefaultMinPlayers" type="int" objectType="java.lang.Integer" itemType="java.lang.Integer" defaultValue="0" setter="setDefaultMinPlayers" validJavaMemberName="defaultMinPlayers" many="false" useList="false" reference="false" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.9/@eClassAnnotations.0" boolean="false" primitive="true"/>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="PokerLeague.ecore#//Competition/defaultMaxPlayers"/>
+        <eAttributeAnnotations xsi:type="modelannotations:EAttributeModelGenAnnotation" generated="true" name="defaultMaxPlayers" getter="getDefaultMaxPlayers" type="int" objectType="java.lang.Integer" itemType="java.lang.Integer" defaultValue="0" setter="setDefaultMaxPlayers" validJavaMemberName="defaultMaxPlayers" many="false" useList="false" reference="false" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.9/@eClassAnnotations.0" boolean="false" primitive="true"/>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="PokerLeague.ecore#//Competition/defaultTournamentDeadline"/>
+        <eAttributeAnnotations xsi:type="modelannotations:EAttributeModelGenAnnotation" generated="true" name="defaultTournamentDeadline" getter="getDefaultTournamentDeadline" type="int" objectType="java.lang.Integer" itemType="java.lang.Integer" defaultValue="0" setter="setDefaultTournamentDeadline" validJavaMemberName="defaultTournamentDeadline" many="false" useList="false" reference="false" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.9/@eClassAnnotations.0" boolean="false" primitive="true"/>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEReference">
+        <eReference href="PokerLeague.ecore#//Competition/tournaments"/>
+        <eReferenceAnnotations xsi:type="modelannotations:EReferenceModelGenAnnotation" generated="true" name="tournaments" getter="getTournaments" type="java.util.Set&lt;cz.fhsoft.poker.league.shared.model.v1.Tournament>" objectType="java.util.Set&lt;cz.fhsoft.poker.league.shared.model.v1.Tournament>" itemType="cz.fhsoft.poker.league.shared.model.v1.Tournament" defaultValue="new java.util.HashSet&lt;cz.fhsoft.poker.league.shared.model.v1.Tournament>()" setter="setTournaments" validJavaMemberName="tournaments" many="true" useList="false" reference="true" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.9/@eClassAnnotations.0" generateSafeManyAccess="false" generateBidirectionalAssociationSupport="true"/>
+        <eReferenceAnnotations xsi:type="ormannotations:EReferenceORMAnnotation">
+          <oneToMany orphanRemoval="true"/>
+        </eReferenceAnnotations>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEReference">
+        <eReference href="PokerLeague.ecore#//Competition/players"/>
+        <eReferenceAnnotations xsi:type="modelannotations:EReferenceModelGenAnnotation" generated="true" name="players" getter="getPlayers" type="java.util.Set&lt;cz.fhsoft.poker.league.shared.model.v1.Player>" objectType="java.util.Set&lt;cz.fhsoft.poker.league.shared.model.v1.Player>" itemType="cz.fhsoft.poker.league.shared.model.v1.Player" defaultValue="new java.util.HashSet&lt;cz.fhsoft.poker.league.shared.model.v1.Player>()" setter="setPlayers" validJavaMemberName="players" many="true" useList="false" reference="true" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.9/@eClassAnnotations.0" generateSafeManyAccess="false" generateBidirectionalAssociationSupport="true"/>
+      </annotatedEStructuralFeatures>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="PokerLeague.ecore#//Tournament"/>
+      <eClassAnnotations xsi:type="modelannotations:EClassModelGenAnnotation" generated="true" name="Tournament" qualifiedClassName="cz.fhsoft.poker.league.shared.model.v1.Tournament" simpleClassName="Tournament" generateCode="true" ownerEPackageAnnotation="//@annotatedEPackages.0/@ePackageAnnotations.0" hasManyFeatures="true" hasSuperEClass="true" serializable="true" abstract="false" superEClass="//@annotatedEPackages.0/@annotatedEClassifiers.4/@eClassAnnotations.0">
+        <classExtends>cz.fhsoft.poker.league.shared.model.v1.DescribedEntity</classExtends>
+      </eClassAnnotations>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="PokerLeague.ecore#//Tournament/defaultBuyIn"/>
+        <eAttributeAnnotations xsi:type="modelannotations:EAttributeModelGenAnnotation" generated="true" name="defaultBuyIn" getter="getDefaultBuyIn" type="int" objectType="java.lang.Integer" itemType="java.lang.Integer" defaultValue="0" setter="setDefaultBuyIn" validJavaMemberName="defaultBuyIn" many="false" useList="false" reference="false" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.10/@eClassAnnotations.0" boolean="false" primitive="true"/>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEReference">
+        <eReference href="PokerLeague.ecore#//Tournament/defaultPrizeMoneyRuleSet"/>
+        <eReferenceAnnotations xsi:type="modelannotations:EReferenceModelGenAnnotation" generated="true" name="defaultPrizeMoneyRuleSet" getter="getDefaultPrizeMoneyRuleSet" type="cz.fhsoft.poker.league.shared.model.v1.PrizeMoneyRuleSet" objectType="cz.fhsoft.poker.league.shared.model.v1.PrizeMoneyRuleSet" itemType="cz.fhsoft.poker.league.shared.model.v1.PrizeMoneyRuleSet" defaultValue="null" setter="setDefaultPrizeMoneyRuleSet" validJavaMemberName="defaultPrizeMoneyRuleSet" many="false" useList="false" reference="true" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.10/@eClassAnnotations.0" generateSafeManyAccess="false" generateBidirectionalAssociationSupport="true"/>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="PokerLeague.ecore#//Tournament/tournamentStart"/>
+        <eAttributeAnnotations xsi:type="modelannotations:EAttributeModelGenAnnotation" generated="true" name="tournamentStart" getter="getTournamentStart" type="java.util.Date" objectType="java.util.Date" itemType="java.util.Date" defaultValue="null" setter="setTournamentStart" validJavaMemberName="tournamentStart" many="false" useList="false" reference="false" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.10/@eClassAnnotations.0" boolean="false" primitive="false"/>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="PokerLeague.ecore#//Tournament/minPlayers"/>
+        <eAttributeAnnotations xsi:type="modelannotations:EAttributeModelGenAnnotation" generated="true" name="minPlayers" getter="getMinPlayers" type="int" objectType="java.lang.Integer" itemType="java.lang.Integer" defaultValue="0" setter="setMinPlayers" validJavaMemberName="minPlayers" many="false" useList="false" reference="false" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.10/@eClassAnnotations.0" boolean="false" primitive="true"/>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="PokerLeague.ecore#//Tournament/maxPlayers"/>
+        <eAttributeAnnotations xsi:type="modelannotations:EAttributeModelGenAnnotation" generated="true" name="maxPlayers" getter="getMaxPlayers" type="int" objectType="java.lang.Integer" itemType="java.lang.Integer" defaultValue="0" setter="setMaxPlayers" validJavaMemberName="maxPlayers" many="false" useList="false" reference="false" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.10/@eClassAnnotations.0" boolean="false" primitive="true"/>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="PokerLeague.ecore#//Tournament/deadline"/>
+        <eAttributeAnnotations xsi:type="modelannotations:EAttributeModelGenAnnotation" generated="true" name="deadline" getter="getDeadline" type="int" objectType="java.lang.Integer" itemType="java.lang.Integer" defaultValue="0" setter="setDeadline" validJavaMemberName="deadline" many="false" useList="false" reference="false" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.10/@eClassAnnotations.0" boolean="false" primitive="true"/>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEReference">
+        <eReference href="PokerLeague.ecore#//Tournament/invitations"/>
+        <eReferenceAnnotations xsi:type="modelannotations:EReferenceModelGenAnnotation" generated="true" name="invitations" getter="getInvitations" type="java.util.Set&lt;cz.fhsoft.poker.league.shared.model.v1.Invitation>" objectType="java.util.Set&lt;cz.fhsoft.poker.league.shared.model.v1.Invitation>" itemType="cz.fhsoft.poker.league.shared.model.v1.Invitation" defaultValue="new java.util.HashSet&lt;cz.fhsoft.poker.league.shared.model.v1.Invitation>()" setter="setInvitations" validJavaMemberName="invitations" many="true" useList="false" reference="true" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.10/@eClassAnnotations.0" generateSafeManyAccess="false" generateBidirectionalAssociationSupport="true"/>
+        <eReferenceAnnotations xsi:type="ormannotations:EReferenceORMAnnotation">
+          <oneToMany orphanRemoval="true"/>
+        </eReferenceAnnotations>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEReference">
+        <eReference href="PokerLeague.ecore#//Tournament/competition"/>
+        <eReferenceAnnotations xsi:type="modelannotations:EReferenceModelGenAnnotation" generated="true" name="competition" getter="getCompetition" type="cz.fhsoft.poker.league.shared.model.v1.Competition" objectType="cz.fhsoft.poker.league.shared.model.v1.Competition" itemType="cz.fhsoft.poker.league.shared.model.v1.Competition" defaultValue="null" setter="setCompetition" validJavaMemberName="competition" many="false" useList="false" reference="true" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.10/@eClassAnnotations.0" generateSafeManyAccess="false" generateBidirectionalAssociationSupport="true"/>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEReference">
+        <eReference href="PokerLeague.ecore#//Tournament/games"/>
+        <eReferenceAnnotations xsi:type="modelannotations:EReferenceModelGenAnnotation" generated="true" name="games" getter="getGames" type="java.util.Set&lt;cz.fhsoft.poker.league.shared.model.v1.Game>" objectType="java.util.Set&lt;cz.fhsoft.poker.league.shared.model.v1.Game>" itemType="cz.fhsoft.poker.league.shared.model.v1.Game" defaultValue="new java.util.HashSet&lt;cz.fhsoft.poker.league.shared.model.v1.Game>()" setter="setGames" validJavaMemberName="games" many="true" useList="false" reference="true" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.10/@eClassAnnotations.0" generateSafeManyAccess="false" generateBidirectionalAssociationSupport="true"/>
+        <eReferenceAnnotations xsi:type="ormannotations:EReferenceORMAnnotation">
+          <oneToMany orphanRemoval="true"/>
+        </eReferenceAnnotations>
+      </annotatedEStructuralFeatures>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="PokerLeague.ecore#//Invitation"/>
+      <eClassAnnotations xsi:type="modelannotations:EClassModelGenAnnotation" generated="true" name="Invitation" qualifiedClassName="cz.fhsoft.poker.league.shared.model.v1.Invitation" simpleClassName="Invitation" generateCode="true" ownerEPackageAnnotation="//@annotatedEPackages.0/@ePackageAnnotations.0" hasSuperEClass="true" serializable="true" abstract="false" superEClass="//@annotatedEPackages.0/@annotatedEClassifiers.3/@eClassAnnotations.0">
+        <classExtends>cz.fhsoft.poker.league.shared.model.v1.IdentifiableEntity</classExtends>
+      </eClassAnnotations>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEReference">
+        <eReference href="PokerLeague.ecore#//Invitation/tournament"/>
+        <eReferenceAnnotations xsi:type="modelannotations:EReferenceModelGenAnnotation" generated="true" name="tournament" getter="getTournament" type="cz.fhsoft.poker.league.shared.model.v1.Tournament" objectType="cz.fhsoft.poker.league.shared.model.v1.Tournament" itemType="cz.fhsoft.poker.league.shared.model.v1.Tournament" defaultValue="null" setter="setTournament" validJavaMemberName="tournament" many="false" useList="false" reference="true" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.11/@eClassAnnotations.0" generateSafeManyAccess="false" generateBidirectionalAssociationSupport="true"/>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEReference">
+        <eReference href="PokerLeague.ecore#//Invitation/player"/>
+        <eReferenceAnnotations xsi:type="modelannotations:EReferenceModelGenAnnotation" generated="true" name="player" getter="getPlayer" type="cz.fhsoft.poker.league.shared.model.v1.Player" objectType="cz.fhsoft.poker.league.shared.model.v1.Player" itemType="cz.fhsoft.poker.league.shared.model.v1.Player" defaultValue="null" setter="setPlayer" validJavaMemberName="player" many="false" useList="false" reference="true" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.11/@eClassAnnotations.0" generateSafeManyAccess="false" generateBidirectionalAssociationSupport="true"/>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="PokerLeague.ecore#//Invitation/reply"/>
+        <eAttributeAnnotations xsi:type="modelannotations:EAttributeModelGenAnnotation" generated="true" name="reply" getter="getReply" type="cz.fhsoft.poker.league.shared.model.v1.InvitationReply" objectType="cz.fhsoft.poker.league.shared.model.v1.InvitationReply" itemType="cz.fhsoft.poker.league.shared.model.v1.InvitationReply" defaultValue="null" setter="setReply" validJavaMemberName="reply" many="false" useList="false" reference="false" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.11/@eClassAnnotations.0" boolean="false" primitive="false"/>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="PokerLeague.ecore#//Invitation/ordinal"/>
+        <eAttributeAnnotations xsi:type="modelannotations:EAttributeModelGenAnnotation" generated="true" name="ordinal" getter="getOrdinal" type="int" objectType="java.lang.Integer" itemType="java.lang.Integer" defaultValue="0" setter="setOrdinal" validJavaMemberName="ordinal" many="false" useList="false" reference="false" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.11/@eClassAnnotations.0" boolean="false" primitive="true"/>
+      </annotatedEStructuralFeatures>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="PokerLeague.ecore#//Game"/>
+      <eClassAnnotations xsi:type="modelannotations:EClassModelGenAnnotation" generated="true" name="Game" qualifiedClassName="cz.fhsoft.poker.league.shared.model.v1.Game" simpleClassName="Game" generateCode="true" ownerEPackageAnnotation="//@annotatedEPackages.0/@ePackageAnnotations.0" hasManyFeatures="true" hasSuperEClass="true" serializable="true" abstract="false" superEClass="//@annotatedEPackages.0/@annotatedEClassifiers.3/@eClassAnnotations.0">
+        <classExtends>cz.fhsoft.poker.league.shared.model.v1.IdentifiableEntity</classExtends>
+      </eClassAnnotations>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="PokerLeague.ecore#//Game/ordinal"/>
+        <eAttributeAnnotations xsi:type="modelannotations:EAttributeModelGenAnnotation" generated="true" name="ordinal" getter="getOrdinal" type="int" objectType="java.lang.Integer" itemType="java.lang.Integer" defaultValue="0" setter="setOrdinal" validJavaMemberName="ordinal" many="false" useList="false" reference="false" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.12/@eClassAnnotations.0" boolean="false" primitive="true"/>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEReference">
+        <eReference href="PokerLeague.ecore#//Game/tournament"/>
+        <eReferenceAnnotations xsi:type="modelannotations:EReferenceModelGenAnnotation" generated="true" name="tournament" getter="getTournament" type="cz.fhsoft.poker.league.shared.model.v1.Tournament" objectType="cz.fhsoft.poker.league.shared.model.v1.Tournament" itemType="cz.fhsoft.poker.league.shared.model.v1.Tournament" defaultValue="null" setter="setTournament" validJavaMemberName="tournament" many="false" useList="false" reference="true" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.12/@eClassAnnotations.0" generateSafeManyAccess="false" generateBidirectionalAssociationSupport="true"/>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="PokerLeague.ecore#//Game/buyIn"/>
+        <eAttributeAnnotations xsi:type="modelannotations:EAttributeModelGenAnnotation" generated="true" name="buyIn" getter="getBuyIn" type="int" objectType="java.lang.Integer" itemType="java.lang.Integer" defaultValue="0" setter="setBuyIn" validJavaMemberName="buyIn" many="false" useList="false" reference="false" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.12/@eClassAnnotations.0" boolean="false" primitive="true"/>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEReference">
+        <eReference href="PokerLeague.ecore#//Game/prizeMoneyRuleSet"/>
+        <eReferenceAnnotations xsi:type="modelannotations:EReferenceModelGenAnnotation" generated="true" name="prizeMoneyRuleSet" getter="getPrizeMoneyRuleSet" type="cz.fhsoft.poker.league.shared.model.v1.PrizeMoneyRuleSet" objectType="cz.fhsoft.poker.league.shared.model.v1.PrizeMoneyRuleSet" itemType="cz.fhsoft.poker.league.shared.model.v1.PrizeMoneyRuleSet" defaultValue="null" setter="setPrizeMoneyRuleSet" validJavaMemberName="prizeMoneyRuleSet" many="false" useList="false" reference="true" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.12/@eClassAnnotations.0" generateSafeManyAccess="false" generateBidirectionalAssociationSupport="true"/>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEReference">
+        <eReference href="PokerLeague.ecore#//Game/playersInGame"/>
+        <eReferenceAnnotations xsi:type="modelannotations:EReferenceModelGenAnnotation" generated="true" documentation="" name="playersInGame" getter="getPlayersInGame" type="java.util.Set&lt;cz.fhsoft.poker.league.shared.model.v1.PlayerInGame>" objectType="java.util.Set&lt;cz.fhsoft.poker.league.shared.model.v1.PlayerInGame>" itemType="cz.fhsoft.poker.league.shared.model.v1.PlayerInGame" defaultValue="new java.util.HashSet&lt;cz.fhsoft.poker.league.shared.model.v1.PlayerInGame>()" setter="setPlayersInGame" validJavaMemberName="playersInGame" many="true" useList="false" reference="true" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.12/@eClassAnnotations.0" generateSafeManyAccess="false" generateBidirectionalAssociationSupport="true"/>
+        <eReferenceAnnotations xsi:type="ormannotations:EReferenceORMAnnotation">
+          <oneToMany orphanRemoval="true"/>
+        </eReferenceAnnotations>
+      </annotatedEStructuralFeatures>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEEnum">
+      <eEnum href="PokerLeague.ecore#//InvitationReply"/>
+      <eEnumAnnotations xsi:type="modelannotations:EEnumModelGenAnnotation" generated="true" name="InvitationReply" qualifiedClassName="cz.fhsoft.poker.league.shared.model.v1.InvitationReply" simpleClassName="InvitationReply" generateCode="true" ownerEPackageAnnotation="//@annotatedEPackages.0/@ePackageAnnotations.0" instanceClassName="cz.fhsoft.poker.league.shared.model.v1.InvitationReply" objectClassName="cz.fhsoft.poker.league.shared.model.v1.InvitationReply" enum="true" dateType="false" automaticStringConversion="false" itemType="java.lang.Object"/>
+      <annotatedEEnumLiterals>
+        <eEnumLiteral href="PokerLeague.ecore#//InvitationReply/NO_REPLY"/>
+      </annotatedEEnumLiterals>
+      <annotatedEEnumLiterals>
+        <eEnumLiteral href="PokerLeague.ecore#//InvitationReply/ACCEPTED"/>
+      </annotatedEEnumLiterals>
+      <annotatedEEnumLiterals>
+        <eEnumLiteral href="PokerLeague.ecore#//InvitationReply/REJECTED"/>
+      </annotatedEEnumLiterals>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="PokerLeague.ecore#//PlayerInGame"/>
+      <eClassAnnotations xsi:type="modelannotations:EClassModelGenAnnotation" generated="true" name="PlayerInGame" qualifiedClassName="cz.fhsoft.poker.league.shared.model.v1.PlayerInGame" simpleClassName="PlayerInGame" generateCode="true" ownerEPackageAnnotation="//@annotatedEPackages.0/@ePackageAnnotations.0" hasSuperEClass="true" serializable="true" abstract="false" superEClass="//@annotatedEPackages.0/@annotatedEClassifiers.3/@eClassAnnotations.0">
+        <classExtends>cz.fhsoft.poker.league.shared.model.v1.IdentifiableEntity</classExtends>
+      </eClassAnnotations>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEReference">
+        <eReference href="PokerLeague.ecore#//PlayerInGame/player"/>
+        <eReferenceAnnotations xsi:type="modelannotations:EReferenceModelGenAnnotation" generated="true" name="player" getter="getPlayer" type="cz.fhsoft.poker.league.shared.model.v1.Player" objectType="cz.fhsoft.poker.league.shared.model.v1.Player" itemType="cz.fhsoft.poker.league.shared.model.v1.Player" defaultValue="null" setter="setPlayer" validJavaMemberName="player" many="false" useList="false" reference="true" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.14/@eClassAnnotations.0" generateSafeManyAccess="false" generateBidirectionalAssociationSupport="true"/>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEReference">
+        <eReference href="PokerLeague.ecore#//PlayerInGame/game"/>
+        <eReferenceAnnotations xsi:type="modelannotations:EReferenceModelGenAnnotation" generated="true" name="game" getter="getGame" type="cz.fhsoft.poker.league.shared.model.v1.Game" objectType="cz.fhsoft.poker.league.shared.model.v1.Game" itemType="cz.fhsoft.poker.league.shared.model.v1.Game" defaultValue="null" setter="setGame" validJavaMemberName="game" many="false" useList="false" reference="true" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.14/@eClassAnnotations.0" generateSafeManyAccess="false" generateBidirectionalAssociationSupport="true"/>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="PokerLeague.ecore#//PlayerInGame/rank"/>
+        <eAttributeAnnotations xsi:type="modelannotations:EAttributeModelGenAnnotation" generated="true" name="rank" getter="getRank" type="int" objectType="java.lang.Integer" itemType="java.lang.Integer" defaultValue="0" setter="setRank" validJavaMemberName="rank" many="false" useList="false" reference="false" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.14/@eClassAnnotations.0" boolean="false" primitive="true"/>
+      </annotatedEStructuralFeatures>
+    </annotatedEClassifiers>
+  </annotatedEPackages>
+</annotationsmodel:AnnotatedModel>

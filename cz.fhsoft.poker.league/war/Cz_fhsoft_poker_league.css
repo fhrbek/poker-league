@@ -1,0 +1,8 @@
+.pseudoLink {
+	color: #5555cc;
+	cursor: pointer;
+}
+
+.pseudoLink:hover {
+	text-decoration: underline;
+}

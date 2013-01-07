@@ -1,0 +1,25 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.mainTabs {
+			height: 100%;
+		}
+	</ui:style>
+	<g:FlowPanel>
+		<g:TabLayoutPanel ui:field="mainTabs" barHeight="20" addStyleNames="{style.mainTabs}">
+			<g:tab>
+				<g:header>Soutěže</g:header>
+				<g:FlowPanel ui:field="competitionsPanel"/>
+			</g:tab>
+			<g:tab>
+				<g:header>Hráči</g:header>
+				<g:FlowPanel ui:field="playersPanel"/>
+			</g:tab>
+			<g:tab>
+				<g:header>Pravidla hodnocení</g:header>
+				<g:FlowPanel ui:field="prizeMoneyRuleSetPanel"/>
+			</g:tab>
+		</g:TabLayoutPanel>
+	</g:FlowPanel>
+</ui:UiBinder> 

@@ -1,0 +1,27 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder
+    xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:cell="urn:import:com.google.gwt.user.cellview.client">
+	<ui:style>
+		.rankingContainer {
+			padding: 20px 20px 20px 50px;
+			border: 1px solid #aaa;
+		}
+
+		.tournamentsContainer {
+			padding: 20px 20px 20px 50px;
+			border: 1px solid #aaa;
+		}
+	</ui:style>
+	<g:FlowPanel>
+		<g:Label>Soutěž:</g:Label>
+		<g:Label ui:field="name"/>
+		<g:Label addStyleNames="pseudoLink" ui:field="edit">Upravit</g:Label>
+		<g:Label addStyleNames="pseudoLink" ui:field="remove">Odstranit</g:Label>
+		<g:Label addStyleNames="pseudoLink" ui:field="toggleShowRanking">Zobrazit výsledkovou tabulku</g:Label>
+		<g:FlowPanel ui:field="rankingContainer" addStyleNames="{style.rankingContainer}"/>
+		<g:Label addStyleNames="pseudoLink" ui:field="toggleShowTournaments">Zobrazit turnaje</g:Label>
+		<g:FlowPanel ui:field="tournamentsContainer" addStyleNames="{style.tournamentsContainer}"/>
+	</g:FlowPanel>
+</ui:UiBinder> 
