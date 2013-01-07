@@ -11,6 +11,7 @@ import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 import cz.fhsoft.poker.league.client.persistence.EntityService.EntityWithDataVersion;
+import cz.fhsoft.poker.league.client.util.ErrorReporter;
 import cz.fhsoft.poker.league.shared.model.v1.IdentifiableEntity;
 
 public class ClientEntityManager {
@@ -77,13 +78,39 @@ public class ClientEntityManager {
 		loadedLists.clear();
 	}
 
-	public <E extends IdentifiableEntity> void list(final Class<E> clazz, final AsyncCallback<List<E>> callback) {
+	//this should be a map class-to-list-of-callbacks but it's a problem to cast a such a generic type to a type with 'E'
+	private Map<Class<? extends IdentifiableEntity>, Object> listCallbackMap = new HashMap<Class<? extends IdentifiableEntity>, Object>();
+
+	public <E extends IdentifiableEntity> void list(final Class<E> clazz, AsyncCallback<List<E>> callback) {
+		@SuppressWarnings("unchecked")
+		List<AsyncCallback<List<E>>> auxPendingCallbacks = (List<AsyncCallback<List<E>>>) listCallbackMap.get(clazz);
+		
+		if(auxPendingCallbacks == null)
+			listCallbackMap.put(clazz, auxPendingCallbacks = new ArrayList<AsyncCallback<List<E>>>());
+
+		final List<AsyncCallback<List<E>>> pendingCallbacks = auxPendingCallbacks;
+		pendingCallbacks.add(callback);
+		
+		if(pendingCallbacks.size() > 1)
+			return; // the operation is already there, let's just get the response
+
 		if(loadedLists.contains(clazz)) {
 			List<E> cachedEntities = new ArrayList<E>();
 			@SuppressWarnings("unchecked")
 			Collection<? extends E> castCollection = (Collection<? extends E>) entities.get(clazz).values(); 
 			cachedEntities.addAll(castCollection);
-			callback.onSuccess(cachedEntities);
+			try {
+				for(AsyncCallback<List<E>> pendingCallback : pendingCallbacks)
+					try {
+						pendingCallback.onSuccess(cachedEntities);
+					}
+					catch(Throwable t) {
+						ErrorReporter.error(t);
+					}
+			}
+			finally {
+				pendingCallbacks.clear();
+			}
 			return;
 		}
 
@@ -91,48 +118,82 @@ public class ClientEntityManager {
 
 			@Override
 			public void onFailure(Throwable caught) {
-				callback.onFailure(caught);
+				try {
+					for(AsyncCallback<List<E>> callback : pendingCallbacks)
+						try {
+							callback.onFailure(caught);
+						}
+						catch(Throwable t) {
+							ErrorReporter.error(t);
+						}
+				}
+				finally {
+					pendingCallbacks.clear();
+				}
 			}
 
 			@Override
 			public void onSuccess(List<E> retrievedEntities) {
+				
+				try {
+					Map<Integer, E> replacements = null;
+					int i=0;
 
-				Map<Integer, E> replacements = null;
-				int i=0;
+					for(E entity : retrievedEntities) {     
+						if(entity != null) {
+							Map<Object, IdentifiableEntity> loaded = entities.get(entity.getClass());
+							if(loaded == null)
+								entities.put(entity.getClass(), loaded = new HashMap<Object, IdentifiableEntity>());
 
-				for(E entity : retrievedEntities) {     
-					if(entity != null) {
-						Map<Object, IdentifiableEntity> loaded = entities.get(entity.getClass());
-						if(loaded == null)
-							entities.put(entity.getClass(), loaded = new HashMap<Object, IdentifiableEntity>());
+							@SuppressWarnings("unchecked")
+							E existingEntity = (E) loaded.get(entity.getId());
 
-						@SuppressWarnings("unchecked")
-						E existingEntity = (E) loaded.get(entity.getId());
-
-						if(existingEntity != null && !existingEntity.isProxy()) {
-							if(replacements == null)
-								replacements = new HashMap<Integer, E>();
-							replacements.put(i, existingEntity);
+							if(existingEntity != null && !existingEntity.isProxy()) {
+								if(replacements == null)
+									replacements = new HashMap<Integer, E>();
+								replacements.put(i, existingEntity);
+							}
+							else
+								loaded.put(entity.getId(), entity);
 						}
-						else
-							loaded.put(entity.getId(), entity);
+						
+						i++;
 					}
 					
-					i++;
-				}
-				
-				if(replacements != null)
-					for(Map.Entry<Integer, E> entry : replacements.entrySet())
-						retrievedEntities.set(entry.getKey(), entry.getValue());
+					if(replacements != null)
+						for(Map.Entry<Integer, E> entry : replacements.entrySet())
+							retrievedEntities.set(entry.getKey(), entry.getValue());
 
-				loadedLists.add(clazz);
-				callback.onSuccess(retrievedEntities);
+					loadedLists.add(clazz);
+					for(AsyncCallback<List<E>> callback : pendingCallbacks)
+						try {
+							callback.onSuccess(retrievedEntities);
+						}
+						catch(Throwable t) {
+							ErrorReporter.error(t);
+						}
+				}
+				catch(Throwable t) {
+					for(AsyncCallback<List<E>> callback : pendingCallbacks)
+						try {
+							callback.onFailure(t);
+						}
+						catch(Throwable t1) {
+							ErrorReporter.error(t1);
+						}
+				}
+				finally {
+					pendingCallbacks.clear();
+				}
 			}
 			
 		});
+			
 	}
 
-	public <E extends IdentifiableEntity> void find(Class<E> entityClass, final Number id, final AsyncCallback<E> callback) {
+	private Map<Class<? extends IdentifiableEntity>, Object> findCallbackMap = new HashMap<Class<? extends IdentifiableEntity>, Object>();
+
+	public <E extends IdentifiableEntity> void find(Class<E> entityClass, final Number id, AsyncCallback<E> callback) {
 		Map<Object, IdentifiableEntity> auxLoaded = entities.get(entityClass);
 		if(auxLoaded == null)
 			entities.put(entityClass, auxLoaded = new HashMap<Object, IdentifiableEntity>());
@@ -143,25 +204,69 @@ public class ClientEntityManager {
 		E entity = (E) loaded.get(id);
 		if(entity != null && !entity.isProxy())
 			callback.onSuccess(entity);
-		else
+		else {
+			@SuppressWarnings("unchecked")
+			List<AsyncCallback<E>> auxPendingCallbacks = (List<AsyncCallback<E>>) findCallbackMap.get(entityClass);
+			
+			if(auxPendingCallbacks == null)
+				findCallbackMap.put(entityClass, auxPendingCallbacks = new ArrayList<AsyncCallback<E>>());
+
+			final List<AsyncCallback<E>> pendingCallbacks = auxPendingCallbacks;
+			pendingCallbacks.add(callback);
+			
+			if(pendingCallbacks.size() > 1)
+				return; // the operation is already there, let's just get the response
+
 			entityService.find(entityClass.getName(), id, new AsyncCallback<E>() {
 
 				@Override
 				public void onFailure(Throwable caught) {
-					callback.onFailure(caught);
+					try {
+						for(AsyncCallback<E> pendingCallback : pendingCallbacks)
+							try {
+								pendingCallback.onFailure(caught);
+							}
+							catch(Throwable t) {
+								ErrorReporter.error(t);
+							}
+					}
+					finally {
+						pendingCallbacks.clear();
+					}
 				}
 
 				@Override
 				public void onSuccess(E entity) {
-					if(entity != null)
-						loaded.put(id, entity);
-					else
-						loaded.remove(id);
+					try {
+						if(entity != null)
+							loaded.put(id, entity);
+						else
+							loaded.remove(id);
 
-					callback.onSuccess(entity);
+						for(AsyncCallback<E> pendingCallback : pendingCallbacks)
+							try {
+								pendingCallback.onSuccess(entity);
+							}
+							catch(Throwable t) {
+								ErrorReporter.error(t);
+							}
+					}
+					catch(Throwable t) {
+						for(AsyncCallback<E> callback : pendingCallbacks)
+							try {
+								callback.onFailure(t);
+							}
+							catch(Throwable t1) {
+								ErrorReporter.error(t1);
+							}
+					}
+					finally {
+						pendingCallbacks.clear();
+					}
 				}
 				
 			});
+		}
 	}
 	
 	public <E extends IdentifiableEntity> void persist(E entity, final AsyncCallback<E> callback) {

@@ -233,7 +233,7 @@
     </children>
     <styles xmi:type="notation:ShapeStyle" xmi:id="_PML5RVUzEeK6tYPrIe6zBQ" fontColor="4210752" fontName="Cantarell" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
     <element xmi:type="ecore:EClass" href="PokerLeague.ecore#//Competition"/>
-    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_PML5RlUzEeK6tYPrIe6zBQ" x="128" y="963"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_PML5RlUzEeK6tYPrIe6zBQ" x="84" y="732"/>
   </children>
   <children xmi:type="notation:Node" xmi:id="_PMOVhFUzEeK6tYPrIe6zBQ" type="1001">
     <children xmi:type="notation:Node" xmi:id="_PMO8kFUzEeK6tYPrIe6zBQ" type="4001"/>
