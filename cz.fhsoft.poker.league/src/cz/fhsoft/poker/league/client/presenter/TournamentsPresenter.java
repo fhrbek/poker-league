@@ -20,6 +20,9 @@ import cz.fhsoft.poker.league.client.util.ErrorReporter;
 import cz.fhsoft.poker.league.client.view.TournamentViewImpl;
 import cz.fhsoft.poker.league.client.view.TournamentsView;
 import cz.fhsoft.poker.league.shared.model.v1.Competition;
+import cz.fhsoft.poker.league.shared.model.v1.Invitation;
+import cz.fhsoft.poker.league.shared.model.v1.InvitationReply;
+import cz.fhsoft.poker.league.shared.model.v1.Player;
 import cz.fhsoft.poker.league.shared.model.v1.Tournament;
 import cz.fhsoft.poker.league.shared.persistence.Util;
 import cz.fhsoft.poker.league.shared.persistence.compare.DescribedEntityComparator;
@@ -70,7 +73,7 @@ public class TournamentsPresenter extends PresenterWithVersionedData implements 
 
 	@Override
 	protected void refresh() {
-		ClientEntityManager.getInstance().resolveEntity(((CompetitionPresenter) getParentPresenter()).getCompetition(), new AsyncCallback<Competition>() {
+		ClientEntityManager.getInstance().resolveEntity(getCompetition(), new AsyncCallback<Competition>() {
 
 			@Override
 			public void onFailure(Throwable caught) {
@@ -125,7 +128,7 @@ public class TournamentsPresenter extends PresenterWithVersionedData implements 
 
 	@Override
 	public void onAddTournament() {
-		ClientEntityManager.getInstance().resolveEntity(((CompetitionPresenter) getParentPresenter()).getCompetition(), new AsyncCallback<Competition>() {
+		ClientEntityManager.getInstance().resolveEntity(getCompetition(), new AsyncCallback<Competition>() {
 
 			@Override
 			public void onFailure(Throwable caught) {
@@ -134,7 +137,7 @@ public class TournamentsPresenter extends PresenterWithVersionedData implements 
 
 			@Override
 			public void onSuccess(Competition resolvedCompetition) {
-				Tournament newTournament = new Tournament();
+				final Tournament newTournament = new Tournament();
 				Date currentDate = new Date();
 				newTournament.setTournamentStart(new Date(currentDate.getTime() + 86400 * 20)); //TODO Hard-coded start at 20:00
 
@@ -144,9 +147,8 @@ public class TournamentsPresenter extends PresenterWithVersionedData implements 
 				newTournament.setDefaultBuyIn(resolvedCompetition.getDefaultBuyIn());
 				newTournament.setDeadline(resolvedCompetition.getDefaultTournamentDeadline());
 				newTournament.setDefaultPrizeMoneyRuleSet(resolvedCompetition.getDefaultPrizeMoneyRuleSet());
-
-				//TODO Assign all active players to it by default
-				TournamentPresenter.tournamentEditor.setEntity(newTournament, new AsyncCallback<Void>() {
+				
+				Util.resolve(resolvedCompetition.getPlayers(), new AsyncCallback<Set<Player>>() {
 
 					@Override
 					public void onFailure(Throwable caught) {
@@ -154,8 +156,38 @@ public class TournamentsPresenter extends PresenterWithVersionedData implements 
 					}
 
 					@Override
-					public void onSuccess(Void result) {
-						TournamentPresenter.tournamentEditor.showAsPopupPanel();
+					public void onSuccess(Set<Player> players) {
+
+						Set<Invitation> invitations = new HashSet<Invitation>(players.size());
+						
+						for(Player player : players) {
+							if(!player.isActive())
+								continue;
+							
+							Invitation invitation = new Invitation();
+							invitation.setOrdinal(0); // initially all players get 0
+							invitation.setPlayer(player);
+							invitation.setReply(InvitationReply.NO_REPLY);
+							invitation.setTournament(newTournament);
+							
+							invitations.add(invitation);
+						}
+						
+						newTournament.setInvitations(invitations);
+
+						TournamentPresenter.tournamentEditor.setEntity(newTournament, new AsyncCallback<Void>() {
+
+							@Override
+							public void onFailure(Throwable caught) {
+								ErrorReporter.error(caught);
+							}
+
+							@Override
+							public void onSuccess(Void result) {
+								TournamentPresenter.tournamentEditor.showAsPopupPanel();
+							}
+							
+						});
 					}
 					
 				});
@@ -164,4 +196,7 @@ public class TournamentsPresenter extends PresenterWithVersionedData implements 
 		});
 	}
 
+	private Competition getCompetition() {
+		return ((CompetitionPresenter) getParentPresenter()).getCompetition();
+	}
 }

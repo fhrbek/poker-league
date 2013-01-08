@@ -4,6 +4,11 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
 	xmlns:cell="urn:import:com.google.gwt.user.cellview.client">
 	<ui:style>
+		.invitationsContainer {
+			padding: 20px 20px 20px 50px;
+			border: 1px solid #aaa;
+		}
+
 		.gamesContainer {
 			padding: 20px 20px 20px 50px;
 			border: 1px solid #aaa;
@@ -14,6 +19,8 @@
 		<g:Label ui:field="name"/>
 		<g:Label addStyleNames="pseudoLink" ui:field="edit">Upravit</g:Label>
 		<g:Label addStyleNames="pseudoLink" ui:field="remove">Odstranit</g:Label>
+		<g:Label addStyleNames="pseudoLink" ui:field="toggleShowInvitations">Zobrazit pozvánky</g:Label>
+		<g:FlowPanel ui:field="invitationsContainer" addStyleNames="{style.invitationsContainer}"/>
 		<g:Label addStyleNames="pseudoLink" ui:field="toggleShowGames">Zobrazit hry</g:Label>
 		<g:FlowPanel ui:field="gamesContainer" addStyleNames="{style.gamesContainer}"/>
 	</g:FlowPanel>

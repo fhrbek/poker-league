@@ -14,15 +14,21 @@ public interface TournamentView {
 		
 		void onRemove();
 		
+		void onToggleShowInvitations();
+		
 		void onToggleShowGames();
 		
 		void setTournament(Tournament tournament);
+		
+		Tournament getTournament();
 	}
 
 	void setPresenter(Presenter presenter);
 
 	Widget asWidget();
 	
+	HasWidgets getInvitationsContainer();
+
 	HasWidgets getGamesContainer();
 
 	void setName(String name);

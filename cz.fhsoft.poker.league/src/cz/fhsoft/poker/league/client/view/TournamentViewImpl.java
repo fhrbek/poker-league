@@ -26,6 +26,9 @@ public class TournamentViewImpl extends Composite implements TournamentView {
 	Label name;
 
 	@UiField
+	FlowPanel invitationsContainer;
+	
+	@UiField
 	FlowPanel gamesContainer;
 	
 	public TournamentViewImpl() {
@@ -42,6 +45,11 @@ public class TournamentViewImpl extends Composite implements TournamentView {
 		presenter.onRemove();
 	}
 
+	@UiHandler("toggleShowInvitations")
+	void onToggleShowInvitationsClicked(ClickEvent event) {
+		presenter.onToggleShowInvitations();
+	}
+
 	@UiHandler("toggleShowGames")
 	void onToggleShowGamesClicked(ClickEvent event) {
 		presenter.onToggleShowGames();
@@ -50,6 +58,11 @@ public class TournamentViewImpl extends Composite implements TournamentView {
 	@Override
 	public void setPresenter(Presenter presenter) {
 		this.presenter = presenter;
+	}
+
+	@Override
+	public HasWidgets getInvitationsContainer() {
+		return invitationsContainer;
 	}
 
 	@Override

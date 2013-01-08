@@ -31,51 +31,11 @@ import cz.fhsoft.poker.league.shared.model.v1.PrizeMoneyRule;
 import cz.fhsoft.poker.league.shared.model.v1.PrizeMoneyRuleSet;
 import cz.fhsoft.poker.league.shared.persistence.LazySet;
 import cz.fhsoft.poker.league.shared.persistence.Util;
+import cz.fhsoft.poker.league.shared.persistence.compare.Comparators;
 import cz.fhsoft.poker.league.shared.util.StringUtil;
 
 public class PrizeMoneyRuleSetPresenter extends PresenterWithVersionedData implements PrizeMoneyRuleSetView.Presenter {
 	
-	protected static final Comparator<PrizeMoneyRuleSet> PRIZE_MONEY_RULE_SET_COMPARATOR = new Comparator<PrizeMoneyRuleSet>() {
-
-		@Override
-		public int compare(PrizeMoneyRuleSet s1, PrizeMoneyRuleSet s2) {
-			return s1.getName().compareTo(s2.getName());
-		}
-		
-	};
-
-	protected static final Comparator<PrizeMoneyRule> PRIZE_MONEY_RULE_COMPARATOR = new Comparator<PrizeMoneyRule>() {
-
-		@Override
-		public int compare(PrizeMoneyRule r1, PrizeMoneyRule r2) {
-			int n1 = r1.getNumberOfPlayers();
-			int n2 = r2.getNumberOfPlayers();
-			
-			return n1 > n2
-					? 1
-					: (n1 < n2
-							? -1
-							: 0);
-		}
-		
-	};
-
-	protected static final Comparator<PrizeMoneyFormula> PRIZE_MONEY_FORMULA_COMPARATOR = new Comparator<PrizeMoneyFormula>() {
-
-		@Override
-		public int compare(PrizeMoneyFormula f1, PrizeMoneyFormula f2) {
-			int n1 = f1.getRank();
-			int n2 = f2.getRank();
-			
-			return n1 > n2
-					? 1
-					: (n1 < n2
-							? -1
-							: 0);
-		}
-		
-	};
-
 	private PrizeMoneyRuleSetView view;
 	
 	private AbstractPersistentEntityEditor<PrizeMoneyRuleSet> prizeMoneyRuleSetEditor = new AbstractPersistentEntityEditor<PrizeMoneyRuleSet>() {
@@ -228,7 +188,7 @@ public class PrizeMoneyRuleSetPresenter extends PresenterWithVersionedData imple
 
 															}, "Umístění"));
 												}
-											}, PRIZE_MONEY_FORMULA_COMPARATOR) {
+											}, Comparators.PRIZE_MONEY_FORMULA_COMPARATOR) {
 
 										@Override
 										protected PrizeMoneyFormula getNewEntity() {
@@ -255,7 +215,7 @@ public class PrizeMoneyRuleSetPresenter extends PresenterWithVersionedData imple
 														@Override
 														public void onSuccess(Set<PrizeMoneyFormula> resolvedFormulas) {
 															List<PrizeMoneyFormula> formulaList = new ArrayList<PrizeMoneyFormula>(resolvedFormulas);
-															Collections.sort(formulaList, PRIZE_MONEY_FORMULA_COMPARATOR);
+															Collections.sort(formulaList, Comparators.PRIZE_MONEY_FORMULA_COMPARATOR);
 															callback.onSuccess(formulaList);
 														}
 
@@ -343,7 +303,7 @@ public class PrizeMoneyRuleSetPresenter extends PresenterWithVersionedData imple
 
 										}, "Počet hráčů"));
 							}
-						}, PRIZE_MONEY_RULE_COMPARATOR) {
+						}, Comparators.PRIZE_MONEY_RULE_COMPARATOR) {
 
 					@Override
 					protected PrizeMoneyRule getNewEntity() {
@@ -370,7 +330,7 @@ public class PrizeMoneyRuleSetPresenter extends PresenterWithVersionedData imple
 									@Override
 									public void onSuccess(Set<PrizeMoneyRule> resolvedRules) {
 										List<PrizeMoneyRule> ruleList = new ArrayList<PrizeMoneyRule>(resolvedRules);
-										Collections.sort(ruleList, PRIZE_MONEY_RULE_COMPARATOR);
+										Collections.sort(ruleList, Comparators.PRIZE_MONEY_RULE_COMPARATOR);
 										callback.onSuccess(ruleList);
 									}
 
@@ -460,7 +420,7 @@ public class PrizeMoneyRuleSetPresenter extends PresenterWithVersionedData imple
 
 					@Override
 					public void onSuccess(List<PrizeMoneyRuleSet> players) {
-						Collections.sort(players, PRIZE_MONEY_RULE_SET_COMPARATOR);
+						Collections.sort(players, Comparators.PRIZE_MONEY_RULE_SET_COMPARATOR);
 						callback.onSuccess(players);
 					}
 					

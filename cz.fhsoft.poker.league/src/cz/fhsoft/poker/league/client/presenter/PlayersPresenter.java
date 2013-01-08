@@ -2,7 +2,6 @@ package cz.fhsoft.poker.league.client.presenter;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,19 +22,11 @@ import cz.fhsoft.poker.league.client.widget.AbstractEntityListEditor.LabeledColu
 import cz.fhsoft.poker.league.client.widget.AbstractPersistentEntityEditor;
 import cz.fhsoft.poker.league.client.widget.AbstractPersistentEntityListEditor;
 import cz.fhsoft.poker.league.shared.model.v1.Player;
+import cz.fhsoft.poker.league.shared.persistence.compare.Comparators;
 import cz.fhsoft.poker.league.shared.util.StringUtil;
 
 public class PlayersPresenter extends PresenterWithVersionedData implements PlayersView.Presenter {
 	
-	protected static final Comparator<Player> PLAYERS_COMPARATOR = new Comparator<Player>() {
-
-		@Override
-		public int compare(Player p1, Player p2) {
-			return p1.getNick().compareTo(p2.getNick());
-		}
-		
-	};
-
 	private PlayersView view;
 	
 	private AbstractPersistentEntityEditor<Player> playerEditor = new AbstractPersistentEntityEditor<Player>() {
@@ -204,7 +195,7 @@ public class PlayersPresenter extends PresenterWithVersionedData implements Play
 
 					@Override
 					public void onSuccess(List<Player> players) {
-						Collections.sort(players, PLAYERS_COMPARATOR);
+						Collections.sort(players, Comparators.PLAYERS_COMPARATOR);
 						callback.onSuccess(players);
 					}
 					

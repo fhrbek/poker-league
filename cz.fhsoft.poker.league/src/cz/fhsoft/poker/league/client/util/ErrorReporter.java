@@ -10,6 +10,9 @@ public class ErrorReporter {
 	}
 
 	public static void error(Throwable t) {
-		error(t.getMessage());
+		if(t.getMessage() != null)
+			error(t.getMessage());
+		else
+			error(t.getClass().getName());
 	}
 }

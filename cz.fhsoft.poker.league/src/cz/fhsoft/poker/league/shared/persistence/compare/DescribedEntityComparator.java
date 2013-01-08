@@ -5,8 +5,6 @@ import cz.fhsoft.poker.league.shared.util.StringUtil;
 
 public class DescribedEntityComparator<E extends DescribedEntity> extends IdentifiableEntityComparator<E> {
 
-	public static final DescribedEntityComparator<DescribedEntity> BASIC_INSTANCE = new DescribedEntityComparator<DescribedEntity>(); 
-
 	@Override
 	public int compare(E e1, E e2) {
 		int result = StringUtil.nonNullString(e1.getName()).compareTo(StringUtil.nonNullString(e2.getName()));

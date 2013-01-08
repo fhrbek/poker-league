@@ -18,26 +18,11 @@ import cz.fhsoft.poker.league.client.util.ErrorReporter;
 import cz.fhsoft.poker.league.client.view.CompetitionViewImpl;
 import cz.fhsoft.poker.league.client.view.CompetitionsView;
 import cz.fhsoft.poker.league.shared.model.v1.Competition;
+import cz.fhsoft.poker.league.shared.persistence.compare.Comparators;
 import cz.fhsoft.poker.league.shared.persistence.compare.DescribedEntityComparator;
 
 public class CompetitionsPresenter extends PresenterWithVersionedData implements CompetitionsView.Presenter {
 	
-	protected static final Comparator<Competition> COMPETITIONS_COMPARATOR = new DescribedEntityComparator<Competition>() {
-
-		@Override
-		public int compare(Competition c1, Competition c2) {
-			int result = - c1.getStartDate().compareTo(c2.getStartDate());
-			if(result == 0)
-				result = c1.getEndDate().compareTo(c2.getEndDate());
-		
-			if(result == 0)
-				return super.compare(c1, c2);
-
-			return result;
-		}
-		
-	};
-
 	private CompetitionsView view;
 	
 	private Map<Integer, CompetitionPresenter> competitionPresenterMap = new HashMap<Integer, CompetitionPresenter>();
@@ -66,7 +51,7 @@ public class CompetitionsPresenter extends PresenterWithVersionedData implements
 
 			@Override
 			public void onSuccess(List<Competition> competitions) {
-				Collections.sort(competitions, Collections.reverseOrder(COMPETITIONS_COMPARATOR));
+				Collections.sort(competitions, Collections.reverseOrder(Comparators.COMPETITIONS_COMPARATOR));
 
 				Set<Integer> usedIds = new HashSet<Integer>();
 

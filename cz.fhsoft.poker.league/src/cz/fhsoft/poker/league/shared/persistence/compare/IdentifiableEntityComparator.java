@@ -6,8 +6,6 @@ import cz.fhsoft.poker.league.shared.model.v1.IdentifiableEntity;
 
 public class IdentifiableEntityComparator<E extends IdentifiableEntity> implements Comparator<E> {
 	
-	public static final IdentifiableEntityComparator<IdentifiableEntity> BASIC_INSTANCE = new IdentifiableEntityComparator<IdentifiableEntity>(); 
-
 	@Override
 	public int compare(E e1, E e2) {
 		return e1.getId() > e2.getId()

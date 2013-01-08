@@ -16,16 +16,20 @@ import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.datepicker.client.DatePicker;
 
 import cz.fhsoft.poker.league.client.persistence.ClientEntityManager;
-import cz.fhsoft.poker.league.client.persistence.EntityDigestProvider;
+import cz.fhsoft.poker.league.client.persistence.DigestProviders;
 import cz.fhsoft.poker.league.client.util.Dialog;
 import cz.fhsoft.poker.league.client.util.Dialog.Option;
 import cz.fhsoft.poker.league.client.util.ErrorReporter;
+import cz.fhsoft.poker.league.client.view.InvitationsView;
+import cz.fhsoft.poker.league.client.view.InvitationsViewImpl;
 import cz.fhsoft.poker.league.client.view.TournamentView;
+import cz.fhsoft.poker.league.client.view.TournamentsViewImpl;
 import cz.fhsoft.poker.league.client.widget.AbstractPersistentEntityEditor;
 import cz.fhsoft.poker.league.client.widget.EntitySelector;
 import cz.fhsoft.poker.league.shared.model.v1.Player;
 import cz.fhsoft.poker.league.shared.model.v1.PrizeMoneyRuleSet;
 import cz.fhsoft.poker.league.shared.model.v1.Tournament;
+import cz.fhsoft.poker.league.shared.persistence.compare.Comparators;
 import cz.fhsoft.poker.league.shared.persistence.compare.DescribedEntityComparator;
 import cz.fhsoft.poker.league.shared.persistence.compare.IdentifiableEntityComparator;
 import cz.fhsoft.poker.league.shared.util.StringUtil;
@@ -66,19 +70,14 @@ public class TournamentPresenter extends PresenterWithVersionedData implements T
 		
 	};
 
-	private static final EntityDigestProvider<Player> PLAYER_DIGEST_PROVIDER = new EntityDigestProvider<Player>() {
-
-		@Override
-		public String getDigest(Player entity) {
-			return entity.getNick();
-		}
-		
-	};
-	
 	private Tournament tournament;
 
 	private TournamentView view;
+
+	private InvitationsPresenter invitationsPresenter;
 	
+	private InvitationsView invitationsView;
+
 	public static final AbstractPersistentEntityEditor<Tournament> tournamentEditor = new AbstractPersistentEntityEditor<Tournament>() {
 		
 		private Entry<TextBox> nameEntry = new Entry<TextBox>("Název", new TextBox()) {
@@ -181,7 +180,7 @@ public class TournamentPresenter extends PresenterWithVersionedData implements T
 			
 		};
 		
-		private Entry<EntitySelector<PrizeMoneyRuleSet>> defaultPrizeMoneyRuleSetEntry = new Entry<EntitySelector<PrizeMoneyRuleSet>>("Výchozí pravidlo ȟodnocení", new EntitySelector<PrizeMoneyRuleSet>(PrizeMoneyRuleSet.class, DescribedEntityComparator.BASIC_INSTANCE, EntityDigestProvider.DESCRIBED_ENTITY_PROVIDER)) {
+		private Entry<EntitySelector<PrizeMoneyRuleSet>> defaultPrizeMoneyRuleSetEntry = new Entry<EntitySelector<PrizeMoneyRuleSet>>("Výchozí pravidlo hodnocení", new EntitySelector<PrizeMoneyRuleSet>(PrizeMoneyRuleSet.class, Comparators.DESCRIBED_ENTITY_COMPARATOR, DigestProviders.DESCRIBED_ENTITY_PROVIDER)) {
 
 			@Override
 			public void setUpWidget(Tournament entity) {
@@ -251,9 +250,20 @@ public class TournamentPresenter extends PresenterWithVersionedData implements T
 	}
 
 	@Override
+	public void onToggleShowInvitations() {
+		if(invitationsView == null)
+			invitationsView = new InvitationsViewImpl();
+
+		if(invitationsPresenter == null) {
+			invitationsPresenter = new InvitationsPresenter(this, invitationsView);
+			invitationsPresenter.go(view.getInvitationsContainer());
+		}
+
+		invitationsPresenter.setVisible(!invitationsPresenter.isVisible());
+	}
+
+	@Override
 	public void onToggleShowGames() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
@@ -329,6 +339,11 @@ public class TournamentPresenter extends PresenterWithVersionedData implements T
 	public void setTournament(Tournament tournament) {
 		this.tournament = tournament;
 		refresh();
+	}
+
+	@Override
+	public Tournament getTournament() {
+		return tournament;
 	}
 
 }

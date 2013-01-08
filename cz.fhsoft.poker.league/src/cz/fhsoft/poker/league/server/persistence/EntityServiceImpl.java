@@ -37,7 +37,7 @@ public class EntityServiceImpl extends RemoteServiceServlet implements EntitySer
 	private static final int DATA_VERSION_ID = 1;
 
 	@Override
-	public long getDataVersion() {
+	synchronized public long getDataVersion() {
 		DataVersion dataVersion = ServletInitializer.getEntityManager().find(DataVersion.class, DATA_VERSION_ID);
 		if(dataVersion == null) {
 			dataVersion = new DataVersion();
@@ -51,7 +51,7 @@ public class EntityServiceImpl extends RemoteServiceServlet implements EntitySer
 		return dataVersion.getCurrentVersion().getTime();
 	}
 
-	private long updateDataVersion() {
+	synchronized private long updateDataVersion() {
 		DataVersion dataVersion = ServletInitializer.getEntityManager().find(DataVersion.class, DATA_VERSION_ID);
 		if(dataVersion == null) {
 			dataVersion = new DataVersion();
@@ -68,12 +68,12 @@ public class EntityServiceImpl extends RemoteServiceServlet implements EntitySer
 	}
 
 	@Override
-	public <E extends IdentifiableEntity> E find(String entityClass, Number id) {
+	synchronized public <E extends IdentifiableEntity> E find(String entityClass, Number id) {
 		return find(entityClass, id, true);
 	}
 	
 	@Override
-	public <E extends IdentifiableEntity> List<E> list(String entityClass) {
+	synchronized public <E extends IdentifiableEntity> List<E> list(String entityClass) {
 		try {
 			Class<?> realEntityClass = Class.forName(entityClass);
 			
@@ -98,10 +98,12 @@ public class EntityServiceImpl extends RemoteServiceServlet implements EntitySer
 	}
 	
 	@Override
-	public <E extends IdentifiableEntity> List<E> resolveReference(String entityClass, Number id, String referenceName) {
+	synchronized public <E extends IdentifiableEntity> List<E> resolveReference(String entityClass, Number id, String referenceName) {
 		IdentifiableEntity entity = find(entityClass, id, false);
 		if(entity == null)
 			return Collections.emptyList();
+
+		ServletInitializer.getEntityManager().refresh(entity);
 
 		try {
 			Field referenceField = ReflectUtil.getDeclaredField(entity.getClass(), referenceName);
@@ -120,7 +122,7 @@ public class EntityServiceImpl extends RemoteServiceServlet implements EntitySer
 		}
 	}
 
-	private <E extends IdentifiableEntity> E find(String entityClass, Number id, boolean makeTransferrable) {
+	synchronized private <E extends IdentifiableEntity> E find(String entityClass, Number id, boolean makeTransferrable) {
 		try {
 			Class<?> realEntityClass = Class.forName(entityClass);
 
@@ -136,12 +138,12 @@ public class EntityServiceImpl extends RemoteServiceServlet implements EntitySer
 		}
 	}
 
-	private <E extends IdentifiableEntity> E makeTransferable(E entity) {
+	synchronized private <E extends IdentifiableEntity> E makeTransferable(E entity) {
 		Set<IdentifiableEntity> visited = new HashSet<IdentifiableEntity>();
 		return makeTransferable(entity, visited, false);
 	}
 
-	private <E extends IdentifiableEntity> E makeTransferable(E entity, Set<IdentifiableEntity> visited, boolean asProxy) {
+	synchronized private <E extends IdentifiableEntity> E makeTransferable(E entity, Set<IdentifiableEntity> visited, boolean asProxy) {
 		if(entity == null || !visited.add(entity))
 			return entity;
 
@@ -163,13 +165,13 @@ public class EntityServiceImpl extends RemoteServiceServlet implements EntitySer
 					try {
 						if(Set.class.isAssignableFrom(field.getType())) {
 							if(asProxy)
-								field.set(entity, Collections.emptySet());
+								field.set(entity, new HashSet<E>());
 							else
 								field.set(entity, new LazySet<E, IdentifiableEntity>(entity, field.getName()));
 						}
 						else if(List.class.isAssignableFrom(field.getType())) {
 							if(asProxy)
-								field.set(entity, Collections.emptyList());
+								field.set(entity, new ArrayList<E>());
 							else
 								field.set(entity, new LazyList<E, IdentifiableEntity>(entity, field.getName()));
 						}
@@ -186,7 +188,7 @@ public class EntityServiceImpl extends RemoteServiceServlet implements EntitySer
 	}
 
 	@Override
-	public <E extends IdentifiableEntity> EntityWithDataVersion<E> persist(E entity) {
+	synchronized public <E extends IdentifiableEntity> EntityWithDataVersion<E> persist(E entity) {
 		ServletInitializer.getEntityManager().getTransaction().begin();
 		
 		long dataVersion = 0;
@@ -194,24 +196,26 @@ public class EntityServiceImpl extends RemoteServiceServlet implements EntitySer
 		try {
 			localResolveExistingReferences(entity, false);
 	
-			ServletInitializer.getEntityManager().persist(entity);
+			//ServletInitializer.getEntityManager().persist(entity);
+			entity = ServletInitializer.getEntityManager().merge(entity);
 			dataVersion = updateDataVersion();
 			ServletInitializer.getEntityManager().getTransaction().commit();
 		}
 		catch(Throwable t){
-			ServletInitializer.getEntityManager().getTransaction().rollback();
+			if(ServletInitializer.getEntityManager().getTransaction().isActive())
+				ServletInitializer.getEntityManager().getTransaction().rollback();
 			throw new RuntimeException(t);
 		}
 		
 		return new EntityWithDataVersion<E>(makeTransferable(entity), dataVersion);
 	}
 	
-	private <E extends IdentifiableEntity> E localResolveExistingReferences(E entity, boolean forMerge) throws IllegalArgumentException, IllegalAccessException {
+	synchronized private <E extends IdentifiableEntity> E localResolveExistingReferences(E entity, boolean forMerge) throws IllegalArgumentException, IllegalAccessException {
 		Set<IdentifiableEntity> visited = new HashSet<IdentifiableEntity>();
 		return localResolveExistingReferences(entity, forMerge, visited);
 	}
 
-	private <E extends IdentifiableEntity> E localResolveExistingReferences(E entity, boolean forMerge, Set<IdentifiableEntity> visited) throws IllegalArgumentException, IllegalAccessException {
+	synchronized private <E extends IdentifiableEntity> E localResolveExistingReferences(E entity, boolean forMerge, Set<IdentifiableEntity> visited) throws IllegalArgumentException, IllegalAccessException {
 		if(entity == null || !visited.add(entity))
 			return entity;
 
@@ -300,7 +304,7 @@ public class EntityServiceImpl extends RemoteServiceServlet implements EntitySer
 	}
 
 	@Override
-	public <E extends IdentifiableEntity> EntityWithDataVersion<E> merge(E entity) {
+	synchronized public <E extends IdentifiableEntity> EntityWithDataVersion<E> merge(E entity) {
 		ServletInitializer.getEntityManager().getTransaction().begin();
 		
 		long dataVersion = 0;
@@ -313,7 +317,8 @@ public class EntityServiceImpl extends RemoteServiceServlet implements EntitySer
 			ServletInitializer.getEntityManager().getTransaction().commit();
 		}
 		catch(Throwable t){
-			ServletInitializer.getEntityManager().getTransaction().rollback();
+			if(ServletInitializer.getEntityManager().getTransaction().isActive())
+				ServletInitializer.getEntityManager().getTransaction().rollback();
 			throw new RuntimeException(t);
 		}
 		
@@ -321,7 +326,7 @@ public class EntityServiceImpl extends RemoteServiceServlet implements EntitySer
 	}
 
 	@Override
-	public <E extends IdentifiableEntity> long remove(E entity) {
+	synchronized public <E extends IdentifiableEntity> long remove(E entity) {
 		@SuppressWarnings("unchecked")
 		E managedEntity = (E) ServletInitializer.getEntityManager().find(entity.getClass(), entity.getId(), LockModeType.PESSIMISTIC_WRITE);
 		if(managedEntity != null) {
@@ -333,7 +338,8 @@ public class EntityServiceImpl extends RemoteServiceServlet implements EntitySer
 				ServletInitializer.getEntityManager().getTransaction().commit();
 			}
 			catch(Throwable t){
-				ServletInitializer.getEntityManager().getTransaction().rollback();
+				if(ServletInitializer.getEntityManager().getTransaction().isActive())
+					ServletInitializer.getEntityManager().getTransaction().rollback();
 				throw new RuntimeException(t);
 			}
 			
@@ -344,7 +350,7 @@ public class EntityServiceImpl extends RemoteServiceServlet implements EntitySer
 	}
 
 	@Override
-	public List<List<Object>> executeNativeQuery(NativeQuery query) {
+	synchronized public List<List<Object>> executeNativeQuery(NativeQuery query) {
 		List<List<Object>> results = new ArrayList<List<Object>>();
 		javax.persistence.Query nativeQuery = ServletInitializer.getEntityManager().createNativeQuery(query.getQueryString());
 		

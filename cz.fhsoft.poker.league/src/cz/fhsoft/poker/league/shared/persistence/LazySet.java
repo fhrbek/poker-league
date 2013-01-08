@@ -70,6 +70,7 @@ public class LazySet<E extends IdentifiableEntity, R extends IdentifiableEntity>
 			@Override
 			public void onSuccess(List<R> resolvedReference) {
 				resolved = true;
+				clear();
 				addAll(resolvedReference);
 				callback.onSuccess(LazySet.this);
 			}
