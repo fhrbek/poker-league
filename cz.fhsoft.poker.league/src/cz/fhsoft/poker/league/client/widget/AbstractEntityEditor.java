@@ -80,7 +80,8 @@ public abstract class AbstractEntityEditor<E extends IdentifiableEntity> extends
 		if(entity == null)
 			throw new IllegalArgumentException("No entity assigned");
 
-		popupPanel = new PopupPanel();
+		popupPanel = new PopupPanel(false, true);
+		popupPanel.setGlassEnabled(true);
 		popupPanel.add(this);
 		popupPanel.center();
 	}

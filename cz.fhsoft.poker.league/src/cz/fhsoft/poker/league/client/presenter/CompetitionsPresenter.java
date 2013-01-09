@@ -1,7 +1,6 @@
 package cz.fhsoft.poker.league.client.presenter;
 
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -19,7 +18,6 @@ import cz.fhsoft.poker.league.client.view.CompetitionViewImpl;
 import cz.fhsoft.poker.league.client.view.CompetitionsView;
 import cz.fhsoft.poker.league.shared.model.v1.Competition;
 import cz.fhsoft.poker.league.shared.persistence.compare.Comparators;
-import cz.fhsoft.poker.league.shared.persistence.compare.DescribedEntityComparator;
 
 public class CompetitionsPresenter extends PresenterWithVersionedData implements CompetitionsView.Presenter {
 	

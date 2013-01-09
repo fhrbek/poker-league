@@ -57,8 +57,10 @@ public class LazySet<E extends IdentifiableEntity, R extends IdentifiableEntity>
 		if(!GWT.isClient())
 			throw new IllegalArgumentException("This method can only be called from the client");
 
-		if(resolved)
+		if(resolved) {
 			callback.onSuccess(this);
+			return;
+		}
 
 		ClientEntityManager.getInstance().resolveReference(referrer.getClass(), referrer.getId(), referenceName, new AsyncCallback<List<R>>() {
 

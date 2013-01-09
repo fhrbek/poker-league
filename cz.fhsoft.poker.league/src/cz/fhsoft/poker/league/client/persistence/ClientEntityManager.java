@@ -300,7 +300,6 @@ public class ClientEntityManager {
 			@Override
 			public void onSuccess(EntityWithDataVersion<E> persistedEntityWithDataVersion) {
 				E persistedEntity = persistedEntityWithDataVersion.entity;
-
 				Class<? extends IdentifiableEntity> entityClass = persistedEntity.getClass();
 				Map<Object, IdentifiableEntity> loaded = entities.get(entityClass);
 				if(loaded == null)

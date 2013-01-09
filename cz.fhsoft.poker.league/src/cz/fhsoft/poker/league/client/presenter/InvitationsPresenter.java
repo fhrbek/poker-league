@@ -2,7 +2,6 @@ package cz.fhsoft.poker.league.client.presenter;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +14,7 @@ import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HasWidgets;
+import com.google.gwt.user.client.ui.IntegerBox;
 import com.google.gwt.user.client.ui.Widget;
 
 import cz.fhsoft.poker.league.client.persistence.DigestProviders;
@@ -30,32 +30,9 @@ import cz.fhsoft.poker.league.shared.model.v1.Player;
 import cz.fhsoft.poker.league.shared.model.v1.Tournament;
 import cz.fhsoft.poker.league.shared.persistence.Util;
 import cz.fhsoft.poker.league.shared.persistence.compare.Comparators;
-import cz.fhsoft.poker.league.shared.persistence.compare.IdentifiableEntityComparator;
 
 public class InvitationsPresenter extends PresenterWithVersionedData implements InvitationsView.Presenter {
 	
-	protected static final Comparator<Invitation> INVITATIONS_COMPARATOR = new IdentifiableEntityComparator<Invitation>() {
-
-		@Override
-		public int compare(Invitation i1, Invitation i2) {
-			// invitations must be resolved (or, in the worst case, proxied for being stale)
-			int result = i1.getOrdinal() > i2.getOrdinal()
-					? 1
-					: (i1.getOrdinal() < i2.getOrdinal()
-							? -1
-							:0);
-			
-			if(result == 0)
-				result = i1.getPlayer().getNick().compareTo(i2.getPlayer().getNick());
-			
-			if(result == 0)
-				return super.compare(i1, i2);
-			
-			return result;
-		}
-		
-	};
-
 	private InvitationsView view;
 	
 	private AbstractPersistentEntityEditor<Invitation> invitationEditor = new AbstractPersistentEntityEditor<Invitation>() {
@@ -88,9 +65,24 @@ public class InvitationsPresenter extends PresenterWithVersionedData implements 
 			
 		};
 
+		private Entry<IntegerBox> ordinalEntry = new Entry<IntegerBox>("Pořadí", new IntegerBox()) {
+
+			@Override
+			public void setUpWidget(Invitation entity) {
+				getWidget().setValue(entity.getOrdinal());
+			}
+
+			@Override
+			public void updateEntity(Invitation entity) {
+				entity.setOrdinal(getWidget().getValue());
+			}
+			
+		};
+
 		{
 			addEntry(playerEntry);
 			addEntry(replyEntry);
+			addEntry(ordinalEntry);
 		}
 
 		@Override
@@ -167,7 +159,7 @@ public class InvitationsPresenter extends PresenterWithVersionedData implements 
 					@Override
 					public void onSuccess(Set<Invitation> invitationsSet) {
 						List<Invitation> invitations = new ArrayList<Invitation>(invitationsSet);
-						Collections.sort(invitations, INVITATIONS_COMPARATOR);
+						Collections.sort(invitations, Comparators.INVITATIONS_COMPARATOR);
 						callback.onSuccess(invitations);
 					}
 					

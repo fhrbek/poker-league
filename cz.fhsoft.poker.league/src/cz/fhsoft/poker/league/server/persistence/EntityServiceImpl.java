@@ -196,8 +196,7 @@ public class EntityServiceImpl extends RemoteServiceServlet implements EntitySer
 		try {
 			localResolveExistingReferences(entity, false);
 	
-			//ServletInitializer.getEntityManager().persist(entity);
-			entity = ServletInitializer.getEntityManager().merge(entity);
+			ServletInitializer.getEntityManager().persist(entity);
 			dataVersion = updateDataVersion();
 			ServletInitializer.getEntityManager().getTransaction().commit();
 		}

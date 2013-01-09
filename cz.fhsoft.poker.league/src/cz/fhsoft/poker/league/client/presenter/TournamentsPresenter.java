@@ -2,7 +2,6 @@ package cz.fhsoft.poker.league.client.presenter;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -25,24 +24,10 @@ import cz.fhsoft.poker.league.shared.model.v1.InvitationReply;
 import cz.fhsoft.poker.league.shared.model.v1.Player;
 import cz.fhsoft.poker.league.shared.model.v1.Tournament;
 import cz.fhsoft.poker.league.shared.persistence.Util;
-import cz.fhsoft.poker.league.shared.persistence.compare.DescribedEntityComparator;
+import cz.fhsoft.poker.league.shared.persistence.compare.Comparators;
 
 public class TournamentsPresenter extends PresenterWithVersionedData implements TournamentsView.Presenter {
 	
-	protected static final Comparator<Tournament> TOURNAMENTS_COMPARATOR = new DescribedEntityComparator<Tournament>() {
-
-		@Override
-		public int compare(Tournament t1, Tournament t2) {
-			int result = - t1.getTournamentStart().compareTo(t2.getTournamentStart());
-			
-			if(result == 0)
-				return super.compare(t1, t2);
-
-			return result;
-		}
-		
-	};
-
 	private TournamentsView view;
 	
 	private Map<Integer, TournamentPresenter> tournamentPresenterMap = new HashMap<Integer, TournamentPresenter>();
@@ -92,7 +77,7 @@ public class TournamentsPresenter extends PresenterWithVersionedData implements 
 					@Override
 					public void onSuccess(Set<Tournament> tournamentsSet) {
 						List<Tournament> tournaments = new ArrayList<Tournament>(tournamentsSet);
-						Collections.sort(tournaments, Collections.reverseOrder(TOURNAMENTS_COMPARATOR));
+						Collections.sort(tournaments, Collections.reverseOrder(Comparators.TOURNAMENTS_COMPARATOR));
 
 						Set<Integer> usedIds = new HashSet<Integer>();
 
@@ -138,10 +123,11 @@ public class TournamentsPresenter extends PresenterWithVersionedData implements 
 			@Override
 			public void onSuccess(Competition resolvedCompetition) {
 				final Tournament newTournament = new Tournament();
+				newTournament.setCompetition(resolvedCompetition);
+
 				Date currentDate = new Date();
 				newTournament.setTournamentStart(new Date(currentDate.getTime() + 86400 * 20)); //TODO Hard-coded start at 20:00
 
-				newTournament.setCompetition(resolvedCompetition);
 				newTournament.setMinPlayers(resolvedCompetition.getDefaultMinPlayers());
 				newTournament.setMaxPlayers(resolvedCompetition.getDefaultMaxPlayers());
 				newTournament.setDefaultBuyIn(resolvedCompetition.getDefaultBuyIn());
