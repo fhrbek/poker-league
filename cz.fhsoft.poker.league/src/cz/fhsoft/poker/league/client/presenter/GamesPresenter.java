@@ -160,7 +160,9 @@ public class GamesPresenter extends PresenterWithVersionedData implements GamesV
 									if(invitation.getReply() != InvitationReply.ACCEPTED)
 										continue;
 									
+									int newId = -1;
 									PlayerInGame playerInGame = new PlayerInGame();
+									playerInGame.setId(newId--);
 									playerInGame.setPlayer(invitation.getPlayer());
 									playerInGame.setRank(0); // 0 means still playing
 									playerInGame.setGame(newGame);
