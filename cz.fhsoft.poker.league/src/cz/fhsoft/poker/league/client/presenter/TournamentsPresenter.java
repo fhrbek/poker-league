@@ -85,7 +85,7 @@ public class TournamentsPresenter extends PresenterWithVersionedData implements 
 							TournamentPresenter tournamentPresenter = tournamentPresenterMap.get(tournament.getId());
 							if(tournamentPresenter == null) {
 								tournamentPresenter = new TournamentPresenter(TournamentsPresenter.this, new TournamentViewImpl());
-								tournamentPresenter.setTournament(tournament);
+								tournamentPresenter.setEntity(tournament);
 								tournamentPresenter.go(view.getTournamentsContainer());
 								tournamentPresenterMap.put(tournament.getId(), tournamentPresenter);
 							}
@@ -183,6 +183,6 @@ public class TournamentsPresenter extends PresenterWithVersionedData implements 
 	}
 
 	private Competition getCompetition() {
-		return ((CompetitionPresenter) getParentPresenter()).getCompetition();
+		return ((CompetitionPresenter) getParentPresenter()).getEntity();
 	}
 }

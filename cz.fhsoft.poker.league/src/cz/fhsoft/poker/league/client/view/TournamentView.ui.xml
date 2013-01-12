@@ -9,6 +9,10 @@
 			border: 1px solid #aaa;
 		}
 
+		.rankingContainer {
+			padding: 20px 20px 20px 50px;
+			border: 1px solid #aaa;
+		}
 		.gamesContainer {
 			padding: 20px 20px 20px 50px;
 			border: 1px solid #aaa;
@@ -21,6 +25,8 @@
 		<g:Label addStyleNames="pseudoLink" ui:field="remove">Odstranit</g:Label>
 		<g:Label addStyleNames="pseudoLink" ui:field="toggleShowInvitations">Zobrazit pozvánky</g:Label>
 		<g:FlowPanel ui:field="invitationsContainer" addStyleNames="{style.invitationsContainer}"/>
+		<g:Label addStyleNames="pseudoLink" ui:field="toggleShowRanking">Zobrazit výsledkovou tabulku</g:Label>
+		<g:FlowPanel ui:field="rankingContainer" addStyleNames="{style.rankingContainer}"/>
 		<g:Label addStyleNames="pseudoLink" ui:field="toggleShowGames">Zobrazit hry</g:Label>
 		<g:FlowPanel ui:field="gamesContainer" addStyleNames="{style.gamesContainer}"/>
 	</g:FlowPanel>

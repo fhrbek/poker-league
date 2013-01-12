@@ -6,18 +6,12 @@ import java.util.Map;
 import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.IntegerBox;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.datepicker.client.DatePicker;
 
-import cz.fhsoft.poker.league.client.persistence.ClientEntityManager;
 import cz.fhsoft.poker.league.client.persistence.DigestProviders;
-import cz.fhsoft.poker.league.client.util.Dialog;
-import cz.fhsoft.poker.league.client.util.Dialog.Option;
-import cz.fhsoft.poker.league.client.util.ErrorReporter;
 import cz.fhsoft.poker.league.client.view.CompetitionView;
 import cz.fhsoft.poker.league.client.view.TournamentsView;
 import cz.fhsoft.poker.league.client.view.TournamentsViewImpl;
@@ -31,11 +25,7 @@ import cz.fhsoft.poker.league.shared.persistence.Util;
 import cz.fhsoft.poker.league.shared.persistence.compare.Comparators;
 import cz.fhsoft.poker.league.shared.util.StringUtil;
 
-public class CompetitionPresenter extends PresenterWithVersionedData implements CompetitionView.Presenter {
-	
-	private Competition competition;
-
-	private CompetitionView view;
+public class CompetitionPresenter extends RankablePresenter<Competition, CompetitionView.Presenter, CompetitionView> implements CompetitionView.Presenter {
 	
 	private TournamentsView.Presenter tournamentsPresenter;
 	
@@ -223,21 +213,18 @@ public class CompetitionPresenter extends PresenterWithVersionedData implements 
 	};
 	
 	public CompetitionPresenter(Presenter parentPresenter, CompetitionView view) {
-		super(parentPresenter);
-		this.view = view;
-		view.setPresenter(this);
+		super(parentPresenter, view);
 	}
 
 	@Override
-	public void go(HasWidgets container) {
-		container.add(view.asWidget()); // no clear since we really want to append this widget
-		refresh();
+	protected AbstractPersistentEntityEditor<Competition> getEditor() {
+		return competitionEditor;
 	}
 
 	@Override
 	protected void refresh() {
-		if(competition != null) {
-			view.setName(competition.getName());
+		if(entity != null) {
+			view.setName(entity.getName());
 			//TODO Refresh all displayed values
 		}
 	}
@@ -253,86 +240,6 @@ public class CompetitionPresenter extends PresenterWithVersionedData implements 
 		}
 
 		tournamentsPresenter.setVisible(!tournamentsPresenter.isVisible());
-	}
-
-	@Override
-	public void moveViewToTop() {
-		if(view.asWidget().getParent() instanceof FlowPanel) {
-			FlowPanel parent = (FlowPanel) view.asWidget().getParent();
-			parent.remove(view.asWidget());
-			parent.insert(view.asWidget(), 0);
-		}
-	}
-
-	@Override
-	public void removeView() {
-		view.asWidget().removeFromParent();
-	}
-	
-	@Override
-	public void onEdit() {
-		CompetitionPresenter.competitionEditor.setEntity(competition, new AsyncCallback<Void>() {
-
-			@Override
-			public void onFailure(Throwable caught) {
-				ErrorReporter.error(caught);
-			}
-
-			@Override
-			public void onSuccess(Void result) {
-				CompetitionPresenter.competitionEditor.showAsPopupPanel();
-			}
-			
-		});
-	}
-
-	@Override
-	public void onRemove() {
-		Dialog.show("Potvrzení odstranění", "Opravdu chcete smazat tuto položku?",
-				new Option("Ano", null) {
-
-					@Override
-					public void run() {
-						ClientEntityManager.getInstance().resolveEntity(competition, new AsyncCallback<Competition>() {
-
-							@Override
-							public void onFailure(Throwable caught) {
-								ErrorReporter.error(caught);
-							}
-
-							@Override
-							public void onSuccess(Competition competitionToRemove) {
-								ClientEntityManager.getInstance().remove(competitionToRemove, new AsyncCallback<Void>() {
-
-									@Override
-									public void onFailure(Throwable caught) {
-										ErrorReporter.error(caught);
-									}
-
-									@Override
-									public void onSuccess(Void result) {
-										// let the event handlers do their job
-									}
-									
-								});
-							}
-							
-						});
-					}
-			
-				},
-				new Option("Ne", null));
-	}
-
-	@Override
-	public void setCompetition(Competition competition) {
-		this.competition = competition;
-		refresh();
-	}
-
-	@Override
-	public Competition getCompetition() {
-		return competition;
 	}
 
 }

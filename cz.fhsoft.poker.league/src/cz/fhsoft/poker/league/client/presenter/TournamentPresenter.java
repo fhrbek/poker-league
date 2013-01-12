@@ -7,18 +7,12 @@ import java.util.Map;
 import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.IntegerBox;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.datepicker.client.DatePicker;
 
-import cz.fhsoft.poker.league.client.persistence.ClientEntityManager;
 import cz.fhsoft.poker.league.client.persistence.DigestProviders;
-import cz.fhsoft.poker.league.client.util.Dialog;
-import cz.fhsoft.poker.league.client.util.Dialog.Option;
-import cz.fhsoft.poker.league.client.util.ErrorReporter;
 import cz.fhsoft.poker.league.client.view.GamesView;
 import cz.fhsoft.poker.league.client.view.GamesViewImpl;
 import cz.fhsoft.poker.league.client.view.InvitationsView;
@@ -31,12 +25,8 @@ import cz.fhsoft.poker.league.shared.model.v1.Tournament;
 import cz.fhsoft.poker.league.shared.persistence.compare.Comparators;
 import cz.fhsoft.poker.league.shared.util.StringUtil;
 
-public class TournamentPresenter extends PresenterWithVersionedData implements TournamentView.Presenter {
+public class TournamentPresenter extends RankablePresenter<Tournament, TournamentView.Presenter, TournamentView> implements TournamentView.Presenter {
 	
-	private Tournament tournament;
-
-	private TournamentView view;
-
 	private InvitationsPresenter invitationsPresenter;
 	
 	private InvitationsView invitationsView;
@@ -197,21 +187,13 @@ public class TournamentPresenter extends PresenterWithVersionedData implements T
 	};
 	
 	public TournamentPresenter(Presenter parentPresenter, TournamentView view) {
-		super(parentPresenter);
-		this.view = view;
-		view.setPresenter(this);
-	}
-
-	@Override
-	public void go(HasWidgets container) {
-		container.add(view.asWidget()); // no clear since we really want to append this widget
-		refresh();
+		super(parentPresenter, view);
 	}
 
 	@Override
 	protected void refresh() {
-		if(tournament != null) {
-			view.setName(tournament.getName());
+		if(entity != null) {
+			view.setName(entity.getName());
 			//TODO Refresh all displayed values
 		}
 	}
@@ -243,83 +225,8 @@ public class TournamentPresenter extends PresenterWithVersionedData implements T
 	}
 
 	@Override
-	public void moveViewToTop() {
-		if(view.asWidget().getParent() instanceof FlowPanel) {
-			FlowPanel parent = (FlowPanel) view.asWidget().getParent();
-			parent.remove(view.asWidget());
-			parent.insert(view.asWidget(), 0);
-		}
-	}
-
-	@Override
-	public void removeView() {
-		view.asWidget().removeFromParent();
-	}
-	
-	@Override
-	public void onEdit() {
-		TournamentPresenter.tournamentEditor.setEntity(tournament, new AsyncCallback<Void>() {
-
-			@Override
-			public void onFailure(Throwable caught) {
-				ErrorReporter.error(caught);
-			}
-
-			@Override
-			public void onSuccess(Void result) {
-				TournamentPresenter.tournamentEditor.showAsPopupPanel();
-			}
-			
-		});
-	}
-
-	@Override
-	public void onRemove() {
-		Dialog.show("Potvrzení odstranění", "Opravdu chcete smazat tuto položku?",
-				new Option("Ano", null) {
-
-					@Override
-					public void run() {
-						ClientEntityManager.getInstance().resolveEntity(tournament, new AsyncCallback<Tournament>() {
-
-							@Override
-							public void onFailure(Throwable caught) {
-								ErrorReporter.error(caught);
-							}
-
-							@Override
-							public void onSuccess(Tournament tournamentToRemove) {
-								ClientEntityManager.getInstance().remove(tournamentToRemove, new AsyncCallback<Void>() {
-
-									@Override
-									public void onFailure(Throwable caught) {
-										ErrorReporter.error(caught);
-									}
-
-									@Override
-									public void onSuccess(Void result) {
-										// let the event handlers do their job
-									}
-									
-								});
-							}
-							
-						});
-					}
-			
-				},
-				new Option("Ne", null));
-	}
-
-	@Override
-	public void setTournament(Tournament tournament) {
-		this.tournament = tournament;
-		refresh();
-	}
-
-	@Override
-	public Tournament getTournament() {
-		return tournament;
+	protected AbstractPersistentEntityEditor<Tournament> getEditor() {
+		return tournamentEditor;
 	}
 
 }

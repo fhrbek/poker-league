@@ -2,6 +2,7 @@ package cz.fhsoft.poker.league.client;
 
 import java.util.Date;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style.Cursor;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -26,12 +27,16 @@ import cz.fhsoft.poker.league.client.persistence.DataChangeEvent;
 import cz.fhsoft.poker.league.client.persistence.DataChangeEventHandler;
 import cz.fhsoft.poker.league.client.presenter.Presenter;
 import cz.fhsoft.poker.league.client.presenter.WorkbenchPresenter;
+import cz.fhsoft.poker.league.client.services.StatisticsService;
+import cz.fhsoft.poker.league.client.services.StatisticsServiceAsync;
 import cz.fhsoft.poker.league.client.view.WorkbenchView;
 import cz.fhsoft.poker.league.client.view.WorkbenchViewImpl;
 
 public class AppController implements Presenter {
 
 	public static AppController INSTANCE = null;
+	
+	private static StatisticsServiceAsync statisticsService = GWT.create(StatisticsService.class);
 	
 	private EventBus eventBus;
 
@@ -187,5 +192,9 @@ public class AppController implements Presenter {
 	@Override
 	public void setVisible(boolean visible) {
 		throw new IllegalArgumentException("AppController visibility cannot be changed");
+	}
+
+	public StatisticsServiceAsync getStatisticsService() {
+		return statisticsService;
 	}
 }

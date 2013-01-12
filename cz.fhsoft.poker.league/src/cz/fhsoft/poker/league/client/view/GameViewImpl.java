@@ -26,6 +26,9 @@ public class GameViewImpl extends Composite implements GameView {
 	Label ordinal;
 
 	@UiField
+	FlowPanel rankingContainer;
+
+	@UiField
 	FlowPanel playersInGameContainer;
 	
 	public GameViewImpl() {
@@ -42,6 +45,11 @@ public class GameViewImpl extends Composite implements GameView {
 		presenter.onRemove();
 	}
 
+	@UiHandler("toggleShowRanking")
+	void onToggleShowRankinwClicked(ClickEvent event) {
+		presenter.onToggleShowRanking();
+	}
+
 	@Override
 	public void setPresenter(Presenter presenter) {
 		this.presenter = presenter;
@@ -51,6 +59,11 @@ public class GameViewImpl extends Composite implements GameView {
 	@Override
 	public HasWidgets getPlayersInGameContainer() {
 		return playersInGameContainer;
+	}
+
+	@Override
+	public HasWidgets getRankingContainer() {
+		return rankingContainer;
 	}
 
 	@Override

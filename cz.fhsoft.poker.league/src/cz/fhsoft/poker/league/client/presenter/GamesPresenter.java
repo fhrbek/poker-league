@@ -84,7 +84,7 @@ public class GamesPresenter extends PresenterWithVersionedData implements GamesV
 							GamePresenter gamePresenter = gamePresenterMap.get(game.getId());
 							if(gamePresenter == null) {
 								gamePresenter = new GamePresenter(GamesPresenter.this, new GameViewImpl());
-								gamePresenter.setGame(game);
+								gamePresenter.setEntity(game);
 								gamePresenter.go(view.getGamesContainer());
 								gamePresenterMap.put(game.getId(), gamePresenter);
 							}
@@ -199,6 +199,6 @@ public class GamesPresenter extends PresenterWithVersionedData implements GamesV
 	}
 
 	private Tournament getTournament() {
-		return ((TournamentPresenter) getParentPresenter()).getTournament();
+		return ((TournamentPresenter) getParentPresenter()).getEntity();
 	}
 }

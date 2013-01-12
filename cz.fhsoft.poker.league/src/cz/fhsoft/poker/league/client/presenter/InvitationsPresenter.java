@@ -209,6 +209,6 @@ public class InvitationsPresenter extends PresenterWithVersionedData implements 
 
 
 	private Tournament getTournament() {
-		return ((TournamentPresenter) getParentPresenter()).getTournament();
+		return ((TournamentPresenter) getParentPresenter()).getEntity();
 	}
 }

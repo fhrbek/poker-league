@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.ListIterator;
 
-import com.google.gwt.core.shared.GWT;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 import cz.fhsoft.poker.league.client.persistence.ClientEntityManager;

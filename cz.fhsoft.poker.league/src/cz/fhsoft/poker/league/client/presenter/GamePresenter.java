@@ -12,15 +12,10 @@ import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.user.client.rpc.AsyncCallback;
-import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.IntegerBox;
 import com.google.gwt.user.client.ui.Widget;
 
-import cz.fhsoft.poker.league.client.persistence.ClientEntityManager;
 import cz.fhsoft.poker.league.client.persistence.DigestProviders;
-import cz.fhsoft.poker.league.client.util.Dialog;
-import cz.fhsoft.poker.league.client.util.Dialog.Option;
 import cz.fhsoft.poker.league.client.util.ErrorReporter;
 import cz.fhsoft.poker.league.client.view.GameView;
 import cz.fhsoft.poker.league.client.widget.AbstractEntityListEditor.DataProvider;
@@ -37,12 +32,8 @@ import cz.fhsoft.poker.league.shared.persistence.LazySet;
 import cz.fhsoft.poker.league.shared.persistence.Util;
 import cz.fhsoft.poker.league.shared.persistence.compare.Comparators;
 
-public class GamePresenter extends PresenterWithVersionedData implements GameView.Presenter {
+public class GamePresenter extends RankablePresenter<Game, GameView.Presenter, GameView> implements GameView.Presenter {
 	
-	private Game game;
-
-	private GameView view;
-
 	public static final AbstractPersistentEntityEditor<Game> gameEditor = new AbstractPersistentEntityEditor<Game>() {
 		
 		private Entry<IntegerBox> ordinalEntry = new Entry<IntegerBox>("Pořadové číslo", new IntegerBox()) {
@@ -272,103 +263,20 @@ public class GamePresenter extends PresenterWithVersionedData implements GameVie
 	};
 	
 	public GamePresenter(Presenter parentPresenter, GameView view) {
-		super(parentPresenter);
-		this.view = view;
-		view.setPresenter(this);
+		super(parentPresenter, view);
 	}
 
 	@Override
-	public void go(HasWidgets container) {
-		container.add(view.asWidget()); // no clear since we really want to append this widget
-		refresh();
+	protected AbstractPersistentEntityEditor<Game> getEditor() {
+		return gameEditor;
 	}
 
 	@Override
 	protected void refresh() {
-		if(game != null) {
-			view.setOrdinal(game.getOrdinal());
+		if(entity != null) {
+			view.setOrdinal(entity.getOrdinal());
 			//TODO Refresh all displayed values
 		}
-	}
-
-	@Override
-	public void moveViewToTop() {
-		if(view.asWidget().getParent() instanceof FlowPanel) {
-			FlowPanel parent = (FlowPanel) view.asWidget().getParent();
-			parent.remove(view.asWidget());
-			parent.insert(view.asWidget(), 0);
-		}
-	}
-
-	@Override
-	public void removeView() {
-		view.asWidget().removeFromParent();
-	}
-	
-	@Override
-	public void onEdit() {
-		GamePresenter.gameEditor.setEntity(game, new AsyncCallback<Void>() {
-
-			@Override
-			public void onFailure(Throwable caught) {
-				ErrorReporter.error(caught);
-			}
-
-			@Override
-			public void onSuccess(Void result) {
-				GamePresenter.gameEditor.showAsPopupPanel();
-			}
-			
-		});
-	}
-
-	@Override
-	public void onRemove() {
-		Dialog.show("Potvrzení odstranění", "Opravdu chcete smazat tuto položku?",
-				new Option("Ano", null) {
-
-					@Override
-					public void run() {
-						ClientEntityManager.getInstance().resolveEntity(game, new AsyncCallback<Game>() {
-
-							@Override
-							public void onFailure(Throwable caught) {
-								ErrorReporter.error(caught);
-							}
-
-							@Override
-							public void onSuccess(Game gameToRemove) {
-								ClientEntityManager.getInstance().remove(gameToRemove, new AsyncCallback<Void>() {
-
-									@Override
-									public void onFailure(Throwable caught) {
-										ErrorReporter.error(caught);
-									}
-
-									@Override
-									public void onSuccess(Void result) {
-										// let the event handlers do their job
-									}
-									
-								});
-							}
-							
-						});
-					}
-			
-				},
-				new Option("Ne", null));
-	}
-
-	@Override
-	public void setGame(Game game) {
-		this.game = game;
-		refresh();
-	}
-
-	@Override
-	public Game getGame() {
-		return game;
 	}
 
 }

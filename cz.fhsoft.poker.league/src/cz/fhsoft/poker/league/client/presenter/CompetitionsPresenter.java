@@ -57,7 +57,7 @@ public class CompetitionsPresenter extends PresenterWithVersionedData implements
 					CompetitionPresenter competitionPresenter = competitionPresenterMap.get(competition.getId());
 					if(competitionPresenter == null) {
 						competitionPresenter = new CompetitionPresenter(CompetitionsPresenter.this, new CompetitionViewImpl());
-						competitionPresenter.setCompetition(competition);
+						competitionPresenter.setEntity(competition);
 						competitionPresenter.go(view.getCompetitionsContainer());
 						competitionPresenterMap.put(competition.getId(), competitionPresenter);
 					}

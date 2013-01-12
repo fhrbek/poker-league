@@ -26,6 +26,9 @@ public class CompetitionViewImpl extends Composite implements CompetitionView {
 	Label name;
 
 	@UiField
+	FlowPanel rankingContainer;
+
+	@UiField
 	FlowPanel tournamentsContainer;
 	
 	public CompetitionViewImpl() {
@@ -42,6 +45,11 @@ public class CompetitionViewImpl extends Composite implements CompetitionView {
 		presenter.onRemove();
 	}
 
+	@UiHandler("toggleShowRanking")
+	void onToggleShowRankinwClicked(ClickEvent event) {
+		presenter.onToggleShowRanking();
+	}
+
 	@UiHandler("toggleShowTournaments")
 	void onToggleShowTournamentsClicked(ClickEvent event) {
 		presenter.onToggleShowTournaments();
@@ -50,6 +58,11 @@ public class CompetitionViewImpl extends Composite implements CompetitionView {
 	@Override
 	public void setPresenter(Presenter presenter) {
 		this.presenter = presenter;
+	}
+
+	@Override
+	public HasWidgets getRankingContainer() {
+		return rankingContainer;
 	}
 
 	@Override

@@ -13,6 +13,7 @@ import cz.fhsoft.poker.league.shared.model.v1.PrizeMoneyFormula;
 import cz.fhsoft.poker.league.shared.model.v1.PrizeMoneyRule;
 import cz.fhsoft.poker.league.shared.model.v1.PrizeMoneyRuleSet;
 import cz.fhsoft.poker.league.shared.model.v1.Tournament;
+import cz.fhsoft.poker.league.shared.services.RankingRecord;
 import cz.fhsoft.poker.league.shared.util.StringUtil;
 
 public class Comparators {
@@ -213,4 +214,53 @@ public class Comparators {
 	};
 
 
+	public static final Comparator<RankingRecord> RANKING_RECORD_COMPARATOR_WITH_SPLIT = new Comparator<RankingRecord>() {
+
+		@Override
+		public int compare(RankingRecord r1, RankingRecord r2) {
+			int result = r1.getRelativePrizeMoney() > r2.getRelativePrizeMoney()
+					? -1
+					: (r1.getRelativePrizeMoney() < r2.getRelativePrizeMoney()
+							? 1
+							: 0);
+			
+			if(result != 0)
+				return result;
+
+			result = r1.getRelativePoints() > r2.getRelativePoints()
+					? -1
+					: (r1.getRelativePoints() < r2.getRelativePoints()
+							? 1
+							: 0);
+			
+			if(result != 0)
+				return result;
+
+			double present1 = (double) r1.getGamesPlayed() / (double) r1.getTotalGames();
+			double present2 = (double) r2.getGamesPlayed() / (double) r2.getTotalGames();
+
+			result = present1 > present2
+					? -1
+					: (present1 < present2
+							? 1
+							: 0);
+
+			return result;
+		}
+		
+	};
+
+	public static final Comparator<RankingRecord> RANKING_RECORD_COMPARATOR_STRICT = new Comparator<RankingRecord>() {
+
+		@Override
+		public int compare(RankingRecord r1, RankingRecord r2) {
+			int result = RANKING_RECORD_COMPARATOR_WITH_SPLIT.compare(r1, r2);
+
+			if(result != 0)
+				return result;
+
+			return r1.getPlayerNick().compareTo(r2.getPlayerNick()); // name decides :-)
+		}
+		
+	};
 }
