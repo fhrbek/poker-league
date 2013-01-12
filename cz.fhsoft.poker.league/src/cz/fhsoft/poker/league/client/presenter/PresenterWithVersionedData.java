@@ -10,8 +10,6 @@ public abstract class PresenterWithVersionedData implements Presenter {
 	
 	private boolean visible = true;
 	
-	private boolean refreshFlag = false;
-	
 	protected PresenterWithVersionedData(Presenter parentPresenter) {
 		this.parentPresenter = parentPresenter;
 
@@ -19,12 +17,21 @@ public abstract class PresenterWithVersionedData implements Presenter {
 			
 			@Override
 			public void onDataChange(DataChangeEvent event) {
-				if(isVisible()) {
-					refreshFlag = false;
+				if(isVisible())
 					refresh();
-				}
-				else
-					refreshFlag = true;
+			}
+		});
+
+		AppController.INSTANCE.getEventBus().addHandler(VisibilityChangeEvent.TYPE, new VisibilityChangeEventHandler() {
+			
+			@Override
+			public void onVisibilityChange(VisibilityChangeEvent event) {
+				Presenter source = event.getPresenter();
+				if(!source.isVisible())
+					return;
+
+				if(isInVisibilityPath(source))
+					refresh();
 			}
 		});
 	}
@@ -49,11 +56,23 @@ public abstract class PresenterWithVersionedData implements Presenter {
 	
 	@Override
 	public void setVisible(boolean visible) {
-		if(refreshFlag) {
-			refreshFlag = false;
-			refresh();
+		boolean change = this.visible != visible;
+		this.visible = visible;
+		
+		if(change)
+			AppController.INSTANCE.getEventBus().fireEvent(new VisibilityChangeEvent(this));
+	}
+
+
+	private boolean isInVisibilityPath(Presenter source) {
+		Presenter node = this;
+		
+		while(node != null) {
+			if(node == source)
+				return true;
+			node = node.getParentPresenter();
 		}
 
-		this.visible = visible;
+		return false;
 	}
 }

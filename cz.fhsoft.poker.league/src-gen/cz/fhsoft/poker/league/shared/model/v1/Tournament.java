@@ -56,6 +56,15 @@ public class Tournament extends DescribedEntity {
 	 * @generated
 	 */
 	@Basic()
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date tournamentEnd = null;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	@Basic()
 	private int minPlayers = 0;
 
 	/**
@@ -180,6 +189,33 @@ public class Tournament extends DescribedEntity {
 	 */
 	public void setTournamentStart(Date newTournamentStart) {
 		tournamentStart = newTournamentStart;
+	}
+
+	/**
+	 * Returns the value of '<em><b>tournamentEnd</b></em>' feature.
+	 * 
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the value of '<em><b>tournamentEnd</b></em>' feature
+	 * @generated
+	 */
+	public Date getTournamentEnd() {
+		return tournamentEnd;
+	}
+
+	/**
+	 * Sets the '{@link Tournament#getTournamentEnd() <em>tournamentEnd</em>}'
+	 * feature.
+	 * 
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param the
+	 *            new value of the '{@link Tournament#getTournamentEnd()
+	 *            tournamentEnd}' feature.
+	 * @generated
+	 */
+	public void setTournamentEnd(Date newTournamentEnd) {
+		tournamentEnd = newTournamentEnd;
 	}
 
 	/**
@@ -418,6 +454,7 @@ public class Tournament extends DescribedEntity {
 	public String toString() {
 		return "Tournament " + " [defaultBuyIn: " + getDefaultBuyIn() + "]"
 				+ " [tournamentStart: " + getTournamentStart() + "]"
+				+ " [tournamentEnd: " + getTournamentEnd() + "]"
 				+ " [minPlayers: " + getMinPlayers() + "]" + " [maxPlayers: "
 				+ getMaxPlayers() + "]" + " [deadline: " + getDeadline() + "]";
 	}

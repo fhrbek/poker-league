@@ -67,6 +67,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="defaultPrizeMoneyRuleSet"
         eType="#//PrizeMoneyRuleSet"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="tournamentStart" eType="#//Timestamp"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tournamentEnd" eType="#//Timestamp"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="minPlayers" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="maxPlayers" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="deadline" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>

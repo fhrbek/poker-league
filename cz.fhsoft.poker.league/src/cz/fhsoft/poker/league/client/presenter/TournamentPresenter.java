@@ -76,7 +76,23 @@ public class TournamentPresenter extends RankablePresenter<Tournament, Tournamen
 
 			@Override
 			public void updateEntity(Tournament entity) {
-				entity.setTournamentStart(new Date(getWidget().getValue().getTime() + 86400 * 20)); //TODO Hard coded start time 20:00!!!
+				entity.setTournamentStart(new Date(getWidget().getValue().getTime() + 3600000 * 20)); //TODO Hard coded start time 20:00!!!
+			}
+			
+		};
+		
+		private Entry<DatePicker> endTimeEntry = new Entry<DatePicker>("Ukončení", new DatePicker()) {
+			//TODO Enable setting hours
+
+			@Override
+			public void setUpWidget(Tournament entity) {
+				getWidget().setValue(entity.getTournamentEnd());
+				getWidget().setCurrentMonth(entity.getTournamentEnd());
+			}
+
+			@Override
+			public void updateEntity(Tournament entity) {
+				entity.setTournamentEnd(new Date(getWidget().getValue().getTime() + 3600000 * 20)); //TODO Hard coded start time 20:00!!!
 			}
 			
 		};
@@ -155,6 +171,7 @@ public class TournamentPresenter extends RankablePresenter<Tournament, Tournamen
 			addEntry(nameEntry);
 			addEntry(descriptionEntry);
 			addEntry(startTimeEntry);
+			addEntry(endTimeEntry);
 			addEntry(minPlayersEntry);
 			addEntry(maxPlayersEntry);
 			addEntry(defaultBuyInEntry);
