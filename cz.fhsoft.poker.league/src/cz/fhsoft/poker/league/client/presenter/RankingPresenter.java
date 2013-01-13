@@ -7,7 +7,7 @@ import com.google.gwt.dom.client.Style.Display;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HasWidgets;
 
-import cz.fhsoft.poker.league.client.AppController;
+import cz.fhsoft.poker.league.client.AppControllerMain;
 import cz.fhsoft.poker.league.client.util.ErrorReporter;
 import cz.fhsoft.poker.league.client.view.RankingView;
 import cz.fhsoft.poker.league.shared.model.v1.IdentifiableEntity;
@@ -44,7 +44,7 @@ public class RankingPresenter extends PresenterWithVersionedData implements Rank
 		container.add(view.asWidget());
 		view.setRecords(null);
 		
-		AppController.INSTANCE.getStatisticsService().getRanking(rankingEvent.getClass().getName(), rankingEvent.getId(), new AsyncCallback<List<RankingRecord>>() {
+		AppControllerMain.INSTANCE.getStatisticsService().getRanking(rankingEvent.getClass().getName(), rankingEvent.getId(), new AsyncCallback<List<RankingRecord>>() {
 
 			@Override
 			public void onFailure(Throwable caught) {

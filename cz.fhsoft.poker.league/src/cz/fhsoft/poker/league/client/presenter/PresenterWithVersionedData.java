@@ -1,6 +1,6 @@
 package cz.fhsoft.poker.league.client.presenter;
 
-import cz.fhsoft.poker.league.client.AppController;
+import cz.fhsoft.poker.league.client.Bootstrap;
 import cz.fhsoft.poker.league.client.persistence.DataChangeEvent;
 import cz.fhsoft.poker.league.client.persistence.DataChangeEventHandler;
 
@@ -13,7 +13,7 @@ public abstract class PresenterWithVersionedData implements Presenter {
 	protected PresenterWithVersionedData(Presenter parentPresenter) {
 		this.parentPresenter = parentPresenter;
 
-		AppController.INSTANCE.getEventBus().addHandler(DataChangeEvent.TYPE, new DataChangeEventHandler() {
+		Bootstrap.INSTANCE.getEventBus().addHandler(DataChangeEvent.TYPE, new DataChangeEventHandler() {
 			
 			@Override
 			public void onDataChange(DataChangeEvent event) {
@@ -22,7 +22,7 @@ public abstract class PresenterWithVersionedData implements Presenter {
 			}
 		});
 
-		AppController.INSTANCE.getEventBus().addHandler(VisibilityChangeEvent.TYPE, new VisibilityChangeEventHandler() {
+		Bootstrap.INSTANCE.getEventBus().addHandler(VisibilityChangeEvent.TYPE, new VisibilityChangeEventHandler() {
 			
 			@Override
 			public void onVisibilityChange(VisibilityChangeEvent event) {
@@ -60,7 +60,7 @@ public abstract class PresenterWithVersionedData implements Presenter {
 		this.visible = visible;
 		
 		if(change)
-			AppController.INSTANCE.getEventBus().fireEvent(new VisibilityChangeEvent(this));
+			Bootstrap.INSTANCE.getEventBus().fireEvent(new VisibilityChangeEvent(this));
 	}
 
 
