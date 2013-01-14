@@ -27,6 +27,16 @@
     <url-pattern>/cz_fhsoft_poker_league/statisticsService</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>gameServiceServlet</servlet-name>
+    <servlet-class>cz.fhsoft.poker.league.server.services.GameServiceImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>gameServiceServlet</servlet-name>
+    <url-pattern>/cz_fhsoft_poker_league/gameService</url-pattern>
+  </servlet-mapping>
+  
   <!-- Default page to serve -->
   <welcome-file-list>
     <welcome-file>Cz_fhsoft_poker_league.html</welcome-file>

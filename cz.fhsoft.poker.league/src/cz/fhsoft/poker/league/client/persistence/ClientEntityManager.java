@@ -419,4 +419,19 @@ public class ClientEntityManager {
 		else
 			find((Class<E>)entity.getClass(), entity.getId(), callback);
 	}
+	
+	public <E extends IdentifiableEntity> void registerEntity(E entity) {
+		@SuppressWarnings("unchecked")
+		Class<E> entityClass = (Class<E>) entity.getClass();
+		Map<Object, IdentifiableEntity> auxLoaded = entities.get(entityClass);
+		if(auxLoaded == null)
+			entities.put(entityClass, auxLoaded = new HashMap<Object, IdentifiableEntity>());
+		
+		Map<Object, IdentifiableEntity> loaded = auxLoaded;
+		@SuppressWarnings("unchecked")
+		E existingEntity = (E) loaded.get(entity.getId());
+		if(existingEntity != null && existingEntity != entity)
+			existingEntity.setProxy(true);
+		loaded.put(entity.getId(), entity);
+	}
 }

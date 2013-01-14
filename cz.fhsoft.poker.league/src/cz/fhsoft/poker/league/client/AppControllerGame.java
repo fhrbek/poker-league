@@ -1,19 +1,27 @@
 package cz.fhsoft.poker.league.client;
 
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Style;
+import com.google.gwt.dom.client.Style.Display;
 import com.google.gwt.user.client.ui.HasWidgets;
 
+import cz.fhsoft.poker.league.client.presenter.CurrentTournamentsPresenter;
 import cz.fhsoft.poker.league.client.presenter.Presenter;
 import cz.fhsoft.poker.league.client.presenter.PresenterWithVersionedData;
+import cz.fhsoft.poker.league.client.services.GameService;
+import cz.fhsoft.poker.league.client.services.GameServiceAsync;
+import cz.fhsoft.poker.league.client.view.CurrentTournamentsView;
+import cz.fhsoft.poker.league.client.view.CurrentTournamentsViewImpl;
 
 public class AppControllerGame extends PresenterWithVersionedData {
 
 	public static AppControllerGame INSTANCE = null;
 	
-	private HasWidgets container;
+	private CurrentTournamentsPresenter currentTournamentsPresenter;
 	
-//	private WorkbenchView workbenchView;
-//
-//	private WorkbenchPresenter workbenchPresenter;
+	private CurrentTournamentsView currentTournamentsView;
+	
+	private GameServiceAsync gameService = GWT.create(GameService.class);
 	
 	public AppControllerGame(Presenter parentPresenter) {
 		super(parentPresenter);
@@ -26,32 +34,34 @@ public class AppControllerGame extends PresenterWithVersionedData {
 	
 	@Override
 	public void go(HasWidgets container) {
-		this.container = container;
-//		initWorkbench(container);
-	}
-
-//	private void initWorkbench(HasWidgets container) {
-//		if(workbenchView == null)
-//			workbenchView = new WorkbenchViewImpl();
-//		
-//		workbenchPresenter = new WorkbenchPresenter(this, workbenchView);
-//		
-//		workbenchPresenter.go(container);
-//	}
-
-	@Override
-	public Presenter getParentPresenter() {
-		return null;
+		if(currentTournamentsView == null)
+			currentTournamentsView = new CurrentTournamentsViewImpl();
+		if(currentTournamentsPresenter == null)
+			currentTournamentsPresenter =  new CurrentTournamentsPresenter(this, currentTournamentsView);
+		
+		currentTournamentsPresenter.go(container);
 	}
 
 	@Override
 	public void setVisible(boolean visible) {
 		super.setVisible(false);
-		//TODO hide the main element
+
+		if(currentTournamentsView != null) {
+			Style style = currentTournamentsView.asWidget().getElement().getStyle();
+			
+			if(visible)
+				style.clearDisplay();
+			else
+				style.setDisplay(Display.NONE);
+		}
 	}
 
 	@Override
 	protected void refresh() {
 		// nothing to do here, inner presenters will do their job
+	}
+	
+	public GameServiceAsync getGameService() {
+		return gameService;
 	}
 }

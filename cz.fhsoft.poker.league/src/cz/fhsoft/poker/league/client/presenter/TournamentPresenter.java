@@ -76,7 +76,7 @@ public class TournamentPresenter extends RankablePresenter<Tournament, Tournamen
 
 			@Override
 			public void updateEntity(Tournament entity) {
-				entity.setTournamentStart(new Date(getWidget().getValue().getTime() + 3600000 * 20)); //TODO Hard coded start time 20:00!!!
+				entity.setTournamentStart(new Date((getWidget().getValue().getTime() - getWidget().getValue().getTime() % 86400000) + 3600000 * 18)); //TODO Hard coded start time 18:00!!!
 			}
 			
 		};
@@ -92,7 +92,7 @@ public class TournamentPresenter extends RankablePresenter<Tournament, Tournamen
 
 			@Override
 			public void updateEntity(Tournament entity) {
-				entity.setTournamentEnd(new Date(getWidget().getValue().getTime() + 3600000 * 20)); //TODO Hard coded start time 20:00!!!
+				entity.setTournamentEnd(new Date((getWidget().getValue().getTime() - getWidget().getValue().getTime() % 86400000) + 3600000 * 18)); //TODO Hard coded start time 18:00!!!
 			}
 			
 		};

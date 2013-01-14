@@ -17,7 +17,9 @@ import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.IntegerBox;
 import com.google.gwt.user.client.ui.Widget;
 
+import cz.fhsoft.poker.league.client.persistence.ClientEntityManager;
 import cz.fhsoft.poker.league.client.persistence.DigestProviders;
+import cz.fhsoft.poker.league.client.util.ErrorReporter;
 import cz.fhsoft.poker.league.client.view.InvitationsView;
 import cz.fhsoft.poker.league.client.widget.AbstractEntityListEditor.LabeledColumn;
 import cz.fhsoft.poker.league.client.widget.AbstractPersistentEntityEditor;
@@ -149,18 +151,30 @@ public class InvitationsPresenter extends PresenterWithVersionedData implements 
 			
 			@Override
 			protected void getData(final AsyncCallback<List<Invitation>> callback) {
-				Util.resolve(getTournament().getInvitations(), new AsyncCallback<Set<Invitation>>() {
+				ClientEntityManager.getInstance().resolveEntity(getTournament(), new AsyncCallback<Tournament>() {
 
 					@Override
 					public void onFailure(Throwable caught) {
-						callback.onFailure(caught);
+						ErrorReporter.error(caught);
 					}
 
 					@Override
-					public void onSuccess(Set<Invitation> invitationsSet) {
-						List<Invitation> invitations = new ArrayList<Invitation>(invitationsSet);
-						Collections.sort(invitations, Comparators.INVITATIONS_COMPARATOR);
-						callback.onSuccess(invitations);
+					public void onSuccess(Tournament tournament) {
+						Util.resolve(tournament.getInvitations(), new AsyncCallback<Set<Invitation>>() {
+
+							@Override
+							public void onFailure(Throwable caught) {
+								callback.onFailure(caught);
+							}
+
+							@Override
+							public void onSuccess(Set<Invitation> invitationsSet) {
+								List<Invitation> invitations = new ArrayList<Invitation>(invitationsSet);
+								Collections.sort(invitations, Comparators.INVITATIONS_COMPARATOR);
+								callback.onSuccess(invitations);
+							}
+							
+						});
 					}
 					
 				});

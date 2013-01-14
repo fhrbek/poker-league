@@ -46,11 +46,6 @@ public class AppControllerMain extends PresenterWithVersionedData {
 		workbenchPresenter.go(container);
 	}
 
-	@Override
-	public Presenter getParentPresenter() {
-		return null;
-	}
-
 	public StatisticsServiceAsync getStatisticsService() {
 		return statisticsService;
 	}
