@@ -43,9 +43,13 @@ public class CurrentTournamentsViewImpl extends Composite implements CurrentTour
 
 	@Override
 	public void setNoTournament(boolean flag) {
-		if(flag)
+		if(flag) {
 			noTournament.getElement().getStyle().clearDisplay();
-		else
+			((Widget) currentTournamentsContainer).getElement().getStyle().setDisplay(Display.NONE);
+		}
+		else {
 			noTournament.getElement().getStyle().setDisplay(Display.NONE);
+			((Widget) currentTournamentsContainer).getElement().getStyle().clearDisplay();
+		}
 	}
 }
