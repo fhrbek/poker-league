@@ -6,11 +6,3 @@
 .pseudoLink:hover {
 	text-decoration: underline;
 }
-
-.gwt-PopupPanelGlass {
-	z-index: 100;
-}
-
-.gwt-PopupPanel {
-	z-index: 101;
-}

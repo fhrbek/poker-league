@@ -18,6 +18,8 @@ public class AppControllerSuper implements Presenter {
 
 	public static AppControllerSuper INSTANCE = null;
 	
+	private FlowPanel superContainer;
+	
 	private FlowPanel mainContainer;
 	
 	private FlowPanel gameContainer;
@@ -37,12 +39,16 @@ public class AppControllerSuper implements Presenter {
 	
 	@Override
 	public void go(HasWidgets container) {
+		superContainer = new FlowPanel();
 		mainContainer = new FlowPanel();
 		gameContainer = new FlowPanel();
+		StyleUtil.makeAbsoluteFull(superContainer);
 		StyleUtil.makeAbsoluteFull(mainContainer);
 		StyleUtil.makeAbsoluteFull(gameContainer);
-		container.add(mainContainer);
-		container.add(gameContainer);
+		superContainer.add(mainContainer);
+		superContainer.add(gameContainer);
+		superContainer.getElement().getStyle().setZIndex(0);
+		container.add(superContainer);
 
 		selectApplicationEntry(Location.getHash());
 		
@@ -93,10 +99,10 @@ public class AppControllerSuper implements Presenter {
 				else
 					appControllerMain.setVisible(true);
 
-				mainContainer.getElement().getParentElement().getStyle().clearDisplay();
-				mainContainer.getElement().getParentElement().getStyle().setZIndex(1);
-				gameContainer.getElement().getParentElement().getStyle().setDisplay(Display.NONE);
-				gameContainer.getElement().getParentElement().getStyle().setZIndex(0);
+				mainContainer.getElement().getStyle().clearDisplay();
+				mainContainer.getElement().getStyle().setZIndex(1);
+				gameContainer.getElement().getStyle().setDisplay(Display.NONE);
+				gameContainer.getElement().getStyle().setZIndex(0);
 				currentAppController = appControllerMain;
 			}
 			
@@ -122,10 +128,10 @@ public class AppControllerSuper implements Presenter {
 				else
 					appControllerGame.setVisible(true);
 
-				gameContainer.getElement().getParentElement().getStyle().clearDisplay();
-				gameContainer.getElement().getParentElement().getStyle().setZIndex(1);
-				mainContainer.getElement().getParentElement().getStyle().setDisplay(Display.NONE);
-				mainContainer.getElement().getParentElement().getStyle().setZIndex(0);
+				gameContainer.getElement().getStyle().clearDisplay();
+				gameContainer.getElement().getStyle().setZIndex(1);
+				mainContainer.getElement().getStyle().setDisplay(Display.NONE);
+				mainContainer.getElement().getStyle().setZIndex(0);
 				currentAppController = appControllerGame;
 			}
 			
