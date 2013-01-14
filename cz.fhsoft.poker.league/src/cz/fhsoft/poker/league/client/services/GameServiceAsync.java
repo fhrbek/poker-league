@@ -13,4 +13,13 @@ public interface GameServiceAsync {
 
 	void whiteListDummy(WhiteList whiteList, AsyncCallback<WhiteList> callback);
 
+	void startNewGame(Integer tournamentId, List<Integer> playerIds,
+			AsyncCallback<Long> callback);
+
+	void seatOpen(List<Integer> playerIds,
+			AsyncCallback<Long> callback);
+
+	void undoSeatOpen(List<Integer> playerIds,
+			AsyncCallback<Long> callback);
+
 }

@@ -14,9 +14,9 @@ public interface CurrentTournamentView {
 		
 		void onNewGame(List<Integer> playerIds);
 		
-		void onSeatOpen(List<Integer> playerIds);
+		void onSeatOpen(List<Integer> playerInGameIds);
 		
-		void onUndoSeatOpen(List<Integer> playerIds);
+		void onUndoSeatOpen(List<Integer> playerInGameIds);
 	}
 
 	void setPresenter(Presenter presenter);

@@ -19,4 +19,10 @@ public interface GameService extends RemoteService {
 	WhiteList whiteListDummy(WhiteList whiteList);
 	
 	List<Tournament> getCurrentTournaments();
+	
+	long startNewGame(Integer tournamentId, List<Integer> playerIds);
+	
+	long seatOpen(List<Integer> playerIds);
+	
+	long undoSeatOpen(List<Integer> playerIds);
 }

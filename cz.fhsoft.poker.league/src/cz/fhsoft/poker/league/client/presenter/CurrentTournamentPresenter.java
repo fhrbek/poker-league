@@ -5,10 +5,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HasWidgets;
 
+import cz.fhsoft.poker.league.client.AppControllerGame;
 import cz.fhsoft.poker.league.client.persistence.ClientEntityManager;
 import cz.fhsoft.poker.league.client.util.ErrorReporter;
 import cz.fhsoft.poker.league.client.view.CurrentTournamentView;
@@ -28,7 +28,7 @@ public class CurrentTournamentPresenter extends PresenterWithVersionedData imple
 	private CurrentTournamentView view;
 	
 	private HasWidgets container;
-	
+
 	public CurrentTournamentPresenter(Presenter parentPresenter, Tournament tournament, CurrentTournamentView view) {
 		super(parentPresenter);
 		this.tournament = tournament;
@@ -96,7 +96,7 @@ public class CurrentTournamentPresenter extends PresenterWithVersionedData imple
 
 										if(active)
 											setNewPlayerCandidates();
-										view.setNewGameVisible(active);
+										view.setNewGameVisible(!active);
 										view.setCurrentGameVisible(true);
 										view.setGameName("Hra č. " + lastGame.getOrdinal());
 
@@ -160,20 +160,53 @@ public class CurrentTournamentPresenter extends PresenterWithVersionedData imple
 
 	@Override
 	public void onNewGame(List<Integer> playerIds) {
-		// TODO Auto-generated method stub
-		Window.alert("NEW GAME WITH " + playerIds.size() + " PLAYERS");
+		AppControllerGame.INSTANCE.getGameService().startNewGame(tournament.getId(), playerIds, new AsyncCallback<Long>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+				ErrorReporter.error(caught);
+			}
+
+			@Override
+			public void onSuccess(Long newDataVersion) {
+				ClientEntityManager.getInstance().checkDataVersion(newDataVersion);
+			}
+			
+		});
 	}
 
 	@Override
-	public void onSeatOpen(List<Integer> playerIds) {
-		// TODO Auto-generated method stub
-		Window.alert("SEAT OPEN WITH " + playerIds.size() + " PLAYERS");
+	public void onSeatOpen(List<Integer> playerInGameIds) {
+		AppControllerGame.INSTANCE.getGameService().seatOpen(playerInGameIds, new AsyncCallback<Long>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+				ErrorReporter.error(caught);
+			}
+
+			@Override
+			public void onSuccess(Long newDataVersion) {
+				ClientEntityManager.getInstance().checkDataVersion(newDataVersion);
+			}
+			
+		});
 	}
 
 	@Override
-	public void onUndoSeatOpen(List<Integer> playerIds) {
-		// TODO Auto-generated method stub
-		Window.alert("UNDO SEAT OPEN WITH " + playerIds.size() + " PLAYERS");
+	public void onUndoSeatOpen(List<Integer> playerInGameIds) {
+		AppControllerGame.INSTANCE.getGameService().undoSeatOpen(playerInGameIds, new AsyncCallback<Long>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+				ErrorReporter.error(caught);
+			}
+
+			@Override
+			public void onSuccess(Long newDataVersion) {
+				ClientEntityManager.getInstance().checkDataVersion(newDataVersion);
+			}
+			
+		});
 	}
 
 }

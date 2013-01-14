@@ -58,7 +58,7 @@ public class ClientEntityManager {
 		});
 	}
 	
-	private void checkDataVersion(long newDataVersion) {
+	public void checkDataVersion(long newDataVersion) {
 		if(newDataVersion > recentDataVersion) {
 			if(recentDataVersion > 0) {
 				invalidateCache();

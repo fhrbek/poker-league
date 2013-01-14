@@ -134,7 +134,7 @@ public class CurrentTournamentViewImpl extends Composite implements CurrentTourn
 		for(PlayerInGame playerInGame : currentPlayersInGame) {
 			String html = playerInGame.getRank() == 0
 					? playerInGame.getPlayer().getNick()
-					: ("<i>" + playerInGame.getRank() + ". " + SafeHtmlUtils.fromString(playerInGame.getPlayer().getNick()) + "</i>");
+					: ("<i>" + playerInGame.getRank() + ". " + SafeHtmlUtils.fromString(playerInGame.getPlayer().getNick()).asString() + "</i>");
 			CheckBox checkBox = new CheckBox(html, true);
 			playerInGameIdMap.put(checkBox, playerInGame.getId());
 			playersInGameContainer.add(checkBox);
