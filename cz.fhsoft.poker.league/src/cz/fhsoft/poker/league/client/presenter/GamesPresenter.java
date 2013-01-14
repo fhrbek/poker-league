@@ -156,11 +156,12 @@ public class GamesPresenter extends PresenterWithVersionedData implements GamesV
 
 								Set<PlayerInGame> playersInGame = new HashSet<PlayerInGame>(invitations.size());
 								
+								int newId = -1;
+
 								for(Invitation invitation : invitations) {
 									if(invitation.getReply() != InvitationReply.ACCEPTED)
 										continue;
 									
-									int newId = -1;
 									PlayerInGame playerInGame = new PlayerInGame();
 									playerInGame.setId(newId--);
 									playerInGame.setPlayer(invitation.getPlayer());
