@@ -37,6 +37,8 @@ public class CurrentTournamentsPresenter extends PresenterWithVersionedData impl
 			container.clear();
 			container.add(view.asWidget());
 			
+			view.setNoTournament(false);
+
 			AppControllerGame.INSTANCE.getGameService().getCurrentTournaments(new AsyncCallback<List<Tournament>>() {
 
 				@Override
@@ -52,6 +54,9 @@ public class CurrentTournamentsPresenter extends PresenterWithVersionedData impl
 						CurrentTournamentPresenter currentTournamentPresenter = new CurrentTournamentPresenter(CurrentTournamentsPresenter.this, tournament, currentTournamentView);
 						currentTournamentPresenter.go(view.getCurrentTournamentsContainer());
 					}
+					
+					if(tournaments.size() == 0)
+						view.setNoTournament(true);
 				}
 				
 			});

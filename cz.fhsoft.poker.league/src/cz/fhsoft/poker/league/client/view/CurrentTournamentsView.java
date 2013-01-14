@@ -15,4 +15,6 @@ public interface CurrentTournamentsView {
 
 	HasWidgets getCurrentTournamentsContainer();
 
+	void setNoTournament(boolean flag);
+
 }

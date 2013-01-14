@@ -115,7 +115,10 @@ public class GameServiceImpl extends RemoteServiceServlet implements GameService
 
 					playersInGameForSeatOpen.add(playerInGame);
 				}
-				
+
+				if(game == null)
+					return EntityServiceImpl.getDataVersionStatic();
+
 				int minRank = game.getPlayersInGame().size() + 1;
 				for(PlayerInGame rankedPlayerInGame : game.getPlayersInGame())
 					if(rankedPlayerInGame.getRank() > 0 && rankedPlayerInGame.getRank() < minRank)
@@ -161,24 +164,22 @@ public class GameServiceImpl extends RemoteServiceServlet implements GameService
 
 					playersInGameForUndoSeatOpen.add(playerInGame);
 				}
-				
-				for(PlayerInGame dummy : game.getPlayersInGame()) {
-					// do nothing, just force loading
-					@SuppressWarnings("unused")
-					int dummyInt = dummy.getId();
-				}
-					
+
+				if(game == null)
+					return EntityServiceImpl.getDataVersionStatic();
+
+				int reRank = 1;
 				
 				TreeMap<Integer, PlayerInGame> ranks = new TreeMap<Integer, PlayerInGame>();
 				for(PlayerInGame rankedPlayerInGame : game.getPlayersInGame())
 					if(rankedPlayerInGame.getRank() > 0 && !playersInGameForUndoSeatOpen.contains(rankedPlayerInGame))
 						ranks.put(rankedPlayerInGame.getRank(), rankedPlayerInGame);
+					else
+						reRank++;
 
 				for(PlayerInGame playerInGameForUndoSeatOpen : playersInGameForUndoSeatOpen)
 					playerInGameForUndoSeatOpen.setRank(0);
 
-				int reRank = 1;
-				
 				for(PlayerInGame rerankedPlayerInGame : ranks.values())
 					rerankedPlayerInGame.setRank(reRank++);
 				

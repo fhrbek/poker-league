@@ -2,12 +2,11 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui">
 	<ui:style>
-		.mainTabs {
-			height: 100%;
-		}
 	</ui:style>
 	<g:FlowPanel>
+		<g:Anchor href="#">Hlavní stránka</g:Anchor>
 		<g:Label>Aktuální turnaje</g:Label>
+		<g:Label ui:field="noTournament">V tuto chvíli se nehraje žádný turnaj</g:Label>
 		<g:FlowPanel ui:field="currentTournamentsContainer"/>
 	</g:FlowPanel>
 </ui:UiBinder> 

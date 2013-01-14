@@ -40,6 +40,10 @@ public class EntityServiceImpl extends RemoteServiceServlet implements EntitySer
 
 	@Override
 	public long getDataVersion() {
+		return getDataVersionStatic();
+	}
+
+	public static long getDataVersionStatic() {
 		synchronized(LOCK) {
 			DataVersion dataVersion = ServletInitializer.getEntityManager().find(DataVersion.class, DATA_VERSION_ID);
 			if(dataVersion == null) {

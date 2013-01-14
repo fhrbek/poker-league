@@ -11,14 +11,14 @@
 		<g:Label ui:field="tournamentName"/>
 		<g:FlowPanel ui:field="newGame">
 			<g:Label>V tuto chvíli není rozhrána žádná hra, můžete zahájit novou hru.</g:Label>
-			<g:FlowPanel ui:field="newPlayersContainer"/>
-			<g:Button ui:field="startNewGame">Zahájit novou hru</g:Button>
+			<g:VerticalPanel ui:field="newPlayersContainer"/>
+			<g:Label addStyleNames="pseudoLink" ui:field="startNewGame">Zahájit novou hru</g:Label>
 		</g:FlowPanel>
 		<g:FlowPanel ui:field="currentGame">
 			<g:Label ui:field="gameName"/>
-			<g:FlowPanel ui:field="playersInGameContainer"/>
-			<g:Button ui:field="seatOpen">Vyřadit označené hráče</g:Button>
-			<g:Button ui:field="undoSeatOpen">Vrátit do hry označené hráče</g:Button>
+			<g:VerticalPanel ui:field="playersInGameContainer"/>
+			<g:Label addStyleNames="pseudoLink" ui:field="seatOpen">Vyřadit označené hráče</g:Label>
+			<g:Label addStyleNames="pseudoLink" ui:field="undoSeatOpen">Vrátit do hry označené hráče</g:Label>
 		</g:FlowPanel>
 	</g:FlowPanel>
 </ui:UiBinder> 
