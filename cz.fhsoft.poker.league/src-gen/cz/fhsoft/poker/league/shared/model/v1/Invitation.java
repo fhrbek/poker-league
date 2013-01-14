@@ -56,6 +56,14 @@ public class Invitation extends IdentifiableEntity {
 	private int ordinal = 0;
 
 	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	@Basic()
+	private String uuid = null;
+
+	/**
 	 * Returns the value of '<em><b>tournament</b></em>' feature.
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -161,6 +169,31 @@ public class Invitation extends IdentifiableEntity {
 	}
 
 	/**
+	 * Returns the value of '<em><b>uuid</b></em>' feature.
+	 * 
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the value of '<em><b>uuid</b></em>' feature
+	 * @generated
+	 */
+	public String getUuid() {
+		return uuid;
+	}
+
+	/**
+	 * Sets the '{@link Invitation#getUuid() <em>uuid</em>}' feature.
+	 * 
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param the
+	 *            new value of the '{@link Invitation#getUuid() uuid}' feature.
+	 * @generated
+	 */
+	public void setUuid(String newUuid) {
+		uuid = newUuid;
+	}
+
+	/**
 	 * A toString method which prints the values of all EAttributes of this
 	 * instance. <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -169,6 +202,6 @@ public class Invitation extends IdentifiableEntity {
 	@Override
 	public String toString() {
 		return "Invitation " + " [reply: " + getReply() + "]" + " [ordinal: "
-				+ getOrdinal() + "]";
+				+ getOrdinal() + "]" + " [uuid: " + getUuid() + "]";
 	}
 }

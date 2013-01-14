@@ -5,6 +5,7 @@
         http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd" version="1.0">
 
     <persistence-unit name="poker.league.data" transaction-type="RESOURCE_LOCAL">
+    	<class>cz.fhsoft.poker.league.shared.model.v1.DataStructureVersion</class>
     	<class>cz.fhsoft.poker.league.shared.model.v1.DataVersion</class>
     	<class>cz.fhsoft.poker.league.shared.model.v1.IdentifiableEntity</class>
     	<class>cz.fhsoft.poker.league.shared.model.v1.DescribedEntity</class>

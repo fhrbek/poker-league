@@ -16,6 +16,7 @@ import com.google.gwt.user.client.ui.HasWidgets;
 
 import cz.fhsoft.poker.league.client.persistence.ClientEntityManager;
 import cz.fhsoft.poker.league.client.util.ErrorReporter;
+import cz.fhsoft.poker.league.client.util.UUID;
 import cz.fhsoft.poker.league.client.view.TournamentViewImpl;
 import cz.fhsoft.poker.league.client.view.TournamentsView;
 import cz.fhsoft.poker.league.shared.model.v1.Competition;
@@ -156,6 +157,7 @@ public class TournamentsPresenter extends PresenterWithVersionedData implements 
 							invitation.setPlayer(player);
 							invitation.setReply(InvitationReply.NO_REPLY);
 							invitation.setTournament(newTournament);
+							invitation.setUuid(UUID.generateUUID());
 							
 							invitations.add(invitation);
 						}

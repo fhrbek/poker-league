@@ -20,6 +20,7 @@ import com.google.gwt.user.client.ui.Widget;
 import cz.fhsoft.poker.league.client.persistence.ClientEntityManager;
 import cz.fhsoft.poker.league.client.persistence.DigestProviders;
 import cz.fhsoft.poker.league.client.util.ErrorReporter;
+import cz.fhsoft.poker.league.client.util.UUID;
 import cz.fhsoft.poker.league.client.view.InvitationsView;
 import cz.fhsoft.poker.league.client.widget.AbstractEntityListEditor.LabeledColumn;
 import cz.fhsoft.poker.league.client.widget.AbstractPersistentEntityEditor;
@@ -190,6 +191,7 @@ public class InvitationsPresenter extends PresenterWithVersionedData implements 
 				invitation.setTournament(getTournament());
 				invitation.setOrdinal(0);
 				invitation.setReply(InvitationReply.NO_REPLY);
+				invitation.setUuid(UUID.generateUUID());
 				
 				return invitation;
 			}
