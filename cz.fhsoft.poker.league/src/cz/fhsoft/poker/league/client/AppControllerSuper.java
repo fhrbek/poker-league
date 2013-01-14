@@ -2,20 +2,25 @@ package cz.fhsoft.poker.league.client;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.RunAsyncCallback;
+import com.google.gwt.dom.client.Style.Display;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.Window.Location;
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HasWidgets;
 
 import cz.fhsoft.poker.league.client.presenter.Presenter;
 import cz.fhsoft.poker.league.client.util.ErrorReporter;
+import cz.fhsoft.poker.league.client.util.StyleUtil;
 
 public class AppControllerSuper implements Presenter {
 
 	public static AppControllerSuper INSTANCE = null;
 	
-	private HasWidgets container;
+	private FlowPanel mainContainer;
+	
+	private FlowPanel gameContainer;
 	
 	private Presenter currentAppController = null;
 	
@@ -32,7 +37,13 @@ public class AppControllerSuper implements Presenter {
 	
 	@Override
 	public void go(HasWidgets container) {
-		this.container = container;
+		mainContainer = new FlowPanel();
+		gameContainer = new FlowPanel();
+		StyleUtil.makeAbsoluteFull(mainContainer);
+		StyleUtil.makeAbsoluteFull(gameContainer);
+		container.add(mainContainer);
+		container.add(gameContainer);
+
 		selectApplicationEntry(Location.getHash());
 		
 		History.addValueChangeHandler(new ValueChangeHandler<String>() {
@@ -77,11 +88,15 @@ public class AppControllerSuper implements Presenter {
 					currentAppController.setVisible(false);
 				if(appControllerMain == null) {
 					appControllerMain = new AppControllerMain(AppControllerSuper.this);
-					appControllerMain.go(container);
+					appControllerMain.go(mainContainer);
 				}
 				else
 					appControllerMain.setVisible(true);
 
+				mainContainer.getElement().getParentElement().getStyle().clearDisplay();
+				mainContainer.getElement().getParentElement().getStyle().setZIndex(1);
+				gameContainer.getElement().getParentElement().getStyle().setDisplay(Display.NONE);
+				gameContainer.getElement().getParentElement().getStyle().setZIndex(0);
 				currentAppController = appControllerMain;
 			}
 			
@@ -102,11 +117,15 @@ public class AppControllerSuper implements Presenter {
 					currentAppController.setVisible(false);
 				if(appControllerGame == null) {
 					appControllerGame = new AppControllerGame(AppControllerSuper.this);
-					appControllerGame.go(container);
+					appControllerGame.go(gameContainer);
 				}
 				else
 					appControllerGame.setVisible(true);
 
+				gameContainer.getElement().getParentElement().getStyle().clearDisplay();
+				gameContainer.getElement().getParentElement().getStyle().setZIndex(1);
+				mainContainer.getElement().getParentElement().getStyle().setDisplay(Display.NONE);
+				mainContainer.getElement().getParentElement().getStyle().setZIndex(0);
 				currentAppController = appControllerGame;
 			}
 			

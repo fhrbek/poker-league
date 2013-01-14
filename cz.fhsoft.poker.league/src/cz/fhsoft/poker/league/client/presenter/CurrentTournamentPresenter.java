@@ -94,9 +94,11 @@ public class CurrentTournamentPresenter extends PresenterWithVersionedData imple
 											}
 										}
 
-										if(active)
+										if(!active) {
+											view.setNewGameVisible(true);
 											setNewPlayerCandidates();
-										view.setNewGameVisible(!active);
+										}
+
 										view.setCurrentGameVisible(true);
 										view.setGameName("Hra č. " + lastGame.getOrdinal());
 

@@ -200,17 +200,17 @@ public class ClientEntityManager {
 			
 	}
 
-	private Map<Class<? extends IdentifiableEntity>, List<AsyncCallback<? extends IdentifiableEntity>>> findCallbackMap =
-			new HashMap<Class<? extends IdentifiableEntity>, List<AsyncCallback<? extends IdentifiableEntity>>>();
+	private Map<Class<? extends IdentifiableEntity>, Map<Number, List<AsyncCallback<? extends IdentifiableEntity>>>> findCallbackMap =
+			new HashMap<Class<? extends IdentifiableEntity>, Map<Number, List<AsyncCallback<? extends IdentifiableEntity>>>>();
 	
 	@SuppressWarnings("unchecked")
-	private <E extends IdentifiableEntity> List<AsyncCallback<E>> findUncheckedCastToE(List<AsyncCallback<? extends IdentifiableEntity>> list) {
-		return (List<AsyncCallback<E>>) (List<?>) list;
+	private <E extends IdentifiableEntity> Map<Number, List<AsyncCallback<E>>> findUncheckedCastToE(Map<Number, List<AsyncCallback<? extends IdentifiableEntity>>> map) {
+		return (Map<Number, List<AsyncCallback<E>>>) (Map<?, ?>) map;
 	}
 
 	@SuppressWarnings("unchecked")
-	private <E extends IdentifiableEntity> List<AsyncCallback<? extends IdentifiableEntity>> findUncheckedCastFromE(List<AsyncCallback<E>> list) {
-		return (List<AsyncCallback<? extends IdentifiableEntity>>) (List<?>) list;
+	private <E extends IdentifiableEntity> Map<Number, List<AsyncCallback<? extends IdentifiableEntity>>> findUncheckedCastFromE(Map<Number, List<AsyncCallback<E>>> map) {
+		return (Map<Number, List<AsyncCallback<? extends IdentifiableEntity>>>) (Map<?, ?>) map;
 	}
 
 	public <E extends IdentifiableEntity> void find(Class<E> entityClass, final Number id, AsyncCallback<E> callback) {
@@ -225,11 +225,17 @@ public class ClientEntityManager {
 		if(entity != null && !entity.isProxy())
 			callback.onSuccess(entity);
 		else {
-			List<AsyncCallback<E>> auxPendingCallbacks = findUncheckedCastToE(findCallbackMap.get(entityClass));
+			Map<Number, List<AsyncCallback<E>>> auxPendingCallbackMap = findUncheckedCastToE(findCallbackMap.get(entityClass));
 			
-			if(auxPendingCallbacks == null) {
-				findCallbackMap.put(entityClass, findUncheckedCastFromE(auxPendingCallbacks = new ArrayList<AsyncCallback<E>>()));
-			}
+			if(auxPendingCallbackMap == null)
+				findCallbackMap.put(entityClass, findUncheckedCastFromE(auxPendingCallbackMap = new HashMap<Number, List<AsyncCallback<E>>>()));
+			
+			final Map<Number, List<AsyncCallback<E>>> pendingCallbackMap = auxPendingCallbackMap;
+
+			List<AsyncCallback<E>> auxPendingCallbacks = auxPendingCallbackMap.get(id);
+			
+			if(auxPendingCallbacks == null)
+				auxPendingCallbackMap.put(id, auxPendingCallbacks = new ArrayList<AsyncCallback<E>>());
 
 			final List<AsyncCallback<E>> pendingCallbacks = auxPendingCallbacks;
 			pendingCallbacks.add(callback);
@@ -252,6 +258,7 @@ public class ClientEntityManager {
 					}
 					finally {
 						pendingCallbacks.clear();
+						pendingCallbackMap.remove(id);
 					}
 				}
 
@@ -282,6 +289,7 @@ public class ClientEntityManager {
 					}
 					finally {
 						pendingCallbacks.clear();
+						pendingCallbackMap.remove(id);
 					}
 				}
 				

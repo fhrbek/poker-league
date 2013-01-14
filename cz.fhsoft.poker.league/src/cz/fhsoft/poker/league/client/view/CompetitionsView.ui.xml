@@ -4,9 +4,17 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
 	xmlns:cell="urn:import:com.google.gwt.user.cellview.client">
 	<ui:style>
+		.scrollable {
+			overflow: auto;
+			position: absolute;
+			top: 30px;
+			left: 10px;
+			right: 10px;
+			bottom: 10px;
+		}
 	</ui:style>
 	<g:FlowPanel>
 		<g:Label addStyleNames="pseudoLink" ui:field="newCompetition">Nová soutěž</g:Label>
-		<g:FlowPanel ui:field="competitionsContainer"/>
+		<g:FlowPanel ui:field="competitionsContainer" addStyleNames="{style.scrollable}"/>
 	</g:FlowPanel>
 </ui:UiBinder> 

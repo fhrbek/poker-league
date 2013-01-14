@@ -10,6 +10,7 @@ import cz.fhsoft.poker.league.client.presenter.Presenter;
 import cz.fhsoft.poker.league.client.presenter.PresenterWithVersionedData;
 import cz.fhsoft.poker.league.client.services.GameService;
 import cz.fhsoft.poker.league.client.services.GameServiceAsync;
+import cz.fhsoft.poker.league.client.util.StyleUtil;
 import cz.fhsoft.poker.league.client.view.CurrentTournamentsView;
 import cz.fhsoft.poker.league.client.view.CurrentTournamentsViewImpl;
 
@@ -34,8 +35,11 @@ public class AppControllerGame extends PresenterWithVersionedData {
 	
 	@Override
 	public void go(HasWidgets container) {
-		if(currentTournamentsView == null)
+		if(currentTournamentsView == null) {
 			currentTournamentsView = new CurrentTournamentsViewImpl();
+			StyleUtil.makeAbsoluteFull(currentTournamentsView.asWidget());
+		}
+
 		if(currentTournamentsPresenter == null)
 			currentTournamentsPresenter =  new CurrentTournamentsPresenter(this, currentTournamentsView);
 		
@@ -44,7 +48,7 @@ public class AppControllerGame extends PresenterWithVersionedData {
 
 	@Override
 	public void setVisible(boolean visible) {
-		super.setVisible(false);
+		super.setVisible(visible);
 
 		if(currentTournamentsView != null) {
 			Style style = currentTournamentsView.asWidget().getElement().getStyle();

@@ -10,6 +10,7 @@ import cz.fhsoft.poker.league.client.presenter.PresenterWithVersionedData;
 import cz.fhsoft.poker.league.client.presenter.WorkbenchPresenter;
 import cz.fhsoft.poker.league.client.services.StatisticsService;
 import cz.fhsoft.poker.league.client.services.StatisticsServiceAsync;
+import cz.fhsoft.poker.league.client.util.StyleUtil;
 import cz.fhsoft.poker.league.client.view.WorkbenchView;
 import cz.fhsoft.poker.league.client.view.WorkbenchViewImpl;
 
@@ -38,8 +39,10 @@ public class AppControllerMain extends PresenterWithVersionedData {
 	}
 
 	private void initWorkbench(HasWidgets container) {
-		if(workbenchView == null)
+		if(workbenchView == null) {
 			workbenchView = new WorkbenchViewImpl();
+			StyleUtil.makeAbsoluteFull(workbenchView.asWidget());
+		}
 		
 		workbenchPresenter = new WorkbenchPresenter(this, workbenchView);
 		
@@ -51,7 +54,7 @@ public class AppControllerMain extends PresenterWithVersionedData {
 	}
 
 	public void setVisible(boolean visible) {
-		super.setVisible(false);
+		super.setVisible(visible);
 		
 		if(workbenchView != null) {
 			Style style = workbenchView.asWidget().getElement().getStyle();
