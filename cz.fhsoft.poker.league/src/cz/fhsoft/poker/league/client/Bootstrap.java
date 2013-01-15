@@ -30,7 +30,7 @@ public class Bootstrap {
 
 	private long latestUserInteraction = new Date().getTime();
 	
-	private static final long MAX_USER_INACTIVE_TIME = 60000; // 60s for now, should be longer in production
+	private static final long MAX_USER_INACTIVE_TIME = 3600000; // 1 hour
 	
 	private static final int DATA_VERSION_CHECK_INTERVAL = 10000; // check data version every 10 seconds
 	

@@ -10,6 +10,8 @@ public abstract class PresenterWithVersionedData implements Presenter {
 	
 	private boolean visible = true;
 	
+	private boolean dataChanged = true;
+	
 	protected PresenterWithVersionedData(Presenter parentPresenter) {
 		this.parentPresenter = parentPresenter;
 
@@ -17,6 +19,8 @@ public abstract class PresenterWithVersionedData implements Presenter {
 			
 			@Override
 			public void onDataChange(DataChangeEvent event) {
+				dataChanged = true;
+
 				if(isVisible())
 					refresh();
 			}
@@ -37,6 +41,20 @@ public abstract class PresenterWithVersionedData implements Presenter {
 	}
 	
 	protected abstract void refresh();
+	
+	protected boolean isDataChanged() {
+		return isDataChanged(true);
+	}
+
+	protected boolean isDataChanged(boolean reset) {
+		try {
+			return dataChanged;
+		}
+		finally {
+			if(reset)
+				dataChanged = false;
+		}
+	}
 	
 	@Override
 	public Presenter getParentPresenter() {

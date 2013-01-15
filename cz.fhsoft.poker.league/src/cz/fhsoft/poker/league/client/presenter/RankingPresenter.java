@@ -40,42 +40,44 @@ public class RankingPresenter extends PresenterWithVersionedData implements Rank
 
 	@Override
 	protected void refresh() {
-		container.clear();
-		container.add(view.asWidget());
-		view.setRecords(null);
-		
-		AppControllerMain.INSTANCE.getStatisticsService().getRanking(rankingEvent.getClass().getName(), rankingEvent.getId(), new AsyncCallback<List<RankingRecord>>() {
-
-			@Override
-			public void onFailure(Throwable caught) {
-				ErrorReporter.error(caught);
-			}
-
-			@Override
-			public void onSuccess(List<RankingRecord> rankingRecords) {
-
-				Collections.sort(rankingRecords, Comparators.RANKING_RECORD_COMPARATOR_STRICT);
-				int i=1;
-				int split=0;
-				RankingRecord previousRecord = null; 
-				for(RankingRecord rankingRecord : rankingRecords) {
-					int rank = i++;
-					if(previousRecord != null && Comparators.RANKING_RECORD_COMPARATOR_WITH_SPLIT.compare(rankingRecord, previousRecord) == 0) {
-						previousRecord.setSplit(true);
-						rankingRecord.setSplit(true);
-						split++;
-					}
-					else
-						split = 0;
-
-					rankingRecord.setRank(rank - split);
-					previousRecord = rankingRecord;
-				}
-
-				view.setRecords(rankingRecords);
-			}
+		if(isDataChanged()) {
+			container.clear();
+			container.add(view.asWidget());
+			view.setRecords(null);
 			
-		});
+			AppControllerMain.INSTANCE.getStatisticsService().getRanking(rankingEvent.getClass().getName(), rankingEvent.getId(), new AsyncCallback<List<RankingRecord>>() {
+	
+				@Override
+				public void onFailure(Throwable caught) {
+					ErrorReporter.error(caught);
+				}
+	
+				@Override
+				public void onSuccess(List<RankingRecord> rankingRecords) {
+	
+					Collections.sort(rankingRecords, Comparators.RANKING_RECORD_COMPARATOR_STRICT);
+					int i=1;
+					int split=0;
+					RankingRecord previousRecord = null; 
+					for(RankingRecord rankingRecord : rankingRecords) {
+						int rank = i++;
+						if(previousRecord != null && Comparators.RANKING_RECORD_COMPARATOR_WITH_SPLIT.compare(rankingRecord, previousRecord) == 0) {
+							previousRecord.setSplit(true);
+							rankingRecord.setSplit(true);
+							split++;
+						}
+						else
+							split = 0;
+	
+						rankingRecord.setRank(rank - split);
+						previousRecord = rankingRecord;
+					}
+	
+					view.setRecords(rankingRecords);
+				}
+				
+			});
+		}
 	}
 
 	@Override
