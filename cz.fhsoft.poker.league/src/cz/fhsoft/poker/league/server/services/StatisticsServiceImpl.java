@@ -10,6 +10,7 @@ import javax.persistence.Query;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 import cz.fhsoft.poker.league.client.services.StatisticsService;
+import cz.fhsoft.poker.league.server.AbstractServiceImpl;
 import cz.fhsoft.poker.league.server.ServletInitializer;
 import cz.fhsoft.poker.league.shared.model.v1.Competition;
 import cz.fhsoft.poker.league.shared.model.v1.Game;
@@ -17,7 +18,7 @@ import cz.fhsoft.poker.league.shared.model.v1.Tournament;
 import cz.fhsoft.poker.league.shared.services.RankingRecord;
 
 @SuppressWarnings("serial")
-public class StatisticsServiceImpl extends RemoteServiceServlet implements StatisticsService {
+public class StatisticsServiceImpl extends AbstractServiceImpl implements StatisticsService {
 
 	private static final String ALIAS_PLACEHOLDER = "@@CONDITION@@";
 	
@@ -91,12 +92,6 @@ public class StatisticsServiceImpl extends RemoteServiceServlet implements Stati
 		SQL_MAP.put(Competition.class.getName(), COMPETITION_SQL);
 		SQL_MAP.put(Tournament.class.getName(), TOURNAMENT_SQL);
 		SQL_MAP.put(Game.class.getName(), GAME_SQL);
-	}
-
-	// This is a workaround for stupid iOS 6 which caches POST requests if the following header is missing
-	@Override
-	protected void onBeforeRequestDeserialized(String serializedRequest) {
-		getThreadLocalResponse().setHeader("Cache-Control", "no-cache");
 	}
 
 	@Override

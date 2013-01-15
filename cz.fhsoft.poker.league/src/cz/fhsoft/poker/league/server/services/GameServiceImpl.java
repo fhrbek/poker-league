@@ -7,9 +7,8 @@ import java.util.TreeMap;
 
 import javax.persistence.Query;
 
-import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-
 import cz.fhsoft.poker.league.client.services.GameService;
+import cz.fhsoft.poker.league.server.AbstractServiceImpl;
 import cz.fhsoft.poker.league.server.ServletInitializer;
 import cz.fhsoft.poker.league.server.persistence.EntityServiceImpl;
 import cz.fhsoft.poker.league.shared.model.v1.Game;
@@ -18,16 +17,10 @@ import cz.fhsoft.poker.league.shared.model.v1.PlayerInGame;
 import cz.fhsoft.poker.league.shared.model.v1.Tournament;
 
 @SuppressWarnings("serial")
-public class GameServiceImpl extends RemoteServiceServlet implements GameService {
+public class GameServiceImpl extends AbstractServiceImpl implements GameService {
 	
 	private static final Query currentTournaments = ServletInitializer.getEntityManager().createQuery(
 			"SELECT t FROM cz.fhsoft.poker.league.shared.model.v1.Tournament t WHERE t.tournamentStart <= :startLimit AND t.tournamentEnd >= :endLimit");
-
-	// This is a workaround for stupid iOS 6 which caches POST requests if the following header is missing
-	@Override
-	protected void onBeforeRequestDeserialized(String serializedRequest) {
-		getThreadLocalResponse().setHeader("Cache-Control", "no-cache");
-	}
 
 	@Override
 	public List<Tournament> getCurrentTournaments() {

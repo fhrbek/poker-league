@@ -20,10 +20,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Query;
 import javax.persistence.Transient;
 
-import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-
 import cz.fhsoft.poker.league.client.persistence.EntityService;
 import cz.fhsoft.poker.league.client.persistence.NativeQuery;
+import cz.fhsoft.poker.league.server.AbstractServiceImpl;
 import cz.fhsoft.poker.league.server.ServletInitializer;
 import cz.fhsoft.poker.league.shared.model.v1.DataVersion;
 import cz.fhsoft.poker.league.shared.model.v1.IdentifiableEntity;
@@ -32,17 +31,11 @@ import cz.fhsoft.poker.league.shared.persistence.LazyList;
 import cz.fhsoft.poker.league.shared.persistence.LazySet;
 
 @SuppressWarnings("serial")
-public class EntityServiceImpl extends RemoteServiceServlet implements EntityService {
+public class EntityServiceImpl extends AbstractServiceImpl implements EntityService {
 	
 	public static final Object LOCK = new Object();
 	
 	private static final int DATA_VERSION_ID = 1;
-
-	// This is a workaround for stupid iOS 6 which caches POST requests if the following header is missing
-	@Override
-	protected void onBeforeRequestDeserialized(String serializedRequest) {
-		getThreadLocalResponse().setHeader("Cache-Control", "no-cache");
-	}
 
 	@Override
 	public long getDataVersion() {
