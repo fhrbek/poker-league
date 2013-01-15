@@ -23,6 +23,12 @@ public class GameServiceImpl extends RemoteServiceServlet implements GameService
 	private static final Query currentTournaments = ServletInitializer.getEntityManager().createQuery(
 			"SELECT t FROM cz.fhsoft.poker.league.shared.model.v1.Tournament t WHERE t.tournamentStart <= :startLimit AND t.tournamentEnd >= :endLimit");
 
+	// This is a workaround for stupid iOS 6 which caches POST requests if the following header is missing
+	@Override
+	protected void onBeforeRequestDeserialized(String serializedRequest) {
+		getThreadLocalResponse().setHeader("Cache-Control", "no-cache");
+	}
+
 	@Override
 	public List<Tournament> getCurrentTournaments() {
 		Date currentTime = new Date();

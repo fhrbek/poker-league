@@ -93,6 +93,12 @@ public class StatisticsServiceImpl extends RemoteServiceServlet implements Stati
 		SQL_MAP.put(Game.class.getName(), GAME_SQL);
 	}
 
+	// This is a workaround for stupid iOS 6 which caches POST requests if the following header is missing
+	@Override
+	protected void onBeforeRequestDeserialized(String serializedRequest) {
+		getThreadLocalResponse().setHeader("Cache-Control", "no-cache");
+	}
+
 	@Override
 	public List<RankingRecord> getRanking(String entityClass, Number id) {
 		List<List<Object>> results = new ArrayList<List<Object>>();

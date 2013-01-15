@@ -38,6 +38,12 @@ public class EntityServiceImpl extends RemoteServiceServlet implements EntitySer
 	
 	private static final int DATA_VERSION_ID = 1;
 
+	// This is a workaround for stupid iOS 6 which caches POST requests if the following header is missing
+	@Override
+	protected void onBeforeRequestDeserialized(String serializedRequest) {
+		getThreadLocalResponse().setHeader("Cache-Control", "no-cache");
+	}
+
 	@Override
 	public long getDataVersion() {
 		return getDataVersionStatic();
