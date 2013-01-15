@@ -121,6 +121,7 @@ public class CurrentTournamentViewImpl extends Composite implements CurrentTourn
 
 		for(Player player : players) {
 			CheckBox checkBox = new CheckBox(player.getNick());
+			checkBox.setValue(true);
 			newGamePlayerIdMap.put(checkBox, player.getId());
 			newPlayersContainer.add(checkBox);
 		}
