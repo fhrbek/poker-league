@@ -4,18 +4,42 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
 	xmlns:cell="urn:import:com.google.gwt.user.cellview.client">
 	<ui:style>
-		.rankingContainer {
-			padding: 20px 20px 20px 50px;
-			border: 1px solid #aaa;
+		.left {
+			float: left;
+			font-weight: bold;
+			color: #555;
+		}
+
+		.right {
+			float: right;
+			margin-right: 10px;
+		}
+		
+		.topBar {
+			height: 15px;
+		}
+
+		.fieldSet {
+			border: 1px solid #eee;
+			border-radius: 6px;
+			background-color: #fefefe;
+			padding: 5px;
+			margin: 5px 0px;
+		}
+		
+		.bottomSpace {
+			margin-bottom: 20px;
 		}
 	</ui:style>
 	<g:FlowPanel>
-		<g:Label>Hra:</g:Label>
-		<g:Label ui:field="ordinal"/>
-		<g:Label addStyleNames="pseudoLink" ui:field="edit">Upravit</g:Label>
-		<g:Label addStyleNames="pseudoLink" ui:field="remove">Odstranit</g:Label>
-		<g:Label addStyleNames="pseudoLink" ui:field="toggleShowRanking">Zobrazit výsledkovou tabulku</g:Label>
-		<g:FlowPanel ui:field="rankingContainer" addStyleNames="{style.rankingContainer}"/>
-		<g:FlowPanel ui:field="playersInGameContainer"/>
+		<g:FlowPanel addStyleNames="{style.topBar}, {style.fieldSet}">
+			<g:Label addStyleNames="{style.left}" ui:field="ordinal"/>
+			<g:Label addStyleNames="{style.right}, pseudoLink" ui:field="edit">Upravit</g:Label>
+			<g:Label addStyleNames="{style.right}, pseudoLink" ui:field="remove">Odstranit</g:Label>
+		</g:FlowPanel>
+		<g:FlowPanel addStyleNames="{style.fieldSet}, {style.bottomSpace}">
+			<g:Label addStyleNames="pseudoLink" ui:field="toggleShowRanking">Zobrazit/skrýt výsledkovou tabulku</g:Label>
+			<g:FlowPanel ui:field="rankingContainer"/>
+		</g:FlowPanel>
 	</g:FlowPanel>
 </ui:UiBinder> 

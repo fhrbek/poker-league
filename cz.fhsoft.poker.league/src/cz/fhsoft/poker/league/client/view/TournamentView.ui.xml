@@ -4,30 +4,50 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
 	xmlns:cell="urn:import:com.google.gwt.user.cellview.client">
 	<ui:style>
-		.invitationsContainer {
-			padding: 20px 20px 20px 50px;
-			border: 1px solid #aaa;
+		.left {
+			float: left;
+			font-weight: bold;
+			color: #555;
 		}
 
-		.rankingContainer {
-			padding: 20px 20px 20px 50px;
-			border: 1px solid #aaa;
+		.right {
+			float: right;
+			margin-right: 10px;
 		}
-		.gamesContainer {
-			padding: 20px 20px 20px 50px;
-			border: 1px solid #aaa;
+		
+		.topBar {
+			height: 15px;
+		}
+
+		.fieldSet {
+			border: 1px solid #ddd;
+			border-radius: 6px;
+			background-color: #f5f5f5;
+			padding: 5px;
+			margin: 5px 0px;
+		}
+		
+		.bottomSpace {
+			margin-bottom: 20px;
 		}
 	</ui:style>
 	<g:FlowPanel>
-		<g:Label>Turnaj:</g:Label>
-		<g:Label ui:field="name"/>
-		<g:Label addStyleNames="pseudoLink" ui:field="edit">Upravit</g:Label>
-		<g:Label addStyleNames="pseudoLink" ui:field="remove">Odstranit</g:Label>
-		<g:Label addStyleNames="pseudoLink" ui:field="toggleShowInvitations">Zobrazit pozvánky</g:Label>
-		<g:FlowPanel ui:field="invitationsContainer" addStyleNames="{style.invitationsContainer}"/>
-		<g:Label addStyleNames="pseudoLink" ui:field="toggleShowRanking">Zobrazit výsledkovou tabulku</g:Label>
-		<g:FlowPanel ui:field="rankingContainer" addStyleNames="{style.rankingContainer}"/>
-		<g:Label addStyleNames="pseudoLink" ui:field="toggleShowGames">Zobrazit hry</g:Label>
-		<g:FlowPanel ui:field="gamesContainer" addStyleNames="{style.gamesContainer}"/>
+		<g:FlowPanel addStyleNames="{style.topBar}, {style.fieldSet}">
+			<g:Label addStyleNames="{style.left}" ui:field="name"/>
+			<g:Label addStyleNames="{style.right}, pseudoLink" ui:field="edit">Upravit</g:Label>
+			<g:Label addStyleNames="{style.right}, pseudoLink" ui:field="remove">Odstranit</g:Label>
+		</g:FlowPanel>
+		<g:FlowPanel addStyleNames="{style.fieldSet}">
+			<g:Label addStyleNames="pseudoLink" ui:field="toggleShowRanking">Zobrazit/skrýt výsledkovou tabulku</g:Label>
+			<g:FlowPanel ui:field="rankingContainer"/>
+		</g:FlowPanel>
+		<g:FlowPanel addStyleNames="{style.fieldSet}">
+			<g:Label addStyleNames="pseudoLink" ui:field="toggleShowInvitations">Zobrazit/skrýt pozvánky</g:Label>
+			<g:FlowPanel ui:field="invitationsContainer"/>
+		</g:FlowPanel>
+		<g:FlowPanel addStyleNames="{style.fieldSet}, {style.bottomSpace}">
+			<g:Label addStyleNames="pseudoLink" ui:field="toggleShowGames">Zobrazit/skrýt hry</g:Label>
+			<g:FlowPanel ui:field="gamesContainer"/>
+		</g:FlowPanel>
 	</g:FlowPanel>
 </ui:UiBinder> 

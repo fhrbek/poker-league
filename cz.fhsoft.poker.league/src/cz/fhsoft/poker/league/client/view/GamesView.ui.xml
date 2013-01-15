@@ -4,9 +4,13 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
 	xmlns:cell="urn:import:com.google.gwt.user.cellview.client">
 	<ui:style>
+		.newLink {
+			text-align: right;
+			margin-right: 15px;
+		}
 	</ui:style>
 	<g:FlowPanel>
-		<g:Label addStyleNames="pseudoLink" ui:field="newGame">Nová hra</g:Label>
+		<g:Label addStyleNames="pseudoLink, {style.newLink}" ui:field="newGame">Nová hra</g:Label>
 		<g:FlowPanel ui:field="gamesContainer"/>
 	</g:FlowPanel>
 </ui:UiBinder> 

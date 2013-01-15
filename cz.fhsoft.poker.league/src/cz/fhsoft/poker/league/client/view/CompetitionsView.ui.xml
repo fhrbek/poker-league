@@ -12,9 +12,14 @@
 			right: 10px;
 			bottom: 10px;
 		}
+
+		.newLink {
+			text-align: right;
+			margin-right: 20px;
+		}
 	</ui:style>
 	<g:FlowPanel>
-		<g:Label addStyleNames="pseudoLink" ui:field="newCompetition">Nová soutěž</g:Label>
+		<g:Label addStyleNames="pseudoLink, {style.newLink}" ui:field="newCompetition">Nová soutěž</g:Label>
 		<g:FlowPanel ui:field="competitionsContainer" addStyleNames="{style.scrollable}"/>
 	</g:FlowPanel>
 </ui:UiBinder> 

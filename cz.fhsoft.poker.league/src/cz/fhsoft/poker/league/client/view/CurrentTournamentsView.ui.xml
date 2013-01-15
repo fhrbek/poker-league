@@ -24,18 +24,18 @@
 		.gameTable .gwt-CheckBox, .gameTable .gwt-CheckBox input, .gameTable .gwt-CheckBox label {
 			cursor: pointer;
 		}
-		</ui:style>
+	</ui:style>
 	<g:HTMLPanel>
-	<table class="{style.gameTable}">
-		<tr>
-			<td verticalAlignment="middle">
-				<g:FlowPanel>
-					<g:Anchor href="#">Hlavní stránka</g:Anchor>
-					<g:Label ui:field="noTournament">V tuto chvíli se nehraje žádný turnaj</g:Label>
-					<g:FlowPanel ui:field="currentTournamentsContainer"/>
-				</g:FlowPanel>
-			</td>
-		</tr>
-	</table>
+		<table class="{style.gameTable}">
+			<tr>
+				<td verticalAlignment="middle">
+					<g:FlowPanel>
+						<g:Anchor href="#">Hlavní stránka</g:Anchor>
+						<g:Label ui:field="noTournament">V tuto chvíli se nehraje žádný turnaj</g:Label>
+						<g:FlowPanel ui:field="currentTournamentsContainer"/>
+					</g:FlowPanel>
+				</td>
+			</tr>
+		</table>
 	</g:HTMLPanel>
 </ui:UiBinder> 

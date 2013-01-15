@@ -28,9 +28,6 @@ public class GameViewImpl extends Composite implements GameView {
 	@UiField
 	FlowPanel rankingContainer;
 
-	@UiField
-	FlowPanel playersInGameContainer;
-	
 	public GameViewImpl() {
 		initWidget(uiBinder.createAndBindUi(this));
 	}
@@ -55,11 +52,6 @@ public class GameViewImpl extends Composite implements GameView {
 		this.presenter = presenter;
 	}
 
-
-	@Override
-	public HasWidgets getPlayersInGameContainer() {
-		return playersInGameContainer;
-	}
 
 	@Override
 	public HasWidgets getRankingContainer() {
