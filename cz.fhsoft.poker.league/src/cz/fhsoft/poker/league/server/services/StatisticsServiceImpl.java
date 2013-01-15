@@ -7,8 +7,6 @@ import java.util.Map;
 
 import javax.persistence.Query;
 
-import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-
 import cz.fhsoft.poker.league.client.services.StatisticsService;
 import cz.fhsoft.poker.league.server.AbstractServiceImpl;
 import cz.fhsoft.poker.league.server.ServletInitializer;
