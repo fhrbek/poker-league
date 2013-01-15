@@ -44,6 +44,9 @@ public class CurrentTournamentPresenter extends PresenterWithVersionedData imple
 
 	@Override
 	protected void refresh() {
+		if(!isDataChanged())
+			return;
+
 		if(container != null) {
 			container.clear();
 			container.add(view.asWidget());

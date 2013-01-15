@@ -33,6 +33,9 @@ public class CurrentTournamentsPresenter extends PresenterWithVersionedData impl
 
 	@Override
 	protected void refresh() {
+		if(!isDataChanged())
+			return;
+
 		if(container != null) {
 			container.clear();
 			container.add(view.asWidget());
