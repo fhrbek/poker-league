@@ -3,22 +3,42 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
 	xmlns:cell="urn:import:com.google.gwt.user.cellview.client">
 	<ui:style>
-		.mainTabs {
-			height: 100%;
+		.playersTable {
+			width: 100%;
+			border: 1px solid #aaa;
+			border-radius: 6px;
+			background-color: #eee;
+			padding: 5px;
+			margin: 5px;
+		}
+		
+		.checkBoxTable {
+			padding-left: 20px;
+		}
+		
+		.mainLabel {
+			font-weight: bold;
+			margin-top: 10px;
 		}
 	</ui:style>
 	<g:FlowPanel>
-		<g:Label ui:field="tournamentName"/>
+		<g:Label ui:field="tournamentName" addStyleNames="{style.mainLabel}"/>
 		<g:FlowPanel ui:field="newGame">
 			<g:Label>V tuto chvíli není rozhrána žádná hra, můžete zahájit novou hru.</g:Label>
-			<g:VerticalPanel ui:field="newPlayersContainer"/>
+			<g:VerticalPanel ui:field="newPlayersContainer" addStyleNames="{style.playersTable}, {style.checkBoxTable}"/>
 			<g:Label addStyleNames="pseudoLink" ui:field="startNewGame">Zahájit novou hru</g:Label>
 		</g:FlowPanel>
 		<g:FlowPanel ui:field="currentGame">
 			<g:Label ui:field="gameName"/>
-			<g:VerticalPanel ui:field="playersInGameContainer"/>
-			<g:Label addStyleNames="pseudoLink" ui:field="seatOpen">Vyřadit označené hráče</g:Label>
-			<g:Label addStyleNames="pseudoLink" ui:field="undoSeatOpen">Vrátit do hry označené hráče</g:Label>
+			<g:VerticalPanel ui:field="playersInGameContainer" addStyleNames="{style.playersTable}, {style.checkBoxTable}"/>
+			<g:HorizontalPanel horizontalAlignment="center" addStyleNames="{style.playersTable}">
+				<g:cell width="50%">
+					<g:Label addStyleNames="pseudoLink" ui:field="seatOpen">Vyřadit</g:Label>
+				</g:cell>
+				<g:cell width="50%">
+					<g:Label addStyleNames="pseudoLink" ui:field="undoSeatOpen">Vrátit do hry</g:Label>
+				</g:cell>
+			</g:HorizontalPanel>
 		</g:FlowPanel>
 	</g:FlowPanel>
 </ui:UiBinder> 
