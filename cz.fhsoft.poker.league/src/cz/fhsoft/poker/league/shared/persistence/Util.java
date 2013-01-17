@@ -63,4 +63,34 @@ public class Util {
 		else
 			callback.onSuccess(list);
 	}
+
+	public static <E extends IdentifiableEntity> E proxify(E entity, E newInstance) {
+		if(entity != null && entity.getId() > 0) {
+			newInstance.setProxy(true);
+			newInstance.setId(entity.getId());
+		}
+		else
+			newInstance = null;
+
+		return newInstance;
+	}
+
+	@SuppressWarnings("unchecked")
+	public static <E extends IdentifiableEntity> boolean proxify(Collection<E> entities) {
+		if(entities instanceof LazyCollection) {
+			((LazyCollection<E, ?, ?>) entities).unresolve();
+			return true;
+		}
+		
+		return false;
+	}
+
+
+	@SuppressWarnings("unchecked")
+	public static <E extends IdentifiableEntity> boolean isResolved(Collection<E> entities) {
+		if(entities instanceof LazyCollection)
+			return ((LazyCollection<E, ?, ?>) entities).isResolved();
+		
+		return true;
+	}
 }

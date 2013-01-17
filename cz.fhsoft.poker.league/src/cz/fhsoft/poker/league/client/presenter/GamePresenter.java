@@ -28,7 +28,6 @@ import cz.fhsoft.poker.league.shared.model.v1.Game;
 import cz.fhsoft.poker.league.shared.model.v1.Player;
 import cz.fhsoft.poker.league.shared.model.v1.PlayerInGame;
 import cz.fhsoft.poker.league.shared.model.v1.PrizeMoneyRuleSet;
-import cz.fhsoft.poker.league.shared.persistence.LazySet;
 import cz.fhsoft.poker.league.shared.persistence.Util;
 import cz.fhsoft.poker.league.shared.persistence.compare.Comparators;
 
@@ -225,8 +224,7 @@ public class GamePresenter extends RankablePresenter<Game, GameView.Presenter, G
 				for(PlayerInGame playerInGame : playersInGame)
 					playerInGame.setGame(entity);
 
-				entity.setPlayersInGame(new LazySet<Game, PlayerInGame>(
-						entity, "playersInGame", playersInGame));
+				entity.setPlayersInGame(Util.asSet(playersInGame));
 			}
 			
 		};
@@ -248,6 +246,16 @@ public class GamePresenter extends RankablePresenter<Game, GameView.Presenter, G
 		@Override
 		protected Game createTemporaryEntity() {
 			return new Game();
+		}
+		
+		@Override
+		protected Game stripEntity(Game game) {
+			game.setPrizeMoneyRuleSet(Util.proxify(game.getPrizeMoneyRuleSet(), new PrizeMoneyRuleSet()));
+			if(!Util.proxify(game.getPlayersInGame()))
+				for(PlayerInGame playerInGame : game.getPlayersInGame())
+					playerInGame.setPlayer(Util.proxify(playerInGame.getPlayer(), new Player()));
+			
+			return game;
 		}
 
 		@Override

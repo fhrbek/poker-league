@@ -12,5 +12,7 @@ public interface LazyCollection<E extends IdentifiableEntity, R extends Identifi
 
 	void resolve(final AsyncCallback<C> callback);
 	
+	public void unresolve();
+	
 	boolean isResolved();
 }

@@ -79,6 +79,12 @@ public class LazySet<E extends IdentifiableEntity, R extends IdentifiableEntity>
 			
 		});
 	}
+	
+	@Override
+	public void unresolve() {
+		super.clear();
+		resolved = false;
+	}
 
 	@Override
 	public boolean isResolved() {

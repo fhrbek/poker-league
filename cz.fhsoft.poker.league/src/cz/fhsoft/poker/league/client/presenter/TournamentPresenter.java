@@ -20,8 +20,12 @@ import cz.fhsoft.poker.league.client.view.InvitationsViewImpl;
 import cz.fhsoft.poker.league.client.view.TournamentView;
 import cz.fhsoft.poker.league.client.widget.AbstractPersistentEntityEditor;
 import cz.fhsoft.poker.league.client.widget.EntitySelector;
+import cz.fhsoft.poker.league.shared.model.v1.Competition;
+import cz.fhsoft.poker.league.shared.model.v1.Invitation;
+import cz.fhsoft.poker.league.shared.model.v1.Player;
 import cz.fhsoft.poker.league.shared.model.v1.PrizeMoneyRuleSet;
 import cz.fhsoft.poker.league.shared.model.v1.Tournament;
+import cz.fhsoft.poker.league.shared.persistence.Util;
 import cz.fhsoft.poker.league.shared.persistence.compare.Comparators;
 import cz.fhsoft.poker.league.shared.util.StringUtil;
 
@@ -189,6 +193,18 @@ public class TournamentPresenter extends RankablePresenter<Tournament, Tournamen
 		@Override
 		protected Tournament createTemporaryEntity() {
 			return new Tournament();
+		}
+		
+		@Override
+		protected Tournament stripEntity(Tournament tournament) {
+			tournament.setCompetition(Util.proxify(tournament.getCompetition(), new Competition()));
+			tournament.setDefaultPrizeMoneyRuleSet(Util.proxify(tournament.getDefaultPrizeMoneyRuleSet(), new PrizeMoneyRuleSet()));
+			Util.proxify(tournament.getGames()); // this should always make games a proxy
+			if(!Util.proxify(tournament.getInvitations())) // this may not make invitations a proxy in case it's newly created
+				for(Invitation invitation : tournament.getInvitations())
+					invitation.setPlayer(Util.proxify(invitation.getPlayer(), new Player()));
+			
+			return tournament;
 		}
 
 		@Override

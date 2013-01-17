@@ -180,6 +180,10 @@ public abstract class AbstractEntityEditor<E extends IdentifiableEntity> extends
 	}
 	
 	abstract protected E createTemporaryEntity();
+	
+	protected E stripEntity(E entity) {
+		return entity;
+	}
 
 	protected void validate(E entity, AsyncCallback<Map<Entry<? extends Widget>, String>> callback) {
 		callback.onSuccess(Collections.<Entry<? extends Widget>, String> emptyMap());

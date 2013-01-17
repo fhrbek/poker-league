@@ -4,6 +4,16 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
 	xmlns:cell="urn:import:com.google.gwt.user.cellview.client">
 	<ui:style>
+		.scrollable {
+			overflow: auto;
+			position: absolute;
+			top: 30px;
+			left: 5px;
+			right: 5px;
+			bottom: 10px;
+			padding: 0px 5px;
+		}
+
 	</ui:style>
-	<g:FlowPanel ui:field="prizeMoneyRuleSetTableContainer"/>
+	<g:FlowPanel ui:field="prizeMoneyRuleSetTableContainer" addStyleNames="{style.scrollable}"/>
 </ui:UiBinder> 

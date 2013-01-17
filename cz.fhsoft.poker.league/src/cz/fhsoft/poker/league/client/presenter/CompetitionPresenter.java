@@ -201,6 +201,15 @@ public class CompetitionPresenter extends RankablePresenter<Competition, Competi
 		}
 
 		@Override
+		protected Competition stripEntity(Competition competition) {
+			competition.setDefaultPrizeMoneyRuleSet(Util.proxify(competition.getDefaultPrizeMoneyRuleSet(), new PrizeMoneyRuleSet()));
+			Util.proxify(competition.getPlayers());
+			Util.proxify(competition.getTournaments());
+
+			return competition;
+		}
+
+		@Override
 		protected void validate(Competition entity, AsyncCallback<Map<Entry<? extends Widget>, String>> callback) {
 			Map<Entry<? extends Widget>, String> errorMap = new HashMap<Entry<? extends Widget>, String>();
 			if(StringUtil.isEmpty(entity.getName(), true))

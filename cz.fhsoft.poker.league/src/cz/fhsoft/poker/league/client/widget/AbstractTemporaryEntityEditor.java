@@ -46,7 +46,7 @@ public abstract class AbstractTemporaryEntityEditor<E extends IdentifiableEntity
 	
 	protected void save(E entity, AsyncCallback<Void> callback) {
 		if(saveCallback != null)
-			saveCallback.onSave(entity, callback);
+			saveCallback.onSave(stripEntity(entity), callback);
 		else
 			callback.onSuccess(null);
 	}

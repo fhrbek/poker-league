@@ -99,6 +99,13 @@ public class InvitationsPresenter extends PresenterWithVersionedData implements 
 		protected Invitation createTemporaryEntity() {
 			return new Invitation();
 		}
+		
+		@Override
+		protected Invitation stripEntity(Invitation invitation) {
+			invitation.setPlayer(Util.proxify(invitation.getPlayer(), new Player()));
+			invitation.setTournament(Util.proxify(invitation.getTournament(), new Tournament()));
+			return invitation;
+		}
 
 		@Override
 		protected void validate(Invitation entity, AsyncCallback<Map<Entry<? extends Widget>, String>> callback) {

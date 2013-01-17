@@ -28,7 +28,6 @@ import cz.fhsoft.poker.league.client.widget.AbstractTemporaryEntityListEditor;
 import cz.fhsoft.poker.league.shared.model.v1.PrizeMoneyFormula;
 import cz.fhsoft.poker.league.shared.model.v1.PrizeMoneyRule;
 import cz.fhsoft.poker.league.shared.model.v1.PrizeMoneyRuleSet;
-import cz.fhsoft.poker.league.shared.persistence.LazySet;
 import cz.fhsoft.poker.league.shared.persistence.Util;
 import cz.fhsoft.poker.league.shared.persistence.compare.Comparators;
 import cz.fhsoft.poker.league.shared.util.StringUtil;
@@ -232,8 +231,7 @@ public class PrizeMoneyRuleSetPresenter extends PresenterWithVersionedData imple
 									for(PrizeMoneyFormula formula : formulas)
 										formula.setPrizeMoneyRule(entity);
 
-									entity.setPrizeMoneyFormulas(new LazySet<PrizeMoneyRule, PrizeMoneyFormula>(
-											entity, "prizeMoneyFormulas", formulas));
+									entity.setPrizeMoneyFormulas(Util.asSet(formulas));
 								}
 
 							};
@@ -347,8 +345,7 @@ public class PrizeMoneyRuleSetPresenter extends PresenterWithVersionedData imple
 				for(PrizeMoneyRule rule : rules)
 					rule.setPrizeMoneyRuleSet(entity);
 
-				entity.setPrizeMoneyRules(new LazySet<PrizeMoneyRuleSet, PrizeMoneyRule>(
-						entity, "prizeMoneyRules", rules));
+				entity.setPrizeMoneyRules(Util.asSet(rules));
 			}
 
 		};
@@ -369,6 +366,15 @@ public class PrizeMoneyRuleSetPresenter extends PresenterWithVersionedData imple
 		@Override
 		protected PrizeMoneyRuleSet createTemporaryEntity() {
 			return new PrizeMoneyRuleSet();
+		}
+		
+		@Override
+		protected PrizeMoneyRuleSet stripEntity(PrizeMoneyRuleSet prizeMoneyRuleSet) {
+			if(!Util.proxify(prizeMoneyRuleSet.getPrizeMoneyRules()))
+				for(PrizeMoneyRule prizeMoneyRule : prizeMoneyRuleSet.getPrizeMoneyRules())
+					Util.proxify(prizeMoneyRule.getPrizeMoneyFormulas());
+
+			return prizeMoneyRuleSet;
 		}
 
 		@Override

@@ -81,6 +81,12 @@ public class LazyList<E extends IdentifiableEntity, R extends IdentifiableEntity
 	}
 
 	@Override
+	public void unresolve() {
+		super.clear();
+		resolved = false;
+	}
+
+	@Override
 	public boolean isResolved() {
 		return resolved;
 	}
