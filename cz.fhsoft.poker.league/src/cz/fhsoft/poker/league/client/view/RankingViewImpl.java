@@ -10,8 +10,10 @@ import com.google.gwt.uibinder.client.UiTemplate;
 import com.google.gwt.user.cellview.client.CellTable;
 import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.Widget;
 
+import cz.fhsoft.poker.league.client.cellview.AlignedColumn;
 import cz.fhsoft.poker.league.client.util.Formatter;
 import cz.fhsoft.poker.league.shared.services.RankingRecord;
 
@@ -37,7 +39,9 @@ public class RankingViewImpl extends Composite implements RankingView {
 
 			@Override
 			public String getValue(RankingRecord record) {
-				return (record.isSplit() ? "T" : "") + record.getRank();
+				return record.getInGameFlag() == 0
+						? "<ve hře>"
+						: ((record.isSplit() ? "T" : "") + record.getRank());
 			}
 			
 		}, "Pořadí");
@@ -68,7 +72,7 @@ public class RankingViewImpl extends Composite implements RankingView {
 				
 			}, "Účast");
 		
-		rankingTable.addColumn(new Column<RankingRecord, String>(new TextCell()) {
+		rankingTable.addColumn(new AlignedColumn<RankingRecord, String>(new TextCell(), HasHorizontalAlignment.ALIGN_RIGHT) {
 	
 			@Override
 			public String getValue(RankingRecord record) {
@@ -77,7 +81,7 @@ public class RankingViewImpl extends Composite implements RankingView {
 	
 		}, "Vklad");
 		
-		rankingTable.addColumn(new Column<RankingRecord, String>(new TextCell()) {
+		rankingTable.addColumn(new AlignedColumn<RankingRecord, String>(new TextCell(), HasHorizontalAlignment.ALIGN_RIGHT) {
 		
 			@Override
 			public String getValue(RankingRecord record) {
@@ -86,7 +90,7 @@ public class RankingViewImpl extends Composite implements RankingView {
 		
 		}, "Výhra");
 		
-		rankingTable.addColumn(new Column<RankingRecord, String>(new TextCell()) {
+		rankingTable.addColumn(new AlignedColumn<RankingRecord, String>(new TextCell(), HasHorizontalAlignment.ALIGN_RIGHT) {
 		
 			@Override
 			public String getValue(RankingRecord record) {
@@ -96,16 +100,16 @@ public class RankingViewImpl extends Composite implements RankingView {
 		}, "Body");
 		
 		if(showNumberOfGames) {
-			rankingTable.addColumn(new Column<RankingRecord, String>(new TextCell()) {
+			rankingTable.addColumn(new AlignedColumn<RankingRecord, String>(new TextCell(), HasHorizontalAlignment.ALIGN_RIGHT) {
 				
 				@Override
 				public String getValue(RankingRecord record) {
-					return Formatter.format(record.getRelativePrizeMoney(), 2);
+					return Formatter.format(record.getRelativePrizeMoney(), 2) + "%";
 				}
 			
 			}, "Relativní výhra");
 			
-			rankingTable.addColumn(new Column<RankingRecord, String>(new TextCell()) {
+			rankingTable.addColumn(new AlignedColumn<RankingRecord, String>(new TextCell(), HasHorizontalAlignment.ALIGN_RIGHT) {
 			
 				@Override
 				public String getValue(RankingRecord record) {

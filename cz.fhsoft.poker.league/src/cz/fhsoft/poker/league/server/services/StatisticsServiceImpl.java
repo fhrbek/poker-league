@@ -20,11 +20,14 @@ public class StatisticsServiceImpl extends AbstractServiceImpl implements Statis
 
 	private static final String ALIAS_PLACEHOLDER = "@@CONDITION@@";
 	
+	private static final String UNFINISHED_FILTER_PLACEHOLDER = "@@UNFINISHED_FILTER@@";
+	
 	private static final String SQL_TEMPLATE =
 		//@fmtOff
 		"SELECT prize_and_points.COMPETITION_ID," +
 		"       p.ID AS PLAYER_ID," +
 		"       p.NICK AS PLAYER_NICK," +
+		"       CASE WHEN MIN(prize_and_points.RANK) = 0 THEN 0 ELSE 1 END AS IN_GAME_FLAG," +
 		"       (SELECT COUNT(*)" +
 		"          FROM PL_COMPETITION c JOIN PL_TOURNAMENT t ON t.COMPETITION_ID = c.ID" +
 		"                                JOIN PL_GAME g ON g.TOURNAMENT_ID = t.ID" +
@@ -43,8 +46,8 @@ public class StatisticsServiceImpl extends AbstractServiceImpl implements Statis
 		"      prize.PLAYER_ID," +
 		"      prize.RANK," +
 		"      prize.PRIZE_MONEY," +
-		"      (2*(SUM(CASE WHEN pig_worse.RANK >= prize.RANK THEN 1 ELSE 0 END)-1) -" +
-		"         (SUM(CASE WHEN pig_worse.RANK = prize.RANK THEN 1 ELSE 0 END)-1)) / 2 AS POINTS" +
+		"      CASE WHEN prize.RANK > 0 THEN (2*(SUM(CASE WHEN pig_worse.RANK >= prize.RANK THEN 1 ELSE 0 END)-1) -" +
+		"         (SUM(CASE WHEN pig_worse.RANK = prize.RANK THEN 1 ELSE 0 END)-1)) / 2 ELSE 0 END AS POINTS" +
 		"      FROM (" +
 		"        SELECT" +
 		"          c.ID as COMPETITION_ID," +
@@ -63,12 +66,13 @@ public class StatisticsServiceImpl extends AbstractServiceImpl implements Statis
 		"                                                                             FROM PL_PLAYERINGAME pmrpig" +
 		"                                                                             WHERE pmrpig.GAME_ID = g.ID)" +
 		"            LEFT OUTER JOIN PL_PRIZEMONEYFORMULA pmf ON pmf.PRIZEMONEYRULE_ID = pmr.ID AND" +
+		"                                                        pig.RANK > 0 AND " +
 		"                                                        pmf.RANK BETWEEN pig.RANK AND" +
 		"                                                                 (pig.RANK + (SELECT COUNT(*)" +
 		"                                                                                FROM PL_PLAYERINGAME pig_split" +
 		"                                                                                WHERE pig_split.GAME_ID = g.ID" +
 		"                                                                                  AND pig_split.RANK = pig.RANK) - 1)" +
-		"          WHERE " + ALIAS_PLACEHOLDER + ".ID = ?" +
+		"          WHERE " + ALIAS_PLACEHOLDER + ".ID = ?" + UNFINISHED_FILTER_PLACEHOLDER +
 		"          GROUP BY c.ID, t.ID, g.ID, pig.ID, pig.RANK) prize" +
 		"        LEFT OUTER JOIN PL_PLAYERINGAME pig_worse ON pig_worse.GAME_ID = prize.GAME_ID AND" +
 		"                                                     pig_worse.RANK >= prize.RANK" +
@@ -78,11 +82,11 @@ public class StatisticsServiceImpl extends AbstractServiceImpl implements Statis
 		"  GROUP BY prize_and_points.COMPETITION_ID, p.ID, p.NICK";
 		//@fmtOn
 	
-	private final static String COMPETITION_SQL = SQL_TEMPLATE.replace(ALIAS_PLACEHOLDER, "c");
+	private final static String COMPETITION_SQL = SQL_TEMPLATE.replace(ALIAS_PLACEHOLDER, "c").replace(UNFINISHED_FILTER_PLACEHOLDER, " AND pig.RANK > 0 ");
 
-	private final static String TOURNAMENT_SQL = SQL_TEMPLATE.replace(ALIAS_PLACEHOLDER, "t");
+	private final static String TOURNAMENT_SQL = SQL_TEMPLATE.replace(ALIAS_PLACEHOLDER, "t").replace(UNFINISHED_FILTER_PLACEHOLDER, " AND pig.RANK > 0 ");
 
-	private final static String GAME_SQL = SQL_TEMPLATE.replace(ALIAS_PLACEHOLDER, "g");
+	private final static String GAME_SQL = SQL_TEMPLATE.replace(ALIAS_PLACEHOLDER, "g").replace(UNFINISHED_FILTER_PLACEHOLDER, "");
 	
 	private final static Map<String, String> SQL_MAP = new HashMap<String, String>();
 	

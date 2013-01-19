@@ -153,14 +153,6 @@ public class PlayersPresenter extends PresenterWithVersionedData implements Play
 
 			@Override
 			public String getValue(Player player) {
-				return player.getEmailAddress();
-			}
-		}, "e-mail"));
-
-		columns.add(new LabeledColumn<Player>(new Column<Player, String>(new TextCell()) {
-
-			@Override
-			public String getValue(Player player) {
 				return player.getFirstName();
 			}
 		}, "Jméno"));

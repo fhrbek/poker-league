@@ -55,32 +55,36 @@ public class RankingRecord implements Rankable, Serializable {
 		return (String) row.get(2);
 	}
 
-	public long getTotalGames() {
+	public long getInGameFlag() {
 		return (Long) row.get(3);
 	}
 
-	public long getGamesPlayed() {
+	public long getTotalGames() {
 		return (Long) row.get(4);
 	}
 
+	public long getGamesPlayed() {
+		return (Long) row.get(5);
+	}
+
 	public long getBuyIns() {
-		return ((BigDecimal) row.get(5)).longValue();
+		return ((BigDecimal) row.get(6)).longValue();
 	}
 
 	public double getPrizeMoney() {
-		return ((BigDecimal) row.get(6)).doubleValue();
-	}
-
-	public double getPoints() {
 		return ((BigDecimal) row.get(7)).doubleValue();
 	}
 
-	public double getRelativePrizeMoney() {
+	public double getPoints() {
 		return ((BigDecimal) row.get(8)).doubleValue();
 	}
 
-	public double getRelativePoints() {
+	public double getRelativePrizeMoney() {
 		return ((BigDecimal) row.get(9)).doubleValue();
+	}
+
+	public double getRelativePoints() {
+		return ((BigDecimal) row.get(10)).doubleValue();
 	}
 
 }

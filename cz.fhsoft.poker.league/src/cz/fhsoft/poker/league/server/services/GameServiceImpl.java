@@ -126,9 +126,18 @@ public class GameServiceImpl extends AbstractServiceImpl implements GameService 
 				if(minRank <= 1)
 					throw new IllegalArgumentException("Alespoň jeden hráč byl již označen jako vítěz, nelze vyřadit další hráče");
 				
-				for(PlayerInGame playerInGameForSeatOpen : playersInGameForSeatOpen)
-					playerInGameForSeatOpen.setRank(minRank-playersInGameForSeatOpen.size());
+				int finalRank = minRank-playersInGameForSeatOpen.size();
 
+				if(finalRank == 2) // there's just one player left - let's mark him as a winner right now
+					for(PlayerInGame playerInGame : game.getPlayersInGame())
+						if(!playersInGameForSeatOpen.contains(playerInGame) && playerInGame.getRank() == 0) {
+							playerInGame.setRank(1);
+							break;
+						}
+
+				for(PlayerInGame playerInGameForSeatOpen : playersInGameForSeatOpen)
+					playerInGameForSeatOpen.setRank(finalRank);
+				
 				ServletInitializer.getEntityManager().merge(game);
 				long dataVersion = EntityServiceImpl.updateDataVersion();
 				ServletInitializer.getEntityManager().getTransaction().commit();

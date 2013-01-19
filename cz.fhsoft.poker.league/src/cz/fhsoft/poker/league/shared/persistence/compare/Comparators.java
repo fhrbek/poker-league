@@ -218,7 +218,16 @@ public class Comparators {
 
 		@Override
 		public int compare(RankingRecord r1, RankingRecord r2) {
-			int result = r1.getRelativePrizeMoney() > r2.getRelativePrizeMoney()
+			int result = r1.getInGameFlag() > r2.getInGameFlag()
+					? 1
+					: (r1.getInGameFlag() < r2.getInGameFlag()
+							? -1
+							: 0);
+			
+			if(result != 0)
+				return result;
+
+			result = r1.getRelativePrizeMoney() > r2.getRelativePrizeMoney()
 					? -1
 					: (r1.getRelativePrizeMoney() < r2.getRelativePrizeMoney()
 							? 1
