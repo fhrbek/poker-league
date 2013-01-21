@@ -107,6 +107,7 @@ public class InvitationsPresenter extends PresenterWithVersionedData implements 
 		protected Invitation stripEntity(Invitation invitation) {
 			invitation.setPlayer(Util.proxify(invitation.getPlayer(), new Player()));
 			invitation.setTournament(Util.proxify(invitation.getTournament(), new Tournament()));
+			Util.proxify(invitation.getEvents());
 			return invitation;
 		}
 

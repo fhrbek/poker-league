@@ -1,6 +1,8 @@
 package cz.fhsoft.poker.league.server;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Properties;
 import java.util.logging.Logger;
 
@@ -44,8 +46,13 @@ public class InvitationSender extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 		synchronized(EntityServiceImpl.LOCK) {
-			for(Object obj : unsentInvitations.getResultList()) {
+			List<InvitationEvent> events = new ArrayList<InvitationEvent>(); 
+
+            ServletInitializer.getEntityManager().getTransaction().begin();
+
+            for(Object obj : unsentInvitations.getResultList()) {
 				InvitationEvent invitationEvent = (InvitationEvent) obj;
+				events.add(invitationEvent);
 				Invitation invitation = invitationEvent.getInvitation();
 				Tournament tournament = invitation.getTournament();
 				if(tournament.getTournamentStart().getTime() - new Date().getTime() <= tournament.getTournamentAnnouncementLead() * 3600000) {
@@ -69,10 +76,7 @@ public class InvitationSender extends HttpServlet {
 			            Transport.send(msg);
 			            
 			            invitationEvent.setSent(true);
-			            ServletInitializer.getEntityManager().getTransaction().begin();
 			            ServletInitializer.getEntityManager().merge(invitationEvent);
-			            ServletInitializer.getEntityManager().getTransaction().commit();
-			            ServletInitializer.getEntityManager().detach(invitationEvent);
 			        }
 			        catch (Exception e) {
 			            // Let's log it and try again later
@@ -80,6 +84,13 @@ public class InvitationSender extends HttpServlet {
 			        }
 			    }
 			}
+            
+            EntityServiceImpl.updateDataVersion();
+            ServletInitializer.getEntityManager().getTransaction().commit();
+            
+            for(InvitationEvent event : events)
+            	ServletInitializer.getEntityManager().detach(event);
+
 		}
 	}
 
