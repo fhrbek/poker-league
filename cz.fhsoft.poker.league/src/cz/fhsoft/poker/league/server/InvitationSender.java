@@ -51,10 +51,12 @@ public class InvitationSender extends HttpServlet {
 				if(tournament.getTournamentStart().getTime() - new Date().getTime() <= tournament.getTournamentAnnouncementLead() * 3600000) {
 			        Properties props = new Properties();
 			        Session session = Session.getDefaultInstance(props, null);
+			        
+			        String formattedDate = String.format("%1$td.%1$tm.%1$tY %1$tH:%1$tM", tournament.getTournamentStart());
 
 			        String msgBody = MAIL_TEMPLATE
 			        		.replace(PLACEHOLDER_TOURNAMENT, tournament.getName())
-			        		.replace(PLACEHOLDER_TOURNAMENT_START, String.format("%1$td.%1$tm.%1$tY %1$tH:%1$tM", tournament.getTournamentStart()))
+			        		.replace(PLACEHOLDER_TOURNAMENT_START, formattedDate)
 			        		.replace(PLACEHOLDER_INVITATION_UUID, invitation.getUuid());
 
 			        try {
@@ -62,7 +64,7 @@ public class InvitationSender extends HttpServlet {
 			            msg.setFrom(new InternetAddress("wittmannpoker@gmail.com", "Wittmann Poker"));
 			            msg.addRecipient(Message.RecipientType.TO,
 			                             new InternetAddress(invitation.getPlayer().getEmailAddress(), invitation.getPlayer().getNick()));
-			            msg.setSubject("WPL - Pozvánka na pokerový turnaj");
+			            msg.setSubject("WPL Turnaj " + formattedDate);
 			            msg.setText(msgBody);
 			            Transport.send(msg);
 			            
