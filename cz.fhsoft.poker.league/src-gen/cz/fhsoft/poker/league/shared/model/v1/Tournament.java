@@ -47,6 +47,14 @@ public class Tournament extends DescribedEntity {
 	 * @generated
 	 */
 	@Basic()
+	private int tournamentAnnouncementLead = 0;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	@Basic()
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date tournamentStart = null;
 
@@ -74,14 +82,6 @@ public class Tournament extends DescribedEntity {
 	 */
 	@Basic()
 	private int maxPlayers = 0;
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @generated
-	 */
-	@Basic()
-	private int deadline = 0;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -162,6 +162,35 @@ public class Tournament extends DescribedEntity {
 	public void setDefaultPrizeMoneyRuleSet(
 			PrizeMoneyRuleSet newDefaultPrizeMoneyRuleSet) {
 		defaultPrizeMoneyRuleSet = newDefaultPrizeMoneyRuleSet;
+	}
+
+	/**
+	 * Returns the value of '<em><b>tournamentAnnouncementLead</b></em>'
+	 * feature.
+	 * 
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the value of '<em><b>tournamentAnnouncementLead</b></em>' feature
+	 * @generated
+	 */
+	public int getTournamentAnnouncementLead() {
+		return tournamentAnnouncementLead;
+	}
+
+	/**
+	 * Sets the '{@link Tournament#getTournamentAnnouncementLead()
+	 * <em>tournamentAnnouncementLead</em>}' feature.
+	 * 
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param the
+	 *            new value of the '
+	 *            {@link Tournament#getTournamentAnnouncementLead()
+	 *            tournamentAnnouncementLead}' feature.
+	 * @generated
+	 */
+	public void setTournamentAnnouncementLead(int newTournamentAnnouncementLead) {
+		tournamentAnnouncementLead = newTournamentAnnouncementLead;
 	}
 
 	/**
@@ -270,32 +299,6 @@ public class Tournament extends DescribedEntity {
 	 */
 	public void setMaxPlayers(int newMaxPlayers) {
 		maxPlayers = newMaxPlayers;
-	}
-
-	/**
-	 * Returns the value of '<em><b>deadline</b></em>' feature.
-	 * 
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @return the value of '<em><b>deadline</b></em>' feature
-	 * @generated
-	 */
-	public int getDeadline() {
-		return deadline;
-	}
-
-	/**
-	 * Sets the '{@link Tournament#getDeadline() <em>deadline</em>}' feature.
-	 * 
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
-	 * @param the
-	 *            new value of the '{@link Tournament#getDeadline() deadline}'
-	 *            feature.
-	 * @generated
-	 */
-	public void setDeadline(int newDeadline) {
-		deadline = newDeadline;
 	}
 
 	/**
@@ -453,9 +456,10 @@ public class Tournament extends DescribedEntity {
 	@Override
 	public String toString() {
 		return "Tournament " + " [defaultBuyIn: " + getDefaultBuyIn() + "]"
-				+ " [tournamentStart: " + getTournamentStart() + "]"
-				+ " [tournamentEnd: " + getTournamentEnd() + "]"
-				+ " [minPlayers: " + getMinPlayers() + "]" + " [maxPlayers: "
-				+ getMaxPlayers() + "]" + " [deadline: " + getDeadline() + "]";
+				+ " [tournamentAnnouncementLead: "
+				+ getTournamentAnnouncementLead() + "]" + " [tournamentStart: "
+				+ getTournamentStart() + "]" + " [tournamentEnd: "
+				+ getTournamentEnd() + "]" + " [minPlayers: " + getMinPlayers()
+				+ "]" + " [maxPlayers: " + getMaxPlayers() + "]";
 	}
 }

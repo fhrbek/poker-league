@@ -133,16 +133,16 @@ public class CompetitionPresenter extends RankablePresenter<Competition, Competi
 			
 		};
 		
-		private Entry<IntegerBox> defaultTournamentDeadlineEntry = new Entry<IntegerBox>("Výchozí uzávěrka přihlášek (hodiny před začátkem turnaje)", new IntegerBox()) {
+		private Entry<IntegerBox> defaultTournamentAnnouncementLeadEntry = new Entry<IntegerBox>("Výchozí předstih pozvánek (hodiny před začátkem turnaje)", new IntegerBox()) {
 
 			@Override
 			public void setUpWidget(Competition entity) {
-				getWidget().setValue(entity.getDefaultTournamentDeadline());
+				getWidget().setValue(entity.getDefaultTournamentAnnouncementLead());
 			}
 
 			@Override
 			public void updateEntity(Competition entity) {
-				entity.setDefaultTournamentDeadline(getWidget().getValue());
+				entity.setDefaultTournamentAnnouncementLead(getWidget().getValue());
 			}
 			
 		};
@@ -183,7 +183,7 @@ public class CompetitionPresenter extends RankablePresenter<Competition, Competi
 			addEntry(defaultMinPlayersEntry);
 			addEntry(defaultMaxPlayersEntry);
 			addEntry(defaultBuyInEntry);
-			addEntry(defaultTournamentDeadlineEntry);
+			addEntry(defaultTournamentAnnouncementLeadEntry);
 			addEntry(playersEntry);
 			addEntry(defaultPrizeMoneyRuleSetEntry);
 		}

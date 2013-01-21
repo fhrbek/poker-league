@@ -16,6 +16,7 @@
     	<class>cz.fhsoft.poker.league.shared.model.v1.Competition</class>
     	<class>cz.fhsoft.poker.league.shared.model.v1.Tournament</class>
     	<class>cz.fhsoft.poker.league.shared.model.v1.Invitation</class>
+    	<class>cz.fhsoft.poker.league.shared.model.v1.InvitationEvent</class>
     	<class>cz.fhsoft.poker.league.shared.model.v1.Game</class>
     	<class>cz.fhsoft.poker.league.shared.model.v1.PlayerInGame</class>
     	<properties>

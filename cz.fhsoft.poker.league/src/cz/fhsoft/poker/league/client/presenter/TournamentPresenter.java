@@ -69,6 +69,21 @@ public class TournamentPresenter extends RankablePresenter<Tournament, Tournamen
 			
 		};
 		
+		private Entry<IntegerBox> announcementLeadEntry = new Entry<IntegerBox>("Předstih odeslání pozvánek", new IntegerBox()) {
+			//TODO Enable setting hours
+
+			@Override
+			public void setUpWidget(Tournament entity) {
+				getWidget().setValue(entity.getTournamentAnnouncementLead());
+			}
+
+			@Override
+			public void updateEntity(Tournament entity) {
+				entity.setTournamentAnnouncementLead(getWidget().getValue());
+			}
+			
+		};
+		
 		private Entry<DatePicker> startTimeEntry = new Entry<DatePicker>("Zahájení", new DatePicker()) {
 			//TODO Enable setting hours
 
@@ -143,20 +158,6 @@ public class TournamentPresenter extends RankablePresenter<Tournament, Tournamen
 			
 		};
 		
-		private Entry<IntegerBox> deadlineEntry = new Entry<IntegerBox>("Uzávěrka přihlášek (hodiny před začátkem turnaje)", new IntegerBox()) {
-
-			@Override
-			public void setUpWidget(Tournament entity) {
-				getWidget().setValue(entity.getDeadline());
-			}
-
-			@Override
-			public void updateEntity(Tournament entity) {
-				entity.setDeadline(getWidget().getValue());
-			}
-			
-		};
-		
 		private Entry<EntitySelector<PrizeMoneyRuleSet>> defaultPrizeMoneyRuleSetEntry = new Entry<EntitySelector<PrizeMoneyRuleSet>>("Výchozí pravidlo hodnocení", new EntitySelector<PrizeMoneyRuleSet>(PrizeMoneyRuleSet.class, Comparators.DESCRIBED_ENTITY_COMPARATOR, DigestProviders.DESCRIBED_ENTITY_PROVIDER)) {
 
 			@Override
@@ -174,12 +175,12 @@ public class TournamentPresenter extends RankablePresenter<Tournament, Tournamen
 		{
 			addEntry(nameEntry);
 			addEntry(descriptionEntry);
+			addEntry(announcementLeadEntry);
 			addEntry(startTimeEntry);
 			addEntry(endTimeEntry);
 			addEntry(minPlayersEntry);
 			addEntry(maxPlayersEntry);
 			addEntry(defaultBuyInEntry);
-			addEntry(deadlineEntry);
 			addEntry(defaultPrizeMoneyRuleSetEntry);
 		}
 

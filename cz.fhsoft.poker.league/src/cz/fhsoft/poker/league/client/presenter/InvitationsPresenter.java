@@ -2,6 +2,7 @@ package cz.fhsoft.poker.league.client.presenter;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,6 +29,8 @@ import cz.fhsoft.poker.league.client.widget.AbstractPersistentEntityListEditor;
 import cz.fhsoft.poker.league.client.widget.EntitySelector;
 import cz.fhsoft.poker.league.client.widget.EnumSelector;
 import cz.fhsoft.poker.league.shared.model.v1.Invitation;
+import cz.fhsoft.poker.league.shared.model.v1.InvitationEvent;
+import cz.fhsoft.poker.league.shared.model.v1.InvitationEventType;
 import cz.fhsoft.poker.league.shared.model.v1.InvitationReply;
 import cz.fhsoft.poker.league.shared.model.v1.Player;
 import cz.fhsoft.poker.league.shared.model.v1.Tournament;
@@ -200,6 +203,13 @@ public class InvitationsPresenter extends PresenterWithVersionedData implements 
 				invitation.setReply(InvitationReply.NO_REPLY);
 				invitation.setUuid(UUID.generateUUID());
 				
+				InvitationEvent event = new InvitationEvent();
+				event.setInvitation(invitation);
+				event.setEventTime(new Date());
+				event.setEventType(InvitationEventType.GENERATED);
+				
+				invitation.addToEvents(event);
+
 				return invitation;
 			}
 			

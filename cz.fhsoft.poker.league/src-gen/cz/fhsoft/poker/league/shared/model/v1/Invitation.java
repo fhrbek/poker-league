@@ -1,11 +1,14 @@
 package cz.fhsoft.poker.league.shared.model.v1;
 
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  * A representation of the model object '<em><b>Invitation</b></em>'. <!--
@@ -62,6 +65,14 @@ public class Invitation extends IdentifiableEntity {
 	 */
 	@Basic()
 	private String uuid = null;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	@OneToMany(cascade = { CascadeType.ALL }, mappedBy = "invitation", orphanRemoval = true)
+	private Set<InvitationEvent> events = new HashSet<InvitationEvent>();
 
 	/**
 	 * Returns the value of '<em><b>tournament</b></em>' feature.
@@ -191,6 +202,65 @@ public class Invitation extends IdentifiableEntity {
 	 */
 	public void setUuid(String newUuid) {
 		uuid = newUuid;
+	}
+
+	/**
+	 * Returns the value of '<em><b>events</b></em>' feature.
+	 * 
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the value of '<em><b>events</b></em>' feature
+	 * @generated
+	 */
+	public Set<InvitationEvent> getEvents() {
+		return events;
+	}
+
+	/**
+	 * Adds to the <em>events</em> feature.
+	 * 
+	 * @generated
+	 */
+	public void addToEvents(InvitationEvent eventsValue) {
+		if (!events.contains(eventsValue)) {
+			events.add(eventsValue);
+		}
+	}
+
+	/**
+	 * Removes from the <em>events</em> feature.
+	 * 
+	 * @generated
+	 */
+	public void removeFromEvents(InvitationEvent eventsValue) {
+		if (events.contains(eventsValue)) {
+			events.remove(eventsValue);
+		}
+	}
+
+	/**
+	 * Clears the <em>events</em> feature.
+	 * 
+	 * @generated
+	 */
+	public void clearEvents() {
+		while (!events.isEmpty()) {
+			removeFromEvents(events.iterator().next());
+		}
+	}
+
+	/**
+	 * Sets the '{@link Invitation#getEvents() <em>events</em>}' feature.
+	 * 
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param the
+	 *            new value of the '{@link Invitation#getEvents() events}'
+	 *            feature.
+	 * @generated
+	 */
+	public void setEvents(Set<InvitationEvent> newEvents) {
+		events = newEvents;
 	}
 
 	/**

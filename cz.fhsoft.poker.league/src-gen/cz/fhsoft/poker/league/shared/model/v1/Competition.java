@@ -82,7 +82,7 @@ public class Competition extends DescribedEntity {
 	 * @generated
 	 */
 	@Basic()
-	private int defaultTournamentDeadline = 0;
+	private int defaultTournamentAnnouncementLead = 48;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -264,31 +264,34 @@ public class Competition extends DescribedEntity {
 	}
 
 	/**
-	 * Returns the value of '<em><b>defaultTournamentDeadline</b></em>' feature.
+	 * Returns the value of '<em><b>defaultTournamentAnnouncementLead</b></em>'
+	 * feature.
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @return the value of '<em><b>defaultTournamentDeadline</b></em>' feature
+	 * @return the value of '<em><b>defaultTournamentAnnouncementLead</b></em>'
+	 *         feature
 	 * @generated
 	 */
-	public int getDefaultTournamentDeadline() {
-		return defaultTournamentDeadline;
+	public int getDefaultTournamentAnnouncementLead() {
+		return defaultTournamentAnnouncementLead;
 	}
 
 	/**
-	 * Sets the '{@link Competition#getDefaultTournamentDeadline()
-	 * <em>defaultTournamentDeadline</em>}' feature.
+	 * Sets the '{@link Competition#getDefaultTournamentAnnouncementLead()
+	 * <em>defaultTournamentAnnouncementLead</em>}' feature.
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
 	 * @param the
 	 *            new value of the '
-	 *            {@link Competition#getDefaultTournamentDeadline()
-	 *            defaultTournamentDeadline}' feature.
+	 *            {@link Competition#getDefaultTournamentAnnouncementLead()
+	 *            defaultTournamentAnnouncementLead}' feature.
 	 * @generated
 	 */
-	public void setDefaultTournamentDeadline(int newDefaultTournamentDeadline) {
-		defaultTournamentDeadline = newDefaultTournamentDeadline;
+	public void setDefaultTournamentAnnouncementLead(
+			int newDefaultTournamentAnnouncementLead) {
+		defaultTournamentAnnouncementLead = newDefaultTournamentAnnouncementLead;
 	}
 
 	/**
@@ -423,7 +426,7 @@ public class Competition extends DescribedEntity {
 				+ getDefaultBuyIn() + "]" + " [defaultMinPlayers: "
 				+ getDefaultMinPlayers() + "]" + " [defaultMaxPlayers: "
 				+ getDefaultMaxPlayers() + "]"
-				+ " [defaultTournamentDeadline: "
-				+ getDefaultTournamentDeadline() + "]";
+				+ " [defaultTournamentAnnouncementLead: "
+				+ getDefaultTournamentAnnouncementLead() + "]";
 	}
 }

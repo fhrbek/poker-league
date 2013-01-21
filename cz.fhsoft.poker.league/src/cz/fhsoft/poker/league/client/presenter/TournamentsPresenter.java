@@ -21,6 +21,8 @@ import cz.fhsoft.poker.league.client.view.TournamentViewImpl;
 import cz.fhsoft.poker.league.client.view.TournamentsView;
 import cz.fhsoft.poker.league.shared.model.v1.Competition;
 import cz.fhsoft.poker.league.shared.model.v1.Invitation;
+import cz.fhsoft.poker.league.shared.model.v1.InvitationEvent;
+import cz.fhsoft.poker.league.shared.model.v1.InvitationEventType;
 import cz.fhsoft.poker.league.shared.model.v1.InvitationReply;
 import cz.fhsoft.poker.league.shared.model.v1.Player;
 import cz.fhsoft.poker.league.shared.model.v1.Tournament;
@@ -133,7 +135,7 @@ public class TournamentsPresenter extends PresenterWithVersionedData implements 
 				newTournament.setMinPlayers(resolvedCompetition.getDefaultMinPlayers());
 				newTournament.setMaxPlayers(resolvedCompetition.getDefaultMaxPlayers());
 				newTournament.setDefaultBuyIn(resolvedCompetition.getDefaultBuyIn());
-				newTournament.setDeadline(resolvedCompetition.getDefaultTournamentDeadline());
+				newTournament.setTournamentAnnouncementLead(resolvedCompetition.getDefaultTournamentAnnouncementLead());
 				newTournament.setDefaultPrizeMoneyRuleSet(resolvedCompetition.getDefaultPrizeMoneyRuleSet());
 				
 				Util.resolve(resolvedCompetition.getPlayers(), new AsyncCallback<Set<Player>>() {
@@ -160,6 +162,13 @@ public class TournamentsPresenter extends PresenterWithVersionedData implements 
 							invitation.setUuid(UUID.generateUUID());
 							
 							invitations.add(invitation);
+							
+							InvitationEvent event = new InvitationEvent();
+							event.setInvitation(invitation);
+							event.setEventTime(new Date());
+							event.setEventType(InvitationEventType.GENERATED);
+							
+							invitation.addToEvents(event);
 						}
 						
 						newTournament.setInvitations(invitations);

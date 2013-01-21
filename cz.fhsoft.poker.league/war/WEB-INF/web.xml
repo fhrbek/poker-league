@@ -36,7 +36,17 @@
     <servlet-name>gameServiceServlet</servlet-name>
     <url-pattern>/cz_fhsoft_poker_league/gameService</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <servlet-name>cronInvitationsServlet</servlet-name>
+    <servlet-class>cz.fhsoft.poker.league.server.InvitationSender</servlet-class>
+  </servlet>
   
+  <servlet-mapping>
+    <servlet-name>cronInvitationsServlet</servlet-name>
+    <url-pattern>/cron/invitations</url-pattern>
+  </servlet-mapping>
+
   <!-- Default page to serve -->
   <welcome-file-list>
     <welcome-file>Cz_fhsoft_poker_league.html</welcome-file>
