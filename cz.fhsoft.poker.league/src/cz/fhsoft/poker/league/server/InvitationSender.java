@@ -1,8 +1,6 @@
 package cz.fhsoft.poker.league.server;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Properties;
 import java.util.logging.Logger;
 
@@ -46,51 +44,56 @@ public class InvitationSender extends HttpServlet {
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
 		synchronized(EntityServiceImpl.LOCK) {
-			List<InvitationEvent> events = new ArrayList<InvitationEvent>(); 
-
             ServletInitializer.getEntityManager().getTransaction().begin();
-
-            for(Object obj : unsentInvitations.getResultList()) {
-				InvitationEvent invitationEvent = (InvitationEvent) obj;
-				events.add(invitationEvent);
-				Invitation invitation = invitationEvent.getInvitation();
-				Tournament tournament = invitation.getTournament();
-				if(tournament.getTournamentStart().getTime() - new Date().getTime() <= tournament.getTournamentAnnouncementLead() * 3600000) {
-			        Properties props = new Properties();
-			        Session session = Session.getDefaultInstance(props, null);
-			        
-			        String formattedDate = String.format("%1$td.%1$tm.%1$tY %1$tH:%1$tM", tournament.getTournamentStart());
-
-			        String msgBody = MAIL_TEMPLATE
-			        		.replace(PLACEHOLDER_TOURNAMENT, tournament.getName())
-			        		.replace(PLACEHOLDER_TOURNAMENT_START, formattedDate)
-			        		.replace(PLACEHOLDER_INVITATION_UUID, invitation.getUuid());
-
-			        try {
-			            Message msg = new MimeMessage(session);
-			            msg.setFrom(new InternetAddress("wittmannpoker@gmail.com", "Wittmann Poker"));
-			            msg.addRecipient(Message.RecipientType.TO,
-			                             new InternetAddress(invitation.getPlayer().getEmailAddress(), invitation.getPlayer().getNick()));
-			            msg.setSubject("WPL Turnaj " + formattedDate);
-			            msg.setText(msgBody);
-			            Transport.send(msg);
-			            
-			            invitationEvent.setSent(true);
-			            ServletInitializer.getEntityManager().merge(invitationEvent);
-			        }
-			        catch (Exception e) {
-			            // Let's log it and try again later
-			        	Logger.getLogger(InvitationSender.class.getName()).severe(e.getMessage());
-			        }
-			    }
-			}
             
-            EntityServiceImpl.updateDataVersion();
-            ServletInitializer.getEntityManager().getTransaction().commit();
-            
-            for(InvitationEvent event : events)
-            	ServletInitializer.getEntityManager().detach(event);
-
+            try {
+            	boolean change = false;
+	
+	            for(Object obj : unsentInvitations.getResultList()) {
+					InvitationEvent invitationEvent = (InvitationEvent) obj;
+					ServletInitializer.getEntityManager().refresh(invitationEvent);
+					Invitation invitation = invitationEvent.getInvitation();
+	
+					Tournament tournament = invitation.getTournament();
+					if(tournament.getTournamentStart().getTime() - new Date().getTime() <= tournament.getTournamentAnnouncementLead() * 3600000) {
+				        Properties props = new Properties();
+				        Session session = Session.getDefaultInstance(props, null);
+				        
+				        String formattedDate = String.format("%1$td.%1$tm.%1$tY %1$tH:%1$tM", tournament.getTournamentStart());
+	
+				        String msgBody = MAIL_TEMPLATE
+				        		.replace(PLACEHOLDER_TOURNAMENT, tournament.getName())
+				        		.replace(PLACEHOLDER_TOURNAMENT_START, formattedDate)
+				        		.replace(PLACEHOLDER_INVITATION_UUID, invitation.getUuid());
+	
+				        try {
+				            Message msg = new MimeMessage(session);
+				            msg.setFrom(new InternetAddress("wittmannpoker@gmail.com", "Wittmann Poker"));
+				            msg.addRecipient(Message.RecipientType.TO,
+				                             new InternetAddress(invitation.getPlayer().getEmailAddress(), invitation.getPlayer().getNick()));
+				            msg.setSubject("WPL Turnaj " + formattedDate);
+				            msg.setText(msgBody);
+				            Transport.send(msg);
+				            
+				            invitationEvent.setSent(true);
+				            change = true;
+				            ServletInitializer.getEntityManager().merge(invitationEvent);
+				        }
+				        catch (Exception e) {
+				            // Let's log it and try again later
+				        	Logger.getLogger(InvitationSender.class.getName()).severe(e.getMessage());
+				        }
+				    }
+				}
+	            
+	            if(change)
+	            	EntityServiceImpl.updateDataVersion();
+	            ServletInitializer.getEntityManager().getTransaction().commit();
+            }
+            finally {
+            	if(ServletInitializer.getEntityManager().getTransaction().isActive())
+            		ServletInitializer.getEntityManager().getTransaction().rollback();
+            }
 		}
 	}
 
