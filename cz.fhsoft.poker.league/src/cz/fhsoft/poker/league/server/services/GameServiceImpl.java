@@ -25,8 +25,8 @@ public class GameServiceImpl extends AbstractServiceImpl implements GameService 
 	@Override
 	public List<Tournament> getCurrentTournaments() {
 		Date currentTime = new Date();
-		Date startLimit = new Date(currentTime.getTime() - 3600000);
-		Date endLimit = new Date(currentTime.getTime() + 3600000);
+		Date startLimit = new Date(currentTime.getTime() + 3600000);
+		Date endLimit = new Date(currentTime.getTime() - 3600000);
 		currentTournaments.setParameter("startLimit", startLimit);
 		currentTournaments.setParameter("endLimit", endLimit);
 
