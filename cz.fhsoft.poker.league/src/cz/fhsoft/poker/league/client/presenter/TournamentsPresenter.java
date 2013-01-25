@@ -129,8 +129,8 @@ public class TournamentsPresenter extends PresenterWithVersionedData implements 
 				newTournament.setCompetition(resolvedCompetition);
 
 				Date currentDate = new Date();
-				newTournament.setTournamentStart(new Date((currentDate.getTime() - currentDate.getTime() % 86400000) + 3600000 * 18)); //TODO Hard-coded start at 18:00
-				newTournament.setTournamentEnd(new Date(newTournament.getTournamentStart().getTime() + 86400000)); //TODO Hard-coded end a day after start
+				newTournament.setTournamentStart(new Date(currentDate.getTime() +  86400000)); //a day from now
+				newTournament.setTournamentEnd(new Date(newTournament.getTournamentStart().getTime() + 86400000)); //a day after start
 
 				newTournament.setMinPlayers(resolvedCompetition.getDefaultMinPlayers());
 				newTournament.setMaxPlayers(resolvedCompetition.getDefaultMaxPlayers());

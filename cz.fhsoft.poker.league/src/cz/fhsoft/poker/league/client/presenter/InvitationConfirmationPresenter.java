@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import com.google.gwt.i18n.shared.DateTimeFormat;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.HasWidgets;
 
@@ -19,6 +20,8 @@ import cz.fhsoft.poker.league.shared.persistence.compare.Comparators;
 
 public class InvitationConfirmationPresenter extends PresenterWithVersionedData implements InvitationConfirmationView.Presenter {
 	
+	private static DateTimeFormat dateFormatter = DateTimeFormat.getFormat("dd.MM.yyyy H:mm");
+
 	private String invitationUUID;
 	
 	private InvitationConfirmationView view;
@@ -68,6 +71,8 @@ public class InvitationConfirmationPresenter extends PresenterWithVersionedData 
 							ErrorReporter.error("Litujeme, ale tato pozvánka je neplatná");
 							return;
 						}
+						
+						ClientEntityManager.getInstance().registerEntity(invitation);
 
 						ClientEntityManager.getInstance().resolveEntity(invitation.getTournament(), new AsyncCallback<Tournament>() {
 
@@ -78,7 +83,7 @@ public class InvitationConfirmationPresenter extends PresenterWithVersionedData 
 
 							@Override
 							public void onSuccess(Tournament tournament) {
-								view.setTournamentLabel(tournament.getName() + " od " + tournament.getTournamentStart() +
+								view.setTournamentLabel(tournament.getName() + ", zahájení " + dateFormatter.format(tournament.getTournamentStart()) +
 										" (min. " + tournament.getMinPlayers() + ", max. " + tournament.getMaxPlayers() + " hráčů)");
 								view.setInvitation(invitation, tournament.getMaxPlayers());
 

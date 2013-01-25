@@ -51,6 +51,7 @@
 		
 		.centeredTable {
 			margin: auto;
+			text-align: left;
 		}
 	</ui:style>
 	<g:HTMLPanel>

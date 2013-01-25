@@ -12,10 +12,13 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.uibinder.client.UiTemplate;
 import com.google.gwt.user.cellview.client.CellTable;
 import com.google.gwt.user.cellview.client.Column;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 
+import cz.fhsoft.poker.league.client.persistence.ClientEntityManager;
+import cz.fhsoft.poker.league.client.util.ErrorReporter;
 import cz.fhsoft.poker.league.shared.model.v1.Invitation;
 
 public class InvitationConfirmationViewImpl extends Composite implements InvitationConfirmationView {
@@ -63,8 +66,13 @@ public class InvitationConfirmationViewImpl extends Composite implements Invitat
 
 			@Override
 			public String getValue(Invitation invitation) {
-				if(invitation.getOrdinal() > 0)
-					return invitation.getOrdinal() + ".";
+				if(invitation.getOrdinal() > 0) {
+					if(invitation.getOrdinal() <= recentTournamentCapacity)
+						return invitation.getOrdinal() + ".";
+
+					return "(" + invitation.getOrdinal() + ".)";
+				}
+				
 				
 				return "<bez pořadí>";
 			}
@@ -130,22 +138,36 @@ public class InvitationConfirmationViewImpl extends Composite implements Invitat
 		if(recentInvitation == null)
 			return;
 		
-		switch(recentInvitation.getReply()) {
-			case ACCEPTED:
-				if(recentInvitation.getOrdinal() <= recentTournamentCapacity)
-					confirmed.getElement().getStyle().clearDisplay();
-				else
-					confirmedButOverLimit.getElement().getStyle().clearDisplay();
-				changeConfirmation.getElement().getStyle().clearDisplay();
-				break;
-			case REJECTED:
-				rejected.getElement().getStyle().clearDisplay();
-				changeConfirmation.getElement().getStyle().clearDisplay();
-				break;
-			case NO_REPLY:
-				confirmationForm.getElement().getStyle().clearDisplay();
-				break;
-		}
+		ClientEntityManager.getInstance().resolveEntity(recentInvitation, new AsyncCallback<Invitation>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+				ErrorReporter.error(caught);
+			}
+
+			@Override
+			public void onSuccess(Invitation invitation) {
+				recentInvitation = invitation;
+
+				switch(recentInvitation.getReply()) {
+					case ACCEPTED:
+						if(recentInvitation.getOrdinal() <= recentTournamentCapacity)
+							confirmed.getElement().getStyle().clearDisplay();
+						else
+							confirmedButOverLimit.getElement().getStyle().clearDisplay();
+						changeConfirmation.getElement().getStyle().clearDisplay();
+						break;
+					case REJECTED:
+						rejected.getElement().getStyle().clearDisplay();
+						changeConfirmation.getElement().getStyle().clearDisplay();
+						break;
+					case NO_REPLY:
+						confirmationForm.getElement().getStyle().clearDisplay();
+						break;
+				}
+			}
+			
+		});
 	}
 	
 	@UiHandler("buttonAccept")

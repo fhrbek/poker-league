@@ -1,16 +1,15 @@
 package cz.fhsoft.poker.league.client.presenter;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.google.gwt.i18n.shared.DateTimeFormat;
 import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.IntegerBox;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
-import com.google.gwt.user.datepicker.client.DatePicker;
 
 import cz.fhsoft.poker.league.client.persistence.DigestProviders;
 import cz.fhsoft.poker.league.client.view.GamesView;
@@ -38,6 +37,8 @@ public class TournamentPresenter extends RankablePresenter<Tournament, Tournamen
 	private GamesPresenter gamesPresenter;
 	
 	private GamesView gamesView;
+	
+	private static final DateTimeFormat dateFormatter = DateTimeFormat.getFormat("dd.MM.yyyy H:mm");
 
 	public static final AbstractPersistentEntityEditor<Tournament> tournamentEditor = new AbstractPersistentEntityEditor<Tournament>() {
 		
@@ -70,7 +71,6 @@ public class TournamentPresenter extends RankablePresenter<Tournament, Tournamen
 		};
 		
 		private Entry<IntegerBox> announcementLeadEntry = new Entry<IntegerBox>("Předstih odeslání pozvánek", new IntegerBox()) {
-			//TODO Enable setting hours
 
 			@Override
 			public void setUpWidget(Tournament entity) {
@@ -84,34 +84,40 @@ public class TournamentPresenter extends RankablePresenter<Tournament, Tournamen
 			
 		};
 		
-		private Entry<DatePicker> startTimeEntry = new Entry<DatePicker>("Zahájení", new DatePicker()) {
-			//TODO Enable setting hours
+		private Entry<TextBox> startTimeEntry = new Entry<TextBox>("Zahájení", new TextBox()) {
 
 			@Override
 			public void setUpWidget(Tournament entity) {
-				getWidget().setValue(entity.getTournamentStart());
-				getWidget().setCurrentMonth(entity.getTournamentStart());
+				getWidget().setValue(dateFormatter.format(entity.getTournamentStart()));
 			}
 
 			@Override
 			public void updateEntity(Tournament entity) {
-				entity.setTournamentStart(new Date((getWidget().getValue().getTime() - getWidget().getValue().getTime() % 86400000) + 3600000 * 18)); //TODO Hard coded start time 18:00!!!
+				try {
+					entity.setTournamentStart(dateFormatter.parseStrict(getWidget().getValue()));
+				}
+				catch(IllegalArgumentException e) {
+					entity.setTournamentStart(null);
+				}
 			}
 			
 		};
 		
-		private Entry<DatePicker> endTimeEntry = new Entry<DatePicker>("Ukončení", new DatePicker()) {
-			//TODO Enable setting hours
+		private Entry<TextBox> endTimeEntry = new Entry<TextBox>("Ukončení", new TextBox()) {
 
 			@Override
 			public void setUpWidget(Tournament entity) {
-				getWidget().setValue(entity.getTournamentEnd());
-				getWidget().setCurrentMonth(entity.getTournamentEnd());
+				getWidget().setValue(dateFormatter.format(entity.getTournamentEnd()));
 			}
 
 			@Override
 			public void updateEntity(Tournament entity) {
-				entity.setTournamentEnd(new Date((getWidget().getValue().getTime() - getWidget().getValue().getTime() % 86400000) + 3600000 * 18)); //TODO Hard coded start time 18:00!!!
+				try {
+					entity.setTournamentEnd(dateFormatter.parseStrict(getWidget().getValue()));
+				}
+				catch(IllegalArgumentException e) {
+					entity.setTournamentEnd(null);
+				}
 			}
 			
 		};
@@ -213,6 +219,10 @@ public class TournamentPresenter extends RankablePresenter<Tournament, Tournamen
 			Map<Entry<? extends Widget>, String> errorMap = new HashMap<Entry<? extends Widget>, String>();
 			if(StringUtil.isEmpty(entity.getName(), true))
 				errorMap.put(nameEntry, "Název musí být vyplněn");
+			if(entity.getTournamentStart() == null)
+				errorMap.put(startTimeEntry, "Datum a čas zahájení musí být platná hodnota ve formátu DD.MM.YYYY HH:MM");
+			if(entity.getTournamentEnd() == null)
+				errorMap.put(endTimeEntry, "Datum a čas ukončení musí být platná hodnota ve formátu DD.MM.YYYY HH:MM");
 			//TODO Validate tournament
 			
 			callback.onSuccess(errorMap);
