@@ -1,7 +1,9 @@
 package cz.fhsoft.poker.league.server;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Properties;
+import java.util.TimeZone;
 import java.util.logging.Logger;
 
 import javax.mail.Message;
@@ -58,8 +60,10 @@ public class InvitationSender extends HttpServlet {
 					if(tournament.getTournamentStart().getTime() - new Date().getTime() <= tournament.getTournamentAnnouncementLead() * 3600000) {
 				        Properties props = new Properties();
 				        Session session = Session.getDefaultInstance(props, null);
+				        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("GMT+1:00")); //TODO get from the tournament!
+				        cal.setTime(tournament.getTournamentStart());
 				        
-				        String formattedDate = String.format("%1$td.%1$tm.%1$tY %1$tH:%1$tM", tournament.getTournamentStart());
+				        String formattedDate = String.format("%1$td.%1$tm.%1$tY %1$tH:%1$tM", cal);
 	
 				        String msgBody = MAIL_TEMPLATE
 				        		.replace(PLACEHOLDER_TOURNAMENT, tournament.getName())
