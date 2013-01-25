@@ -93,7 +93,7 @@ public class InvitationServiceImpl extends AbstractServiceImpl implements Invita
 						invitation = inv; // get reference from the tournament to be sure that it's really the managed instance
 					}
 
-					if(inv.getOrdinal() > rejectedInvitationOrdinal)
+					if(rejectedInvitationOrdinal > 0 && inv.getOrdinal() > rejectedInvitationOrdinal)
 						inv.setOrdinal(inv.getOrdinal() - 1);
 				}
 
