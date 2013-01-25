@@ -1,0 +1,85 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"
+	xmlns:cell="urn:import:com.google.gwt.user.cellview.client">
+	<ui:style>
+		.mainLabel {
+			margin-top: 10px;
+			font-weight: bold;
+			margin-bottom: 5px;
+		}
+
+		.infoLabel {
+			font-weight: bold;
+			font-size: 20px;
+			color: #999;
+			margin-top: 30px;
+			margin-bottom: 30px;
+		}
+
+		.invitationTable {
+			margin: auto;
+			text-align: center;
+		}
+		
+		.invitationTable td {
+			font-size: 16px;
+		}
+		
+		.invitationTable td label {
+			font-size: 20px;
+			padding-left: 5px;
+		}
+		
+		@external .gwt-Label, .gwt-CheckBox;
+		.invitationTable .gwt-Label {
+			padding: 2px;
+		}
+
+		.invitationTable .gwt-CheckBox, .invitationTable .gwt-CheckBox input, .invitationTable .gwt-CheckBox label {
+			cursor: pointer;
+		}
+		
+		.confirmationForm {
+			margin-top: 30px;
+		}
+		
+		.confirmationButtons {
+			width: 100%;
+			margin-bottom: 30px;
+		}
+		
+		.centeredTable {
+			margin: auto;
+		}
+	</ui:style>
+	<g:HTMLPanel>
+		<table class="{style.invitationTable}">
+			<tr>
+				<td verticalAlignment="middle">
+					<g:FlowPanel>
+						<g:Anchor href="#">Hlavní stránka</g:Anchor>
+						<g:Label addStyleNames="{style.mainLabel}">Wittmann Poker Club Tě zve na turnaj</g:Label>
+						<g:Label addStyleNames="{style.mainLabel}" ui:field="tournamentLabel"/>
+						<g:Label addStyleNames="{style.infoLabel}" ui:field="confirmed">Díky za potvrzení účasti, uvidíme se na turnaji!</g:Label>
+						<g:Label addStyleNames="{style.infoLabel}" ui:field="rejected">Díky za potvrzení neúčasti, snad Ti to vyjde příště!</g:Label>
+						<g:Label addStyleNames="{style.infoLabel}" ui:field="confirmedButOverLimit">Díky za potvrzení zájmu, ale už máme plný stůl. Podívej se později, jestli se neuvolnilo místo.</g:Label>
+						<g:Label ui:field="changeConfirmation" addStyleNames="pseudoLink">Změnit rozhodnutí</g:Label>
+						<g:FlowPanel ui:field="confirmationForm" addStyleNames="{style.confirmationForm}">
+							<g:Label>Zúčastníš se?</g:Label>
+							<g:HorizontalPanel horizontalAlignment="center" addStyleNames="{style.confirmationButtons}">
+								<g:cell width="50%">
+									<g:Button ui:field="buttonAccept">Ano</g:Button>
+								</g:cell>
+								<g:cell width="50%">
+									<g:Button ui:field="buttonReject">Ne</g:Button>
+								</g:cell>
+							</g:HorizontalPanel>
+						</g:FlowPanel>
+						<cell:CellTable ui:field="invitationsTable" addStyleNames="{style.centeredTable}"/>
+					</g:FlowPanel>
+				</td>
+			</tr>
+		</table>
+	</g:HTMLPanel>
+</ui:UiBinder> 

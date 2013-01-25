@@ -38,6 +38,16 @@
   </servlet-mapping>
 
   <servlet>
+    <servlet-name>invitationServiceServlet</servlet-name>
+    <servlet-class>cz.fhsoft.poker.league.server.services.InvitationServiceImpl</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>invitationServiceServlet</servlet-name>
+    <url-pattern>/cz_fhsoft_poker_league/invitationService</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
     <servlet-name>cronInvitationsServlet</servlet-name>
     <servlet-class>cz.fhsoft.poker.league.server.InvitationSender</servlet-class>
   </servlet>

@@ -138,7 +138,7 @@ public class InvitationsPresenter extends PresenterWithVersionedData implements 
 				if(invitation.getOrdinal() > 0)
 					return invitation.getOrdinal() + ".";
 				
-				return "<bez reakce>";
+				return "<bez pořadí>";
 			}
 		}, "Pořadí"));
 
@@ -152,11 +152,17 @@ public class InvitationsPresenter extends PresenterWithVersionedData implements 
 		
 		columns.add(new LabeledColumn<Invitation>(new Column<Invitation, String>(new TextCell()) {
 
-			@Override
 			public String getValue(Invitation invitation) {
-				return invitation.getReply().getLiteral();
+				switch(invitation.getReply()) {
+					case ACCEPTED:
+						return "ANO";
+					case REJECTED:
+						return "NE";
+					default:
+						return "<bez reakce>";
+				}
 			}
-		}, "Stav"));
+		}, "Účast"));
 
 		view.setInvitationsEditor(new AbstractPersistentEntityListEditor<Invitation>("Nová pozvánka", invitationEditor,
 				new AbstractPersistentEntityListEditor.DataProvider<Invitation>() {

@@ -27,12 +27,13 @@ public class GameServiceImpl extends AbstractServiceImpl implements GameService 
 		Date currentTime = new Date();
 		Date startLimit = new Date(currentTime.getTime() + 3600000);
 		Date endLimit = new Date(currentTime.getTime() - 3600000);
-		currentTournaments.setParameter("startLimit", startLimit);
-		currentTournaments.setParameter("endLimit", endLimit);
 
 		List<Tournament> resultList = new ArrayList<Tournament>();
 
 		synchronized(EntityServiceImpl.LOCK) {
+			currentTournaments.setParameter("startLimit", startLimit);
+			currentTournaments.setParameter("endLimit", endLimit);
+
 			for(Object obj : currentTournaments.getResultList()) {
 				Tournament tournament = (Tournament) obj;
 				resultList.add(EntityServiceImpl.makeTransferable(tournament));

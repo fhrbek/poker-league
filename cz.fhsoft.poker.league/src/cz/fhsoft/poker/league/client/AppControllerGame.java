@@ -28,7 +28,7 @@ public class AppControllerGame extends PresenterWithVersionedData {
 		super(parentPresenter);
 
 		if(INSTANCE != null)
-			throw new IllegalArgumentException("AppControllerMain already exists");
+			throw new IllegalArgumentException("AppControllerGame already exists");
 
 		INSTANCE = this;
 	}

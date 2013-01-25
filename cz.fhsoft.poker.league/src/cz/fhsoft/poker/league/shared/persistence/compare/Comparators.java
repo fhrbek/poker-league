@@ -76,7 +76,16 @@ public class Comparators {
 			
 			if(result != 0)
 				return result;
+			
+			result = i1.getReply().ordinal() > i2.getReply().ordinal()
+					? 1
+					: (i1.getReply().ordinal() < i2.getReply().ordinal()
+							? -1
+							: 0);
 
+			if(result != 0)
+				return result;
+			
 			result = i1.getPlayer().getNick().compareTo(i2.getPlayer().getNick());
 			
 			if(result != 0)

@@ -58,16 +58,22 @@ public class ClientEntityManager {
 		});
 	}
 	
-	public void checkDataVersion(long newDataVersion) {
+	public boolean checkDataVersion(long newDataVersion) {
+		boolean result = false;
+
 		if(newDataVersion > recentDataVersion) {
 			if(recentDataVersion > 0) {
 				invalidateCache();
 				if(eventBus != null)
 					eventBus.fireEvent(new DataChangeEvent());
+				
+				result = true;
 			}
 			
 			recentDataVersion = newDataVersion;
 		}
+		
+		return result;
 	}
 
 	public void invalidateCache() {
