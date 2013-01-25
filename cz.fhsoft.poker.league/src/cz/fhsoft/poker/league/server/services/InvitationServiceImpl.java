@@ -20,7 +20,9 @@ public class InvitationServiceImpl extends AbstractServiceImpl implements Invita
 	public Invitation findInvitation(String invitationUUID) {
 		synchronized(EntityServiceImpl.LOCK) {
 			invitationByUUID.setParameter("uuid", invitationUUID);
-			return EntityServiceImpl.makeTransferable((Invitation) invitationByUUID.getSingleResult());
+			Invitation invitation = (Invitation) invitationByUUID.getSingleResult();
+			ServletInitializer.getEntityManager().refresh(invitation);
+			return EntityServiceImpl.makeTransferable(invitation);
 		}
 	}
 
