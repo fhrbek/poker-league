@@ -6,6 +6,7 @@ import cz.fhsoft.poker.league.client.services.InvitationService;
 import cz.fhsoft.poker.league.server.AbstractServiceImpl;
 import cz.fhsoft.poker.league.server.ServletInitializer;
 import cz.fhsoft.poker.league.server.persistence.EntityServiceImpl;
+import cz.fhsoft.poker.league.server.persistence.EntityServiceImpl.DataAction;
 import cz.fhsoft.poker.league.shared.model.v1.Invitation;
 import cz.fhsoft.poker.league.shared.model.v1.InvitationReply;
 import cz.fhsoft.poker.league.shared.model.v1.Tournament;
@@ -17,21 +18,26 @@ public class InvitationServiceImpl extends AbstractServiceImpl implements Invita
 			"SELECT i FROM cz.fhsoft.poker.league.shared.model.v1.Invitation i WHERE i.uuid = :uuid");
 
 	@Override
-	public Invitation findInvitation(String invitationUUID) {
-		synchronized(EntityServiceImpl.LOCK) {
-			invitationByUUID.setParameter("uuid", invitationUUID);
-			Invitation invitation = (Invitation) invitationByUUID.getSingleResult();
-			ServletInitializer.getEntityManager().refresh(invitation);
-			return EntityServiceImpl.makeTransferable(invitation);
-		}
+	public Invitation findInvitation(final String invitationUUID) {
+		return EntityServiceImpl.doWithLock(new DataAction<Invitation>() {
+
+			@Override
+			public Invitation run() throws Exception {
+				invitationByUUID.setParameter("uuid", invitationUUID);
+				Invitation invitation = (Invitation) invitationByUUID.getSingleResult();
+
+				return EntityServiceImpl.makeTransferable(invitation);
+			}
+			
+		});
 	}
 
 	@Override
-	public long acceptInvitation(String invitationUUID) {
-		synchronized (EntityServiceImpl.LOCK) {
-			try {
-				ServletInitializer.getEntityManager().getTransaction().begin();
-				
+	public long acceptInvitation(final String invitationUUID) {
+		return EntityServiceImpl.doWithLock(new DataAction<Long>() {
+
+			@Override
+			public Long run() throws Exception {
 				invitationByUUID.setParameter("uuid", invitationUUID);
 				Invitation invitation = (Invitation) invitationByUUID.getSingleResult();
 				if(invitation == null)
@@ -59,29 +65,25 @@ public class InvitationServiceImpl extends AbstractServiceImpl implements Invita
 				
 				ServletInitializer.getEntityManager().merge(tournament);
 				long dataVersion = EntityServiceImpl.updateDataVersion();
-				ServletInitializer.getEntityManager().getTransaction().commit();
+
 				return dataVersion;
 			}
-			finally {
-				if(ServletInitializer.getEntityManager().getTransaction().isActive())
-					ServletInitializer.getEntityManager().getTransaction().rollback();
-			}
-		}
+			
+		});
 	}
 
 	@Override
-	public long rejectInvitation(String invitationUUID) {
-		synchronized (EntityServiceImpl.LOCK) {
-			try {
-				ServletInitializer.getEntityManager().getTransaction().begin();
-				
+	public long rejectInvitation(final String invitationUUID) {
+		return EntityServiceImpl.doWithLock(new DataAction<Long>() {
+
+			@Override
+			public Long run() throws Exception {
 				invitationByUUID.setParameter("uuid", invitationUUID);
 				Invitation invitation = (Invitation) invitationByUUID.getSingleResult();
 				if(invitation == null)
 					throw new IllegalArgumentException("Nebyla nalezena pozvánka s UUID=" + invitationUUID);
 
 				Tournament tournament = invitation.getTournament();
-				ServletInitializer.getEntityManager().refresh(tournament);
 				
 				int rejectedInvitationOrdinal = invitation.getOrdinal();
 				
@@ -102,13 +104,10 @@ public class InvitationServiceImpl extends AbstractServiceImpl implements Invita
 				
 				ServletInitializer.getEntityManager().merge(tournament);
 				long dataVersion = EntityServiceImpl.updateDataVersion();
-				ServletInitializer.getEntityManager().getTransaction().commit();
+
 				return dataVersion;
 			}
-			finally {
-				if(ServletInitializer.getEntityManager().getTransaction().isActive())
-					ServletInitializer.getEntityManager().getTransaction().rollback();
-			}
-		}
+			
+		});
 	}
 }

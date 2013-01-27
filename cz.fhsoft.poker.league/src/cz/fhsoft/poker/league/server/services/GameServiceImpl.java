@@ -11,6 +11,7 @@ import cz.fhsoft.poker.league.client.services.GameService;
 import cz.fhsoft.poker.league.server.AbstractServiceImpl;
 import cz.fhsoft.poker.league.server.ServletInitializer;
 import cz.fhsoft.poker.league.server.persistence.EntityServiceImpl;
+import cz.fhsoft.poker.league.server.persistence.EntityServiceImpl.DataAction;
 import cz.fhsoft.poker.league.shared.model.v1.Game;
 import cz.fhsoft.poker.league.shared.model.v1.Player;
 import cz.fhsoft.poker.league.shared.model.v1.PlayerInGame;
@@ -24,23 +25,28 @@ public class GameServiceImpl extends AbstractServiceImpl implements GameService 
 
 	@Override
 	public List<Tournament> getCurrentTournaments() {
-		Date currentTime = new Date();
-		Date startLimit = new Date(currentTime.getTime() + 3600000);
-		Date endLimit = new Date(currentTime.getTime() - 3600000);
+		return EntityServiceImpl.doWithLock(new DataAction<List<Tournament>>() {
 
-		List<Tournament> resultList = new ArrayList<Tournament>();
+			@Override
+			public List<Tournament> run() throws Exception {
+				Date currentTime = new Date();
+				Date startLimit = new Date(currentTime.getTime() + 3600000);
+				Date endLimit = new Date(currentTime.getTime() - 3600000);
 
-		synchronized(EntityServiceImpl.LOCK) {
-			currentTournaments.setParameter("startLimit", startLimit);
-			currentTournaments.setParameter("endLimit", endLimit);
+				List<Tournament> resultList = new ArrayList<Tournament>();
 
-			for(Object obj : currentTournaments.getResultList()) {
-				Tournament tournament = (Tournament) obj;
-				resultList.add(EntityServiceImpl.makeTransferable(tournament));
+				currentTournaments.setParameter("startLimit", startLimit);
+				currentTournaments.setParameter("endLimit", endLimit);
+
+				for(Object obj : currentTournaments.getResultList()) {
+					Tournament tournament = (Tournament) obj;
+					resultList.add(EntityServiceImpl.makeTransferable(tournament));
+				}
+
+				return resultList;
 			}
-		}
-
-		return resultList;
+			
+		});
 	}
 
 	@Override
@@ -49,11 +55,11 @@ public class GameServiceImpl extends AbstractServiceImpl implements GameService 
 	}
 
 	@Override
-	public long startNewGame(Integer tournamentId, List<Integer> playerIds) {
-		synchronized (EntityServiceImpl.LOCK) {
-			try {
-				ServletInitializer.getEntityManager().getTransaction().begin();
+	public long startNewGame(final Integer tournamentId, final List<Integer> playerIds) {
+		return EntityServiceImpl.doWithLock(new DataAction<Long>() {
 
+			@Override
+			public Long run() throws Exception {
 				Tournament tournament = ServletInitializer.getEntityManager().find(Tournament.class, tournamentId);
 				if(tournament == null)
 					throw new IllegalArgumentException("Nebyl nalezen turnaj s ID=" + tournamentId);
@@ -83,22 +89,19 @@ public class GameServiceImpl extends AbstractServiceImpl implements GameService 
 				
 				ServletInitializer.getEntityManager().merge(game);
 				long dataVersion = EntityServiceImpl.updateDataVersion();
-				ServletInitializer.getEntityManager().getTransaction().commit();
+
 				return dataVersion;
 			}
-			finally {
-				if(ServletInitializer.getEntityManager().getTransaction().isActive())
-					ServletInitializer.getEntityManager().getTransaction().rollback();
-			}
-		}
+			
+		});
 	}
 
 	@Override
-	public long seatOpen(List<Integer> playerInGameIds) {
-		synchronized (EntityServiceImpl.LOCK) {
-			try {
-				ServletInitializer.getEntityManager().getTransaction().begin();
-				
+	public long seatOpen(final List<Integer> playerInGameIds) {
+		return EntityServiceImpl.doWithLock(new DataAction<Long>() {
+
+			@Override
+			public Long run() throws Exception {
 				Game game = null;
 				
 				List<PlayerInGame> playersInGameForSeatOpen = new ArrayList<PlayerInGame>();
@@ -141,22 +144,19 @@ public class GameServiceImpl extends AbstractServiceImpl implements GameService 
 				
 				ServletInitializer.getEntityManager().merge(game);
 				long dataVersion = EntityServiceImpl.updateDataVersion();
-				ServletInitializer.getEntityManager().getTransaction().commit();
+
 				return dataVersion;
 			}
-			finally {
-				if(ServletInitializer.getEntityManager().getTransaction().isActive())
-					ServletInitializer.getEntityManager().getTransaction().rollback();
-			}
-		}
+			
+		});
 	}
 
 	@Override
-	public long undoSeatOpen(List<Integer> playerInGameIds) {
-		synchronized (EntityServiceImpl.LOCK) {
-			try {
-				ServletInitializer.getEntityManager().getTransaction().begin();
-				
+	public long undoSeatOpen(final List<Integer> playerInGameIds) {
+		return EntityServiceImpl.doWithLock(new DataAction<Long>() {
+
+			@Override
+			public Long run() throws Exception {
 				Game game = null;
 				
 				List<PlayerInGame> playersInGameForUndoSeatOpen = new ArrayList<PlayerInGame>();
@@ -194,13 +194,10 @@ public class GameServiceImpl extends AbstractServiceImpl implements GameService 
 				
 				ServletInitializer.getEntityManager().merge(game);
 				long dataVersion = EntityServiceImpl.updateDataVersion();
-				ServletInitializer.getEntityManager().getTransaction().commit();
+
 				return dataVersion;
 			}
-			finally {
-				if(ServletInitializer.getEntityManager().getTransaction().isActive())
-					ServletInitializer.getEntityManager().getTransaction().rollback();
-			}
-		}
+			
+		});
 	}
 }

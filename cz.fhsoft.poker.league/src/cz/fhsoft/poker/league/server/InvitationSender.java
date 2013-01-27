@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cz.fhsoft.poker.league.server.persistence.EntityServiceImpl;
+import cz.fhsoft.poker.league.server.persistence.EntityServiceImpl.DataAction;
 import cz.fhsoft.poker.league.shared.model.v1.Invitation;
 import cz.fhsoft.poker.league.shared.model.v1.InvitationEvent;
 import cz.fhsoft.poker.league.shared.model.v1.InvitationEventType;
@@ -45,10 +46,10 @@ public class InvitationSender extends HttpServlet {
 
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
-		synchronized(EntityServiceImpl.LOCK) {
-            ServletInitializer.getEntityManager().getTransaction().begin();
-            
-            try {
+		EntityServiceImpl.doWithLock(new DataAction<Void>() {
+
+			@Override
+			public Void run() throws Exception {
             	boolean change = false;
 	
 	            for(Object obj : unsentInvitations.getResultList()) {
@@ -92,13 +93,11 @@ public class InvitationSender extends HttpServlet {
 	            
 	            if(change)
 	            	EntityServiceImpl.updateDataVersion();
-	            ServletInitializer.getEntityManager().getTransaction().commit();
-            }
-            finally {
-            	if(ServletInitializer.getEntityManager().getTransaction().isActive())
-            		ServletInitializer.getEntityManager().getTransaction().rollback();
-            }
-		}
+	            
+	            return null;
+			}
+			
+		});
 	}
 
 }

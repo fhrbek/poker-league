@@ -44,7 +44,11 @@ public class InvitationConfirmationPresenter extends PresenterWithVersionedData 
 
 	@Override
 	protected void refresh() {
-		if(invitationUUID == null || !isDataChanged())
+		refresh(false);
+	}
+
+	private void refresh(boolean force) {
+		if(invitationUUID == null || !(force || isDataChanged()))
 			return;
 
 		if(container != null) {
@@ -114,8 +118,9 @@ public class InvitationConfirmationPresenter extends PresenterWithVersionedData 
 
 	@Override
 	public void setInvitationUUID(String invitationUUID) {
+		boolean changed = !invitationUUID.equals(this.invitationUUID);
 		this.invitationUUID = invitationUUID;
-		refresh();
+		refresh(changed);
 	}
 
 	@Override
