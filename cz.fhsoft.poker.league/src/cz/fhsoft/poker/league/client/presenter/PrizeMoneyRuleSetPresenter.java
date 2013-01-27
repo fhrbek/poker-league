@@ -265,7 +265,7 @@ public class PrizeMoneyRuleSetPresenter extends PresenterWithVersionedData imple
 									PrizeMoneyRule entity,
 									AsyncCallback<Map<Entry<? extends Widget>, String>> callback) {
 								Map<Entry<? extends Widget>, String> errorMap = new HashMap<Entry<? extends Widget>, String>();
-								if (entity.getNumberOfPlayers() <= 2)
+								if (entity.getNumberOfPlayers() < 2)
 									errorMap.put(numberOfPlayersEntry,
 											"Minimální počet hráčů je 2");
 
