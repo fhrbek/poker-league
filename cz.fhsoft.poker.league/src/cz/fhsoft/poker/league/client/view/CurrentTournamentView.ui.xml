@@ -12,6 +12,10 @@
 			margin: 5px;
 		}
 		
+		.currentTournamentWrapper {
+			margin-bottom: 30px;
+		}
+		
 		.checkBoxTable {
 			padding-left: 20px;
 		}
@@ -21,7 +25,7 @@
 			margin-top: 10px;
 		}
 	</ui:style>
-	<g:FlowPanel>
+	<g:FlowPanel addStyleNames="{style.currentTournamentWrapper}">
 		<g:Label ui:field="tournamentName" addStyleNames="{style.mainLabel}"/>
 		<g:FlowPanel ui:field="newGame">
 			<g:Label>V tuto chvíli není rozhrána žádná hra, můžete zahájit novou hru.</g:Label>

@@ -17,6 +17,10 @@ public interface CurrentTournamentView {
 		void onSeatOpen(List<Integer> playerInGameIds);
 		
 		void onUndoSeatOpen(List<Integer> playerInGameIds);
+		
+		void moveViewToTop();
+		
+		void removeView();
 	}
 
 	void setPresenter(Presenter presenter);

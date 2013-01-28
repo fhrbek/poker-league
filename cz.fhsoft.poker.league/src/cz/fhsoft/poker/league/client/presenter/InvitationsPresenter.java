@@ -178,7 +178,9 @@ public class InvitationsPresenter extends PresenterWithVersionedData implements 
 
 					@Override
 					public void onSuccess(Tournament tournament) {
-						Util.resolve(tournament.getInvitations(), new AsyncCallback<Set<Invitation>>() {
+						Util.resolve(tournament != null
+								? tournament.getInvitations()
+								: Collections.<Invitation> emptySet(), new AsyncCallback<Set<Invitation>>() {
 
 							@Override
 							public void onFailure(Throwable caught) {

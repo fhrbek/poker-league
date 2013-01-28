@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Set;
 
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HasWidgets;
 
 import cz.fhsoft.poker.league.client.AppControllerGame;
@@ -43,13 +44,29 @@ public class CurrentTournamentPresenter extends PresenterWithVersionedData imple
 	}
 
 	@Override
+	public void moveViewToTop() {
+		if(view.asWidget().getParent() instanceof FlowPanel) {
+			FlowPanel parent = (FlowPanel) view.asWidget().getParent();
+			parent.remove(view.asWidget());
+			parent.insert(view.asWidget(), 0);
+		}
+	}
+
+	@Override
+	public void removeView() {
+		view.asWidget().removeFromParent();
+	}
+	
+	@Override
 	protected void refresh() {
 		if(!isDataChanged())
 			return;
 
 		if(container != null) {
-			container.clear();
 			container.add(view.asWidget());
+			view.setPlayerCandidatessForGame(Collections.<Player> emptyList());
+			view.setNewGameVisible(false);
+			view.setCurrentGameVisible(false);
 
 			ClientEntityManager.getInstance().resolveEntity(tournament, new AsyncCallback<Tournament>() {
 
@@ -60,6 +77,9 @@ public class CurrentTournamentPresenter extends PresenterWithVersionedData imple
 
 				@Override
 				public void onSuccess(Tournament resolvedTournament) {
+					if(resolvedTournament == null)
+						return;
+
 					tournament = resolvedTournament;
 					view.setTournamentName(resolvedTournament.getCompetition().getName() + " / " + resolvedTournament.getName());
 					

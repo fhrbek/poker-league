@@ -66,7 +66,9 @@ public class GamesPresenter extends PresenterWithVersionedData implements GamesV
 
 			@Override
 			public void onSuccess(Tournament resolvedTournament) {
-				Util.resolve(resolvedTournament.getGames(), new AsyncCallback<Set<Game>>() {
+				Util.resolve(resolvedTournament != null
+						? resolvedTournament.getGames()
+						: Collections.<Game> emptySet(), new AsyncCallback<Set<Game>>() {
 
 					@Override
 					public void onFailure(Throwable caught) {

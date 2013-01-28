@@ -70,7 +70,9 @@ public class TournamentsPresenter extends PresenterWithVersionedData implements 
 
 			@Override
 			public void onSuccess(Competition resolvedCompetition) {
-				Util.resolve(resolvedCompetition.getTournaments(), new AsyncCallback<Set<Tournament>>() {
+				Util.resolve(resolvedCompetition != null
+						? resolvedCompetition.getTournaments()
+						: Collections.<Tournament> emptySet(), new AsyncCallback<Set<Tournament>>() {
 
 					@Override
 					public void onFailure(Throwable caught) {
