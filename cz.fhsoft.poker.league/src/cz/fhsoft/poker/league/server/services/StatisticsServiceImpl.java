@@ -10,6 +10,7 @@ import javax.persistence.Query;
 import cz.fhsoft.poker.league.client.services.StatisticsService;
 import cz.fhsoft.poker.league.server.AbstractServiceImpl;
 import cz.fhsoft.poker.league.server.ServletInitializer;
+import cz.fhsoft.poker.league.server.persistence.EntityServiceImpl;
 import cz.fhsoft.poker.league.shared.model.v1.Competition;
 import cz.fhsoft.poker.league.shared.model.v1.Game;
 import cz.fhsoft.poker.league.shared.model.v1.Tournament;
@@ -98,28 +99,30 @@ public class StatisticsServiceImpl extends AbstractServiceImpl implements Statis
 
 	@Override
 	public List<RankingRecord> getRanking(String entityClass, Number id) {
-		List<List<Object>> results = new ArrayList<List<Object>>();
-		String sql = SQL_MAP.get(entityClass);
-		if(sql == null)
-			throw new IllegalArgumentException("Unsupported entity type: " + entityClass);
-
-		Query nativeQuery = ServletInitializer.getEntityManager().createNativeQuery(sql);
-		nativeQuery.setParameter(1, id);
-		nativeQuery.setParameter(2, id);
-		
-		for(Object row : nativeQuery.getResultList()) {
-			//We cannot use Arrays.asList() since the result wouldn't be serializable by GWT
-			List<Object> rowList = new ArrayList<Object>();
-			for(Object obj : (Object[]) row)
-				rowList.add(obj);
-			results.add(rowList);
+		synchronized(EntityServiceImpl.LOCK) {
+			List<List<Object>> results = new ArrayList<List<Object>>();
+			String sql = SQL_MAP.get(entityClass);
+			if(sql == null)
+				throw new IllegalArgumentException("Unsupported entity type: " + entityClass);
+	
+			Query nativeQuery = ServletInitializer.getEntityManager().createNativeQuery(sql);
+			nativeQuery.setParameter(1, id);
+			nativeQuery.setParameter(2, id);
+			
+			for(Object row : nativeQuery.getResultList()) {
+				//We cannot use Arrays.asList() since the result wouldn't be serializable by GWT
+				List<Object> rowList = new ArrayList<Object>();
+				for(Object obj : (Object[]) row)
+					rowList.add(obj);
+				results.add(rowList);
+			}
+	
+			List<RankingRecord> rankingRecords = new ArrayList<RankingRecord>(results.size());
+			for(List<Object> row : results)
+				rankingRecords.add(createRankingRecord(row));
+			
+			return rankingRecords;
 		}
-
-		List<RankingRecord> rankingRecords = new ArrayList<RankingRecord>(results.size());
-		for(List<Object> row : results)
-			rankingRecords.add(createRankingRecord(row));
-		
-		return rankingRecords;
 	}
 
 	private RankingRecord createRankingRecord(List<Object> row) {
