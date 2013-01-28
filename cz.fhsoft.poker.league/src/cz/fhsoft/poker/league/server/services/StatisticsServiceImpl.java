@@ -19,7 +19,7 @@ import cz.fhsoft.poker.league.shared.services.RankingRecord;
 @SuppressWarnings("serial")
 public class StatisticsServiceImpl extends AbstractServiceImpl implements StatisticsService {
 
-	private static final String ALIAS_PLACEHOLDER = "@@CONDITION@@";
+	private static final String ALIAS_PLACEHOLDER = "@@ALIAS@@";
 	
 	private static final String UNFINISHED_FILTER_PLACEHOLDER = "@@UNFINISHED_FILTER@@";
 	
@@ -32,7 +32,11 @@ public class StatisticsServiceImpl extends AbstractServiceImpl implements Statis
 		"       (SELECT COUNT(*)" +
 		"          FROM PL_COMPETITION c JOIN PL_TOURNAMENT t ON t.COMPETITION_ID = c.ID" +
 		"                                JOIN PL_GAME g ON g.TOURNAMENT_ID = t.ID" +
-		"          WHERE " + ALIAS_PLACEHOLDER + ".ID = ?) AS TOTAL_GAMES," +
+		"          WHERE " + ALIAS_PLACEHOLDER + ".ID = ?" +
+		"            AND NOT EXISTS(SELECT 1 FROM PL_PLAYERINGAME pig" +
+		"                             WHERE pig.GAME_ID = g.ID" +
+		"                               AND pig.PLAYER_ID = p.ID" +
+		"                               AND pig.RANK = 0)) AS TOTAL_GAMES," +
 		"       COUNT(DISTINCT prize_and_points.GAME_ID) AS GAMES_PLAYED," +
 		"       SUM(g.BUYIN) AS BUY_INS," +
 		"       SUM(prize_and_points.PRIZE_MONEY) AS PRIZE_MONEY," +

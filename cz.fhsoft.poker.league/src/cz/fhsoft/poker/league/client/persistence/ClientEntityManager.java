@@ -271,8 +271,9 @@ public class ClientEntityManager {
 				@Override
 				public void onSuccess(E entity) {
 					try {
-						if(entity != null)
+						if(entity != null) {
 							loaded.put(id, entity);
+						}
 						else
 							loaded.remove(id);
 
@@ -303,7 +304,7 @@ public class ClientEntityManager {
 		}
 	}
 	
-	public <E extends IdentifiableEntity> void persist(E entity, final AsyncCallback<E> callback) {
+	public <E extends IdentifiableEntity> void persist(final E entity, final AsyncCallback<E> callback) {
 		entityService.persist(entity, new AsyncCallback<EntityWithDataVersion<E>>() {
 
 			@Override
@@ -318,8 +319,10 @@ public class ClientEntityManager {
 				Map<Object, IdentifiableEntity> loaded = entities.get(entityClass);
 				if(loaded == null)
 					entities.put(entityClass, loaded = new HashMap<Object, IdentifiableEntity>());
-				
+
 				loaded.put(persistedEntity.getId(), persistedEntity);
+
+				entity.setProxy(true); // invalidate the original input, it must be reloaded
 
 				callback.onSuccess(persistedEntity);
 
@@ -329,7 +332,7 @@ public class ClientEntityManager {
 		});
 	}
 	
-	public <E extends IdentifiableEntity> void merge(E entity, final AsyncCallback<E> callback) {
+	public <E extends IdentifiableEntity> void merge(final E entity, final AsyncCallback<E> callback) {
 		entityService.merge(entity, new AsyncCallback<EntityWithDataVersion<E>>() {
 
 			@Override
@@ -347,6 +350,8 @@ public class ClientEntityManager {
 				
 				loaded.put(persistedEntity.getId(), persistedEntity);
 				
+				entity.setProxy(true); // invalidate the original input, it must be reloaded
+
 				callback.onSuccess(persistedEntity);
 
 				checkDataVersion(persistedEntityWithDataVersion.dataVersion);
@@ -369,6 +374,8 @@ public class ClientEntityManager {
 				Map<Object, IdentifiableEntity> loaded = entities.get(entityClass);
 				if(loaded != null)
 					loaded.remove(entity.getId());
+
+				entity.setProxy(true); // invalidate the original input, it must be reloaded
 
 				callback.onSuccess(null);
 
@@ -446,6 +453,7 @@ public class ClientEntityManager {
 		E existingEntity = (E) loaded.get(entity.getId());
 		if(existingEntity != null && existingEntity != entity)
 			existingEntity.setProxy(true);
+
 		loaded.put(entity.getId(), entity);
 	}
 }
