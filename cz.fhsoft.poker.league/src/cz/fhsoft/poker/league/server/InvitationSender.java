@@ -54,7 +54,10 @@ public class InvitationSender extends HttpServlet {
 	
 	            for(Object obj : unsentInvitations.getResultList()) {
 					InvitationEvent invitationEvent = (InvitationEvent) obj;
-					ServletInitializer.getEntityManager().refresh(invitationEvent);
+
+					//TODO Remove permanently - it should not be needed as we don't use caching at all
+					//ServletInitializer.getEntityManager().refresh(invitationEvent);
+
 					Invitation invitation = invitationEvent.getInvitation();
 	
 					Tournament tournament = invitation.getTournament();

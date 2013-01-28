@@ -44,7 +44,9 @@ public class InvitationServiceImpl extends AbstractServiceImpl implements Invita
 					throw new IllegalArgumentException("Nebyla nalezena pozvánka s UUID=" + invitationUUID);
 
 				Tournament tournament = invitation.getTournament();
-				ServletInitializer.getEntityManager().refresh(tournament);
+
+				//TODO Remove permanently - it should not be needed as we don't use caching at all
+				//ServletInitializer.getEntityManager().refresh(tournament);
 				
 				int maxInvitationOrdinal = 0;
 				

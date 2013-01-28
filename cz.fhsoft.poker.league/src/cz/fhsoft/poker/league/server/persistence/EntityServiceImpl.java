@@ -51,6 +51,7 @@ public class EntityServiceImpl extends AbstractServiceImpl implements EntityServ
 			try {
 				if(!inSuperTransaction) {
 					ServletInitializer.getEntityManager().clear();
+					ServletInitializer.getEntityManager().getEntityManagerFactory().getCache().evictAll();
 					ServletInitializer.getEntityManager().getTransaction().begin();
 				}
 
@@ -73,6 +74,7 @@ public class EntityServiceImpl extends AbstractServiceImpl implements EntityServ
 					if(ServletInitializer.getEntityManager().getTransaction().isActive())
 						ServletInitializer.getEntityManager().getTransaction().commit();
 					ServletInitializer.getEntityManager().clear();
+					ServletInitializer.getEntityManager().getEntityManagerFactory().getCache().evictAll();
 				}
 			}
 		}
@@ -179,7 +181,8 @@ public class EntityServiceImpl extends AbstractServiceImpl implements EntityServ
 				if(entity == null)
 					return Collections.emptyList();
 		
-				ServletInitializer.getEntityManager().refresh(entity);
+				//TODO Remove permanently - it should not be needed as we don't use caching at all
+				//ServletInitializer.getEntityManager().refresh(entity);
 		
 				try {
 					Field referenceField = ReflectUtil.getDeclaredField(entity.getClass(), referenceName);
