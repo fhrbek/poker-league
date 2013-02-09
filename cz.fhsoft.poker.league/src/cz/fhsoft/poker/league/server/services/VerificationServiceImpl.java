@@ -30,15 +30,16 @@ public class VerificationServiceImpl extends AbstractServiceImpl implements Veri
 
 	@Override
 	public Boolean checkAccess() {
-		for(Cookie cookie : getThreadLocalRequest().getCookies()) {
-			if(CLIENT_TICKET_COOKIE_NAME.equals(cookie.getName())) {
-				String clientTicket = cookie.getValue();
-				if(clientTicket != null && clientTicket.equals(getPasswordHash()))
-					return true;
-
-				return false;
+		if(getThreadLocalRequest().getCookies() != null)
+			for(Cookie cookie : getThreadLocalRequest().getCookies()) {
+				if(CLIENT_TICKET_COOKIE_NAME.equals(cookie.getName())) {
+					String clientTicket = cookie.getValue();
+					if(clientTicket != null && clientTicket.equals(getPasswordHash()))
+						return true;
+	
+					return false;
+				}
 			}
-		}
 		
 		return false;
 	}
