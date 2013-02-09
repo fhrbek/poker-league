@@ -4,7 +4,7 @@ import cz.fhsoft.poker.league.client.Bootstrap;
 import cz.fhsoft.poker.league.client.persistence.DataChangeEvent;
 import cz.fhsoft.poker.league.client.persistence.DataChangeEventHandler;
 
-public abstract class PresenterWithVersionedData implements Presenter {
+public abstract class PresenterWithVersionedData implements PresenterWithMode {
 
 	private Presenter parentPresenter;
 	
@@ -36,6 +36,14 @@ public abstract class PresenterWithVersionedData implements Presenter {
 
 				if(isInVisibilityPath(source))
 					refresh();
+			}
+		});
+
+		Bootstrap.INSTANCE.getEventBus().addHandler(ModeChangeEvent.TYPE, new ModeChangeEventHandler() {
+			
+			@Override
+			public void onModeChange(ModeChangeEvent event) {
+				updateForMode();
 			}
 		});
 	}
@@ -80,7 +88,6 @@ public abstract class PresenterWithVersionedData implements Presenter {
 		if(change)
 			Bootstrap.INSTANCE.getEventBus().fireEvent(new VisibilityChangeEvent(this));
 	}
-
 
 	private boolean isInVisibilityPath(Presenter source) {
 		Presenter node = this;

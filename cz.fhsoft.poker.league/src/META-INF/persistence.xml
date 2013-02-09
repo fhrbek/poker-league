@@ -7,6 +7,7 @@
     <persistence-unit name="poker.league.data" transaction-type="RESOURCE_LOCAL">
     	<class>cz.fhsoft.poker.league.shared.model.v1.DataStructureVersion</class>
     	<class>cz.fhsoft.poker.league.shared.model.v1.DataVersion</class>
+    	<class>cz.fhsoft.poker.league.shared.model.v1.Settings</class>
     	<class>cz.fhsoft.poker.league.shared.model.v1.IdentifiableEntity</class>
     	<class>cz.fhsoft.poker.league.shared.model.v1.DescribedEntity</class>
     	<class>cz.fhsoft.poker.league.shared.model.v1.PrizeMoneyRuleSet</class>

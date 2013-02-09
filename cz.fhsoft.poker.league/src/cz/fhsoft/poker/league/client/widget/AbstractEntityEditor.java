@@ -17,7 +17,11 @@ import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.Widget;
 
+import cz.fhsoft.poker.league.client.AppControllerSuper;
+import cz.fhsoft.poker.league.client.Bootstrap;
 import cz.fhsoft.poker.league.client.persistence.ClientEntityManager;
+import cz.fhsoft.poker.league.client.presenter.ModeChangeEvent;
+import cz.fhsoft.poker.league.client.presenter.ModeChangeEventHandler;
 import cz.fhsoft.poker.league.client.util.ErrorReporter;
 import cz.fhsoft.poker.league.shared.model.v1.IdentifiableEntity;
 
@@ -52,6 +56,15 @@ public abstract class AbstractEntityEditor<E extends IdentifiableEntity> extends
 	public AbstractEntityEditor() {
 		entity = null;
 		entries = new ArrayList<Entry<? extends Widget>>();
+
+		Bootstrap.INSTANCE.getEventBus().addHandler(ModeChangeEvent.TYPE, new ModeChangeEventHandler() {
+			
+			@Override
+			public void onModeChange(ModeChangeEvent event) {
+				if(!AppControllerSuper.INSTANCE.isAdminMode())
+					AbstractEntityEditor.this.close();
+			}
+		});
 	}
 	
 	public void addEntry(Entry<? extends Widget> entry) {

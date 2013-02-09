@@ -6,6 +6,7 @@ import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.uibinder.client.UiTemplate;
+import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.TabLayoutPanel;
@@ -21,6 +22,9 @@ public class WorkbenchViewImpl extends Composite implements WorkbenchView {
 	}
 
 	private Presenter presenter;
+	
+	@UiField
+	Anchor modeSelector;
 
 	@UiField
 	TabLayoutPanel mainTabs;
@@ -71,5 +75,11 @@ public class WorkbenchViewImpl extends Composite implements WorkbenchView {
 				presenter.onTabChanged(WorkbenchView.Presenter.Tab.PRIZE_MONEY_RULE_SET);
 				break;
 		}
+	}
+
+	@Override
+	public void setMode(String label, String href) {
+		modeSelector.setText(label);
+		modeSelector.setHref(href);
 	}
 }

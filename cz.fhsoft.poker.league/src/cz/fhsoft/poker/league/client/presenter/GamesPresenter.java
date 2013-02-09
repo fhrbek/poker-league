@@ -201,6 +201,11 @@ public class GamesPresenter extends PresenterWithVersionedData implements GamesV
 		});
 	}
 
+	@Override
+	public void updateForMode() {
+		view.updateForMode();
+	}
+
 	private Tournament getTournament() {
 		return ((TournamentPresenter) getParentPresenter()).getEntity();
 	}

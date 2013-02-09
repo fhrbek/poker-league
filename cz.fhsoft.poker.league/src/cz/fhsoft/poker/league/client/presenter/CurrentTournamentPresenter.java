@@ -234,4 +234,9 @@ public class CurrentTournamentPresenter extends PresenterWithVersionedData imple
 		});
 	}
 
+	@Override
+	public void updateForMode() {
+		// nothing to do here
+	}
+
 }

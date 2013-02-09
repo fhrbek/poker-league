@@ -15,6 +15,11 @@
         iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="currentVersion" eType="#//Timestamp"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Settings" eSuperTypes="#//Serializable">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        iD="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="adminPassword" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IdentifiableEntity" abstract="true"
       eSuperTypes="#//Serializable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"

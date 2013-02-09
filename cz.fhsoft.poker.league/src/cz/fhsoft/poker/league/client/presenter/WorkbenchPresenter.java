@@ -31,10 +31,11 @@ public class WorkbenchPresenter extends PresenterWithVersionedData implements Wo
 	
 	private List<Presenter> exclusivePresenters = new ArrayList<Presenter>();
 	
-	public WorkbenchPresenter(Presenter parentPresenter, WorkbenchView view) {
+	public WorkbenchPresenter(Presenter parentPresenter, WorkbenchView view, boolean adminMode) {
 		super(parentPresenter);
 		this.view = view;
 		view.setPresenter(this);
+		setMode(adminMode);
 	}
 
 	@Override
@@ -104,4 +105,16 @@ public class WorkbenchPresenter extends PresenterWithVersionedData implements Wo
 		// Nothing to do here (all data is inside child presenters)
 	}
 
+	@Override
+	public void updateForMode() {
+		// Nothing to do here
+	}
+
+	@Override
+	public void setMode(boolean adminMode) {
+		if(adminMode)
+			view.setMode("Přepnout do režimu prohlížení", "#");
+		else
+			view.setMode("Přepnout do režimu administrace", "#admin");
+	}
 }

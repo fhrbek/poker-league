@@ -30,6 +30,7 @@ public class PlayersViewImpl extends Composite implements PlayersView {
 	
 	public PlayersViewImpl() {
 		initWidget(uiBinder.createAndBindUi(this));
+		updateForMode();
 	}
 	
 	@Override
@@ -46,5 +47,11 @@ public class PlayersViewImpl extends Composite implements PlayersView {
 	@Override
 	public void refresh() {
 		editor.refresh();
+	}
+
+	@Override
+	public void updateForMode() {
+		if(editor != null)
+			editor.updateForMode();
 	}
 }

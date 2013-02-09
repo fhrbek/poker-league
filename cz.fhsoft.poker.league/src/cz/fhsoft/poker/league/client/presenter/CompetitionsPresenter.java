@@ -108,4 +108,9 @@ public class CompetitionsPresenter extends PresenterWithVersionedData implements
 		});
 	}
 
+	@Override
+	public void updateForMode() {
+		view.updateForMode();
+	}
+
 }

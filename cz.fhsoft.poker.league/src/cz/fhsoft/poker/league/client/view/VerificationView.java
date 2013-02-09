@@ -1,20 +1,19 @@
 package cz.fhsoft.poker.league.client.view;
 
-import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 
-
-public interface TournamentsView extends ViewWithMode {
+public interface VerificationView {
 	
 	public interface Presenter extends cz.fhsoft.poker.league.client.presenter.Presenter {
-
-		void onAddTournament();
-		
+		void onPassword(String password);
 	}
+
+	Widget asWidget();
 
 	void setPresenter(Presenter presenter);
 
-	Widget asWidget();
-	
-	HasWidgets getTournamentsContainer();
+	void clearForm();
+
+	void reportWrongPassword();
+
 }

@@ -29,6 +29,7 @@ public class InvitationsViewImpl extends Composite implements InvitationsView {
 	
 	public InvitationsViewImpl() {
 		initWidget(uiBinder.createAndBindUi(this));
+		updateForMode();
 	}
 	
 	@Override
@@ -45,5 +46,11 @@ public class InvitationsViewImpl extends Composite implements InvitationsView {
 	@Override
 	public void refresh() {
 		editor.refresh();
+	}
+
+	@Override
+	public void updateForMode() {
+		if(editor != null)
+			editor.updateForMode();
 	}
 }

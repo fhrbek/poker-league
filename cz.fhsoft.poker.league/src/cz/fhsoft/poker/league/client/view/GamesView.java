@@ -4,7 +4,7 @@ import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
 
 
-public interface GamesView {
+public interface GamesView extends ViewWithMode {
 	
 	public interface Presenter extends cz.fhsoft.poker.league.client.presenter.Presenter {
 

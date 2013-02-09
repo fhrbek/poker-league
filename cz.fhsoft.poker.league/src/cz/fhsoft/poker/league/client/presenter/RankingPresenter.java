@@ -91,4 +91,9 @@ public class RankingPresenter extends PresenterWithVersionedData implements Rank
 			view.asWidget().getElement().getStyle().setDisplay(Display.NONE);
 	}
 
+
+	@Override
+	public void updateForMode() {
+		// nothing to do here
+	}
 }

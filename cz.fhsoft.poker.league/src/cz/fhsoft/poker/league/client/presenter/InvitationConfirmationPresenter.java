@@ -158,5 +158,10 @@ public class InvitationConfirmationPresenter extends PresenterWithVersionedData 
 			
 		});
 	}
+
+	@Override
+	public void updateForMode() {
+		// nothing to do here
+	}
 	
 }

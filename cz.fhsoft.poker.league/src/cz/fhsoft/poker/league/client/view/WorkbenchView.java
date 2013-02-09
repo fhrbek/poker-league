@@ -10,6 +10,8 @@ public interface WorkbenchView {
 		public enum Tab { COMPETITIONS, PLAYERS, PRIZE_MONEY_RULE_SET };
 		
 		void onTabChanged(Tab tab);
+		
+		void setMode(boolean adminMode);
 	}
 
 	void setPresenter(Presenter presenter);
@@ -22,4 +24,5 @@ public interface WorkbenchView {
 
 	HasWidgets getPrizeMoneyRuleSetContainer();
 
+	void setMode(String label, String href);
 }

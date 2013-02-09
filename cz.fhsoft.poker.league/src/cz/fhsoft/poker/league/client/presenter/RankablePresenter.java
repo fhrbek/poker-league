@@ -126,4 +126,8 @@ public abstract class RankablePresenter<E extends IdentifiableEntity, P extends 
 		return entity;
 	}
 
+	@Override
+	public void updateForMode() {
+		view.updateForMode();
+	}
 }

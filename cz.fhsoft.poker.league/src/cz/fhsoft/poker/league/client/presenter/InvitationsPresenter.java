@@ -249,6 +249,10 @@ public class InvitationsPresenter extends PresenterWithVersionedData implements 
 		view.refresh();
 	}
 
+	@Override
+	public void updateForMode() {
+		view.updateForMode();
+	}
 
 	private Tournament getTournament() {
 		return ((TournamentPresenter) getParentPresenter()).getEntity();

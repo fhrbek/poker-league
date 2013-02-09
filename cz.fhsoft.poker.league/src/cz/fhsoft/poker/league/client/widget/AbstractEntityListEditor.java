@@ -16,6 +16,7 @@ import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.user.cellview.client.Header;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
+import cz.fhsoft.poker.league.client.AppControllerSuper;
 import cz.fhsoft.poker.league.client.util.Dialog;
 import cz.fhsoft.poker.league.client.util.Dialog.Option;
 import cz.fhsoft.poker.league.client.util.ErrorReporter;
@@ -149,7 +150,9 @@ public abstract class AbstractEntityListEditor<E extends IdentifiableEntity> ext
 
 			@Override
 			public SafeHtml getValue(E entity) {
-				return sHtmlTemplates.actions(entity.getId());
+				return AppControllerSuper.INSTANCE.isAdminMode()
+						? sHtmlTemplates.actions(entity.getId())
+						: SafeHtmlUtils.EMPTY_SAFE_HTML;
 			}
 		}, new Header<SafeHtml>(new AbstractCell<SafeHtml>("click") {
 
@@ -186,7 +189,9 @@ public abstract class AbstractEntityListEditor<E extends IdentifiableEntity> ext
 
 			@Override
 			public SafeHtml getValue() {
-				return newEntityLink;
+				return AppControllerSuper.INSTANCE.isAdminMode()
+						? newEntityLink
+						: SafeHtmlUtils.EMPTY_SAFE_HTML;
 			}
 			
 		});
@@ -258,4 +263,8 @@ public abstract class AbstractEntityListEditor<E extends IdentifiableEntity> ext
 	}
 
 	abstract protected void removeItem(int id);
+	
+	public void updateForMode() {
+		redraw();
+	}
 }

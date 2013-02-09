@@ -455,4 +455,9 @@ public class PrizeMoneyRuleSetPresenter extends PresenterWithVersionedData imple
 		view.refresh();
 	}
 
+
+	@Override
+	public void updateForMode() {
+		view.updateForMode();
+	}
 }

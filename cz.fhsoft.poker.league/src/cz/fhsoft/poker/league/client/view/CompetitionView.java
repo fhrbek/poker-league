@@ -5,7 +5,7 @@ import com.google.gwt.user.client.ui.HasWidgets;
 import cz.fhsoft.poker.league.shared.model.v1.Competition;
 
 
-public interface CompetitionView extends RankableView<Competition, CompetitionView.Presenter> {
+public interface CompetitionView extends RankableView<Competition, CompetitionView.Presenter>, ViewWithMode {
 	
 	public interface Presenter extends RankableView.Presenter<Competition> {
 

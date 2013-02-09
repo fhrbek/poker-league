@@ -27,6 +27,14 @@
 			top: 5px;
 			right: 20px;
 		}
+
+		.smallLink {
+			font-size: 12px;
+			text-align: right;
+			position: absolute;
+			top: 25px;
+			right: 20px;
+		}
 	</ui:style>
 	<g:DockLayoutPanel unit="PX" addStyleNames="{style.mainContainer}">
 		<g:north size="30">
@@ -36,20 +44,27 @@
 			</g:FlowPanel>
 		</g:north>
 		<g:center>
-			<g:TabLayoutPanel ui:field="mainTabs" barHeight="20" addStyleNames="{style.mainTabs}">
-				<g:tab>
-					<g:header>Soutěže</g:header>
-					<g:FlowPanel ui:field="competitionsPanel"/>
-				</g:tab>
-				<g:tab>
-					<g:header>Hráči</g:header>
-					<g:FlowPanel ui:field="playersPanel"/>
-				</g:tab>
-				<g:tab>
-					<g:header>Pravidla hodnocení</g:header>
-					<g:FlowPanel ui:field="prizeMoneyRuleSetPanel"/>
-				</g:tab>
-			</g:TabLayoutPanel>
+			<g:LayoutPanel>
+				<g:layer>
+					<g:TabLayoutPanel ui:field="mainTabs" barHeight="20" addStyleNames="{style.mainTabs}">
+						<g:tab>
+							<g:header>Soutěže</g:header>
+							<g:FlowPanel ui:field="competitionsPanel"/>
+						</g:tab>
+						<g:tab>
+							<g:header>Hráči</g:header>
+							<g:FlowPanel ui:field="playersPanel"/>
+						</g:tab>
+						<g:tab>
+							<g:header>Pravidla hodnocení</g:header>
+							<g:FlowPanel ui:field="prizeMoneyRuleSetPanel"/>
+						</g:tab>
+					</g:TabLayoutPanel>
+				</g:layer>
+				<g:layer top="0" right="20" width="200" height="18">
+					<g:Anchor ui:field="modeSelector" href="#" addStyleNames="{style.smallLink}"/>
+				</g:layer>
+			</g:LayoutPanel>
 		</g:center>
 	</g:DockLayoutPanel>
 </ui:UiBinder> 

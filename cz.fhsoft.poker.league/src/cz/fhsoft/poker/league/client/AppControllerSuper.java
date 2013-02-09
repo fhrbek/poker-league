@@ -10,6 +10,7 @@ import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.History;
 import com.google.gwt.user.client.Window.Location;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Widget;
@@ -26,6 +27,8 @@ public class AppControllerSuper implements Presenter {
 	
 	private FlowPanel mainContainer;
 	
+	private FlowPanel verificationContainer;
+	
 	private FlowPanel gameContainer;
 	
 	private FlowPanel invitationContainer;
@@ -36,9 +39,13 @@ public class AppControllerSuper implements Presenter {
 	
 	private Presenter appControllerMain = null;
 	
+	private Presenter appControllerAdminVerification = null;
+	
 	private Presenter appControllerGame = null;
 	
 	private Presenter appControllerInvitation = null;
+	
+	private boolean adminMode = false;
 	
 	public AppControllerSuper() {
 		if(INSTANCE != null)
@@ -51,17 +58,21 @@ public class AppControllerSuper implements Presenter {
 	public void go(HasWidgets container) {
 		superContainer = new FlowPanel();
 		mainContainer = new FlowPanel();
+		verificationContainer = new FlowPanel();
 		gameContainer = new FlowPanel();
 		invitationContainer = new FlowPanel();
 		containers = new ArrayList<Widget>();
 		containers.add(mainContainer);
+		containers.add(verificationContainer);
 		containers.add(gameContainer);
 		containers.add(invitationContainer);
 		StyleUtil.makeAbsoluteFull(superContainer);
 		StyleUtil.makeAbsoluteFull(mainContainer);
+		StyleUtil.makeAbsoluteFull(verificationContainer);
 		StyleUtil.makeAbsoluteFull(gameContainer);
 		StyleUtil.makeAbsoluteFull(invitationContainer);
 		superContainer.add(mainContainer);
+		superContainer.add(verificationContainer);
 		superContainer.add(gameContainer);
 		superContainer.add(invitationContainer);
 		superContainer.getElement().getStyle().setZIndex(0);
@@ -80,6 +91,8 @@ public class AppControllerSuper implements Presenter {
 	}
 	
 	private void selectApplicationEntry(String entryName) {
+		adminMode = false;
+
 		if(entryName == null)
 			entryName = "";
 		
@@ -87,10 +100,37 @@ public class AppControllerSuper implements Presenter {
 			entryName = entryName.substring(1);
 
 		if("".equals(entryName)) {
-			showMain();
+			showMain(false);
+		}
+		else if("admin".equals(entryName)) {
+			verifyAdmin(new AsyncCallback<Void>() {
+
+				@Override
+				public void onFailure(Throwable caught) {
+					ErrorReporter.error(caught);
+				}
+
+				@Override
+				public void onSuccess(Void result) {
+					showMain(true);
+				}
+				
+			});
 		}
 		else if("game".equals(entryName)) {
-			showGame();
+			verifyAdmin(new AsyncCallback<Void>() {
+
+				@Override
+				public void onFailure(Throwable caught) {
+					ErrorReporter.error(caught);
+				}
+
+				@Override
+				public void onSuccess(Void result) {
+					showGame();
+				}
+				
+			});
 		}
 		else if(entryName.startsWith("invitation?")) {
 			int pos = entryName.indexOf('?');
@@ -113,7 +153,7 @@ public class AppControllerSuper implements Presenter {
 			}
 	}
 	
-	private void showMain() {
+	private void verifyAdmin(final AsyncCallback<Void> callback) {
 		GWT.runAsync(new RunAsyncCallback() {
 
 			@Override
@@ -125,12 +165,46 @@ public class AppControllerSuper implements Presenter {
 			public void onSuccess() {
 				if(currentAppController != null)
 					currentAppController.setVisible(false);
+				if(appControllerAdminVerification == null) {
+					appControllerAdminVerification = new AppControllerAdminVerification(AppControllerSuper.this, callback);
+				}
+				else {
+					((AppControllerAdminVerification) appControllerAdminVerification).setCallback(callback);
+					appControllerAdminVerification.setVisible(true);
+					((AppControllerAdminVerification) appControllerAdminVerification).clear();
+				}
+
+				appControllerAdminVerification.go(verificationContainer);
+
+				setVisibleContainer(verificationContainer);
+				currentAppController = appControllerAdminVerification;
+			}
+			
+		});
+	}
+	
+	private void showMain(final boolean adminMode) {
+		GWT.runAsync(new RunAsyncCallback() {
+
+			@Override
+			public void onFailure(Throwable reason) {
+				ErrorReporter.error(reason);
+			}
+
+			@Override
+			public void onSuccess() {
+				AppControllerSuper.this.adminMode = adminMode;
+
+				if(currentAppController != null)
+					currentAppController.setVisible(false);
 				if(appControllerMain == null) {
-					appControllerMain = new AppControllerMain(AppControllerSuper.this);
+					appControllerMain = new AppControllerMain(AppControllerSuper.this, adminMode);
 					appControllerMain.go(mainContainer);
 				}
-				else
+				else {
 					appControllerMain.setVisible(true);
+					((AppControllerMain) appControllerMain).setMode(adminMode);
+				}
 
 				setVisibleContainer(mainContainer);
 				currentAppController = appControllerMain;
@@ -206,5 +280,9 @@ public class AppControllerSuper implements Presenter {
 	@Override
 	public void setVisible(boolean visible) {
 		throw new IllegalArgumentException("AppControllerSuper visibility cannot be changed");
+	}
+	
+	public boolean isAdminMode() {
+		return adminMode;
 	}
 }

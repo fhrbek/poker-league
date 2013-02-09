@@ -6,7 +6,7 @@ import cz.fhsoft.poker.league.client.widget.AbstractEntityListEditor;
 import cz.fhsoft.poker.league.shared.model.v1.Player;
 
 
-public interface PlayersView {
+public interface PlayersView extends ViewWithMode {
 	
 	public interface Presenter extends cz.fhsoft.poker.league.client.presenter.Presenter {
 

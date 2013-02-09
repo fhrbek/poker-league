@@ -65,7 +65,14 @@ public class AppControllerGame extends PresenterWithVersionedData {
 		// nothing to do here, inner presenters will do their job
 	}
 	
+	@Override
+	public void updateForMode() {
+		// nothing to do here
+		
+	}
+
 	public GameServiceAsync getGameService() {
 		return gameService;
 	}
+
 }

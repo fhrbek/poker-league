@@ -201,4 +201,8 @@ public class PlayersPresenter extends PresenterWithVersionedData implements Play
 		view.refresh();
 	}
 
+	@Override
+	public void updateForMode() {
+		view.updateForMode();
+	}
 }

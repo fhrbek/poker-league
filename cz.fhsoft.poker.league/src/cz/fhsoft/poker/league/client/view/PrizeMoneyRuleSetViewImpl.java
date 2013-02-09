@@ -30,6 +30,7 @@ public class PrizeMoneyRuleSetViewImpl extends Composite implements PrizeMoneyRu
 	
 	public PrizeMoneyRuleSetViewImpl() {
 		initWidget(uiBinder.createAndBindUi(this));
+		updateForMode();
 	}
 	
 	@Override
@@ -46,5 +47,11 @@ public class PrizeMoneyRuleSetViewImpl extends Composite implements PrizeMoneyRu
 	@Override
 	public void refresh() {
 		editor.refresh();
+	}
+
+	@Override
+	public void updateForMode() {
+		if(editor != null)
+			editor.updateForMode();
 	}
 }

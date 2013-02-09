@@ -1,0 +1,61 @@
+<!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
+<ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
+	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	<ui:style>
+		.mainContainer {
+			margin: 20px auto;
+			width: 1000px;
+		}
+
+		.bigLabel {
+			font-size: 20px;
+			text-align: center;
+		}
+
+		.bigLink {
+			font-size: 16px;
+			text-align: right;
+			position: absolute;
+			top: 5px;
+			right: 20px;
+		}
+		
+		.container {
+			text-align: center;
+			padding-top: 10px;
+		}
+		
+		.marginAuto {
+			margin: auto;
+		}
+		
+		.passwordBox {
+			width: 200px;
+			margin: 30px 10px 5px 0px;
+		}
+		
+		.errorText {
+			color: red;
+		}
+	</ui:style>
+	<g:DockLayoutPanel unit="PX" addStyleNames="{style.mainContainer}">
+		<g:north size="30">
+			<g:FlowPanel>
+				<g:Label addStyleNames="{style.bigLabel}">Wittmann Poker Club</g:Label>
+				<g:Anchor href="#" addStyleNames="{style.bigLink}">Hlavní stránka</g:Anchor>
+			</g:FlowPanel>
+		</g:north>
+		<g:center>
+			<g:FlowPanel addStyleNames="{style.container}">
+				<g:Label>Pro tuto operaci je nutné zadat heslo. Po úspěšné registraci nebude heslo na tomto počítači již vyžadováno.</g:Label>
+				<g:VerticalPanel addStyleNames="{style.marginAuto}">
+					<g:FlowPanel>
+						<g:PasswordTextBox ui:field="password" addStyleNames="{style.passwordBox}"/>
+						<g:Button ui:field="confirmButton">Ověřit heslo</g:Button>
+					</g:FlowPanel>
+					<g:Label ui:field="errorText" addStyleNames="{style.errorText}"/>
+				</g:VerticalPanel>
+			</g:FlowPanel>
+		</g:center>
+	</g:DockLayoutPanel>
+</ui:UiBinder> 

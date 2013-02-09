@@ -5,6 +5,7 @@ import com.google.gwt.dom.client.Style;
 import com.google.gwt.dom.client.Style.Display;
 import com.google.gwt.user.client.ui.HasWidgets;
 
+import cz.fhsoft.poker.league.client.presenter.ModeChangeEvent;
 import cz.fhsoft.poker.league.client.presenter.Presenter;
 import cz.fhsoft.poker.league.client.presenter.PresenterWithVersionedData;
 import cz.fhsoft.poker.league.client.presenter.WorkbenchPresenter;
@@ -24,13 +25,17 @@ public class AppControllerMain extends PresenterWithVersionedData {
 
 	private WorkbenchPresenter workbenchPresenter;
 	
-	public AppControllerMain(Presenter parentPresenter) {
+	private boolean adminMode;
+	
+	public AppControllerMain(Presenter parentPresenter, boolean adminMode) {
 		super(parentPresenter);
 
 		if(INSTANCE != null)
 			throw new IllegalArgumentException("AppControllerMain already exists");
 
 		INSTANCE = this;
+		
+		this.adminMode = adminMode;
 	}
 	
 	@Override
@@ -44,7 +49,7 @@ public class AppControllerMain extends PresenterWithVersionedData {
 			StyleUtil.makeAbsoluteFull(workbenchView.asWidget());
 		}
 		
-		workbenchPresenter = new WorkbenchPresenter(this, workbenchView);
+		workbenchPresenter = new WorkbenchPresenter(this, workbenchView, adminMode);
 		
 		workbenchPresenter.go(container);
 	}
@@ -69,5 +74,18 @@ public class AppControllerMain extends PresenterWithVersionedData {
 	@Override
 	protected void refresh() {
 		// nothing to do here, inner presenters will do their job
+	}
+
+	@Override
+	public void updateForMode() {
+		// nothing to do here
+		
+	}
+	
+	public void setMode(boolean adminMode) {
+		if(this.adminMode != adminMode) {
+			workbenchPresenter.setMode(this.adminMode = adminMode);
+			Bootstrap.INSTANCE.getEventBus().fireEvent(new ModeChangeEvent());
+		}
 	}
 }

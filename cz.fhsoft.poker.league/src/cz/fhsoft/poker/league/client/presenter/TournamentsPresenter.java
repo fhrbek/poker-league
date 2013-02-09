@@ -199,4 +199,9 @@ public class TournamentsPresenter extends PresenterWithVersionedData implements 
 	private Competition getCompetition() {
 		return ((CompetitionPresenter) getParentPresenter()).getEntity();
 	}
+
+	@Override
+	public void updateForMode() {
+		view.updateForMode();
+	}
 }

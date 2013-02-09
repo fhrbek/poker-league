@@ -93,4 +93,9 @@ public class CurrentTournamentsPresenter extends PresenterWithVersionedData impl
 		}
 	}
 
+	@Override
+	public void updateForMode() {
+		// nothing to do here
+	}
+
 }
