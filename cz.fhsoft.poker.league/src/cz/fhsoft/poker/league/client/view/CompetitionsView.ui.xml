@@ -17,6 +17,7 @@
 		.newLink {
 			text-align: right;
 			margin-right: 20px;
+			float: right;
 		}
 	</ui:style>
 	<g:FlowPanel>

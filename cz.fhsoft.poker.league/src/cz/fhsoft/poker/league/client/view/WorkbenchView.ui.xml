@@ -23,18 +23,17 @@
 		.bigLink {
 			font-size: 16px;
 			text-align: right;
+			position: absolute;
+			top: 5px;
+			right: 20px;
 		}
 	</ui:style>
 	<g:DockLayoutPanel unit="PX" addStyleNames="{style.mainContainer}">
 		<g:north size="30">
-			<g:LayoutPanel>
-				<g:layer>
-					<g:Label addStyleNames="{style.bigLabel}">Wittmann Poker Club</g:Label>
-				</g:layer>
-				<g:layer>
-					<g:Anchor href="#game" addStyleNames="{style.bigLink}">Aktuální turnaje</g:Anchor>
-				</g:layer>
-			</g:LayoutPanel>
+			<g:FlowPanel>
+				<g:Label addStyleNames="{style.bigLabel}">Wittmann Poker Club</g:Label>
+				<g:Anchor href="#game" addStyleNames="{style.bigLink}">Aktuální turnaje</g:Anchor>
+			</g:FlowPanel>
 		</g:north>
 		<g:center>
 			<g:TabLayoutPanel ui:field="mainTabs" barHeight="20" addStyleNames="{style.mainTabs}">

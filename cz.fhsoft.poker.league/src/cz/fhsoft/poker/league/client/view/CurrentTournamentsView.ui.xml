@@ -19,6 +19,7 @@
 		@external .gwt-Label, .gwt-CheckBox;
 		.gameTable .gwt-Label {
 			padding: 2px;
+			display: inline-block;
 		}
 
 		.gameTable .gwt-CheckBox, .gameTable .gwt-CheckBox input, .gameTable .gwt-CheckBox label {

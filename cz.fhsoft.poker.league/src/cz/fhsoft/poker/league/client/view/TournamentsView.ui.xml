@@ -5,12 +5,18 @@
 	xmlns:cell="urn:import:com.google.gwt.user.cellview.client">
 	<ui:style>
 		.newLink {
-			text-align: right;
 			margin-right: 15px;
+			display: inline-block;
+		}
+		
+		.alignRight {
+			text-align: right;
 		}
 	</ui:style>
 	<g:FlowPanel>
-		<g:Label addStyleNames="pseudoLink, {style.newLink}" ui:field="newTournament">Nový turnaj</g:Label>
+		<g:SimplePanel addStyleNames="{style.alignRight}">
+			<g:Label addStyleNames="pseudoLink, {style.newLink}" ui:field="newTournament">Nový turnaj</g:Label>
+		</g:SimplePanel>
 		<g:FlowPanel ui:field="tournamentsContainer"/>
 	</g:FlowPanel>
 </ui:UiBinder> 

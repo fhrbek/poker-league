@@ -1,6 +1,7 @@
 .pseudoLink {
 	color: #5555cc;
 	cursor: pointer;
+	display: inline-block;
 }
 
 .pseudoLink:hover {
