@@ -25,6 +25,10 @@
 		.gameTable .gwt-CheckBox, .gameTable .gwt-CheckBox input, .gameTable .gwt-CheckBox label {
 			cursor: pointer;
 		}
+		
+		.noTournament {
+			display: block;
+		}
 	</ui:style>
 	<g:HTMLPanel>
 		<table class="{style.gameTable}">
@@ -32,7 +36,7 @@
 				<td verticalAlignment="middle">
 					<g:FlowPanel>
 						<g:Anchor href="#">Hlavní stránka</g:Anchor>
-						<g:Label ui:field="noTournament">V tuto chvíli se nehraje žádný turnaj</g:Label>
+						<g:Label ui:field="noTournament" addStyleNames="{style.noTournament}">V tuto chvíli se nehraje žádný turnaj</g:Label>
 						<g:FlowPanel ui:field="currentTournamentsContainer"/>
 					</g:FlowPanel>
 				</td>
