@@ -184,7 +184,7 @@ public class PrizeMoneyRuleSetPresenter extends PresenterWithVersionedData imple
 																	return prizeMoneyFormula.getRelativePrizeMoney() + "% buy-in";
 																}
 
-															}, "Umístění"));
+															}, "Odměna v % buy-in"));
 												}
 											}, Comparators.PRIZE_MONEY_FORMULA_COMPARATOR) {
 
