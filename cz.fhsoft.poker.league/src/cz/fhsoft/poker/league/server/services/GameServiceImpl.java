@@ -116,7 +116,8 @@ public class GameServiceImpl extends AbstractServiceImpl implements GameService 
 					else if(game != playerInGame.getGame())
 						throw new IllegalArgumentException("Hráči k vyřazení nehrají stejnou hru");
 
-					playersInGameForSeatOpen.add(playerInGame);
+					if(playerInGame.getRank() == 0)
+						playersInGameForSeatOpen.add(playerInGame);
 				}
 
 				if(game == null)
@@ -130,7 +131,7 @@ public class GameServiceImpl extends AbstractServiceImpl implements GameService 
 				if(minRank <= 1)
 					throw new IllegalArgumentException("Alespoň jeden hráč byl již označen jako vítěz, nelze vyřadit další hráče");
 				
-				int finalRank = minRank-playersInGameForSeatOpen.size();
+				int finalRank = minRank - playersInGameForSeatOpen.size();
 
 				if(finalRank == 2) // there's just one player left - let's mark him as a winner right now
 					for(PlayerInGame playerInGame : game.getPlayersInGame())
@@ -165,13 +166,14 @@ public class GameServiceImpl extends AbstractServiceImpl implements GameService 
 					PlayerInGame playerInGame = ServletInitializer.getEntityManager().find(PlayerInGame.class, playerInGameId);
 					if(playerInGame == null)
 						throw new IllegalArgumentException("Hráči k zařazení zpět do hry s ID=" + playerInGameId + " nebyl nalezen");
-					
+
 					if(game == null)
 						game = playerInGame.getGame();
 					else if(game != playerInGame.getGame())
 						throw new IllegalArgumentException("Hráči k zařazení zpět do hry nehrají stejnou hru");
 
-					playersInGameForUndoSeatOpen.add(playerInGame);
+					if(playerInGame.getRank() > 0)
+						playersInGameForUndoSeatOpen.add(playerInGame);
 				}
 
 				if(game == null)
