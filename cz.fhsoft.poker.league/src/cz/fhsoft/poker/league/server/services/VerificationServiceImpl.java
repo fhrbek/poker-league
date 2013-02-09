@@ -46,7 +46,9 @@ public class VerificationServiceImpl extends AbstractServiceImpl implements Veri
 	@Override
 	public Boolean registerWithPassword(String password) {
 		if(password != null && password.equals(getPassword())) {
-			getThreadLocalResponse().addCookie(new Cookie(CLIENT_TICKET_COOKIE_NAME, md5(password)));
+			Cookie ticket = new Cookie(CLIENT_TICKET_COOKIE_NAME, md5(password));
+			ticket.setMaxAge(86400 * 365 * 50); // grant access for 50 years :-)
+			getThreadLocalResponse().addCookie(ticket);
 			return true;
 		}
 		
