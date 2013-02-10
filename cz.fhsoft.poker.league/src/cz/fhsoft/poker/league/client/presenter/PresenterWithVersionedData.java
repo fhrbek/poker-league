@@ -1,6 +1,10 @@
 package cz.fhsoft.poker.league.client.presenter;
 
 import cz.fhsoft.poker.league.client.Bootstrap;
+import cz.fhsoft.poker.league.client.event.ModeChangeEvent;
+import cz.fhsoft.poker.league.client.event.ModeChangeEventHandler;
+import cz.fhsoft.poker.league.client.event.VisibilityChangeEvent;
+import cz.fhsoft.poker.league.client.event.VisibilityChangeEventHandler;
 import cz.fhsoft.poker.league.client.persistence.DataChangeEvent;
 import cz.fhsoft.poker.league.client.persistence.DataChangeEventHandler;
 

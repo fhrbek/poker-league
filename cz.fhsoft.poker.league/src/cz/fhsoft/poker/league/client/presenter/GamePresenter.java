@@ -15,6 +15,7 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.IntegerBox;
 import com.google.gwt.user.client.ui.Widget;
 
+import cz.fhsoft.poker.league.client.persistence.ClientEntityManager;
 import cz.fhsoft.poker.league.client.persistence.DigestProviders;
 import cz.fhsoft.poker.league.client.util.ErrorReporter;
 import cz.fhsoft.poker.league.client.view.GameView;
@@ -282,8 +283,21 @@ public class GamePresenter extends RankablePresenter<Game, GameView.Presenter, G
 	@Override
 	protected void refresh() {
 		if(entity != null) {
-			view.setOrdinal(entity.getOrdinal());
-			//TODO Refresh all displayed values
+			ClientEntityManager.getInstance().resolveEntity(entity, new AsyncCallback<Game>() {
+
+				@Override
+				public void onFailure(Throwable caught) {
+					ErrorReporter.error(caught);
+				}
+
+				@Override
+				public void onSuccess(Game resolvedEntity) {
+					entity = resolvedEntity;
+					view.setOrdinal(entity.getOrdinal());
+					//TODO Refresh all displayed values
+				}
+				
+			});
 		}
 	}
 

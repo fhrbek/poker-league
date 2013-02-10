@@ -1,6 +1,8 @@
-package cz.fhsoft.poker.league.client.presenter;
+package cz.fhsoft.poker.league.client.event;
 
 import com.google.gwt.event.shared.GwtEvent;
+
+import cz.fhsoft.poker.league.client.presenter.Presenter;
 
 public class VisibilityChangeEvent extends GwtEvent<VisibilityChangeEventHandler> {
 

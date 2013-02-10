@@ -5,7 +5,7 @@ import com.google.gwt.dom.client.Style;
 import com.google.gwt.dom.client.Style.Display;
 import com.google.gwt.user.client.ui.HasWidgets;
 
-import cz.fhsoft.poker.league.client.presenter.ModeChangeEvent;
+import cz.fhsoft.poker.league.client.event.ModeChangeEvent;
 import cz.fhsoft.poker.league.client.presenter.Presenter;
 import cz.fhsoft.poker.league.client.presenter.PresenterWithVersionedData;
 import cz.fhsoft.poker.league.client.presenter.WorkbenchPresenter;

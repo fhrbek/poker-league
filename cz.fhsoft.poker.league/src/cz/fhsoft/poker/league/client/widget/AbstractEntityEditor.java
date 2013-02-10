@@ -19,9 +19,9 @@ import com.google.gwt.user.client.ui.Widget;
 
 import cz.fhsoft.poker.league.client.AppControllerSuper;
 import cz.fhsoft.poker.league.client.Bootstrap;
+import cz.fhsoft.poker.league.client.event.ModeChangeEvent;
+import cz.fhsoft.poker.league.client.event.ModeChangeEventHandler;
 import cz.fhsoft.poker.league.client.persistence.ClientEntityManager;
-import cz.fhsoft.poker.league.client.presenter.ModeChangeEvent;
-import cz.fhsoft.poker.league.client.presenter.ModeChangeEventHandler;
 import cz.fhsoft.poker.league.client.util.ErrorReporter;
 import cz.fhsoft.poker.league.shared.model.v1.IdentifiableEntity;
 

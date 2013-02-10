@@ -11,7 +11,9 @@ import com.google.gwt.user.client.ui.IntegerBox;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 
+import cz.fhsoft.poker.league.client.persistence.ClientEntityManager;
 import cz.fhsoft.poker.league.client.persistence.DigestProviders;
+import cz.fhsoft.poker.league.client.util.ErrorReporter;
 import cz.fhsoft.poker.league.client.view.GamesView;
 import cz.fhsoft.poker.league.client.view.GamesViewImpl;
 import cz.fhsoft.poker.league.client.view.InvitationsView;
@@ -237,8 +239,21 @@ public class TournamentPresenter extends RankablePresenter<Tournament, Tournamen
 	@Override
 	protected void refresh() {
 		if(entity != null) {
-			view.setName(entity.getName());
-			//TODO Refresh all displayed values
+			ClientEntityManager.getInstance().resolveEntity(entity, new AsyncCallback<Tournament>() {
+
+				@Override
+				public void onFailure(Throwable caught) {
+					ErrorReporter.error(caught);
+				}
+
+				@Override
+				public void onSuccess(Tournament resolvedEntity) {
+					entity = resolvedEntity;
+					view.setName(entity.getName());
+					//TODO Refresh all displayed values
+				}
+				
+			});
 		}
 	}
 

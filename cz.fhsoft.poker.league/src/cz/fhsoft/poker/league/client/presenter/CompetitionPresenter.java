@@ -11,7 +11,9 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.gwt.user.datepicker.client.DatePicker;
 
+import cz.fhsoft.poker.league.client.persistence.ClientEntityManager;
 import cz.fhsoft.poker.league.client.persistence.DigestProviders;
+import cz.fhsoft.poker.league.client.util.ErrorReporter;
 import cz.fhsoft.poker.league.client.view.CompetitionView;
 import cz.fhsoft.poker.league.client.view.TournamentsView;
 import cz.fhsoft.poker.league.client.view.TournamentsViewImpl;
@@ -233,8 +235,21 @@ public class CompetitionPresenter extends RankablePresenter<Competition, Competi
 	@Override
 	protected void refresh() {
 		if(entity != null) {
-			view.setName(entity.getName());
-			//TODO Refresh all displayed values
+			ClientEntityManager.getInstance().resolveEntity(entity, new AsyncCallback<Competition>() {
+
+				@Override
+				public void onFailure(Throwable caught) {
+					ErrorReporter.error(caught);
+				}
+
+				@Override
+				public void onSuccess(Competition resolvedEntity) {
+					entity = resolvedEntity;
+					view.setName(entity.getName());
+					//TODO Refresh all displayed values
+				}
+				
+			});
 		}
 	}
 

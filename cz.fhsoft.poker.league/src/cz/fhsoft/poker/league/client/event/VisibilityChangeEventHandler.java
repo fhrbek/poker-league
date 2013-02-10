@@ -1,4 +1,4 @@
-package cz.fhsoft.poker.league.client.presenter;
+package cz.fhsoft.poker.league.client.event;
 
 import com.google.gwt.event.shared.EventHandler;
 
