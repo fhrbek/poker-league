@@ -5,6 +5,8 @@ import java.util.List;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.RunAsyncCallback;
+import com.google.gwt.dom.client.Document;
+import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Style.Display;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
@@ -22,6 +24,8 @@ import cz.fhsoft.poker.league.client.util.StyleUtil;
 public class AppControllerSuper implements Presenter {
 
 	public static AppControllerSuper INSTANCE = null;
+	
+	private HasWidgets rootContainer;
 	
 	private FlowPanel superContainer;
 	
@@ -47,6 +51,8 @@ public class AppControllerSuper implements Presenter {
 	
 	private boolean adminMode = false;
 	
+	private boolean splashScreen = true;
+	
 	public AppControllerSuper() {
 		if(INSTANCE != null)
 			throw new IllegalArgumentException("AppControllerMain already exists");
@@ -56,6 +62,8 @@ public class AppControllerSuper implements Presenter {
 	
 	@Override
 	public void go(HasWidgets container) {
+		rootContainer = container;
+
 		superContainer = new FlowPanel();
 		mainContainer = new FlowPanel();
 		verificationContainer = new FlowPanel();
@@ -76,7 +84,6 @@ public class AppControllerSuper implements Presenter {
 		superContainer.add(gameContainer);
 		superContainer.add(invitationContainer);
 		superContainer.getElement().getStyle().setZIndex(0);
-		container.add(superContainer);
 
 		selectApplicationEntry(Location.getHash());
 		
@@ -296,9 +303,34 @@ public class AppControllerSuper implements Presenter {
 
 			@Override
 			public void onSuccess() {
-				Bootstrap.INSTANCE.init(callback);
+				Bootstrap.INSTANCE.init(new AsyncCallback<Void>() {
+
+					@Override
+					public void onFailure(Throwable caught) {
+						callback.onFailure(caught);
+					}
+
+					@Override
+					public void onSuccess(Void result) {
+						removeSplashScreen();
+						callback.onSuccess(result);
+					}
+					
+				});
 			}
 			
 		});
+	}
+
+	private void removeSplashScreen() {
+		if(splashScreen) {
+			Element splashScreenElement = Document.get().getElementById("splashScreen");
+			
+			if(splashScreenElement != null)
+				splashScreenElement.removeFromParent();
+			
+			splashScreen = false;
+			rootContainer.add(superContainer);
+		}
 	}
 }
