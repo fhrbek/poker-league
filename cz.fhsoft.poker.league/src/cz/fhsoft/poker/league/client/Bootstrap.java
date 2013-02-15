@@ -73,6 +73,23 @@ public class Bootstrap {
 		});
 	}
 	
+	public void init(final AsyncCallback<Void> callback) {
+		ClientEntityManager.getInstance().checkDataVersion(new AsyncCallback<Void>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+				callback.onFailure(caught);
+				
+			}
+
+			@Override
+			public void onSuccess(Void result) {
+				callback.onSuccess(result);
+			}
+
+		});
+	}
+	
 	private void maybeScheduleDataVersionChecker() {
 		if((new Date().getTime()) - latestUserInteraction > MAX_USER_INACTIVE_TIME)
 			suspendApplication();

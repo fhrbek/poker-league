@@ -154,7 +154,7 @@ public class AppControllerSuper implements Presenter {
 	}
 	
 	private void verifyAdmin(final AsyncCallback<Void> callback) {
-		GWT.runAsync(new RunAsyncCallback() {
+		initAndRun(new AsyncCallback<Void>() {
 
 			@Override
 			public void onFailure(Throwable reason) {
@@ -162,7 +162,7 @@ public class AppControllerSuper implements Presenter {
 			}
 
 			@Override
-			public void onSuccess() {
+			public void onSuccess(Void result) {
 				if(currentAppController != null)
 					currentAppController.setVisible(false);
 				if(appControllerAdminVerification == null) {
@@ -184,7 +184,7 @@ public class AppControllerSuper implements Presenter {
 	}
 	
 	private void showMain(final boolean adminMode) {
-		GWT.runAsync(new RunAsyncCallback() {
+		initAndRun(new AsyncCallback<Void>() {
 
 			@Override
 			public void onFailure(Throwable reason) {
@@ -192,7 +192,7 @@ public class AppControllerSuper implements Presenter {
 			}
 
 			@Override
-			public void onSuccess() {
+			public void onSuccess(Void result) {
 				AppControllerSuper.this.adminMode = adminMode;
 
 				if(currentAppController != null)
@@ -214,7 +214,7 @@ public class AppControllerSuper implements Presenter {
 	}
 
 	private void showGame() {
-		GWT.runAsync(new RunAsyncCallback() {
+		initAndRun(new AsyncCallback<Void>() {
 
 			@Override
 			public void onFailure(Throwable reason) {
@@ -222,7 +222,7 @@ public class AppControllerSuper implements Presenter {
 			}
 
 			@Override
-			public void onSuccess() {
+			public void onSuccess(Void result) {
 				if(currentAppController != null)
 					currentAppController.setVisible(false);
 				if(appControllerGame == null) {
@@ -240,7 +240,7 @@ public class AppControllerSuper implements Presenter {
 	}
 
 	private void showInvitation(final String invitationUUID) {
-		GWT.runAsync(new RunAsyncCallback() {
+		initAndRun(new AsyncCallback<Void>() {
 
 			@Override
 			public void onFailure(Throwable reason) {
@@ -248,7 +248,7 @@ public class AppControllerSuper implements Presenter {
 			}
 
 			@Override
-			public void onSuccess() {
+			public void onSuccess(Void result) {
 				if(currentAppController != null)
 					currentAppController.setVisible(false);
 				if(appControllerInvitation == null) {
@@ -284,5 +284,21 @@ public class AppControllerSuper implements Presenter {
 	
 	public boolean isAdminMode() {
 		return adminMode;
+	}
+	
+	private void initAndRun(final AsyncCallback<Void> callback) {
+		GWT.runAsync(new RunAsyncCallback() {
+
+			@Override
+			public void onFailure(Throwable reason) {
+				callback.onFailure(reason);
+			}
+
+			@Override
+			public void onSuccess() {
+				Bootstrap.INSTANCE.init(callback);
+			}
+			
+		});
 	}
 }
