@@ -58,13 +58,10 @@ public class InvitationSender extends HttpServlet {
 	            for(Object obj : unsentInvitations.getResultList()) {
 					InvitationEvent invitationEvent = (InvitationEvent) obj;
 
-					//TODO Remove permanently - it should not be needed as we don't use caching at all
-					//ServletInitializer.getEntityManager().refresh(invitationEvent);
-
 					Invitation invitation = invitationEvent.getInvitation();
 	
 					Tournament tournament = invitation.getTournament();
-					if(tournament.getTournamentStart().getTime() - new Date().getTime() <= tournament.getTournamentAnnouncementLead() * 3600000) {
+					if(tournament.getTournamentStart().getTime() - new Date().getTime() <= (long) tournament.getTournamentAnnouncementLead() * 3600000L) {
 				        Properties props = new Properties();
 				        Session session = Session.getDefaultInstance(props, null);
 				        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone(getDefaultTimeZone()));
