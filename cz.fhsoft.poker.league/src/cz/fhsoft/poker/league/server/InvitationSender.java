@@ -34,6 +34,9 @@ public class InvitationSender extends HttpServlet {
 		unsentInvitations.setParameter("eventType", InvitationEventType.GENERATED);
 	}
 	
+	private static final Query defaultTimeZoneQuery = ServletInitializer.getEntityManager().createQuery(
+			"SELECT s.defaultTimeZone FROM cz.fhsoft.poker.league.shared.model.v1.Settings s WHERE s.id = 1");
+	
 	private static final String PLACEHOLDER_TOURNAMENT = "@@TOURNAMENT@@";
 	
 	private static final String PLACEHOLDER_TOURNAMENT_START = "@@TOURNAMENT_START@@";
@@ -64,7 +67,7 @@ public class InvitationSender extends HttpServlet {
 					if(tournament.getTournamentStart().getTime() - new Date().getTime() <= tournament.getTournamentAnnouncementLead() * 3600000) {
 				        Properties props = new Properties();
 				        Session session = Session.getDefaultInstance(props, null);
-				        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("GMT+1:00")); //TODO get from the tournament!
+				        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone(getDefaultTimeZone()));
 				        cal.setTime(tournament.getTournamentStart());
 				        
 				        String formattedDate = String.format("%1$td.%1$tm.%1$tY %1$tH:%1$tM", cal);
@@ -101,6 +104,10 @@ public class InvitationSender extends HttpServlet {
 			}
 			
 		});
+	}
+
+	private String getDefaultTimeZone() {
+		return (String) defaultTimeZoneQuery.getSingleResult();
 	}
 
 }

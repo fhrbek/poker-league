@@ -35,6 +35,14 @@ public class Settings implements Serializable {
 	private String adminPassword = null;
 
 	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	@Basic()
+	private String defaultTimeZone = "GMT";
+
+	/**
 	 * Returns the value of '<em><b>id</b></em>' feature.
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -87,6 +95,33 @@ public class Settings implements Serializable {
 	}
 
 	/**
+	 * Returns the value of '<em><b>defaultTimeZone</b></em>' feature.
+	 * 
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the value of '<em><b>defaultTimeZone</b></em>' feature
+	 * @generated
+	 */
+	public String getDefaultTimeZone() {
+		return defaultTimeZone;
+	}
+
+	/**
+	 * Sets the '{@link Settings#getDefaultTimeZone() <em>defaultTimeZone</em>}'
+	 * feature.
+	 * 
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param the
+	 *            new value of the '{@link Settings#getDefaultTimeZone()
+	 *            defaultTimeZone}' feature.
+	 * @generated
+	 */
+	public void setDefaultTimeZone(String newDefaultTimeZone) {
+		defaultTimeZone = newDefaultTimeZone;
+	}
+
+	/**
 	 * A toString method which prints the values of all EAttributes of this
 	 * instance. <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -95,6 +130,7 @@ public class Settings implements Serializable {
 	@Override
 	public String toString() {
 		return "Settings " + " [id: " + getId() + "]" + " [adminPassword: "
-				+ getAdminPassword() + "]";
+				+ getAdminPassword() + "]" + " [defaultTimeZone: "
+				+ getDefaultTimeZone() + "]";
 	}
 }
