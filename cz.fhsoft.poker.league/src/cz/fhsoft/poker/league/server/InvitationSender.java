@@ -44,7 +44,7 @@ public class InvitationSender extends HttpServlet {
 	private static final String PLACEHOLDER_INVITATION_UUID = "@@INVITATION_UUID@@";
 	
 	private static final String MAIL_TEMPLATE =
-			"Ahoj,\n\nWittman Poker Club Tě zve na turnaj " + PLACEHOLDER_TOURNAMENT + ".\n\nZačátek: " + PLACEHOLDER_TOURNAMENT_START + ".\n\n" +
+			"Ahoj,\n\nWittmann Poker Club Tě zve na turnaj " + PLACEHOLDER_TOURNAMENT + ".\n\nZačátek: " + PLACEHOLDER_TOURNAMENT_START + ".\n\n" +
 			"Svoji účast či neúčast prosím potvrď na této adrese: http://wittmannpokerleague.appspot.com#invitation?" + PLACEHOLDER_INVITATION_UUID + ".";
 
 	@Override
