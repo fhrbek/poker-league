@@ -9,11 +9,15 @@ public interface TournamentView extends RankableView<Tournament, TournamentView.
 	
 	public interface Presenter extends RankableView.Presenter<Tournament> {
 
+		void onToggleShowRankingCumulative();
+
 		void onToggleShowInvitations();
 		
 		void onToggleShowGames();
 
 	}
+
+	HasWidgets getRankingContainerCumulative();
 
 	HasWidgets getInvitationsContainer();
 

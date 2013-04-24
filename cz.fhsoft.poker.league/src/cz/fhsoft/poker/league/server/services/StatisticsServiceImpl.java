@@ -1,6 +1,7 @@
 package cz.fhsoft.poker.league.server.services;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,6 +24,8 @@ public class StatisticsServiceImpl extends AbstractServiceImpl implements Statis
 	
 	private static final String UNFINISHED_FILTER_PLACEHOLDER = "@@UNFINISHED_FILTER@@";
 	
+	private static final String TOURNAMENT_START_FILTER_PLACEHOLDER = "@@TOURNAMENT_START_FILTER@@";
+	
 	private static final String SQL_TEMPLATE =
 		//@fmtOff
 		"SELECT prize_and_points.COMPETITION_ID," +
@@ -32,7 +35,7 @@ public class StatisticsServiceImpl extends AbstractServiceImpl implements Statis
 		"       (SELECT COUNT(*)" +
 		"          FROM PL_COMPETITION c JOIN PL_TOURNAMENT t ON t.COMPETITION_ID = c.ID" +
 		"                                JOIN PL_GAME g ON g.TOURNAMENT_ID = t.ID" +
-		"          WHERE " + ALIAS_PLACEHOLDER + ".ID = ?" +
+		"          WHERE " + ALIAS_PLACEHOLDER + ".ID = ?" + TOURNAMENT_START_FILTER_PLACEHOLDER +
 		"            AND NOT EXISTS(SELECT 1 FROM PL_PLAYERINGAME pig" +
 		"                             WHERE pig.GAME_ID = g.ID" +
 		"                               AND pig.PLAYER_ID = p.ID" +
@@ -77,7 +80,7 @@ public class StatisticsServiceImpl extends AbstractServiceImpl implements Statis
 		"                                                                                FROM PL_PLAYERINGAME pig_split" +
 		"                                                                                WHERE pig_split.GAME_ID = g.ID" +
 		"                                                                                  AND pig_split.RANK = pig.RANK) - 1)" +
-		"          WHERE " + ALIAS_PLACEHOLDER + ".ID = ?" + UNFINISHED_FILTER_PLACEHOLDER +
+		"          WHERE " + ALIAS_PLACEHOLDER + ".ID = ?" + UNFINISHED_FILTER_PLACEHOLDER + TOURNAMENT_START_FILTER_PLACEHOLDER +
 		"          GROUP BY c.ID, t.ID, g.ID, pig.ID, pig.RANK) prize" +
 		"        LEFT OUTER JOIN PL_PLAYERINGAME pig_worse ON pig_worse.GAME_ID = prize.GAME_ID AND" +
 		"                                                     pig_worse.RANK >= prize.RANK" +
@@ -87,11 +90,19 @@ public class StatisticsServiceImpl extends AbstractServiceImpl implements Statis
 		"  GROUP BY prize_and_points.COMPETITION_ID, p.ID, p.NICK";
 		//@fmtOn
 	
-	private final static String COMPETITION_SQL = SQL_TEMPLATE.replace(ALIAS_PLACEHOLDER, "c").replace(UNFINISHED_FILTER_PLACEHOLDER, " AND pig.RANK > 0 ");
+	private final static String COMPETITION_SQL_BASE = SQL_TEMPLATE.replace(ALIAS_PLACEHOLDER, "c").replace(UNFINISHED_FILTER_PLACEHOLDER, " AND pig.RANK > 0 ");
 
-	private final static String TOURNAMENT_SQL = SQL_TEMPLATE.replace(ALIAS_PLACEHOLDER, "t").replace(UNFINISHED_FILTER_PLACEHOLDER, " AND pig.RANK > 0 ");
+	private final static String TOURNAMENT_SQL_BASE = SQL_TEMPLATE.replace(ALIAS_PLACEHOLDER, "t").replace(UNFINISHED_FILTER_PLACEHOLDER, " AND pig.RANK > 0 ");
 
-	private final static String GAME_SQL = SQL_TEMPLATE.replace(ALIAS_PLACEHOLDER, "g").replace(UNFINISHED_FILTER_PLACEHOLDER, "");
+	private final static String GAME_SQL_BASE = SQL_TEMPLATE.replace(ALIAS_PLACEHOLDER, "g").replace(UNFINISHED_FILTER_PLACEHOLDER, "");
+	
+	private final static String COMPETITION_SQL = COMPETITION_SQL_BASE.replace(TOURNAMENT_START_FILTER_PLACEHOLDER, "");
+
+	private final static String COMPETITION_TO_DATE_SQL = COMPETITION_SQL_BASE.replace(TOURNAMENT_START_FILTER_PLACEHOLDER, " AND t.tournamentStart <= ? ");
+
+	private final static String TOURNAMENT_SQL = TOURNAMENT_SQL_BASE.replace(TOURNAMENT_START_FILTER_PLACEHOLDER, "");
+
+	private final static String GAME_SQL = GAME_SQL_BASE.replace(TOURNAMENT_START_FILTER_PLACEHOLDER, "");
 	
 	private final static Map<String, String> SQL_MAP = new HashMap<String, String>();
 	
@@ -103,15 +114,35 @@ public class StatisticsServiceImpl extends AbstractServiceImpl implements Statis
 
 	@Override
 	public List<RankingRecord> getRanking(String entityClass, Number id) {
+		return getRanking(entityClass, id, null);
+	}
+
+	@Override
+	public List<RankingRecord> getRanking(String entityClass, Number id, Date tournamentStartLimit) {
 		synchronized(EntityServiceImpl.LOCK) {
 			List<List<Object>> results = new ArrayList<List<Object>>();
-			String sql = SQL_MAP.get(entityClass);
+			String sql = tournamentStartLimit == null
+					? SQL_MAP.get(entityClass)
+					: Competition.class.getName().equals(entityClass)
+						? COMPETITION_TO_DATE_SQL
+						: null;
+
 			if(sql == null)
-				throw new IllegalArgumentException("Unsupported entity type: " + entityClass);
+				if(tournamentStartLimit == null)
+					throw new IllegalArgumentException("Unsupported entity type: " + entityClass);
+				else
+					throw new IllegalArgumentException("When the tournament start filter is specified, entity class must be " +
+							Competition.class.getName() + ", not "+ entityClass);
 	
 			Query nativeQuery = ServletInitializer.getEntityManager().createNativeQuery(sql);
-			nativeQuery.setParameter(1, id);
-			nativeQuery.setParameter(2, id);
+
+			int paramIdx = 1;
+			nativeQuery.setParameter(paramIdx++, id);
+			if(tournamentStartLimit != null)
+				nativeQuery.setParameter(paramIdx++, tournamentStartLimit);
+			nativeQuery.setParameter(paramIdx++, id);
+			if(tournamentStartLimit != null)
+				nativeQuery.setParameter(paramIdx++, tournamentStartLimit);
 			
 			for(Object row : nativeQuery.getResultList()) {
 				//We cannot use Arrays.asList() since the result wouldn't be serializable by GWT

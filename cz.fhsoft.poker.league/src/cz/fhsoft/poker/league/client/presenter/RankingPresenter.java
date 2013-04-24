@@ -1,6 +1,7 @@
 package cz.fhsoft.poker.league.client.presenter;
 
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 import com.google.gwt.dom.client.Style.Display;
@@ -32,6 +33,10 @@ public class RankingPresenter extends PresenterWithVersionedData implements Rank
 		setVisible(false);
 	}
 
+	protected Date getDateLimit() {
+		return null;
+	}
+
 	@Override
 	public void go(HasWidgets container) {
 		this.container = container;
@@ -47,7 +52,7 @@ public class RankingPresenter extends PresenterWithVersionedData implements Rank
 		container.add(view.asWidget());
 		view.setRecords(null);
 		
-		AppControllerMain.INSTANCE.getStatisticsService().getRanking(rankingEvent.getClass().getName(), rankingEvent.getId(), new AsyncCallback<List<RankingRecord>>() {
+		AppControllerMain.INSTANCE.getStatisticsService().getRanking(rankingEvent.getClass().getName(), rankingEvent.getId(), getDateLimit(), new AsyncCallback<List<RankingRecord>>() {
 
 			@Override
 			public void onFailure(Throwable caught) {

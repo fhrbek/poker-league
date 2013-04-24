@@ -42,6 +42,10 @@
 			<g:FlowPanel ui:field="rankingContainer"/>
 		</g:FlowPanel>
 		<g:FlowPanel addStyleNames="{style.fieldSet}">
+			<g:Label addStyleNames="pseudoLink" ui:field="toggleShowRankingCumulative">Zobrazit/skrýt kumulativní tabulku</g:Label>
+			<g:FlowPanel ui:field="rankingContainerCumulative"/>
+		</g:FlowPanel>
+		<g:FlowPanel addStyleNames="{style.fieldSet}">
 			<g:Label addStyleNames="pseudoLink" ui:field="toggleShowInvitations">Zobrazit/skrýt pozvánky</g:Label>
 			<g:FlowPanel ui:field="invitationsContainer"/>
 		</g:FlowPanel>

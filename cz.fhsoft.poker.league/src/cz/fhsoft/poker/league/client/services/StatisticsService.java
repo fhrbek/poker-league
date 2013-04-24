@@ -2,6 +2,7 @@ package cz.fhsoft.poker.league.client.services;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 import com.google.gwt.user.client.rpc.RemoteService;
@@ -23,4 +24,6 @@ public interface StatisticsService extends RemoteService {
 	WhiteList whiteListDummy(WhiteList whiteList);
 	
 	List<RankingRecord> getRanking(String entityClass, Number id);
+	
+	List<RankingRecord> getRanking(String entityClass, Number id, Date tournamentStartLimit);
 }

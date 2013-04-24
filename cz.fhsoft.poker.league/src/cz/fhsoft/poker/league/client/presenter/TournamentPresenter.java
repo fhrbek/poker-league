@@ -1,5 +1,6 @@
 package cz.fhsoft.poker.league.client.presenter;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,6 +19,8 @@ import cz.fhsoft.poker.league.client.view.GamesView;
 import cz.fhsoft.poker.league.client.view.GamesViewImpl;
 import cz.fhsoft.poker.league.client.view.InvitationsView;
 import cz.fhsoft.poker.league.client.view.InvitationsViewImpl;
+import cz.fhsoft.poker.league.client.view.RankingView;
+import cz.fhsoft.poker.league.client.view.RankingViewImpl;
 import cz.fhsoft.poker.league.client.view.TournamentView;
 import cz.fhsoft.poker.league.client.widget.AbstractPersistentEntityEditor;
 import cz.fhsoft.poker.league.client.widget.EntitySelector;
@@ -31,6 +34,10 @@ import cz.fhsoft.poker.league.shared.persistence.compare.Comparators;
 import cz.fhsoft.poker.league.shared.util.StringUtil;
 
 public class TournamentPresenter extends RankablePresenter<Tournament, TournamentView.Presenter, TournamentView> implements TournamentView.Presenter {
+	
+	private RankingView.Presenter rankingPresenterCumulative;
+	
+	private RankingView rankingViewCumulative;
 	
 	private InvitationsPresenter invitationsPresenter;
 	
@@ -234,6 +241,47 @@ public class TournamentPresenter extends RankablePresenter<Tournament, Tournamen
 	
 	public TournamentPresenter(Presenter parentPresenter, TournamentView view) {
 		super(parentPresenter, view);
+	}
+
+	@Override
+	public void onToggleShowRankingCumulative() {
+		if(entity != null) {
+			ClientEntityManager.getInstance().resolveEntity(entity, new AsyncCallback<Tournament>() {
+
+				@Override
+				public void onFailure(Throwable caught) {
+					ErrorReporter.error(caught);
+				}
+
+				@Override
+				public void onSuccess(Tournament resolvedEntity) {
+					entity = resolvedEntity;
+
+					if(rankingViewCumulative == null)
+						rankingViewCumulative = new RankingViewImpl(true);
+
+					if(rankingPresenterCumulative == null) {
+						rankingPresenterCumulative = new RankingPresenter(TournamentPresenter.this, rankingViewCumulative, entity.getCompetition()) {
+							@Override
+							protected Date getDateLimit() {
+								Date dateLimit = entity != null
+										? entity.getTournamentStart()
+										: null;
+								return dateLimit != null
+										? dateLimit
+										: new Date(0);
+							}
+							
+						};
+
+						rankingPresenterCumulative.go(view.getRankingContainerCumulative());
+					}
+
+					rankingPresenterCumulative.setVisible(!rankingPresenterCumulative.isVisible());
+				}
+				
+			});
+		}
 	}
 
 	@Override

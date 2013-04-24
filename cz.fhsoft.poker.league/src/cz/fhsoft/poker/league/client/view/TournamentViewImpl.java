@@ -32,6 +32,9 @@ public class TournamentViewImpl extends Composite implements TournamentView {
 	FlowPanel rankingContainer;
 	
 	@UiField
+	FlowPanel rankingContainerCumulative;
+	
+	@UiField
 	FlowPanel invitationsContainer;
 	
 	@UiField
@@ -63,6 +66,11 @@ public class TournamentViewImpl extends Composite implements TournamentView {
 		presenter.onToggleShowRanking();
 	}
 
+	@UiHandler("toggleShowRankingCumulative")
+	void onToggleShowRankingCumulativeClicked(ClickEvent event) {
+		presenter.onToggleShowRankingCumulative();
+	}
+
 	@UiHandler("toggleShowInvitations")
 	void onToggleShowInvitationsClicked(ClickEvent event) {
 		presenter.onToggleShowInvitations();
@@ -81,6 +89,11 @@ public class TournamentViewImpl extends Composite implements TournamentView {
 	@Override
 	public HasWidgets getRankingContainer() {
 		return rankingContainer;
+	}
+
+	@Override
+	public HasWidgets getRankingContainerCumulative() {
+		return rankingContainerCumulative;
 	}
 
 	@Override
