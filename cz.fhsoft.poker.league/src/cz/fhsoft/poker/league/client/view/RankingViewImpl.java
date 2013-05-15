@@ -118,6 +118,33 @@ public class RankingViewImpl extends Composite implements RankingView {
 			
 			}, "Relativní body");
 			
+			rankingTable.addColumn(new AlignedColumn<RankingRecord, String>(new TextCell(), HasHorizontalAlignment.ALIGN_RIGHT) {
+			
+				@Override
+				public String getValue(RankingRecord record) {
+					return "" + record.getRankCount(1);
+				}
+			
+			}, "1. místa");
+			
+			
+			rankingTable.addColumn(new AlignedColumn<RankingRecord, String>(new TextCell(), HasHorizontalAlignment.ALIGN_RIGHT) {
+			
+				@Override
+				public String getValue(RankingRecord record) {
+					return "" + record.getRankCount(2);
+				}
+			
+			}, "2. místa");
+			
+			rankingTable.addColumn(new AlignedColumn<RankingRecord, String>(new TextCell(), HasHorizontalAlignment.ALIGN_RIGHT) {
+			
+				@Override
+				public String getValue(RankingRecord record) {
+					return "" + record.getRankCount(3);
+				}
+			
+			}, "3. místa");
 		}
 	}
 	
