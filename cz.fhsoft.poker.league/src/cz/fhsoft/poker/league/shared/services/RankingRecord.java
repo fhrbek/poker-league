@@ -88,7 +88,7 @@ public class RankingRecord implements Rankable, Serializable {
 	}
 
 	public int getRankCount(int rank) {
-		if(rank >= 1 && rank <= 3)
+		if(rank >= 1 && rank <= 4)
 			return ((BigDecimal) row.get(10+rank)).intValue();
 		
 		return 0;

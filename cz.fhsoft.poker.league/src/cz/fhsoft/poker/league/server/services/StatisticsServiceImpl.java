@@ -48,7 +48,8 @@ public class StatisticsServiceImpl extends AbstractServiceImpl implements Statis
 		"       SUM(prize_and_points.POINTS)/COUNT(DISTINCT prize_and_points.GAME_ID) AS RELATIVE_POINTS," +
 		"       SUM(CASE WHEN prize_and_points.RANK = 1 THEN 1 ELSE 0 END) AS RANK_1_COUNT," +
 		"       SUM(CASE WHEN prize_and_points.RANK = 2 THEN 1 ELSE 0 END) AS RANK_2_COUNT," +
-		"       SUM(CASE WHEN prize_and_points.RANK = 3 THEN 1 ELSE 0 END) AS RANK_3_COUNT" +
+		"       SUM(CASE WHEN prize_and_points.RANK = 3 THEN 1 ELSE 0 END) AS RANK_3_COUNT," +
+		"       SUM(CASE WHEN prize_and_points.RANK = 4 THEN 1 ELSE 0 END) AS RANK_4_COUNT" +
 		"  FROM (" +
 		"    SELECT" +
 		"      prize.COMPETITION_ID," +
