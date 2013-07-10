@@ -126,8 +126,8 @@ public class Tournament extends DescribedEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link Tournament#getDefaultBuyIn()
+	 * @param newDefaultBuyIn
+	 *            the new value of the '{@link Tournament#getDefaultBuyIn()
 	 *            defaultBuyIn}' feature.
 	 * @generated
 	 */
@@ -153,8 +153,8 @@ public class Tournament extends DescribedEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '
+	 * @param newDefaultPrizeMoneyRuleSet
+	 *            the new value of the '
 	 *            {@link Tournament#getDefaultPrizeMoneyRuleSet()
 	 *            defaultPrizeMoneyRuleSet}' feature.
 	 * @generated
@@ -183,8 +183,8 @@ public class Tournament extends DescribedEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '
+	 * @param newTournamentAnnouncementLead
+	 *            the new value of the '
 	 *            {@link Tournament#getTournamentAnnouncementLead()
 	 *            tournamentAnnouncementLead}' feature.
 	 * @generated
@@ -211,8 +211,8 @@ public class Tournament extends DescribedEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link Tournament#getTournamentStart()
+	 * @param newTournamentStart
+	 *            the new value of the '{@link Tournament#getTournamentStart()
 	 *            tournamentStart}' feature.
 	 * @generated
 	 */
@@ -238,8 +238,8 @@ public class Tournament extends DescribedEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link Tournament#getTournamentEnd()
+	 * @param newTournamentEnd
+	 *            the new value of the '{@link Tournament#getTournamentEnd()
 	 *            tournamentEnd}' feature.
 	 * @generated
 	 */
@@ -265,8 +265,8 @@ public class Tournament extends DescribedEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link Tournament#getMinPlayers()
+	 * @param newMinPlayers
+	 *            the new value of the '{@link Tournament#getMinPlayers()
 	 *            minPlayers}' feature.
 	 * @generated
 	 */
@@ -292,8 +292,8 @@ public class Tournament extends DescribedEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link Tournament#getMaxPlayers()
+	 * @param newMaxPlayers
+	 *            the new value of the '{@link Tournament#getMaxPlayers()
 	 *            maxPlayers}' feature.
 	 * @generated
 	 */
@@ -352,8 +352,8 @@ public class Tournament extends DescribedEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link Tournament#getInvitations()
+	 * @param newInvitations
+	 *            the new value of the '{@link Tournament#getInvitations()
 	 *            invitations}' feature.
 	 * @generated
 	 */
@@ -379,8 +379,8 @@ public class Tournament extends DescribedEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link Tournament#getCompetition()
+	 * @param newCompetition
+	 *            the new value of the '{@link Tournament#getCompetition()
 	 *            competition}' feature.
 	 * @generated
 	 */
@@ -438,8 +438,8 @@ public class Tournament extends DescribedEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link Tournament#getGames() games}'
+	 * @param newGames
+	 *            the new value of the '{@link Tournament#getGames() games}'
 	 *            feature.
 	 * @generated
 	 */

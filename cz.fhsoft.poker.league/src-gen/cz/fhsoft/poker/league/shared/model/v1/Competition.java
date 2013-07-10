@@ -49,6 +49,14 @@ public class Competition extends DescribedEntity {
 	 * @generated
 	 */
 	@Basic()
+	private int minimalAttendance = 50;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	@Basic()
 	private int defaultBuyIn = 0;
 
 	/**
@@ -118,9 +126,9 @@ public class Competition extends DescribedEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link Competition#getStartDate() startDate}
-	 *            ' feature.
+	 * @param newStartDate
+	 *            the new value of the '{@link Competition#getStartDate()
+	 *            startDate}' feature.
 	 * @generated
 	 */
 	public void setStartDate(Date newStartDate) {
@@ -144,13 +152,41 @@ public class Competition extends DescribedEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link Competition#getEndDate() endDate}'
-	 *            feature.
+	 * @param newEndDate
+	 *            the new value of the '{@link Competition#getEndDate() endDate}
+	 *            ' feature.
 	 * @generated
 	 */
 	public void setEndDate(Date newEndDate) {
 		endDate = newEndDate;
+	}
+
+	/**
+	 * Returns the value of '<em><b>minimalAttendance</b></em>' feature.
+	 * 
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the value of '<em><b>minimalAttendance</b></em>' feature
+	 * @generated
+	 */
+	public int getMinimalAttendance() {
+		return minimalAttendance;
+	}
+
+	/**
+	 * Sets the '{@link Competition#getMinimalAttendance()
+	 * <em>minimalAttendance</em>}' feature.
+	 * 
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param newMinimalAttendance
+	 *            the new value of the '
+	 *            {@link Competition#getMinimalAttendance() minimalAttendance}'
+	 *            feature.
+	 * @generated
+	 */
+	public void setMinimalAttendance(int newMinimalAttendance) {
+		minimalAttendance = newMinimalAttendance;
 	}
 
 	/**
@@ -171,8 +207,8 @@ public class Competition extends DescribedEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link Competition#getDefaultBuyIn()
+	 * @param newDefaultBuyIn
+	 *            the new value of the '{@link Competition#getDefaultBuyIn()
 	 *            defaultBuyIn}' feature.
 	 * @generated
 	 */
@@ -198,8 +234,8 @@ public class Competition extends DescribedEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '
+	 * @param newDefaultPrizeMoneyRuleSet
+	 *            the new value of the '
 	 *            {@link Competition#getDefaultPrizeMoneyRuleSet()
 	 *            defaultPrizeMoneyRuleSet}' feature.
 	 * @generated
@@ -227,9 +263,10 @@ public class Competition extends DescribedEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link Competition#getDefaultMinPlayers()
-	 *            defaultMinPlayers}' feature.
+	 * @param newDefaultMinPlayers
+	 *            the new value of the '
+	 *            {@link Competition#getDefaultMinPlayers() defaultMinPlayers}'
+	 *            feature.
 	 * @generated
 	 */
 	public void setDefaultMinPlayers(int newDefaultMinPlayers) {
@@ -254,9 +291,10 @@ public class Competition extends DescribedEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link Competition#getDefaultMaxPlayers()
-	 *            defaultMaxPlayers}' feature.
+	 * @param newDefaultMaxPlayers
+	 *            the new value of the '
+	 *            {@link Competition#getDefaultMaxPlayers() defaultMaxPlayers}'
+	 *            feature.
 	 * @generated
 	 */
 	public void setDefaultMaxPlayers(int newDefaultMaxPlayers) {
@@ -283,8 +321,8 @@ public class Competition extends DescribedEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '
+	 * @param newDefaultTournamentAnnouncementLead
+	 *            the new value of the '
 	 *            {@link Competition#getDefaultTournamentAnnouncementLead()
 	 *            defaultTournamentAnnouncementLead}' feature.
 	 * @generated
@@ -345,8 +383,8 @@ public class Competition extends DescribedEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link Competition#getTournaments()
+	 * @param newTournaments
+	 *            the new value of the '{@link Competition#getTournaments()
 	 *            tournaments}' feature.
 	 * @generated
 	 */
@@ -404,9 +442,9 @@ public class Competition extends DescribedEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link Competition#getPlayers() players}'
-	 *            feature.
+	 * @param newPlayers
+	 *            the new value of the '{@link Competition#getPlayers() players}
+	 *            ' feature.
 	 * @generated
 	 */
 	public void setPlayers(Set<Player> newPlayers) {
@@ -422,7 +460,8 @@ public class Competition extends DescribedEntity {
 	@Override
 	public String toString() {
 		return "Competition " + " [startDate: " + getStartDate() + "]"
-				+ " [endDate: " + getEndDate() + "]" + " [defaultBuyIn: "
+				+ " [endDate: " + getEndDate() + "]" + " [minimalAttendance: "
+				+ getMinimalAttendance() + "]" + " [defaultBuyIn: "
 				+ getDefaultBuyIn() + "]" + " [defaultMinPlayers: "
 				+ getDefaultMinPlayers() + "]" + " [defaultMaxPlayers: "
 				+ getDefaultMaxPlayers() + "]"

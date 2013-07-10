@@ -61,8 +61,8 @@ public abstract class IdentifiableEntity implements Serializable {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link IdentifiableEntity#getId() id}'
+	 * @param newId
+	 *            the new value of the '{@link IdentifiableEntity#getId() id}'
 	 *            feature.
 	 * @generated
 	 */
@@ -88,8 +88,8 @@ public abstract class IdentifiableEntity implements Serializable {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link IdentifiableEntity#isObsolete()
+	 * @param newObsolete
+	 *            the new value of the '{@link IdentifiableEntity#isObsolete()
 	 *            obsolete}' feature.
 	 * @generated
 	 */

@@ -60,6 +60,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="Competition" eSuperTypes="#//DescribedEntity">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="startDate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="endDate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minimalAttendance" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
+        defaultValueLiteral="50"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultBuyIn" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="defaultPrizeMoneyRuleSet"
         eType="#//PrizeMoneyRuleSet"/>

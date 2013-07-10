@@ -73,8 +73,9 @@ public class Player extends IdentifiableEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link Player#isActive() active}' feature.
+	 * @param newActive
+	 *            the new value of the '{@link Player#isActive() active}'
+	 *            feature.
 	 * @generated
 	 */
 	public void setActive(boolean newActive) {
@@ -98,8 +99,8 @@ public class Player extends IdentifiableEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link Player#getNick() nick}' feature.
+	 * @param newNick
+	 *            the new value of the '{@link Player#getNick() nick}' feature.
 	 * @generated
 	 */
 	public void setNick(String newNick) {
@@ -123,8 +124,8 @@ public class Player extends IdentifiableEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link Player#getFirstName() firstName}'
+	 * @param newFirstName
+	 *            the new value of the '{@link Player#getFirstName() firstName}'
 	 *            feature.
 	 * @generated
 	 */
@@ -149,8 +150,8 @@ public class Player extends IdentifiableEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link Player#getLastName() lastName}'
+	 * @param newLastName
+	 *            the new value of the '{@link Player#getLastName() lastName}'
 	 *            feature.
 	 * @generated
 	 */
@@ -176,8 +177,8 @@ public class Player extends IdentifiableEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link Player#getEmailAddress()
+	 * @param newEmailAddress
+	 *            the new value of the '{@link Player#getEmailAddress()
 	 *            emailAddress}' feature.
 	 * @generated
 	 */

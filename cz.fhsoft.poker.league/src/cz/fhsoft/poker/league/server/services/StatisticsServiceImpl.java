@@ -28,7 +28,8 @@ public class StatisticsServiceImpl extends AbstractServiceImpl implements Statis
 	
 	private static final String SQL_TEMPLATE =
 		//@fmtOff
-		"SELECT prize_and_points.COMPETITION_ID," +
+		"SELECT c.ID," +
+		"       c.MINIMALATTENDANCE," +
 		"       p.ID AS PLAYER_ID," +
 		"       p.NICK AS PLAYER_NICK," +
 		"       CASE WHEN MIN(prize_and_points.RANK) = 0 THEN 0 ELSE 1 END AS IN_GAME_FLAG," +
@@ -91,7 +92,8 @@ public class StatisticsServiceImpl extends AbstractServiceImpl implements Statis
 		"        GROUP BY prize.COMPETITION_ID, prize.TOURNAMENT_ID, prize.GAME_ID, prize.PLAYER_ID, prize.RANK, prize.PRIZE_MONEY) prize_and_points" +
 		"    JOIN PL_PLAYER p ON p.ID = prize_and_points.PLAYER_ID" +
 		"    JOIN PL_GAME g ON g.ID = prize_and_points.GAME_ID" +
-		"  GROUP BY prize_and_points.COMPETITION_ID, p.ID, p.NICK";
+		"    JOIN PL_COMPETITION c ON c.ID = prize_and_points.COMPETITION_ID" +
+		"  GROUP BY c.ID, c.MINIMALATTENDANCE, p.ID, p.NICK";
 		//@fmtOn
 	
 	private final static String COMPETITION_SQL_BASE = SQL_TEMPLATE.replace(ALIAS_PLACEHOLDER, "c").replace(UNFINISHED_FILTER_PLACEHOLDER, " AND pig.RANK > 0 ");

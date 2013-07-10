@@ -64,8 +64,8 @@ public class PrizeMoneyRule extends IdentifiableEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '
+	 * @param newPrizeMoneyRuleSet
+	 *            the new value of the '
 	 *            {@link PrizeMoneyRule#getPrizeMoneyRuleSet()
 	 *            prizeMoneyRuleSet}' feature.
 	 * @generated
@@ -92,9 +92,10 @@ public class PrizeMoneyRule extends IdentifiableEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link PrizeMoneyRule#getNumberOfPlayers()
-	 *            numberOfPlayers}' feature.
+	 * @param newNumberOfPlayers
+	 *            the new value of the '
+	 *            {@link PrizeMoneyRule#getNumberOfPlayers() numberOfPlayers}'
+	 *            feature.
 	 * @generated
 	 */
 	public void setNumberOfPlayers(int newNumberOfPlayers) {
@@ -154,8 +155,8 @@ public class PrizeMoneyRule extends IdentifiableEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '
+	 * @param newPrizeMoneyFormulas
+	 *            the new value of the '
 	 *            {@link PrizeMoneyRule#getPrizeMoneyFormulas()
 	 *            prizeMoneyFormulas}' feature.
 	 * @generated

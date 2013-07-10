@@ -61,8 +61,8 @@ public class PlayerInGame extends IdentifiableEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link PlayerInGame#getPlayer() player}'
+	 * @param newPlayer
+	 *            the new value of the '{@link PlayerInGame#getPlayer() player}'
 	 *            feature.
 	 * @generated
 	 */
@@ -87,8 +87,8 @@ public class PlayerInGame extends IdentifiableEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link PlayerInGame#getGame() game}'
+	 * @param newGame
+	 *            the new value of the '{@link PlayerInGame#getGame() game}'
 	 *            feature.
 	 * @generated
 	 */
@@ -113,8 +113,8 @@ public class PlayerInGame extends IdentifiableEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link PlayerInGame#getRank() rank}'
+	 * @param newRank
+	 *            the new value of the '{@link PlayerInGame#getRank() rank}'
 	 *            feature.
 	 * @generated
 	 */

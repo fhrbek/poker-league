@@ -93,6 +93,20 @@ public class CompetitionPresenter extends RankablePresenter<Competition, Competi
 			
 		};
 		
+		private Entry<IntegerBox> minAttendanceEntry = new Entry<IntegerBox>("Minimální účast (%)", new IntegerBox()) {
+
+			@Override
+			public void setUpWidget(Competition entity) {
+				getWidget().setValue(entity.getMinimalAttendance());
+			}
+
+			@Override
+			public void updateEntity(Competition entity) {
+				entity.setMinimalAttendance(getWidget().getValue());
+			}
+			
+		};
+		
 		private Entry<IntegerBox> defaultMinPlayersEntry = new Entry<IntegerBox>("Výchozí minimální počet hráčů", new IntegerBox()) {
 
 			@Override
@@ -182,6 +196,7 @@ public class CompetitionPresenter extends RankablePresenter<Competition, Competi
 			addEntry(descriptionEntry);
 			addEntry(startDateEntry);
 			addEntry(endDateEntry);
+			addEntry(minAttendanceEntry);
 			addEntry(defaultMinPlayersEntry);
 			addEntry(defaultMaxPlayersEntry);
 			addEntry(defaultBuyInEntry);

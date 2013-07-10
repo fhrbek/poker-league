@@ -55,8 +55,8 @@ public class DataVersion implements Serializable {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link DataVersion#getId() id}' feature.
+	 * @param newId
+	 *            the new value of the '{@link DataVersion#getId() id}' feature.
 	 * @generated
 	 */
 	public void setId(int newId) {
@@ -81,8 +81,8 @@ public class DataVersion implements Serializable {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link DataVersion#getCurrentVersion()
+	 * @param newCurrentVersion
+	 *            the new value of the '{@link DataVersion#getCurrentVersion()
 	 *            currentVersion}' feature.
 	 * @generated
 	 */

@@ -76,8 +76,8 @@ public class InvitationEvent extends IdentifiableEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link InvitationEvent#getInvitation()
+	 * @param newInvitation
+	 *            the new value of the '{@link InvitationEvent#getInvitation()
 	 *            invitation}' feature.
 	 * @generated
 	 */
@@ -103,8 +103,8 @@ public class InvitationEvent extends IdentifiableEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link InvitationEvent#getEventTime()
+	 * @param newEventTime
+	 *            the new value of the '{@link InvitationEvent#getEventTime()
 	 *            eventTime}' feature.
 	 * @generated
 	 */
@@ -130,8 +130,8 @@ public class InvitationEvent extends IdentifiableEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link InvitationEvent#getEventType()
+	 * @param newEventType
+	 *            the new value of the '{@link InvitationEvent#getEventType()
 	 *            eventType}' feature.
 	 * @generated
 	 */
@@ -156,8 +156,8 @@ public class InvitationEvent extends IdentifiableEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link InvitationEvent#isSent() sent}'
+	 * @param newSent
+	 *            the new value of the '{@link InvitationEvent#isSent() sent}'
 	 *            feature.
 	 * @generated
 	 */

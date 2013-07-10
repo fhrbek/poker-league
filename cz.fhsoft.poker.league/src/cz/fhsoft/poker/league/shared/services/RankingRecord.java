@@ -47,49 +47,53 @@ public class RankingRecord implements Rankable, Serializable {
 		return (Integer) row.get(0);
 	}
 
-	public int getPlayerId() {
+	public int getMinimalAttendance() {
 		return (Integer) row.get(1);
 	}
 
+	public int getPlayerId() {
+		return (Integer) row.get(2);
+	}
+
 	public String getPlayerNick() {
-		return (String) row.get(2);
+		return (String) row.get(3);
 	}
 
 	public long getInGameFlag() {
-		return (Long) row.get(3);
-	}
-
-	public long getTotalGames() {
 		return (Long) row.get(4);
 	}
 
-	public long getGamesPlayed() {
+	public long getTotalGames() {
 		return (Long) row.get(5);
 	}
 
+	public long getGamesPlayed() {
+		return (Long) row.get(6);
+	}
+
 	public long getBuyIns() {
-		return ((BigDecimal) row.get(6)).longValue();
+		return ((BigDecimal) row.get(7)).longValue();
 	}
 
 	public double getPrizeMoney() {
-		return ((BigDecimal) row.get(7)).doubleValue();
-	}
-
-	public double getPoints() {
 		return ((BigDecimal) row.get(8)).doubleValue();
 	}
 
-	public double getRelativePrizeMoney() {
+	public double getPoints() {
 		return ((BigDecimal) row.get(9)).doubleValue();
 	}
 
-	public double getRelativePoints() {
+	public double getRelativePrizeMoney() {
 		return ((BigDecimal) row.get(10)).doubleValue();
+	}
+
+	public double getRelativePoints() {
+		return ((BigDecimal) row.get(11)).doubleValue();
 	}
 
 	public int getRankCount(int rank) {
 		if(rank >= 1 && rank <= 4)
-			return ((BigDecimal) row.get(10+rank)).intValue();
+			return ((BigDecimal) row.get(11+rank)).intValue();
 		
 		return 0;
 	}

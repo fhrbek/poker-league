@@ -49,8 +49,8 @@ public abstract class DescribedEntity extends IdentifiableEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link DescribedEntity#getName() name}'
+	 * @param newName
+	 *            the new value of the '{@link DescribedEntity#getName() name}'
 	 *            feature.
 	 * @generated
 	 */
@@ -76,8 +76,8 @@ public abstract class DescribedEntity extends IdentifiableEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link DescribedEntity#getDescription()
+	 * @param newDescription
+	 *            the new value of the '{@link DescribedEntity#getDescription()
 	 *            description}' feature.
 	 * @generated
 	 */

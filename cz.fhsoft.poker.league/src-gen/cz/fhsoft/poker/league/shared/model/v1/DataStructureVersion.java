@@ -51,8 +51,8 @@ public class DataStructureVersion implements Serializable {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link DataStructureVersion#getId() id}'
+	 * @param newId
+	 *            the new value of the '{@link DataStructureVersion#getId() id}'
 	 *            feature.
 	 * @generated
 	 */
@@ -78,8 +78,8 @@ public class DataStructureVersion implements Serializable {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '
+	 * @param newCurrentVersion
+	 *            the new value of the '
 	 *            {@link DataStructureVersion#getCurrentVersion()
 	 *            currentVersion}' feature.
 	 * @generated

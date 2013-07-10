@@ -92,8 +92,8 @@ public class Invitation extends IdentifiableEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link Invitation#getTournament()
+	 * @param newTournament
+	 *            the new value of the '{@link Invitation#getTournament()
 	 *            tournament}' feature.
 	 * @generated
 	 */
@@ -118,8 +118,8 @@ public class Invitation extends IdentifiableEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link Invitation#getPlayer() player}'
+	 * @param newPlayer
+	 *            the new value of the '{@link Invitation#getPlayer() player}'
 	 *            feature.
 	 * @generated
 	 */
@@ -144,8 +144,8 @@ public class Invitation extends IdentifiableEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link Invitation#getReply() reply}'
+	 * @param newReply
+	 *            the new value of the '{@link Invitation#getReply() reply}'
 	 *            feature.
 	 * @generated
 	 */
@@ -170,8 +170,8 @@ public class Invitation extends IdentifiableEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link Invitation#getOrdinal() ordinal}'
+	 * @param newOrdinal
+	 *            the new value of the '{@link Invitation#getOrdinal() ordinal}'
 	 *            feature.
 	 * @generated
 	 */
@@ -196,8 +196,9 @@ public class Invitation extends IdentifiableEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link Invitation#getUuid() uuid}' feature.
+	 * @param newUuid
+	 *            the new value of the '{@link Invitation#getUuid() uuid}'
+	 *            feature.
 	 * @generated
 	 */
 	public void setUuid(String newUuid) {
@@ -254,8 +255,8 @@ public class Invitation extends IdentifiableEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link Invitation#getEvents() events}'
+	 * @param newEvents
+	 *            the new value of the '{@link Invitation#getEvents() events}'
 	 *            feature.
 	 * @generated
 	 */

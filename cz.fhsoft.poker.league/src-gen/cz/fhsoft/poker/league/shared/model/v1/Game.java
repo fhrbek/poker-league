@@ -82,8 +82,9 @@ public class Game extends IdentifiableEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link Game#getOrdinal() ordinal}' feature.
+	 * @param newOrdinal
+	 *            the new value of the '{@link Game#getOrdinal() ordinal}'
+	 *            feature.
 	 * @generated
 	 */
 	public void setOrdinal(int newOrdinal) {
@@ -107,8 +108,8 @@ public class Game extends IdentifiableEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link Game#getTournament() tournament}'
+	 * @param newTournament
+	 *            the new value of the '{@link Game#getTournament() tournament}'
 	 *            feature.
 	 * @generated
 	 */
@@ -133,8 +134,8 @@ public class Game extends IdentifiableEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link Game#getBuyIn() buyIn}' feature.
+	 * @param newBuyIn
+	 *            the new value of the '{@link Game#getBuyIn() buyIn}' feature.
 	 * @generated
 	 */
 	public void setBuyIn(int newBuyIn) {
@@ -159,8 +160,8 @@ public class Game extends IdentifiableEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link Game#getPrizeMoneyRuleSet()
+	 * @param newPrizeMoneyRuleSet
+	 *            the new value of the '{@link Game#getPrizeMoneyRuleSet()
 	 *            prizeMoneyRuleSet}' feature.
 	 * @generated
 	 */

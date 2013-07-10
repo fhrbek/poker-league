@@ -61,8 +61,8 @@ public class PrizeMoneyFormula extends IdentifiableEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '
+	 * @param newPrizeMoneyRule
+	 *            the new value of the '
 	 *            {@link PrizeMoneyFormula#getPrizeMoneyRule() prizeMoneyRule}'
 	 *            feature.
 	 * @generated
@@ -88,9 +88,9 @@ public class PrizeMoneyFormula extends IdentifiableEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link PrizeMoneyFormula#getRank() rank}'
-	 *            feature.
+	 * @param newRank
+	 *            the new value of the '{@link PrizeMoneyFormula#getRank() rank}
+	 *            ' feature.
 	 * @generated
 	 */
 	public void setRank(int newRank) {
@@ -115,8 +115,8 @@ public class PrizeMoneyFormula extends IdentifiableEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '
+	 * @param newRelativePrizeMoney
+	 *            the new value of the '
 	 *            {@link PrizeMoneyFormula#getRelativePrizeMoney()
 	 *            relativePrizeMoney}' feature.
 	 * @generated

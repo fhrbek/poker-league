@@ -236,6 +236,17 @@ public class Comparators {
 			if(result != 0)
 				return result;
 
+			double attendance1 = (double) r1.getGamesPlayed() / (double) r1.getTotalGames();
+			double attendance2 = (double) r2.getGamesPlayed() / (double) r2.getTotalGames();
+
+			boolean attendanceOk1 = attendance1*100 >= r1.getMinimalAttendance();
+			boolean attendanceOk2 = attendance2*100 >= r2.getMinimalAttendance();
+
+			if(attendanceOk1 != attendanceOk2)
+				return attendanceOk1
+						? -1
+						: 1;
+
 			result = r1.getRelativePrizeMoney() > r2.getRelativePrizeMoney()
 					? -1
 					: (r1.getRelativePrizeMoney() < r2.getRelativePrizeMoney()
@@ -254,12 +265,9 @@ public class Comparators {
 			if(result != 0)
 				return result;
 
-			double present1 = (double) r1.getGamesPlayed() / (double) r1.getTotalGames();
-			double present2 = (double) r2.getGamesPlayed() / (double) r2.getTotalGames();
-
-			result = present1 > present2
+			result = attendance1 > attendance2
 					? -1
-					: (present1 < present2
+					: (attendance1 < attendance2
 							? 1
 							: 0);
 

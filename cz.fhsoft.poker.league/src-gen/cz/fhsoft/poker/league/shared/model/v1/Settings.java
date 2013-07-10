@@ -59,8 +59,8 @@ public class Settings implements Serializable {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link Settings#getId() id}' feature.
+	 * @param newId
+	 *            the new value of the '{@link Settings#getId() id}' feature.
 	 * @generated
 	 */
 	public void setId(int newId) {
@@ -85,8 +85,8 @@ public class Settings implements Serializable {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link Settings#getAdminPassword()
+	 * @param newAdminPassword
+	 *            the new value of the '{@link Settings#getAdminPassword()
 	 *            adminPassword}' feature.
 	 * @generated
 	 */
@@ -112,8 +112,8 @@ public class Settings implements Serializable {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '{@link Settings#getDefaultTimeZone()
+	 * @param newDefaultTimeZone
+	 *            the new value of the '{@link Settings#getDefaultTimeZone()
 	 *            defaultTimeZone}' feature.
 	 * @generated
 	 */

@@ -78,8 +78,8 @@ public class PrizeMoneyRuleSet extends DescribedEntity {
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
-	 * @param the
-	 *            new value of the '
+	 * @param newPrizeMoneyRules
+	 *            the new value of the '
 	 *            {@link PrizeMoneyRuleSet#getPrizeMoneyRules() prizeMoneyRules}
 	 *            ' feature.
 	 * @generated
