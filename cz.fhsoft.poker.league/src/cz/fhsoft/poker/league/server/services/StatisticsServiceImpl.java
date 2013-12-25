@@ -45,7 +45,7 @@ public class StatisticsServiceImpl extends AbstractServiceImpl implements Statis
 		"       SUM(g.BUYIN) AS BUY_INS," +
 		"       SUM(prize_and_points.PRIZE_MONEY) AS PRIZE_MONEY," +
 		"       SUM(prize_and_points.POINTS) AS POINTS," +
-		"       SUM(prize_and_points.PRIZE_MONEY)/COUNT(DISTINCT prize_and_points.GAME_ID) AS RELATIVE_PRIZE_MONEY," +
+		"       SUM(prize_and_points.PRIZE_MONEY)/SUM(g.BUYIN) AS RELATIVE_PRIZE_MONEY," +
 		"       SUM(prize_and_points.POINTS)/COUNT(DISTINCT prize_and_points.GAME_ID) AS RELATIVE_POINTS," +
 		"       SUM(CASE WHEN prize_and_points.RANK = 1 THEN 1 ELSE 0 END) AS RANK_1_COUNT," +
 		"       SUM(CASE WHEN prize_and_points.RANK = 2 THEN 1 ELSE 0 END) AS RANK_2_COUNT," +

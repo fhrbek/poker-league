@@ -104,7 +104,7 @@ public class RankingViewImpl extends Composite implements RankingView {
 				
 				@Override
 				public String getValue(RankingRecord record) {
-					return Formatter.format(record.getRelativePrizeMoney(), 2) + "%";
+					return Formatter.format(record.getRelativePrizeMoney()*100, 2) + "%";
 				}
 			
 			}, "Relativní výhra");

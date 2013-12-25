@@ -7,4 +7,4 @@ problem.JOIN_COLUMN_TABLE_NOT_VALID=info
 problem.TABLE_UNRESOLVED_NAME=info
 problem.VIRTUAL_ATTRIBUTE_COLUMN_TABLE_NOT_VALID=info
 problem.VIRTUAL_ATTRIBUTE_OVERRIDE_COLUMN_TABLE_NOT_VALID=info
-workspace_preferences_overriden=true
+workspace_validation_preferences_overridden=true
