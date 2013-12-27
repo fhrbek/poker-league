@@ -45,9 +45,6 @@ public class InvitationServiceImpl extends AbstractServiceImpl implements Invita
 
 				Tournament tournament = invitation.getTournament();
 
-				//TODO Remove permanently - it should not be needed as we don't use caching at all
-				//ServletInitializer.getEntityManager().refresh(tournament);
-				
 				int maxInvitationOrdinal = 0;
 				
 				for(Invitation inv : tournament.getInvitations()) {

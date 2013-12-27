@@ -75,6 +75,10 @@ public abstract class AbstractEntityListEditor<E extends IdentifiableEntity> ext
 	protected Class<E> entityClass = null;
 	
 	public AbstractEntityListEditor(String newEntityLinkText, final AbstractEntityEditor<E> entityEditor, DataProvider<E> dataProvider, List<LabeledColumn<E>> columns) {
+		this(newEntityLinkText, entityEditor, dataProvider, columns, true);
+	}
+
+	public AbstractEntityListEditor(String newEntityLinkText, final AbstractEntityEditor<E> entityEditor, DataProvider<E> dataProvider, List<LabeledColumn<E>> columns, boolean load) {
 		
 		this.dataProvider = dataProvider;
 
@@ -195,8 +199,9 @@ public abstract class AbstractEntityListEditor<E extends IdentifiableEntity> ext
 			}
 			
 		});
-		
-		refresh();
+
+		if(load)
+			refresh();
 	}
 	
 	protected abstract E getNewEntity();

@@ -44,10 +44,12 @@ public class PrizeMoneyRuleSet extends DescribedEntity {
 	 * 
 	 * @generated
 	 */
-	public void addToPrizeMoneyRules(PrizeMoneyRule prizeMoneyRulesValue) {
+	public boolean addToPrizeMoneyRules(PrizeMoneyRule prizeMoneyRulesValue) {
 		if (!prizeMoneyRules.contains(prizeMoneyRulesValue)) {
-			prizeMoneyRules.add(prizeMoneyRulesValue);
+			boolean result = prizeMoneyRules.add(prizeMoneyRulesValue);
+			return result;
 		}
+		return false;
 	}
 
 	/**
@@ -55,10 +57,12 @@ public class PrizeMoneyRuleSet extends DescribedEntity {
 	 * 
 	 * @generated
 	 */
-	public void removeFromPrizeMoneyRules(PrizeMoneyRule prizeMoneyRulesValue) {
+	public boolean removeFromPrizeMoneyRules(PrizeMoneyRule prizeMoneyRulesValue) {
 		if (prizeMoneyRules.contains(prizeMoneyRulesValue)) {
-			prizeMoneyRules.remove(prizeMoneyRulesValue);
+			boolean result = prizeMoneyRules.remove(prizeMoneyRulesValue);
+			return result;
 		}
+		return false;
 	}
 
 	/**

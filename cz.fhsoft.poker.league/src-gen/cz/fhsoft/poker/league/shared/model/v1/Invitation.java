@@ -222,10 +222,12 @@ public class Invitation extends IdentifiableEntity {
 	 * 
 	 * @generated
 	 */
-	public void addToEvents(InvitationEvent eventsValue) {
+	public boolean addToEvents(InvitationEvent eventsValue) {
 		if (!events.contains(eventsValue)) {
-			events.add(eventsValue);
+			boolean result = events.add(eventsValue);
+			return result;
 		}
+		return false;
 	}
 
 	/**
@@ -233,10 +235,12 @@ public class Invitation extends IdentifiableEntity {
 	 * 
 	 * @generated
 	 */
-	public void removeFromEvents(InvitationEvent eventsValue) {
+	public boolean removeFromEvents(InvitationEvent eventsValue) {
 		if (events.contains(eventsValue)) {
-			events.remove(eventsValue);
+			boolean result = events.remove(eventsValue);
+			return result;
 		}
+		return false;
 	}
 
 	/**

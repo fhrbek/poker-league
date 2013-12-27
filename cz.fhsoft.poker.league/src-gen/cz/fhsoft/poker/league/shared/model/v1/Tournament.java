@@ -318,10 +318,12 @@ public class Tournament extends DescribedEntity {
 	 * 
 	 * @generated
 	 */
-	public void addToInvitations(Invitation invitationsValue) {
+	public boolean addToInvitations(Invitation invitationsValue) {
 		if (!invitations.contains(invitationsValue)) {
-			invitations.add(invitationsValue);
+			boolean result = invitations.add(invitationsValue);
+			return result;
 		}
+		return false;
 	}
 
 	/**
@@ -329,10 +331,12 @@ public class Tournament extends DescribedEntity {
 	 * 
 	 * @generated
 	 */
-	public void removeFromInvitations(Invitation invitationsValue) {
+	public boolean removeFromInvitations(Invitation invitationsValue) {
 		if (invitations.contains(invitationsValue)) {
-			invitations.remove(invitationsValue);
+			boolean result = invitations.remove(invitationsValue);
+			return result;
 		}
+		return false;
 	}
 
 	/**
@@ -405,10 +409,12 @@ public class Tournament extends DescribedEntity {
 	 * 
 	 * @generated
 	 */
-	public void addToGames(Game gamesValue) {
+	public boolean addToGames(Game gamesValue) {
 		if (!games.contains(gamesValue)) {
-			games.add(gamesValue);
+			boolean result = games.add(gamesValue);
+			return result;
 		}
+		return false;
 	}
 
 	/**
@@ -416,10 +422,12 @@ public class Tournament extends DescribedEntity {
 	 * 
 	 * @generated
 	 */
-	public void removeFromGames(Game gamesValue) {
+	public boolean removeFromGames(Game gamesValue) {
 		if (games.contains(gamesValue)) {
-			games.remove(gamesValue);
+			boolean result = games.remove(gamesValue);
+			return result;
 		}
+		return false;
 	}
 
 	/**

@@ -349,10 +349,12 @@ public class Competition extends DescribedEntity {
 	 * 
 	 * @generated
 	 */
-	public void addToTournaments(Tournament tournamentsValue) {
+	public boolean addToTournaments(Tournament tournamentsValue) {
 		if (!tournaments.contains(tournamentsValue)) {
-			tournaments.add(tournamentsValue);
+			boolean result = tournaments.add(tournamentsValue);
+			return result;
 		}
+		return false;
 	}
 
 	/**
@@ -360,10 +362,12 @@ public class Competition extends DescribedEntity {
 	 * 
 	 * @generated
 	 */
-	public void removeFromTournaments(Tournament tournamentsValue) {
+	public boolean removeFromTournaments(Tournament tournamentsValue) {
 		if (tournaments.contains(tournamentsValue)) {
-			tournaments.remove(tournamentsValue);
+			boolean result = tournaments.remove(tournamentsValue);
+			return result;
 		}
+		return false;
 	}
 
 	/**
@@ -409,10 +413,12 @@ public class Competition extends DescribedEntity {
 	 * 
 	 * @generated
 	 */
-	public void addToPlayers(Player playersValue) {
+	public boolean addToPlayers(Player playersValue) {
 		if (!players.contains(playersValue)) {
-			players.add(playersValue);
+			boolean result = players.add(playersValue);
+			return result;
 		}
+		return false;
 	}
 
 	/**
@@ -420,10 +426,12 @@ public class Competition extends DescribedEntity {
 	 * 
 	 * @generated
 	 */
-	public void removeFromPlayers(Player playersValue) {
+	public boolean removeFromPlayers(Player playersValue) {
 		if (players.contains(playersValue)) {
-			players.remove(playersValue);
+			boolean result = players.remove(playersValue);
+			return result;
 		}
+		return false;
 	}
 
 	/**

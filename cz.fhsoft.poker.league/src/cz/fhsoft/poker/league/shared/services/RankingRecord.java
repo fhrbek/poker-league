@@ -59,8 +59,8 @@ public class RankingRecord implements Rankable, Serializable {
 		return (String) row.get(3);
 	}
 
-	public long getInGameFlag() {
-		return (Long) row.get(4);
+	public int getInGameFlag() {
+		return (Integer) row.get(4);
 	}
 
 	public long getTotalGames() {
@@ -72,7 +72,7 @@ public class RankingRecord implements Rankable, Serializable {
 	}
 
 	public long getBuyIns() {
-		return ((BigDecimal) row.get(7)).longValue();
+		return (Long) row.get(7);
 	}
 
 	public double getPrizeMoney() {
@@ -93,7 +93,7 @@ public class RankingRecord implements Rankable, Serializable {
 
 	public int getRankCount(int rank) {
 		if(rank >= 1 && rank <= 4)
-			return ((BigDecimal) row.get(11+rank)).intValue();
+			return ((Long) row.get(11+rank)).intValue();
 		
 		return 0;
 	}

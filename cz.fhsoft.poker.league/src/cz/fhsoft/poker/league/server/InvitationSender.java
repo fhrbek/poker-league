@@ -21,6 +21,7 @@ import cz.fhsoft.poker.league.server.persistence.EntityServiceImpl.DataAction;
 import cz.fhsoft.poker.league.shared.model.v1.Invitation;
 import cz.fhsoft.poker.league.shared.model.v1.InvitationEvent;
 import cz.fhsoft.poker.league.shared.model.v1.InvitationEventType;
+import cz.fhsoft.poker.league.shared.model.v1.Settings;
 import cz.fhsoft.poker.league.shared.model.v1.Tournament;
 
 public class InvitationSender extends HttpServlet {
@@ -34,8 +35,8 @@ public class InvitationSender extends HttpServlet {
 		unsentInvitations.setParameter("eventType", InvitationEventType.GENERATED);
 	}
 	
-	private static final Query defaultTimeZoneQuery = ServletInitializer.getEntityManager().createQuery(
-			"SELECT s.defaultTimeZone FROM cz.fhsoft.poker.league.shared.model.v1.Settings s WHERE s.id = 1");
+	private static final Query settingsQuery = ServletInitializer.getEntityManager().createQuery(
+			"SELECT s FROM cz.fhsoft.poker.league.shared.model.v1.Settings s WHERE s.id = 1");
 	
 	private static final String PLACEHOLDER_TOURNAMENT = "@@TOURNAMENT@@";
 	
@@ -43,9 +44,13 @@ public class InvitationSender extends HttpServlet {
 	
 	private static final String PLACEHOLDER_INVITATION_UUID = "@@INVITATION_UUID@@";
 	
+	private static final String PLACEHOLDER_URL_BASE = "@@URL_BASE@@";
+	
 	private static final String MAIL_TEMPLATE =
 			"Ahoj,\n\nWittmann Poker Club Tě zve na turnaj " + PLACEHOLDER_TOURNAMENT + ".\n\nZačátek: " + PLACEHOLDER_TOURNAMENT_START + ".\n\n" +
-			"Svoji účast či neúčast prosím potvrď na této adrese: http://wittmannpokerleague.appspot.com#invitation?" + PLACEHOLDER_INVITATION_UUID + ".";
+			"Svoji účast či neúčast prosím potvrď na této adrese: " + PLACEHOLDER_URL_BASE + "#invitation?" + PLACEHOLDER_INVITATION_UUID;
+	
+	private Settings settings;
 
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) {
@@ -63,8 +68,11 @@ public class InvitationSender extends HttpServlet {
 					Tournament tournament = invitation.getTournament();
 					if(tournament.getTournamentStart().getTime() - new Date().getTime() <= (long) tournament.getTournamentAnnouncementLead() * 3600000L) {
 				        Properties props = new Properties();
+				        props.put("mail.smtp.host", getSettings().getSmtpHost());
+				        props.put("mail.smtp.port", getSettings().getSmtpPort());
+				        props.put("mail.smtp.starttls.enable", "true");
 				        Session session = Session.getDefaultInstance(props, null);
-				        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone(getDefaultTimeZone()));
+				        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone(getSettings().getDefaultTimeZone()));
 				        cal.setTime(tournament.getTournamentStart());
 				        
 				        String formattedDate = String.format("%1$td.%1$tm.%1$tY %1$tH:%1$tM", cal);
@@ -72,16 +80,17 @@ public class InvitationSender extends HttpServlet {
 				        String msgBody = MAIL_TEMPLATE
 				        		.replace(PLACEHOLDER_TOURNAMENT, tournament.getName())
 				        		.replace(PLACEHOLDER_TOURNAMENT_START, formattedDate)
-				        		.replace(PLACEHOLDER_INVITATION_UUID, invitation.getUuid());
+				        		.replace(PLACEHOLDER_INVITATION_UUID, invitation.getUuid())
+				        		.replace(PLACEHOLDER_URL_BASE, getSettings().getUrlBase());
 	
 				        try {
 				            Message msg = new MimeMessage(session);
-				            msg.setFrom(new InternetAddress("wittmannpoker@gmail.com", "Wittmann Poker"));
+				            msg.setFrom(new InternetAddress(getSettings().getSmtpUser(), getSettings().getSmtpFrom()));
 				            msg.addRecipient(Message.RecipientType.TO,
 				                             new InternetAddress(invitation.getPlayer().getEmailAddress(), invitation.getPlayer().getNick()));
 				            msg.setSubject("WPL Turnaj " + formattedDate);
 				            msg.setText(msgBody);
-				            Transport.send(msg);
+				            Transport.send(msg, getSettings().getSmtpUser(), getSettings().getSmtpPassword());
 				            
 				            invitationEvent.setSent(true);
 				            change = true;
@@ -103,8 +112,11 @@ public class InvitationSender extends HttpServlet {
 		});
 	}
 
-	private String getDefaultTimeZone() {
-		return (String) defaultTimeZoneQuery.getSingleResult();
+	private Settings getSettings() {
+		if(settings != null)
+			return settings;
+
+		return settings = (Settings) settingsQuery.getSingleResult();
 	}
 
 }

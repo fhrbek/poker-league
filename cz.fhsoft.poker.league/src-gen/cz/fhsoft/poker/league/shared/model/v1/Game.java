@@ -188,10 +188,12 @@ public class Game extends IdentifiableEntity {
 	 * 
 	 * @generated
 	 */
-	public void addToPlayersInGame(PlayerInGame playersInGameValue) {
+	public boolean addToPlayersInGame(PlayerInGame playersInGameValue) {
 		if (!playersInGame.contains(playersInGameValue)) {
-			playersInGame.add(playersInGameValue);
+			boolean result = playersInGame.add(playersInGameValue);
+			return result;
 		}
+		return false;
 	}
 
 	/**
@@ -199,10 +201,12 @@ public class Game extends IdentifiableEntity {
 	 * 
 	 * @generated
 	 */
-	public void removeFromPlayersInGame(PlayerInGame playersInGameValue) {
+	public boolean removeFromPlayersInGame(PlayerInGame playersInGameValue) {
 		if (playersInGame.contains(playersInGameValue)) {
-			playersInGame.remove(playersInGameValue);
+			boolean result = playersInGame.remove(playersInGameValue);
+			return result;
 		}
+		return false;
 	}
 
 	/**

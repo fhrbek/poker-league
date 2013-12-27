@@ -201,7 +201,7 @@ public class InvitationsPresenter extends PresenterWithVersionedData implements 
 			}
 			
 		},
-		columns) {
+		columns, false) {
 
 			@Override
 			protected Invitation getNewEntity() {
@@ -231,7 +231,6 @@ public class InvitationsPresenter extends PresenterWithVersionedData implements 
 	public void go(HasWidgets container) {
 		container.clear();
 		container.add(view.asWidget());
-		refresh();
 	}
 
 	@Override

@@ -3,8 +3,8 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="src-gen"/>
 	<classpathentry kind="src" path="db-migration"/>
-	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/mail-1.5.0-b01.jar"/>
 	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER/GWT"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/EclipseLink 2.4.1 - Juno">
 		<attributes>

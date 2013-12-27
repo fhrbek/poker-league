@@ -52,7 +52,6 @@ public class GamesPresenter extends PresenterWithVersionedData implements GamesV
 	public void go(HasWidgets container) {
 		container.clear();
 		container.add(view.asWidget());
-		refresh();
 	}
 
 	@Override

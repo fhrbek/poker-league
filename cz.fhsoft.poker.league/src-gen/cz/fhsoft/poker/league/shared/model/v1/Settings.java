@@ -43,6 +43,54 @@ public class Settings implements Serializable {
 	private String defaultTimeZone = "GMT";
 
 	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	@Basic()
+	private String smtpHost = null;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	@Basic()
+	private String smtpPort = null;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	@Basic()
+	private String smtpUser = null;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	@Basic()
+	private String smtpPassword = null;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	@Basic()
+	private String smtpFrom = null;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @generated
+	 */
+	@Basic()
+	private String urlBase = null;
+
+	/**
 	 * Returns the value of '<em><b>id</b></em>' feature.
 	 * 
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -122,6 +170,163 @@ public class Settings implements Serializable {
 	}
 
 	/**
+	 * Returns the value of '<em><b>smtpHost</b></em>' feature.
+	 * 
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the value of '<em><b>smtpHost</b></em>' feature
+	 * @generated
+	 */
+	public String getSmtpHost() {
+		return smtpHost;
+	}
+
+	/**
+	 * Sets the '{@link Settings#getSmtpHost() <em>smtpHost</em>}' feature.
+	 * 
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param newSmtpHost
+	 *            the new value of the '{@link Settings#getSmtpHost() smtpHost}'
+	 *            feature.
+	 * @generated
+	 */
+	public void setSmtpHost(String newSmtpHost) {
+		smtpHost = newSmtpHost;
+	}
+
+	/**
+	 * Returns the value of '<em><b>smtpPort</b></em>' feature.
+	 * 
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the value of '<em><b>smtpPort</b></em>' feature
+	 * @generated
+	 */
+	public String getSmtpPort() {
+		return smtpPort;
+	}
+
+	/**
+	 * Sets the '{@link Settings#getSmtpPort() <em>smtpPort</em>}' feature.
+	 * 
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param newSmtpPort
+	 *            the new value of the '{@link Settings#getSmtpPort() smtpPort}'
+	 *            feature.
+	 * @generated
+	 */
+	public void setSmtpPort(String newSmtpPort) {
+		smtpPort = newSmtpPort;
+	}
+
+	/**
+	 * Returns the value of '<em><b>smtpUser</b></em>' feature.
+	 * 
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the value of '<em><b>smtpUser</b></em>' feature
+	 * @generated
+	 */
+	public String getSmtpUser() {
+		return smtpUser;
+	}
+
+	/**
+	 * Sets the '{@link Settings#getSmtpUser() <em>smtpUser</em>}' feature.
+	 * 
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param newSmtpUser
+	 *            the new value of the '{@link Settings#getSmtpUser() smtpUser}'
+	 *            feature.
+	 * @generated
+	 */
+	public void setSmtpUser(String newSmtpUser) {
+		smtpUser = newSmtpUser;
+	}
+
+	/**
+	 * Returns the value of '<em><b>smtpPassword</b></em>' feature.
+	 * 
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the value of '<em><b>smtpPassword</b></em>' feature
+	 * @generated
+	 */
+	public String getSmtpPassword() {
+		return smtpPassword;
+	}
+
+	/**
+	 * Sets the '{@link Settings#getSmtpPassword() <em>smtpPassword</em>}'
+	 * feature.
+	 * 
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param newSmtpPassword
+	 *            the new value of the '{@link Settings#getSmtpPassword()
+	 *            smtpPassword}' feature.
+	 * @generated
+	 */
+	public void setSmtpPassword(String newSmtpPassword) {
+		smtpPassword = newSmtpPassword;
+	}
+
+	/**
+	 * Returns the value of '<em><b>smtpFrom</b></em>' feature.
+	 * 
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the value of '<em><b>smtpFrom</b></em>' feature
+	 * @generated
+	 */
+	public String getSmtpFrom() {
+		return smtpFrom;
+	}
+
+	/**
+	 * Sets the '{@link Settings#getSmtpFrom() <em>smtpFrom</em>}' feature.
+	 * 
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param newSmtpFrom
+	 *            the new value of the '{@link Settings#getSmtpFrom() smtpFrom}'
+	 *            feature.
+	 * @generated
+	 */
+	public void setSmtpFrom(String newSmtpFrom) {
+		smtpFrom = newSmtpFrom;
+	}
+
+	/**
+	 * Returns the value of '<em><b>urlBase</b></em>' feature.
+	 * 
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the value of '<em><b>urlBase</b></em>' feature
+	 * @generated
+	 */
+	public String getUrlBase() {
+		return urlBase;
+	}
+
+	/**
+	 * Sets the '{@link Settings#getUrlBase() <em>urlBase</em>}' feature.
+	 * 
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @param newUrlBase
+	 *            the new value of the '{@link Settings#getUrlBase() urlBase}'
+	 *            feature.
+	 * @generated
+	 */
+	public void setUrlBase(String newUrlBase) {
+		urlBase = newUrlBase;
+	}
+
+	/**
 	 * A toString method which prints the values of all EAttributes of this
 	 * instance. <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * 
@@ -131,6 +336,10 @@ public class Settings implements Serializable {
 	public String toString() {
 		return "Settings " + " [id: " + getId() + "]" + " [adminPassword: "
 				+ getAdminPassword() + "]" + " [defaultTimeZone: "
-				+ getDefaultTimeZone() + "]";
+				+ getDefaultTimeZone() + "]" + " [smtpHost: " + getSmtpHost()
+				+ "]" + " [smtpPort: " + getSmtpPort() + "]" + " [smtpUser: "
+				+ getSmtpUser() + "]" + " [smtpPassword: " + getSmtpPassword()
+				+ "]" + " [smtpFrom: " + getSmtpFrom() + "]" + " [urlBase: "
+				+ getUrlBase() + "]";
 	}
 }

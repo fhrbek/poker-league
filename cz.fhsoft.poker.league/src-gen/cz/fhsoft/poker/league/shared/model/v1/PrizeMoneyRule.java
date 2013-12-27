@@ -119,11 +119,13 @@ public class PrizeMoneyRule extends IdentifiableEntity {
 	 * 
 	 * @generated
 	 */
-	public void addToPrizeMoneyFormulas(
+	public boolean addToPrizeMoneyFormulas(
 			PrizeMoneyFormula prizeMoneyFormulasValue) {
 		if (!prizeMoneyFormulas.contains(prizeMoneyFormulasValue)) {
-			prizeMoneyFormulas.add(prizeMoneyFormulasValue);
+			boolean result = prizeMoneyFormulas.add(prizeMoneyFormulasValue);
+			return result;
 		}
+		return false;
 	}
 
 	/**
@@ -131,11 +133,13 @@ public class PrizeMoneyRule extends IdentifiableEntity {
 	 * 
 	 * @generated
 	 */
-	public void removeFromPrizeMoneyFormulas(
+	public boolean removeFromPrizeMoneyFormulas(
 			PrizeMoneyFormula prizeMoneyFormulasValue) {
 		if (prizeMoneyFormulas.contains(prizeMoneyFormulasValue)) {
-			prizeMoneyFormulas.remove(prizeMoneyFormulasValue);
+			boolean result = prizeMoneyFormulas.remove(prizeMoneyFormulasValue);
+			return result;
 		}
+		return false;
 	}
 
 	/**

@@ -56,7 +56,6 @@ public class TournamentsPresenter extends PresenterWithVersionedData implements 
 	public void go(HasWidgets container) {
 		container.clear();
 		container.add(view.asWidget());
-		refresh();
 	}
 
 	@Override

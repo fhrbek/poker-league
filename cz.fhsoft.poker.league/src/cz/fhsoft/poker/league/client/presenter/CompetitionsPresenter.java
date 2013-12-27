@@ -88,7 +88,7 @@ public class CompetitionsPresenter extends PresenterWithVersionedData implements
 		newCompetition.setStartDate(currentDate);
 		newCompetition.setEndDate(currentDate);
 
-		// texo ignores default values from the model, let's hard code them here
+		//TODO texo ignores default values from the model, let's hard code them here
 		newCompetition.setDefaultMinPlayers(3);
 		newCompetition.setDefaultMaxPlayers(10);
 

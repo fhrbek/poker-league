@@ -14,6 +14,10 @@ public abstract class AbstractPersistentEntityListEditor<E extends IdentifiableE
 		super(newEntityLinkText, entityEditor, dataProvider, columns);
 	}
 	
+	public AbstractPersistentEntityListEditor(String newEntityLinkText, final AbstractPersistentEntityEditor<E> entityEditor, DataProvider<E> dataProvider, List<LabeledColumn<E>> columns, boolean load) {
+		super(newEntityLinkText, entityEditor, dataProvider, columns, load);
+	}
+	
 	@Override
 	protected void getEntity(int id, AsyncCallback<E> callback) {
 		ClientEntityManager.getInstance().find(entityClass, id, callback);

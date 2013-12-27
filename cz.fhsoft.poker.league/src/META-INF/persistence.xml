@@ -22,10 +22,10 @@
     	<class>cz.fhsoft.poker.league.shared.model.v1.PlayerInGame</class>
     	<properties>
     		<property name="eclipselink.ddl-generation.output-mode" value="database"/>
-    		<property name="javax.persistence.jdbc.url" value="jdbc:google:rdbms://wittmannpokerleaguedata:wittmannpokerleague/wittmannpokerleague"/>
+    		<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/wittmannpokerleague"/>
     		<property name="javax.persistence.jdbc.user" value="wpldata"/>
     		<property name="javax.persistence.jdbc.password" value="fullHouse"/>
-    		<property name="javax.persistence.jdbc.driver" value="com.google.cloud.sql.jdbc.Driver"/>
+    		<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
     	</properties>
     </persistence-unit>
 </persistence>
