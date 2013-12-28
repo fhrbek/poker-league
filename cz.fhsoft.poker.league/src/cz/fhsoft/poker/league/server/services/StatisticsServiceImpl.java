@@ -86,7 +86,7 @@ public class StatisticsServiceImpl extends AbstractServiceImpl implements Statis
 		"                                                                                WHERE pig_split.GAME_ID = g.ID" +
 		"                                                                                  AND pig_split.RANK = pig.RANK) - 1)" +
 		"          WHERE " + ALIAS_PLACEHOLDER + ".ID = ?" + UNFINISHED_FILTER_PLACEHOLDER + TOURNAMENT_START_FILTER_PLACEHOLDER +
-		"          GROUP BY c.ID, t.ID, g.ID, pig.ID, pig.RANK) prize" +
+		"          GROUP BY c.ID, t.ID, g.ID, pig.PLAYER_ID, pig.RANK) prize" +
 		"        LEFT OUTER JOIN PL_PLAYERINGAME pig_worse ON pig_worse.GAME_ID = prize.GAME_ID AND" +
 		"                                                     pig_worse.RANK >= prize.RANK" +
 		"        GROUP BY prize.COMPETITION_ID, prize.TOURNAMENT_ID, prize.GAME_ID, prize.PLAYER_ID, prize.RANK, prize.PRIZE_MONEY) prize_and_points" +
