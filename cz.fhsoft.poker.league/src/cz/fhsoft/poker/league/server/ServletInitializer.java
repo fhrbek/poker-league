@@ -25,13 +25,15 @@ public class ServletInitializer implements ServletContextListener {
 
 	@Override
 	public void contextInitialized(ServletContextEvent arg0) {
-		entityManagerFactory = Persistence.createEntityManagerFactory("poker.league.data");
+		//This is now a zombee application, not supposed to connect to the database any more...
+		//entityManagerFactory = Persistence.createEntityManagerFactory("poker.league.data");
 	}
 
 	public static EntityManager getEntityManager() {
-		if(entityManager == null)
-			entityManager = entityManagerFactory.createEntityManager();
-
-		return entityManager;
+		throw new Error("This zombee application does not connect to the database any more!");
+		// if(entityManager == null)
+		// entityManager = entityManagerFactory.createEntityManager();
+		//
+		// return entityManager;
 	}
 }

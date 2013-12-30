@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<cronentries>
-	<cron>
-		<url>/cron/invitations</url>
-		<description>Send invitations</description>
-		<timezone>Europe/Prague</timezone>
-		<schedule>every day 04:00</schedule>
-	</cron>
-</cronentries>
