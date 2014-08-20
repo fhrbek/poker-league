@@ -60,7 +60,7 @@ public class StatisticsServiceImpl extends AbstractServiceImpl implements Statis
 		"      prize.RANK," +
 		"      prize.PRIZE_MONEY," +
 		"      CASE WHEN prize.RANK > 0 THEN (2*(SUM(CASE WHEN pig_worse.RANK >= prize.RANK THEN 1 ELSE 0 END)-1) -" +
-		"         (SUM(CASE WHEN pig_worse.RANK = prize.RANK THEN 1 ELSE 0 END)-1)) / 2 ELSE 0 END AS POINTS" +
+		"         (SUM(CASE WHEN pig_worse.RANK = prize.RANK THEN 1 ELSE 0 END)-1)) / 2.0 ELSE 0.0 END AS POINTS" +
 		"      FROM (" +
 		"        SELECT" +
 		"          c.ID as COMPETITION_ID," +
@@ -68,7 +68,11 @@ public class StatisticsServiceImpl extends AbstractServiceImpl implements Statis
 		"          g.ID as GAME_ID," +
 		"          pig.PLAYER_ID as PLAYER_ID," +
 		"          pig.RANK as RANK," +
-		"          AVG(CASE WHEN pmf.RELATIVEPRIZEMONEY IS NULL THEN 0 ELSE pmf.RELATIVEPRIZEMONEY * g.BUYIN END) / 100 AS PRIZE_MONEY" +
+		"          SUM(CASE WHEN pmf.RELATIVEPRIZEMONEY IS NULL THEN 0 ELSE pmf.RELATIVEPRIZEMONEY * g.BUYIN END) / 100" +
+		"          / (SELECT COUNT(*)" +
+		"               FROM PL_PLAYERINGAME pig_split" +
+		"               WHERE pig_split.GAME_ID = g.ID" +
+		"                 AND pig_split.RANK = pig.RANK) AS PRIZE_MONEY" +
 		"          FROM PL_COMPETITION c" +
 		"            JOIN PL_TOURNAMENT t ON t.COMPETITION_ID = c.ID" +
 		"            JOIN PL_GAME g ON g.TOURNAMENT_ID = t.ID" +
