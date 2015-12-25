@@ -41,6 +41,8 @@ public class ServletInitializer implements ServletContextListener {
 		}
 		
 		entityManagerFactory = Persistence.createEntityManagerFactory("poker.league.data");
+		
+		DatabaseMigrator.migrateDatabase();
 	}
 
 	public static EntityManager getEntityManager() {
