@@ -7,10 +7,10 @@
 			<fileset dir="war"/>
 		</copy>
 		<copy todir="release/build/WEB-INF/lib">
-			<fileset dir="${user.home}/workspaces/wpl/libraries/EclipseLink 2.4.1 - Juno/eclipselink/jlib/jpa" excludes="javax.persistence_1.0.0.jar"/>
-			<fileset dir="${user.home}/workspaces/wpl/libraries/EclipseLink 2.4.1 - Juno/eclipselink/jlib/moxy" excludes="javax.mail_*"/>
+			<fileset dir="${user.home}/workspaces/wpl/libraries/EclipseLink 2.5.2/eclipselink/jlib/jpa" excludes="javax.persistence_1.0.0.jar"/>
+			<fileset dir="${user.home}/workspaces/wpl/libraries/EclipseLink 2.5.2/eclipselink/jlib/moxy" excludes="javax.mail_*"/>
 		</copy>
-		<copy todir="release/build/WEB-INF/lib" file="${user.home}/workspaces/wpl/libraries/EclipseLink 2.4.1 - Juno/eclipselink/jlib/eclipselink.jar"/>
+		<copy todir="release/build/WEB-INF/lib" file="${user.home}/workspaces/wpl/libraries/EclipseLink 2.5.2/eclipselink/jlib/eclipselink.jar"/>
 		<war destfile="release/wpl.war" basedir="release/build"/>
 	</target>
 </project>
