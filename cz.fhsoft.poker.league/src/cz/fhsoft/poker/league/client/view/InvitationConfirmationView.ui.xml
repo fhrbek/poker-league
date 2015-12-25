@@ -3,6 +3,10 @@
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
 	xmlns:cell="urn:import:com.google.gwt.user.cellview.client">
 	<ui:style>
+		.invitationPanel {
+			overflow: auto;
+		}
+
 		.mainLabel {
 			margin-top: 10px;
 			font-weight: bold;
@@ -54,7 +58,7 @@
 			text-align: left;
 		}
 	</ui:style>
-	<g:HTMLPanel>
+	<g:HTMLPanel addStyleNames="{style.invitationPanel}">
 		<table class="{style.invitationTable}">
 			<tr>
 				<td verticalAlignment="middle">
