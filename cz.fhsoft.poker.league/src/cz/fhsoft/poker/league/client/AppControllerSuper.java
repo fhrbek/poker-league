@@ -8,6 +8,7 @@ import com.google.gwt.core.client.RunAsyncCallback;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Style.Display;
+import com.google.gwt.dom.client.Style.Overflow;
 import com.google.gwt.event.logical.shared.ValueChangeEvent;
 import com.google.gwt.event.logical.shared.ValueChangeHandler;
 import com.google.gwt.user.client.History;
@@ -84,6 +85,7 @@ public class AppControllerSuper implements Presenter {
 		superContainer.add(gameContainer);
 		superContainer.add(invitationContainer);
 		superContainer.getElement().getStyle().setZIndex(0);
+		superContainer.getElement().getStyle().setOverflowX(Overflow.AUTO);
 
 		selectApplicationEntry(Location.getHash());
 		

@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+import com.google.gwt.dom.client.Style.Overflow;
+import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.safehtml.shared.SafeHtml;
@@ -96,13 +98,18 @@ public abstract class AbstractEntityEditor<E extends IdentifiableEntity> extends
 		popupPanel = new PopupPanel(false, true);
 		popupPanel.setGlassEnabled(true);
 		popupPanel.add(this);
+		popupPanel.getElement().getStyle().setProperty("maxHeight", 100, Unit.PCT);
+		popupPanel.getElement().getStyle().setProperty("boxSizing", "border-box");
 		popupPanel.center();
+		popupPanel.getElement().getStyle().setOverflowY(Overflow.AUTO);
 	}
 	
 	protected void build() {
 		
 		clear();
-		add(new HTML(getLabel(entity)));
+		HTML label = new HTML(getLabel(entity));
+		label.addStyleName("editorLabel");
+		add(label);
 
 		Grid grid = new Grid(entries.size(), 2);
 		

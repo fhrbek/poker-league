@@ -35,6 +35,8 @@ public class EntityMultiSelector<E extends IdentifiableEntity> extends FlowPanel
 		this.entityComparator = entityComparator;
 		this.entityDigestProvider = entityDigestProvider;
 		
+		addStyleName("multiSelector");
+		
 		checkBoxMap = new HashMap<CheckBox, E>();
 	}
 
@@ -78,6 +80,7 @@ public class EntityMultiSelector<E extends IdentifiableEntity> extends FlowPanel
 				
 				for(E entity : allEntities) {
 					CheckBox checkBox = new CheckBox(entityDigestProvider.getDigest(entity));
+					checkBox.addStyleName("multiSelectorCheckBox");
 					checkBox.setValue(ids.contains(entity.getId()));
 					checkBoxMap.put(checkBox, entity);
 					add(checkBox);

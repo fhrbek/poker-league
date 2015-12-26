@@ -7,3 +7,17 @@
 .pseudoLink:hover {
 	text-decoration: underline;
 }
+
+.editorLabel {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.multiSelector {
+	max-width: 300px;
+}
+
+.multiSelectorCheckBox {
+	min-width: 80px;
+	display: inline-block;
+}
