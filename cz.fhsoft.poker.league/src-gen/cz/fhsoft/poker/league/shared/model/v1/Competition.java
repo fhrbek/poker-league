@@ -15,7 +15,7 @@ import javax.persistence.TemporalType;
 /**
  * A representation of the model object '<em><b>Competition</b></em>'. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 @Entity(name = "pl_Competition")
@@ -27,7 +27,7 @@ public class Competition extends DescribedEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Basic()
@@ -36,7 +36,7 @@ public class Competition extends DescribedEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Basic()
@@ -45,7 +45,7 @@ public class Competition extends DescribedEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Basic()
@@ -53,7 +53,7 @@ public class Competition extends DescribedEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Basic()
@@ -61,7 +61,7 @@ public class Competition extends DescribedEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST,
@@ -70,7 +70,7 @@ public class Competition extends DescribedEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Basic()
@@ -78,7 +78,7 @@ public class Competition extends DescribedEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Basic()
@@ -86,7 +86,7 @@ public class Competition extends DescribedEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Basic()
@@ -94,7 +94,23 @@ public class Competition extends DescribedEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
+	 * @generated
+	 */
+	@Basic()
+	private int defaultTournamentInvitationClosure = 0;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @generated
+	 */
+	@Basic()
+	private String defaultTournamentInvitationContact = null;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@OneToMany(cascade = { CascadeType.ALL }, mappedBy = "competition", orphanRemoval = true)
@@ -102,7 +118,7 @@ public class Competition extends DescribedEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@ManyToMany(cascade = { CascadeType.MERGE, CascadeType.PERSIST,
@@ -111,9 +127,9 @@ public class Competition extends DescribedEntity {
 
 	/**
 	 * Returns the value of '<em><b>startDate</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>startDate</b></em>' feature
 	 * @generated
 	 */
@@ -123,9 +139,9 @@ public class Competition extends DescribedEntity {
 
 	/**
 	 * Sets the '{@link Competition#getStartDate() <em>startDate</em>}' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newStartDate
 	 *            the new value of the '{@link Competition#getStartDate()
 	 *            startDate}' feature.
@@ -137,9 +153,9 @@ public class Competition extends DescribedEntity {
 
 	/**
 	 * Returns the value of '<em><b>endDate</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>endDate</b></em>' feature
 	 * @generated
 	 */
@@ -149,9 +165,9 @@ public class Competition extends DescribedEntity {
 
 	/**
 	 * Sets the '{@link Competition#getEndDate() <em>endDate</em>}' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newEndDate
 	 *            the new value of the '{@link Competition#getEndDate() endDate}
 	 *            ' feature.
@@ -163,9 +179,9 @@ public class Competition extends DescribedEntity {
 
 	/**
 	 * Returns the value of '<em><b>minimalAttendance</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>minimalAttendance</b></em>' feature
 	 * @generated
 	 */
@@ -176,9 +192,9 @@ public class Competition extends DescribedEntity {
 	/**
 	 * Sets the '{@link Competition#getMinimalAttendance()
 	 * <em>minimalAttendance</em>}' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newMinimalAttendance
 	 *            the new value of the '
 	 *            {@link Competition#getMinimalAttendance() minimalAttendance}'
@@ -191,9 +207,9 @@ public class Competition extends DescribedEntity {
 
 	/**
 	 * Returns the value of '<em><b>defaultBuyIn</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>defaultBuyIn</b></em>' feature
 	 * @generated
 	 */
@@ -204,9 +220,9 @@ public class Competition extends DescribedEntity {
 	/**
 	 * Sets the '{@link Competition#getDefaultBuyIn() <em>defaultBuyIn</em>}'
 	 * feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newDefaultBuyIn
 	 *            the new value of the '{@link Competition#getDefaultBuyIn()
 	 *            defaultBuyIn}' feature.
@@ -218,9 +234,9 @@ public class Competition extends DescribedEntity {
 
 	/**
 	 * Returns the value of '<em><b>defaultPrizeMoneyRuleSet</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>defaultPrizeMoneyRuleSet</b></em>' feature
 	 * @generated
 	 */
@@ -231,9 +247,9 @@ public class Competition extends DescribedEntity {
 	/**
 	 * Sets the '{@link Competition#getDefaultPrizeMoneyRuleSet()
 	 * <em>defaultPrizeMoneyRuleSet</em>}' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newDefaultPrizeMoneyRuleSet
 	 *            the new value of the '
 	 *            {@link Competition#getDefaultPrizeMoneyRuleSet()
@@ -247,9 +263,9 @@ public class Competition extends DescribedEntity {
 
 	/**
 	 * Returns the value of '<em><b>defaultMinPlayers</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>defaultMinPlayers</b></em>' feature
 	 * @generated
 	 */
@@ -260,9 +276,9 @@ public class Competition extends DescribedEntity {
 	/**
 	 * Sets the '{@link Competition#getDefaultMinPlayers()
 	 * <em>defaultMinPlayers</em>}' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newDefaultMinPlayers
 	 *            the new value of the '
 	 *            {@link Competition#getDefaultMinPlayers() defaultMinPlayers}'
@@ -275,9 +291,9 @@ public class Competition extends DescribedEntity {
 
 	/**
 	 * Returns the value of '<em><b>defaultMaxPlayers</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>defaultMaxPlayers</b></em>' feature
 	 * @generated
 	 */
@@ -288,9 +304,9 @@ public class Competition extends DescribedEntity {
 	/**
 	 * Sets the '{@link Competition#getDefaultMaxPlayers()
 	 * <em>defaultMaxPlayers</em>}' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newDefaultMaxPlayers
 	 *            the new value of the '
 	 *            {@link Competition#getDefaultMaxPlayers() defaultMaxPlayers}'
@@ -304,9 +320,9 @@ public class Competition extends DescribedEntity {
 	/**
 	 * Returns the value of '<em><b>defaultTournamentAnnouncementLead</b></em>'
 	 * feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>defaultTournamentAnnouncementLead</b></em>'
 	 *         feature
 	 * @generated
@@ -318,9 +334,9 @@ public class Competition extends DescribedEntity {
 	/**
 	 * Sets the '{@link Competition#getDefaultTournamentAnnouncementLead()
 	 * <em>defaultTournamentAnnouncementLead</em>}' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newDefaultTournamentAnnouncementLead
 	 *            the new value of the '
 	 *            {@link Competition#getDefaultTournamentAnnouncementLead()
@@ -333,10 +349,72 @@ public class Competition extends DescribedEntity {
 	}
 
 	/**
-	 * Returns the value of '<em><b>tournaments</b></em>' feature.
-	 * 
+	 * Returns the value of '<em><b>defaultTournamentInvitationClosure</b></em>'
+	 * feature.
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
+	 * @return the value of '<em><b>defaultTournamentInvitationClosure</b></em>'
+	 *         feature
+	 * @generated
+	 */
+	public int getDefaultTournamentInvitationClosure() {
+		return defaultTournamentInvitationClosure;
+	}
+
+	/**
+	 * Sets the '{@link Competition#getDefaultTournamentInvitationClosure()
+	 * <em>defaultTournamentInvitationClosure</em>}' feature.
+	 *
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @param newDefaultTournamentInvitationClosure
+	 *            the new value of the '
+	 *            {@link Competition#getDefaultTournamentInvitationClosure()
+	 *            defaultTournamentInvitationClosure}' feature.
+	 * @generated
+	 */
+	public void setDefaultTournamentInvitationClosure(
+			int newDefaultTournamentInvitationClosure) {
+		defaultTournamentInvitationClosure = newDefaultTournamentInvitationClosure;
+	}
+
+	/**
+	 * Returns the value of '<em><b>defaultTournamentInvitationContact</b></em>'
+	 * feature.
+	 *
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @return the value of '<em><b>defaultTournamentInvitationContact</b></em>'
+	 *         feature
+	 * @generated
+	 */
+	public String getDefaultTournamentInvitationContact() {
+		return defaultTournamentInvitationContact;
+	}
+
+	/**
+	 * Sets the '{@link Competition#getDefaultTournamentInvitationContact()
+	 * <em>defaultTournamentInvitationContact</em>}' feature.
+	 *
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @param newDefaultTournamentInvitationContact
+	 *            the new value of the '
+	 *            {@link Competition#getDefaultTournamentInvitationContact()
+	 *            defaultTournamentInvitationContact}' feature.
+	 * @generated
+	 */
+	public void setDefaultTournamentInvitationContact(
+			String newDefaultTournamentInvitationContact) {
+		defaultTournamentInvitationContact = newDefaultTournamentInvitationContact;
+	}
+
+	/**
+	 * Returns the value of '<em><b>tournaments</b></em>' feature.
+	 *
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @return the value of '<em><b>tournaments</b></em>' feature
 	 * @generated
 	 */
@@ -346,7 +424,7 @@ public class Competition extends DescribedEntity {
 
 	/**
 	 * Adds to the <em>tournaments</em> feature.
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean addToTournaments(Tournament tournamentsValue) {
@@ -359,7 +437,7 @@ public class Competition extends DescribedEntity {
 
 	/**
 	 * Removes from the <em>tournaments</em> feature.
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean removeFromTournaments(Tournament tournamentsValue) {
@@ -372,7 +450,7 @@ public class Competition extends DescribedEntity {
 
 	/**
 	 * Clears the <em>tournaments</em> feature.
-	 * 
+	 *
 	 * @generated
 	 */
 	public void clearTournaments() {
@@ -384,9 +462,9 @@ public class Competition extends DescribedEntity {
 	/**
 	 * Sets the '{@link Competition#getTournaments() <em>tournaments</em>}'
 	 * feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newTournaments
 	 *            the new value of the '{@link Competition#getTournaments()
 	 *            tournaments}' feature.
@@ -398,9 +476,9 @@ public class Competition extends DescribedEntity {
 
 	/**
 	 * Returns the value of '<em><b>players</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>players</b></em>' feature
 	 * @generated
 	 */
@@ -410,7 +488,7 @@ public class Competition extends DescribedEntity {
 
 	/**
 	 * Adds to the <em>players</em> feature.
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean addToPlayers(Player playersValue) {
@@ -423,7 +501,7 @@ public class Competition extends DescribedEntity {
 
 	/**
 	 * Removes from the <em>players</em> feature.
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean removeFromPlayers(Player playersValue) {
@@ -436,7 +514,7 @@ public class Competition extends DescribedEntity {
 
 	/**
 	 * Clears the <em>players</em> feature.
-	 * 
+	 *
 	 * @generated
 	 */
 	public void clearPlayers() {
@@ -447,9 +525,9 @@ public class Competition extends DescribedEntity {
 
 	/**
 	 * Sets the '{@link Competition#getPlayers() <em>players</em>}' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newPlayers
 	 *            the new value of the '{@link Competition#getPlayers() players}
 	 *            ' feature.
@@ -462,7 +540,7 @@ public class Competition extends DescribedEntity {
 	/**
 	 * A toString method which prints the values of all EAttributes of this
 	 * instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
@@ -474,6 +552,10 @@ public class Competition extends DescribedEntity {
 				+ getDefaultMinPlayers() + "]" + " [defaultMaxPlayers: "
 				+ getDefaultMaxPlayers() + "]"
 				+ " [defaultTournamentAnnouncementLead: "
-				+ getDefaultTournamentAnnouncementLead() + "]";
+				+ getDefaultTournamentAnnouncementLead() + "]"
+				+ " [defaultTournamentInvitationClosure: "
+				+ getDefaultTournamentInvitationClosure() + "]"
+				+ " [defaultTournamentInvitationContact: "
+				+ getDefaultTournamentInvitationContact() + "]";
 	}
 }

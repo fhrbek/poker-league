@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 /**
  * A representation of the model object '<em><b>Player</b></em>'. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 @Entity(name = "pl_Player")
@@ -18,7 +18,7 @@ public class Player extends IdentifiableEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Basic()
@@ -26,7 +26,7 @@ public class Player extends IdentifiableEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Basic()
@@ -34,7 +34,7 @@ public class Player extends IdentifiableEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Basic()
@@ -42,7 +42,7 @@ public class Player extends IdentifiableEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Basic()
@@ -50,7 +50,7 @@ public class Player extends IdentifiableEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Basic()
@@ -58,9 +58,9 @@ public class Player extends IdentifiableEntity {
 
 	/**
 	 * Returns the value of '<em><b>active</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>active</b></em>' feature
 	 * @generated
 	 */
@@ -70,9 +70,9 @@ public class Player extends IdentifiableEntity {
 
 	/**
 	 * Sets the '{@link Player#isActive() <em>active</em>}' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newActive
 	 *            the new value of the '{@link Player#isActive() active}'
 	 *            feature.
@@ -84,9 +84,9 @@ public class Player extends IdentifiableEntity {
 
 	/**
 	 * Returns the value of '<em><b>nick</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>nick</b></em>' feature
 	 * @generated
 	 */
@@ -96,9 +96,9 @@ public class Player extends IdentifiableEntity {
 
 	/**
 	 * Sets the '{@link Player#getNick() <em>nick</em>}' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newNick
 	 *            the new value of the '{@link Player#getNick() nick}' feature.
 	 * @generated
@@ -109,9 +109,9 @@ public class Player extends IdentifiableEntity {
 
 	/**
 	 * Returns the value of '<em><b>firstName</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>firstName</b></em>' feature
 	 * @generated
 	 */
@@ -121,9 +121,9 @@ public class Player extends IdentifiableEntity {
 
 	/**
 	 * Sets the '{@link Player#getFirstName() <em>firstName</em>}' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newFirstName
 	 *            the new value of the '{@link Player#getFirstName() firstName}'
 	 *            feature.
@@ -135,9 +135,9 @@ public class Player extends IdentifiableEntity {
 
 	/**
 	 * Returns the value of '<em><b>lastName</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>lastName</b></em>' feature
 	 * @generated
 	 */
@@ -147,9 +147,9 @@ public class Player extends IdentifiableEntity {
 
 	/**
 	 * Sets the '{@link Player#getLastName() <em>lastName</em>}' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newLastName
 	 *            the new value of the '{@link Player#getLastName() lastName}'
 	 *            feature.
@@ -161,9 +161,9 @@ public class Player extends IdentifiableEntity {
 
 	/**
 	 * Returns the value of '<em><b>emailAddress</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>emailAddress</b></em>' feature
 	 * @generated
 	 */
@@ -174,9 +174,9 @@ public class Player extends IdentifiableEntity {
 	/**
 	 * Sets the '{@link Player#getEmailAddress() <em>emailAddress</em>}'
 	 * feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newEmailAddress
 	 *            the new value of the '{@link Player#getEmailAddress()
 	 *            emailAddress}' feature.
@@ -189,7 +189,7 @@ public class Player extends IdentifiableEntity {
 	/**
 	 * A toString method which prints the values of all EAttributes of this
 	 * instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

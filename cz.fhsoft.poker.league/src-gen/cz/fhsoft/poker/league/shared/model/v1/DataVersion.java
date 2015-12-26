@@ -11,7 +11,7 @@ import javax.persistence.TemporalType;
 /**
  * A representation of the model object '<em><b>DataVersion</b></em>'. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 @Entity(name = "pl_DataVersion")
@@ -23,7 +23,7 @@ public class DataVersion implements Serializable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Id()
@@ -31,7 +31,7 @@ public class DataVersion implements Serializable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Basic()
@@ -40,9 +40,9 @@ public class DataVersion implements Serializable {
 
 	/**
 	 * Returns the value of '<em><b>id</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>id</b></em>' feature
 	 * @generated
 	 */
@@ -52,9 +52,9 @@ public class DataVersion implements Serializable {
 
 	/**
 	 * Sets the '{@link DataVersion#getId() <em>id</em>}' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newId
 	 *            the new value of the '{@link DataVersion#getId() id}' feature.
 	 * @generated
@@ -65,9 +65,9 @@ public class DataVersion implements Serializable {
 
 	/**
 	 * Returns the value of '<em><b>currentVersion</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>currentVersion</b></em>' feature
 	 * @generated
 	 */
@@ -78,9 +78,9 @@ public class DataVersion implements Serializable {
 	/**
 	 * Sets the '{@link DataVersion#getCurrentVersion() <em>currentVersion</em>}
 	 * ' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newCurrentVersion
 	 *            the new value of the '{@link DataVersion#getCurrentVersion()
 	 *            currentVersion}' feature.
@@ -93,7 +93,7 @@ public class DataVersion implements Serializable {
 	/**
 	 * A toString method which prints the values of all EAttributes of this
 	 * instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

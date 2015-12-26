@@ -8,7 +8,7 @@ import javax.persistence.Id;
 /**
  * A representation of the model object '<em><b>Settings</b></em>'. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 @Entity(name = "pl_Settings")
@@ -20,7 +20,7 @@ public class Settings implements Serializable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Id()
@@ -28,7 +28,7 @@ public class Settings implements Serializable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Basic()
@@ -36,7 +36,7 @@ public class Settings implements Serializable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Basic()
@@ -44,7 +44,7 @@ public class Settings implements Serializable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Basic()
@@ -52,7 +52,7 @@ public class Settings implements Serializable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Basic()
@@ -60,7 +60,7 @@ public class Settings implements Serializable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Basic()
@@ -68,7 +68,7 @@ public class Settings implements Serializable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Basic()
@@ -76,7 +76,7 @@ public class Settings implements Serializable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Basic()
@@ -84,7 +84,7 @@ public class Settings implements Serializable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Basic()
@@ -92,9 +92,9 @@ public class Settings implements Serializable {
 
 	/**
 	 * Returns the value of '<em><b>id</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>id</b></em>' feature
 	 * @generated
 	 */
@@ -104,9 +104,9 @@ public class Settings implements Serializable {
 
 	/**
 	 * Sets the '{@link Settings#getId() <em>id</em>}' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newId
 	 *            the new value of the '{@link Settings#getId() id}' feature.
 	 * @generated
@@ -117,9 +117,9 @@ public class Settings implements Serializable {
 
 	/**
 	 * Returns the value of '<em><b>adminPassword</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>adminPassword</b></em>' feature
 	 * @generated
 	 */
@@ -130,9 +130,9 @@ public class Settings implements Serializable {
 	/**
 	 * Sets the '{@link Settings#getAdminPassword() <em>adminPassword</em>}'
 	 * feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newAdminPassword
 	 *            the new value of the '{@link Settings#getAdminPassword()
 	 *            adminPassword}' feature.
@@ -144,9 +144,9 @@ public class Settings implements Serializable {
 
 	/**
 	 * Returns the value of '<em><b>defaultTimeZone</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>defaultTimeZone</b></em>' feature
 	 * @generated
 	 */
@@ -157,9 +157,9 @@ public class Settings implements Serializable {
 	/**
 	 * Sets the '{@link Settings#getDefaultTimeZone() <em>defaultTimeZone</em>}'
 	 * feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newDefaultTimeZone
 	 *            the new value of the '{@link Settings#getDefaultTimeZone()
 	 *            defaultTimeZone}' feature.
@@ -171,9 +171,9 @@ public class Settings implements Serializable {
 
 	/**
 	 * Returns the value of '<em><b>smtpHost</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>smtpHost</b></em>' feature
 	 * @generated
 	 */
@@ -183,9 +183,9 @@ public class Settings implements Serializable {
 
 	/**
 	 * Sets the '{@link Settings#getSmtpHost() <em>smtpHost</em>}' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newSmtpHost
 	 *            the new value of the '{@link Settings#getSmtpHost() smtpHost}'
 	 *            feature.
@@ -197,9 +197,9 @@ public class Settings implements Serializable {
 
 	/**
 	 * Returns the value of '<em><b>smtpPort</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>smtpPort</b></em>' feature
 	 * @generated
 	 */
@@ -209,9 +209,9 @@ public class Settings implements Serializable {
 
 	/**
 	 * Sets the '{@link Settings#getSmtpPort() <em>smtpPort</em>}' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newSmtpPort
 	 *            the new value of the '{@link Settings#getSmtpPort() smtpPort}'
 	 *            feature.
@@ -223,9 +223,9 @@ public class Settings implements Serializable {
 
 	/**
 	 * Returns the value of '<em><b>smtpUser</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>smtpUser</b></em>' feature
 	 * @generated
 	 */
@@ -235,9 +235,9 @@ public class Settings implements Serializable {
 
 	/**
 	 * Sets the '{@link Settings#getSmtpUser() <em>smtpUser</em>}' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newSmtpUser
 	 *            the new value of the '{@link Settings#getSmtpUser() smtpUser}'
 	 *            feature.
@@ -249,9 +249,9 @@ public class Settings implements Serializable {
 
 	/**
 	 * Returns the value of '<em><b>smtpPassword</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>smtpPassword</b></em>' feature
 	 * @generated
 	 */
@@ -262,9 +262,9 @@ public class Settings implements Serializable {
 	/**
 	 * Sets the '{@link Settings#getSmtpPassword() <em>smtpPassword</em>}'
 	 * feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newSmtpPassword
 	 *            the new value of the '{@link Settings#getSmtpPassword()
 	 *            smtpPassword}' feature.
@@ -276,9 +276,9 @@ public class Settings implements Serializable {
 
 	/**
 	 * Returns the value of '<em><b>smtpFrom</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>smtpFrom</b></em>' feature
 	 * @generated
 	 */
@@ -288,9 +288,9 @@ public class Settings implements Serializable {
 
 	/**
 	 * Sets the '{@link Settings#getSmtpFrom() <em>smtpFrom</em>}' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newSmtpFrom
 	 *            the new value of the '{@link Settings#getSmtpFrom() smtpFrom}'
 	 *            feature.
@@ -302,9 +302,9 @@ public class Settings implements Serializable {
 
 	/**
 	 * Returns the value of '<em><b>urlBase</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>urlBase</b></em>' feature
 	 * @generated
 	 */
@@ -314,9 +314,9 @@ public class Settings implements Serializable {
 
 	/**
 	 * Sets the '{@link Settings#getUrlBase() <em>urlBase</em>}' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newUrlBase
 	 *            the new value of the '{@link Settings#getUrlBase() urlBase}'
 	 *            feature.
@@ -329,7 +329,7 @@ public class Settings implements Serializable {
 	/**
 	 * A toString method which prints the values of all EAttributes of this
 	 * instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

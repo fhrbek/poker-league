@@ -11,7 +11,7 @@ import javax.persistence.OneToMany;
 /**
  * A representation of the model object '<em><b>PrizeMoneyRule</b></em>'. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 @Entity(name = "pl_PrizeMoneyRule")
@@ -23,7 +23,7 @@ public class PrizeMoneyRule extends IdentifiableEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST,
@@ -32,7 +32,7 @@ public class PrizeMoneyRule extends IdentifiableEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Basic()
@@ -40,7 +40,7 @@ public class PrizeMoneyRule extends IdentifiableEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@OneToMany(cascade = { CascadeType.ALL }, mappedBy = "prizeMoneyRule", orphanRemoval = true)
@@ -48,9 +48,9 @@ public class PrizeMoneyRule extends IdentifiableEntity {
 
 	/**
 	 * Returns the value of '<em><b>prizeMoneyRuleSet</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>prizeMoneyRuleSet</b></em>' feature
 	 * @generated
 	 */
@@ -61,9 +61,9 @@ public class PrizeMoneyRule extends IdentifiableEntity {
 	/**
 	 * Sets the '{@link PrizeMoneyRule#getPrizeMoneyRuleSet()
 	 * <em>prizeMoneyRuleSet</em>}' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newPrizeMoneyRuleSet
 	 *            the new value of the '
 	 *            {@link PrizeMoneyRule#getPrizeMoneyRuleSet()
@@ -76,9 +76,9 @@ public class PrizeMoneyRule extends IdentifiableEntity {
 
 	/**
 	 * Returns the value of '<em><b>numberOfPlayers</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>numberOfPlayers</b></em>' feature
 	 * @generated
 	 */
@@ -89,9 +89,9 @@ public class PrizeMoneyRule extends IdentifiableEntity {
 	/**
 	 * Sets the '{@link PrizeMoneyRule#getNumberOfPlayers()
 	 * <em>numberOfPlayers</em>}' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newNumberOfPlayers
 	 *            the new value of the '
 	 *            {@link PrizeMoneyRule#getNumberOfPlayers() numberOfPlayers}'
@@ -104,9 +104,9 @@ public class PrizeMoneyRule extends IdentifiableEntity {
 
 	/**
 	 * Returns the value of '<em><b>prizeMoneyFormulas</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>prizeMoneyFormulas</b></em>' feature
 	 * @generated
 	 */
@@ -116,7 +116,7 @@ public class PrizeMoneyRule extends IdentifiableEntity {
 
 	/**
 	 * Adds to the <em>prizeMoneyFormulas</em> feature.
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean addToPrizeMoneyFormulas(
@@ -130,7 +130,7 @@ public class PrizeMoneyRule extends IdentifiableEntity {
 
 	/**
 	 * Removes from the <em>prizeMoneyFormulas</em> feature.
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean removeFromPrizeMoneyFormulas(
@@ -144,7 +144,7 @@ public class PrizeMoneyRule extends IdentifiableEntity {
 
 	/**
 	 * Clears the <em>prizeMoneyFormulas</em> feature.
-	 * 
+	 *
 	 * @generated
 	 */
 	public void clearPrizeMoneyFormulas() {
@@ -156,9 +156,9 @@ public class PrizeMoneyRule extends IdentifiableEntity {
 	/**
 	 * Sets the '{@link PrizeMoneyRule#getPrizeMoneyFormulas()
 	 * <em>prizeMoneyFormulas</em>}' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newPrizeMoneyFormulas
 	 *            the new value of the '
 	 *            {@link PrizeMoneyRule#getPrizeMoneyFormulas()
@@ -173,7 +173,7 @@ public class PrizeMoneyRule extends IdentifiableEntity {
 	/**
 	 * A toString method which prints the values of all EAttributes of this
 	 * instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

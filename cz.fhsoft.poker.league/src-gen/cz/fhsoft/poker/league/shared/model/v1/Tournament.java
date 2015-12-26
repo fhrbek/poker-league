@@ -14,7 +14,7 @@ import javax.persistence.TemporalType;
 /**
  * A representation of the model object '<em><b>Tournament</b></em>'. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 @Entity(name = "pl_Tournament")
@@ -26,7 +26,7 @@ public class Tournament extends DescribedEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Basic()
@@ -34,7 +34,7 @@ public class Tournament extends DescribedEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST,
@@ -43,7 +43,7 @@ public class Tournament extends DescribedEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Basic()
@@ -51,7 +51,23 @@ public class Tournament extends DescribedEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
+	 * @generated
+	 */
+	@Basic()
+	private int tournamentInvitationClosure = 0;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @generated
+	 */
+	@Basic()
+	private String tournamentInvitationContact = null;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @generated
 	 */
 	@Basic()
@@ -60,7 +76,7 @@ public class Tournament extends DescribedEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Basic()
@@ -69,7 +85,7 @@ public class Tournament extends DescribedEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Basic()
@@ -77,7 +93,7 @@ public class Tournament extends DescribedEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Basic()
@@ -85,7 +101,7 @@ public class Tournament extends DescribedEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@OneToMany(cascade = { CascadeType.ALL }, mappedBy = "tournament", orphanRemoval = true)
@@ -93,7 +109,7 @@ public class Tournament extends DescribedEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST,
@@ -102,7 +118,7 @@ public class Tournament extends DescribedEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@OneToMany(cascade = { CascadeType.ALL }, mappedBy = "tournament", orphanRemoval = true)
@@ -110,9 +126,9 @@ public class Tournament extends DescribedEntity {
 
 	/**
 	 * Returns the value of '<em><b>defaultBuyIn</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>defaultBuyIn</b></em>' feature
 	 * @generated
 	 */
@@ -123,9 +139,9 @@ public class Tournament extends DescribedEntity {
 	/**
 	 * Sets the '{@link Tournament#getDefaultBuyIn() <em>defaultBuyIn</em>}'
 	 * feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newDefaultBuyIn
 	 *            the new value of the '{@link Tournament#getDefaultBuyIn()
 	 *            defaultBuyIn}' feature.
@@ -137,9 +153,9 @@ public class Tournament extends DescribedEntity {
 
 	/**
 	 * Returns the value of '<em><b>defaultPrizeMoneyRuleSet</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>defaultPrizeMoneyRuleSet</b></em>' feature
 	 * @generated
 	 */
@@ -150,9 +166,9 @@ public class Tournament extends DescribedEntity {
 	/**
 	 * Sets the '{@link Tournament#getDefaultPrizeMoneyRuleSet()
 	 * <em>defaultPrizeMoneyRuleSet</em>}' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newDefaultPrizeMoneyRuleSet
 	 *            the new value of the '
 	 *            {@link Tournament#getDefaultPrizeMoneyRuleSet()
@@ -167,9 +183,9 @@ public class Tournament extends DescribedEntity {
 	/**
 	 * Returns the value of '<em><b>tournamentAnnouncementLead</b></em>'
 	 * feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>tournamentAnnouncementLead</b></em>' feature
 	 * @generated
 	 */
@@ -180,9 +196,9 @@ public class Tournament extends DescribedEntity {
 	/**
 	 * Sets the '{@link Tournament#getTournamentAnnouncementLead()
 	 * <em>tournamentAnnouncementLead</em>}' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newTournamentAnnouncementLead
 	 *            the new value of the '
 	 *            {@link Tournament#getTournamentAnnouncementLead()
@@ -194,10 +210,72 @@ public class Tournament extends DescribedEntity {
 	}
 
 	/**
-	 * Returns the value of '<em><b>tournamentStart</b></em>' feature.
-	 * 
+	 * Returns the value of '<em><b>tournamentInvitationClosure</b></em>'
+	 * feature.
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
+	 * @return the value of '<em><b>tournamentInvitationClosure</b></em>'
+	 *         feature
+	 * @generated
+	 */
+	public int getTournamentInvitationClosure() {
+		return tournamentInvitationClosure;
+	}
+
+	/**
+	 * Sets the '{@link Tournament#getTournamentInvitationClosure()
+	 * <em>tournamentInvitationClosure</em>}' feature.
+	 *
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @param newTournamentInvitationClosure
+	 *            the new value of the '
+	 *            {@link Tournament#getTournamentInvitationClosure()
+	 *            tournamentInvitationClosure}' feature.
+	 * @generated
+	 */
+	public void setTournamentInvitationClosure(
+			int newTournamentInvitationClosure) {
+		tournamentInvitationClosure = newTournamentInvitationClosure;
+	}
+
+	/**
+	 * Returns the value of '<em><b>tournamentInvitationContact</b></em>'
+	 * feature.
+	 *
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @return the value of '<em><b>tournamentInvitationContact</b></em>'
+	 *         feature
+	 * @generated
+	 */
+	public String getTournamentInvitationContact() {
+		return tournamentInvitationContact;
+	}
+
+	/**
+	 * Sets the '{@link Tournament#getTournamentInvitationContact()
+	 * <em>tournamentInvitationContact</em>}' feature.
+	 *
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
+	 * @param newTournamentInvitationContact
+	 *            the new value of the '
+	 *            {@link Tournament#getTournamentInvitationContact()
+	 *            tournamentInvitationContact}' feature.
+	 * @generated
+	 */
+	public void setTournamentInvitationContact(
+			String newTournamentInvitationContact) {
+		tournamentInvitationContact = newTournamentInvitationContact;
+	}
+
+	/**
+	 * Returns the value of '<em><b>tournamentStart</b></em>' feature.
+	 *
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 *
 	 * @return the value of '<em><b>tournamentStart</b></em>' feature
 	 * @generated
 	 */
@@ -208,9 +286,9 @@ public class Tournament extends DescribedEntity {
 	/**
 	 * Sets the '{@link Tournament#getTournamentStart()
 	 * <em>tournamentStart</em>}' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newTournamentStart
 	 *            the new value of the '{@link Tournament#getTournamentStart()
 	 *            tournamentStart}' feature.
@@ -222,9 +300,9 @@ public class Tournament extends DescribedEntity {
 
 	/**
 	 * Returns the value of '<em><b>tournamentEnd</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>tournamentEnd</b></em>' feature
 	 * @generated
 	 */
@@ -235,9 +313,9 @@ public class Tournament extends DescribedEntity {
 	/**
 	 * Sets the '{@link Tournament#getTournamentEnd() <em>tournamentEnd</em>}'
 	 * feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newTournamentEnd
 	 *            the new value of the '{@link Tournament#getTournamentEnd()
 	 *            tournamentEnd}' feature.
@@ -249,9 +327,9 @@ public class Tournament extends DescribedEntity {
 
 	/**
 	 * Returns the value of '<em><b>minPlayers</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>minPlayers</b></em>' feature
 	 * @generated
 	 */
@@ -262,9 +340,9 @@ public class Tournament extends DescribedEntity {
 	/**
 	 * Sets the '{@link Tournament#getMinPlayers() <em>minPlayers</em>}'
 	 * feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newMinPlayers
 	 *            the new value of the '{@link Tournament#getMinPlayers()
 	 *            minPlayers}' feature.
@@ -276,9 +354,9 @@ public class Tournament extends DescribedEntity {
 
 	/**
 	 * Returns the value of '<em><b>maxPlayers</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>maxPlayers</b></em>' feature
 	 * @generated
 	 */
@@ -289,9 +367,9 @@ public class Tournament extends DescribedEntity {
 	/**
 	 * Sets the '{@link Tournament#getMaxPlayers() <em>maxPlayers</em>}'
 	 * feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newMaxPlayers
 	 *            the new value of the '{@link Tournament#getMaxPlayers()
 	 *            maxPlayers}' feature.
@@ -303,9 +381,9 @@ public class Tournament extends DescribedEntity {
 
 	/**
 	 * Returns the value of '<em><b>invitations</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>invitations</b></em>' feature
 	 * @generated
 	 */
@@ -315,7 +393,7 @@ public class Tournament extends DescribedEntity {
 
 	/**
 	 * Adds to the <em>invitations</em> feature.
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean addToInvitations(Invitation invitationsValue) {
@@ -328,7 +406,7 @@ public class Tournament extends DescribedEntity {
 
 	/**
 	 * Removes from the <em>invitations</em> feature.
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean removeFromInvitations(Invitation invitationsValue) {
@@ -341,7 +419,7 @@ public class Tournament extends DescribedEntity {
 
 	/**
 	 * Clears the <em>invitations</em> feature.
-	 * 
+	 *
 	 * @generated
 	 */
 	public void clearInvitations() {
@@ -353,9 +431,9 @@ public class Tournament extends DescribedEntity {
 	/**
 	 * Sets the '{@link Tournament#getInvitations() <em>invitations</em>}'
 	 * feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newInvitations
 	 *            the new value of the '{@link Tournament#getInvitations()
 	 *            invitations}' feature.
@@ -367,9 +445,9 @@ public class Tournament extends DescribedEntity {
 
 	/**
 	 * Returns the value of '<em><b>competition</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>competition</b></em>' feature
 	 * @generated
 	 */
@@ -380,9 +458,9 @@ public class Tournament extends DescribedEntity {
 	/**
 	 * Sets the '{@link Tournament#getCompetition() <em>competition</em>}'
 	 * feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newCompetition
 	 *            the new value of the '{@link Tournament#getCompetition()
 	 *            competition}' feature.
@@ -394,9 +472,9 @@ public class Tournament extends DescribedEntity {
 
 	/**
 	 * Returns the value of '<em><b>games</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>games</b></em>' feature
 	 * @generated
 	 */
@@ -406,7 +484,7 @@ public class Tournament extends DescribedEntity {
 
 	/**
 	 * Adds to the <em>games</em> feature.
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean addToGames(Game gamesValue) {
@@ -419,7 +497,7 @@ public class Tournament extends DescribedEntity {
 
 	/**
 	 * Removes from the <em>games</em> feature.
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean removeFromGames(Game gamesValue) {
@@ -432,7 +510,7 @@ public class Tournament extends DescribedEntity {
 
 	/**
 	 * Clears the <em>games</em> feature.
-	 * 
+	 *
 	 * @generated
 	 */
 	public void clearGames() {
@@ -443,9 +521,9 @@ public class Tournament extends DescribedEntity {
 
 	/**
 	 * Sets the '{@link Tournament#getGames() <em>games</em>}' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newGames
 	 *            the new value of the '{@link Tournament#getGames() games}'
 	 *            feature.
@@ -458,16 +536,21 @@ public class Tournament extends DescribedEntity {
 	/**
 	 * A toString method which prints the values of all EAttributes of this
 	 * instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
 	public String toString() {
 		return "Tournament " + " [defaultBuyIn: " + getDefaultBuyIn() + "]"
 				+ " [tournamentAnnouncementLead: "
-				+ getTournamentAnnouncementLead() + "]" + " [tournamentStart: "
-				+ getTournamentStart() + "]" + " [tournamentEnd: "
-				+ getTournamentEnd() + "]" + " [minPlayers: " + getMinPlayers()
-				+ "]" + " [maxPlayers: " + getMaxPlayers() + "]";
+				+ getTournamentAnnouncementLead() + "]"
+				+ " [tournamentInvitationClosure: "
+				+ getTournamentInvitationClosure() + "]"
+				+ " [tournamentInvitationContact: "
+				+ getTournamentInvitationContact() + "]"
+				+ " [tournamentStart: " + getTournamentStart() + "]"
+				+ " [tournamentEnd: " + getTournamentEnd() + "]"
+				+ " [minPlayers: " + getMinPlayers() + "]" + " [maxPlayers: "
+				+ getMaxPlayers() + "]";
 	}
 }

@@ -8,7 +8,7 @@ import javax.persistence.Id;
 /**
  * A representation of the model object '<em><b>DataStructureVersion</b></em>'.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 @Entity(name = "pl_DataStructureVersion")
@@ -20,7 +20,7 @@ public class DataStructureVersion implements Serializable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Id()
@@ -28,7 +28,7 @@ public class DataStructureVersion implements Serializable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Basic()
@@ -36,9 +36,9 @@ public class DataStructureVersion implements Serializable {
 
 	/**
 	 * Returns the value of '<em><b>id</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>id</b></em>' feature
 	 * @generated
 	 */
@@ -48,9 +48,9 @@ public class DataStructureVersion implements Serializable {
 
 	/**
 	 * Sets the '{@link DataStructureVersion#getId() <em>id</em>}' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newId
 	 *            the new value of the '{@link DataStructureVersion#getId() id}'
 	 *            feature.
@@ -62,9 +62,9 @@ public class DataStructureVersion implements Serializable {
 
 	/**
 	 * Returns the value of '<em><b>currentVersion</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>currentVersion</b></em>' feature
 	 * @generated
 	 */
@@ -75,9 +75,9 @@ public class DataStructureVersion implements Serializable {
 	/**
 	 * Sets the '{@link DataStructureVersion#getCurrentVersion()
 	 * <em>currentVersion</em>}' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newCurrentVersion
 	 *            the new value of the '
 	 *            {@link DataStructureVersion#getCurrentVersion()
@@ -91,7 +91,7 @@ public class DataStructureVersion implements Serializable {
 	/**
 	 * A toString method which prints the values of all EAttributes of this
 	 * instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

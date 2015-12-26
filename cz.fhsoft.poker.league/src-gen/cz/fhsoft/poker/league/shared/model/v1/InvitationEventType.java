@@ -8,14 +8,14 @@ import java.util.List;
  * A representation of the literals of the enumeration '
  * <em><b>InvitationEventType</b></em>'. <!-- begin-user-doc --> <!--
  * end-user-doc -->
- * 
+ *
  * @generated
  */
 public enum InvitationEventType {
 
 	/**
 	 * The enum: GENERATED <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	GENERATED(0, "GENERATED", "GENERATED") {
@@ -31,7 +31,7 @@ public enum InvitationEventType {
 	},
 	/**
 	 * The enum: CHANGED <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	CHANGED(1, "CHANGED", "CHANGED") {
@@ -49,7 +49,7 @@ public enum InvitationEventType {
 	/**
 	 * An array of all the '<em><b>InvitationEventType</b></em>' enumerators.
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private static final InvitationEventType[] VALUES_ARRAY = new InvitationEventType[] {
@@ -58,7 +58,7 @@ public enum InvitationEventType {
 	/**
 	 * A public read-only list of all the '<em><b>InvitationEventType</b></em>'
 	 * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public static final List<InvitationEventType> VALUES = Collections
@@ -67,7 +67,7 @@ public enum InvitationEventType {
 	/**
 	 * Returns the '<em><b>InvitationEventType</b></em>' literal with the
 	 * specified literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param literal
 	 *            the literal to use to get the enum instance
 	 * @return the InvitationEventType, the literal enum class
@@ -86,7 +86,7 @@ public enum InvitationEventType {
 	/**
 	 * Returns the '<em><b>InvitationEventType</b></em>' literal with the
 	 * specified name. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param name
 	 *            the name to use to get the enum instance
 	 * @return the InvitationEventType, the literal enum class
@@ -105,7 +105,7 @@ public enum InvitationEventType {
 	/**
 	 * Returns the '<em><b>InvitationEventType</b></em>' literal with the
 	 * specified integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value
 	 *            the value to use to get the enum instance
 	 * @return the InvitationEventType, the literal enum
@@ -122,21 +122,21 @@ public enum InvitationEventType {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private final int value;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private final String name;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private final String literal;
@@ -144,7 +144,7 @@ public enum InvitationEventType {
 	/**
 	 * Only this class can construct instances. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private InvitationEventType(int value, String name, String literal) {
@@ -155,7 +155,7 @@ public enum InvitationEventType {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return false, is overridden by actual enum types.
 	 * @generated
 	 */
@@ -165,7 +165,7 @@ public enum InvitationEventType {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return false, is overridden by actual enum types.
 	 * @generated
 	 */
@@ -175,7 +175,7 @@ public enum InvitationEventType {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value
 	 * @generated
 	 */
@@ -185,7 +185,7 @@ public enum InvitationEventType {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the name
 	 * @generated
 	 */
@@ -195,7 +195,7 @@ public enum InvitationEventType {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the literal of this enum instance
 	 * @generated
 	 */
@@ -205,7 +205,7 @@ public enum InvitationEventType {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the literal value of the enumerator, which is its string
 	 *         representation.
 	 * @generated

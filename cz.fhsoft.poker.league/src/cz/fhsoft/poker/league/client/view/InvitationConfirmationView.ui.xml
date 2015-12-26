@@ -21,6 +21,13 @@
 			margin-bottom: 30px;
 		}
 
+		.invitationsClosed {
+			padding-bottom: 20px;
+			font-size: 25px;
+			font-weight: bold;
+			color: #dd0000;
+		}
+
 		.invitationTable {
 			margin: auto;
 			text-align: center;
@@ -68,7 +75,8 @@
 						<g:Label addStyleNames="{style.mainLabel}" ui:field="tournamentLabel"/>
 						<g:Label addStyleNames="{style.infoLabel}" ui:field="confirmed">Díky za potvrzení účasti, uvidíme se na turnaji!</g:Label>
 						<g:Label addStyleNames="{style.infoLabel}" ui:field="rejected">Díky za potvrzení neúčasti, snad Ti to vyjde příště!</g:Label>
-						<g:Label addStyleNames="{style.infoLabel}" ui:field="confirmedButOverLimit">Díky za potvrzení zájmu, ale už máme plný stůl. Podívej se později, jestli se neuvolnilo místo.</g:Label>
+						<g:Label addStyleNames="{style.infoLabel}" ui:field="overLimit">Bohužel už máme plný stůl.</g:Label>
+						<g:Label addStyleNames="{style.infoLabel}" ui:field="tooLate">Na změnu bez konzultace s dealery už je příliš pozdě.</g:Label>
 						<g:Label ui:field="changeConfirmation" addStyleNames="pseudoLink">Změnit rozhodnutí</g:Label>
 						<g:FlowPanel ui:field="confirmationForm" addStyleNames="{style.confirmationForm}">
 							<g:Label>Zúčastníš se?</g:Label>
@@ -80,6 +88,10 @@
 									<g:Button ui:field="buttonReject">Ne</g:Button>
 								</g:cell>
 							</g:HorizontalPanel>
+						</g:FlowPanel>
+						<g:FlowPanel addStyleNames="{style.invitationsClosed}" ui:field="invitationsClosedPanel">
+							<g:Label>Pro ústní domluvu o účasti volej </g:Label>
+							<g:Label ui:field="invitationContact"/>
 						</g:FlowPanel>
 						<cell:CellTable ui:field="invitationsTable" addStyleNames="{style.centeredTable}"/>
 					</g:FlowPanel>

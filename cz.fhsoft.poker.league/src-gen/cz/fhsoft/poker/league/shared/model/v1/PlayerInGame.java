@@ -8,7 +8,7 @@ import javax.persistence.ManyToOne;
 /**
  * A representation of the model object '<em><b>PlayerInGame</b></em>'. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 @Entity(name = "pl_PlayerInGame")
@@ -20,7 +20,7 @@ public class PlayerInGame extends IdentifiableEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST,
@@ -29,7 +29,7 @@ public class PlayerInGame extends IdentifiableEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST,
@@ -38,7 +38,7 @@ public class PlayerInGame extends IdentifiableEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Basic()
@@ -46,9 +46,9 @@ public class PlayerInGame extends IdentifiableEntity {
 
 	/**
 	 * Returns the value of '<em><b>player</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>player</b></em>' feature
 	 * @generated
 	 */
@@ -58,9 +58,9 @@ public class PlayerInGame extends IdentifiableEntity {
 
 	/**
 	 * Sets the '{@link PlayerInGame#getPlayer() <em>player</em>}' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newPlayer
 	 *            the new value of the '{@link PlayerInGame#getPlayer() player}'
 	 *            feature.
@@ -72,9 +72,9 @@ public class PlayerInGame extends IdentifiableEntity {
 
 	/**
 	 * Returns the value of '<em><b>game</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>game</b></em>' feature
 	 * @generated
 	 */
@@ -84,9 +84,9 @@ public class PlayerInGame extends IdentifiableEntity {
 
 	/**
 	 * Sets the '{@link PlayerInGame#getGame() <em>game</em>}' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newGame
 	 *            the new value of the '{@link PlayerInGame#getGame() game}'
 	 *            feature.
@@ -98,9 +98,9 @@ public class PlayerInGame extends IdentifiableEntity {
 
 	/**
 	 * Returns the value of '<em><b>rank</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>rank</b></em>' feature
 	 * @generated
 	 */
@@ -110,9 +110,9 @@ public class PlayerInGame extends IdentifiableEntity {
 
 	/**
 	 * Sets the '{@link PlayerInGame#getRank() <em>rank</em>}' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newRank
 	 *            the new value of the '{@link PlayerInGame#getRank() rank}'
 	 *            feature.
@@ -125,7 +125,7 @@ public class PlayerInGame extends IdentifiableEntity {
 	/**
 	 * A toString method which prints the values of all EAttributes of this
 	 * instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

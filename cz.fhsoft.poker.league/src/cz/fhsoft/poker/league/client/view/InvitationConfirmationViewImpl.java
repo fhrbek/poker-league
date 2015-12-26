@@ -13,7 +13,9 @@ import com.google.gwt.uibinder.client.UiTemplate;
 import com.google.gwt.user.cellview.client.CellTable;
 import com.google.gwt.user.cellview.client.Column;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -42,13 +44,28 @@ public class InvitationConfirmationViewImpl extends Composite implements Invitat
 	Label rejected;
 	
 	@UiField
-	Label confirmedButOverLimit;
+	Label overLimit;
+	
+	@UiField
+	Label tooLate;
+	
+	@UiField
+	FlowPanel invitationsClosedPanel;
+	
+	@UiField
+	Label invitationContact;
 	
 	@UiField
 	Label changeConfirmation;
 	
 	@UiField
 	Widget confirmationForm;
+	
+	@UiField
+	Button buttonAccept;
+
+	@UiField
+	Button buttonReject;
 
 	@UiField
 	CellTable<Invitation> invitationsTable;
@@ -57,10 +74,22 @@ public class InvitationConfirmationViewImpl extends Composite implements Invitat
 
 	private int recentTournamentCapacity;
 	
+	private boolean recentTournamentOutOfCapacity;
+	
+	private boolean recentInvitationsClosed;
+	
+	private String recentInvitationContact;
+	
+	private boolean acceptAllowed;
+	
+	private boolean rejectAllowed;
+	
+	private boolean changeAllowed;
+	
 	public InvitationConfirmationViewImpl() {
 		initWidget(uiBinder.createAndBindUi(this));
 		
-		setInvitation(null, 0);
+		setInvitation(null, 0, 0, false, null);
 		
 		invitationsTable.addColumn(new Column<Invitation, String>(new TextCell()) {
 
@@ -121,9 +150,12 @@ public class InvitationConfirmationViewImpl extends Composite implements Invitat
 	}
 
 	@Override
-	public void setInvitation(Invitation invitation, int tournamentCapacity) {
+	public void setInvitation(Invitation invitation, int tournamentCapacity, int acceptedCount, boolean invitationsClosed, String contact) {
 		recentInvitation = invitation;
 		recentTournamentCapacity = tournamentCapacity;
+		recentTournamentOutOfCapacity = acceptedCount >= tournamentCapacity;
+		recentInvitationsClosed = invitationsClosed;
+		recentInvitationContact = contact;
 		resetLayout();
 	}
 	
@@ -131,9 +163,15 @@ public class InvitationConfirmationViewImpl extends Composite implements Invitat
 	public void resetLayout() {
 		confirmed.getElement().getStyle().setDisplay(Display.NONE);
 		rejected.getElement().getStyle().setDisplay(Display.NONE);
-		confirmedButOverLimit.getElement().getStyle().setDisplay(Display.NONE);
+		overLimit.getElement().getStyle().setDisplay(Display.NONE);
+		tooLate.getElement().getStyle().setDisplay(Display.NONE);
+		invitationsClosedPanel.getElement().getStyle().setDisplay(Display.NONE);
 		changeConfirmation.getElement().getStyle().setDisplay(Display.NONE);
 		confirmationForm.getElement().getStyle().setDisplay(Display.NONE);
+		
+		acceptAllowed = false;
+		rejectAllowed = false;
+		changeAllowed = false;
 
 		if(recentInvitation == null)
 			return;
@@ -151,20 +189,52 @@ public class InvitationConfirmationViewImpl extends Composite implements Invitat
 
 				switch(recentInvitation.getReply()) {
 					case ACCEPTED:
-						if(recentInvitation.getOrdinal() <= recentTournamentCapacity)
-							confirmed.getElement().getStyle().clearDisplay();
-						else
-							confirmedButOverLimit.getElement().getStyle().clearDisplay();
-						changeConfirmation.getElement().getStyle().clearDisplay();
+						confirmed.getElement().getStyle().clearDisplay();
+						if (!recentInvitationsClosed) {
+							changeConfirmation.getElement().getStyle().clearDisplay();
+							changeAllowed = true;
+							acceptAllowed = true;
+							rejectAllowed = true;
+						}
 						break;
 					case REJECTED:
 						rejected.getElement().getStyle().clearDisplay();
-						changeConfirmation.getElement().getStyle().clearDisplay();
+						if (!recentInvitationsClosed) {
+							if (!recentTournamentOutOfCapacity) {
+								changeConfirmation.getElement().getStyle().clearDisplay();
+								acceptAllowed = true;
+								rejectAllowed = true;
+								changeAllowed = true;
+							}
+							else
+								overLimit.getElement().getStyle().clearDisplay();
+						}
+						else
+							tooLate.getElement().getStyle().clearDisplay();
+
 						break;
 					case NO_REPLY:
-						confirmationForm.getElement().getStyle().clearDisplay();
+						if (!recentInvitationsClosed) {
+							confirmationForm.getElement().getStyle().clearDisplay();
+							rejectAllowed = true;
+							
+							if (!recentTournamentOutOfCapacity)
+								acceptAllowed = true;
+							else
+								overLimit.getElement().getStyle().clearDisplay();
+						}
+						else
+							tooLate.getElement().getStyle().clearDisplay();
 						break;
 				}
+
+				if (recentInvitationsClosed || recentTournamentOutOfCapacity) {
+					invitationsClosedPanel.getElement().getStyle().clearDisplay();
+					invitationContact.setText(recentInvitationContact);
+				}
+
+				buttonAccept.getElement().setPropertyBoolean("disabled", !acceptAllowed);
+				buttonReject.getElement().setPropertyBoolean("disabled", !rejectAllowed);
 			}
 			
 		});
@@ -172,21 +242,27 @@ public class InvitationConfirmationViewImpl extends Composite implements Invitat
 	
 	@UiHandler("buttonAccept")
 	void onAcceptClicked(ClickEvent event) {
-		presenter.onAcceptClicked();
+		if (acceptAllowed)
+			presenter.onAcceptClicked();
 	}
 	
 	@UiHandler("buttonReject")
 	void onRejectClicked(ClickEvent event) {
-		presenter.onRejectClicked();
+		if (rejectAllowed)
+			presenter.onRejectClicked();
 	}
 	
 	@UiHandler("changeConfirmation")
 	void onChangeConfirmationClicked(ClickEvent event) {
-		confirmed.getElement().getStyle().setDisplay(Display.NONE);
-		rejected.getElement().getStyle().setDisplay(Display.NONE);
-		confirmedButOverLimit.getElement().getStyle().setDisplay(Display.NONE);
-		changeConfirmation.getElement().getStyle().setDisplay(Display.NONE);
-		confirmationForm.getElement().getStyle().clearDisplay();
+		if (changeAllowed) {
+			confirmed.getElement().getStyle().setDisplay(Display.NONE);
+			rejected.getElement().getStyle().setDisplay(Display.NONE);
+			overLimit.getElement().getStyle().setDisplay(Display.NONE);
+			tooLate.getElement().getStyle().setDisplay(Display.NONE);
+			invitationsClosedPanel.getElement().getStyle().setDisplay(Display.NONE);
+			changeConfirmation.getElement().getStyle().setDisplay(Display.NONE);
+			confirmationForm.getElement().getStyle().clearDisplay();
+		}
 	}
 
 }

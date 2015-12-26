@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 /**
  * A representation of the model object '<em><b>DescribedEntity</b></em>'. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 @Entity(name = "pl_DescribedEntity")
@@ -18,7 +18,7 @@ public abstract class DescribedEntity extends IdentifiableEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Basic()
@@ -26,7 +26,7 @@ public abstract class DescribedEntity extends IdentifiableEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Basic()
@@ -34,9 +34,9 @@ public abstract class DescribedEntity extends IdentifiableEntity {
 
 	/**
 	 * Returns the value of '<em><b>name</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>name</b></em>' feature
 	 * @generated
 	 */
@@ -46,9 +46,9 @@ public abstract class DescribedEntity extends IdentifiableEntity {
 
 	/**
 	 * Sets the '{@link DescribedEntity#getName() <em>name</em>}' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newName
 	 *            the new value of the '{@link DescribedEntity#getName() name}'
 	 *            feature.
@@ -60,9 +60,9 @@ public abstract class DescribedEntity extends IdentifiableEntity {
 
 	/**
 	 * Returns the value of '<em><b>description</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>description</b></em>' feature
 	 * @generated
 	 */
@@ -73,9 +73,9 @@ public abstract class DescribedEntity extends IdentifiableEntity {
 	/**
 	 * Sets the '{@link DescribedEntity#getDescription() <em>description</em>}'
 	 * feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newDescription
 	 *            the new value of the '{@link DescribedEntity#getDescription()
 	 *            description}' feature.
@@ -88,7 +88,7 @@ public abstract class DescribedEntity extends IdentifiableEntity {
 	/**
 	 * A toString method which prints the values of all EAttributes of this
 	 * instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

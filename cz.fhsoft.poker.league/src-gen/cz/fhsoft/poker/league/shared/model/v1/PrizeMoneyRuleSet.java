@@ -9,7 +9,7 @@ import javax.persistence.OneToMany;
 /**
  * A representation of the model object '<em><b>PrizeMoneyRuleSet</b></em>'.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 @Entity(name = "pl_PrizeMoneyRuleSet")
@@ -21,7 +21,7 @@ public class PrizeMoneyRuleSet extends DescribedEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@OneToMany(cascade = { CascadeType.ALL }, mappedBy = "prizeMoneyRuleSet", orphanRemoval = true)
@@ -29,9 +29,9 @@ public class PrizeMoneyRuleSet extends DescribedEntity {
 
 	/**
 	 * Returns the value of '<em><b>prizeMoneyRules</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>prizeMoneyRules</b></em>' feature
 	 * @generated
 	 */
@@ -41,7 +41,7 @@ public class PrizeMoneyRuleSet extends DescribedEntity {
 
 	/**
 	 * Adds to the <em>prizeMoneyRules</em> feature.
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean addToPrizeMoneyRules(PrizeMoneyRule prizeMoneyRulesValue) {
@@ -54,7 +54,7 @@ public class PrizeMoneyRuleSet extends DescribedEntity {
 
 	/**
 	 * Removes from the <em>prizeMoneyRules</em> feature.
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean removeFromPrizeMoneyRules(PrizeMoneyRule prizeMoneyRulesValue) {
@@ -67,7 +67,7 @@ public class PrizeMoneyRuleSet extends DescribedEntity {
 
 	/**
 	 * Clears the <em>prizeMoneyRules</em> feature.
-	 * 
+	 *
 	 * @generated
 	 */
 	public void clearPrizeMoneyRules() {
@@ -79,9 +79,9 @@ public class PrizeMoneyRuleSet extends DescribedEntity {
 	/**
 	 * Sets the '{@link PrizeMoneyRuleSet#getPrizeMoneyRules()
 	 * <em>prizeMoneyRules</em>}' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newPrizeMoneyRules
 	 *            the new value of the '
 	 *            {@link PrizeMoneyRuleSet#getPrizeMoneyRules() prizeMoneyRules}
@@ -95,7 +95,7 @@ public class PrizeMoneyRuleSet extends DescribedEntity {
 	/**
 	 * A toString method which prints the values of all EAttributes of this
 	 * instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

@@ -3,6 +3,7 @@ package cz.fhsoft.poker.league.client.presenter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 import com.google.gwt.i18n.shared.DateTimeFormat;
@@ -14,6 +15,7 @@ import cz.fhsoft.poker.league.client.persistence.ClientEntityManager;
 import cz.fhsoft.poker.league.client.util.ErrorReporter;
 import cz.fhsoft.poker.league.client.view.InvitationConfirmationView;
 import cz.fhsoft.poker.league.shared.model.v1.Invitation;
+import cz.fhsoft.poker.league.shared.model.v1.InvitationReply;
 import cz.fhsoft.poker.league.shared.model.v1.Tournament;
 import cz.fhsoft.poker.league.shared.persistence.Util;
 import cz.fhsoft.poker.league.shared.persistence.compare.Comparators;
@@ -59,7 +61,7 @@ public class InvitationConfirmationPresenter extends PresenterWithVersionedData 
 			
 			if(invitationUUID != null) {
 				view.setTournamentLabel("<načítá se>");
-				view.setInvitation(null, 0);
+				view.setInvitation(null, 0, 0, false, null);
 				view.setInvitations(null);
 				
 				AppControllerInvitation.INSTANCE.getInvitationService().findInvitation(invitationUUID, new AsyncCallback<Invitation>() {
@@ -86,10 +88,9 @@ public class InvitationConfirmationPresenter extends PresenterWithVersionedData 
 							}
 
 							@Override
-							public void onSuccess(Tournament tournament) {
+							public void onSuccess(final Tournament tournament) {
 								view.setTournamentLabel(tournament.getName() + ", zahájení " + dateFormatter.format(tournament.getTournamentStart()) +
 										" (min. " + tournament.getMinPlayers() + ", max. " + tournament.getMaxPlayers() + " hráčů)");
-								view.setInvitation(invitation, tournament.getMaxPlayers());
 
 								Util.asLazyCollection(tournament.getInvitations()).resolve(new AsyncCallback<Collection<Invitation>>() {
 
@@ -102,6 +103,17 @@ public class InvitationConfirmationPresenter extends PresenterWithVersionedData 
 									public void onSuccess(Collection<Invitation> invitations) {
 										List<Invitation> sortedInvitations = new ArrayList<Invitation>(invitations);
 										Collections.sort(sortedInvitations, Comparators.INVITATIONS_COMPARATOR);
+
+										int acceptedCount = 0;
+										for (Invitation invitation : sortedInvitations) {
+											if (invitation.getReply() == InvitationReply.ACCEPTED)
+												acceptedCount++;
+										}
+
+										boolean invitationsClosed =
+												(tournament.getTournamentStart().getTime() - new Date().getTime()) <=
+												(tournament.getTournamentInvitationClosure() * 3600000);
+										view.setInvitation(invitation, tournament.getMaxPlayers(), acceptedCount, invitationsClosed, tournament.getTournamentInvitationContact());
 										view.setInvitations(sortedInvitations);
 									}
 									

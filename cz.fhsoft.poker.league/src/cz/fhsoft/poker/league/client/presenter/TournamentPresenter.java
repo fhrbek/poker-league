@@ -93,6 +93,34 @@ public class TournamentPresenter extends RankablePresenter<Tournament, Tournamen
 			
 		};
 		
+		private Entry<IntegerBox> invitationClosureEntry = new Entry<IntegerBox>("Uzavírka pozvánek", new IntegerBox()) {
+
+			@Override
+			public void setUpWidget(Tournament entity) {
+				getWidget().setValue(entity.getTournamentInvitationClosure());
+			}
+
+			@Override
+			public void updateEntity(Tournament entity) {
+				entity.setTournamentInvitationClosure(getWidget().getValue());
+			}
+			
+		};
+		
+		private Entry<TextBox> invitationContactEntry = new Entry<TextBox>("Kontakt pro řešení pozvánek", new TextBox()) {
+
+			@Override
+			public void setUpWidget(Tournament entity) {
+				getWidget().setValue(entity.getTournamentInvitationContact());
+			}
+
+			@Override
+			public void updateEntity(Tournament entity) {
+				entity.setTournamentInvitationContact(getWidget().getValue());
+			}
+			
+		};
+		
 		private Entry<TextBox> startTimeEntry = new Entry<TextBox>("Zahájení", new TextBox()) {
 
 			@Override
@@ -191,6 +219,8 @@ public class TournamentPresenter extends RankablePresenter<Tournament, Tournamen
 			addEntry(nameEntry);
 			addEntry(descriptionEntry);
 			addEntry(announcementLeadEntry);
+			addEntry(invitationClosureEntry);
+			addEntry(invitationContactEntry);
 			addEntry(startTimeEntry);
 			addEntry(endTimeEntry);
 			addEntry(minPlayersEntry);

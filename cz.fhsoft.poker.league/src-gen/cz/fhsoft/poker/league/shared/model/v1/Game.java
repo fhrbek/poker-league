@@ -11,7 +11,7 @@ import javax.persistence.OneToMany;
 /**
  * A representation of the model object '<em><b>Game</b></em>'. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 @Entity(name = "pl_Game")
@@ -23,7 +23,7 @@ public class Game extends IdentifiableEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Basic()
@@ -31,7 +31,7 @@ public class Game extends IdentifiableEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST,
@@ -40,7 +40,7 @@ public class Game extends IdentifiableEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Basic()
@@ -48,7 +48,7 @@ public class Game extends IdentifiableEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST,
@@ -57,9 +57,9 @@ public class Game extends IdentifiableEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-	 * 
+	 *
 	 * <!-- end-model-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@OneToMany(cascade = { CascadeType.ALL }, mappedBy = "game", orphanRemoval = true)
@@ -67,9 +67,9 @@ public class Game extends IdentifiableEntity {
 
 	/**
 	 * Returns the value of '<em><b>ordinal</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>ordinal</b></em>' feature
 	 * @generated
 	 */
@@ -79,9 +79,9 @@ public class Game extends IdentifiableEntity {
 
 	/**
 	 * Sets the '{@link Game#getOrdinal() <em>ordinal</em>}' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newOrdinal
 	 *            the new value of the '{@link Game#getOrdinal() ordinal}'
 	 *            feature.
@@ -93,9 +93,9 @@ public class Game extends IdentifiableEntity {
 
 	/**
 	 * Returns the value of '<em><b>tournament</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>tournament</b></em>' feature
 	 * @generated
 	 */
@@ -105,9 +105,9 @@ public class Game extends IdentifiableEntity {
 
 	/**
 	 * Sets the '{@link Game#getTournament() <em>tournament</em>}' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newTournament
 	 *            the new value of the '{@link Game#getTournament() tournament}'
 	 *            feature.
@@ -119,9 +119,9 @@ public class Game extends IdentifiableEntity {
 
 	/**
 	 * Returns the value of '<em><b>buyIn</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>buyIn</b></em>' feature
 	 * @generated
 	 */
@@ -131,9 +131,9 @@ public class Game extends IdentifiableEntity {
 
 	/**
 	 * Sets the '{@link Game#getBuyIn() <em>buyIn</em>}' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newBuyIn
 	 *            the new value of the '{@link Game#getBuyIn() buyIn}' feature.
 	 * @generated
@@ -144,9 +144,9 @@ public class Game extends IdentifiableEntity {
 
 	/**
 	 * Returns the value of '<em><b>prizeMoneyRuleSet</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>prizeMoneyRuleSet</b></em>' feature
 	 * @generated
 	 */
@@ -157,9 +157,9 @@ public class Game extends IdentifiableEntity {
 	/**
 	 * Sets the '{@link Game#getPrizeMoneyRuleSet() <em>prizeMoneyRuleSet</em>}'
 	 * feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newPrizeMoneyRuleSet
 	 *            the new value of the '{@link Game#getPrizeMoneyRuleSet()
 	 *            prizeMoneyRuleSet}' feature.
@@ -171,11 +171,11 @@ public class Game extends IdentifiableEntity {
 
 	/**
 	 * Returns the value of '<em><b>playersInGame</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-	 * 
+	 *
 	 * <!-- end-model-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>playersInGame</b></em>' feature
 	 * @generated
 	 */
@@ -185,7 +185,7 @@ public class Game extends IdentifiableEntity {
 
 	/**
 	 * Adds to the <em>playersInGame</em> feature.
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean addToPlayersInGame(PlayerInGame playersInGameValue) {
@@ -198,7 +198,7 @@ public class Game extends IdentifiableEntity {
 
 	/**
 	 * Removes from the <em>playersInGame</em> feature.
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean removeFromPlayersInGame(PlayerInGame playersInGameValue) {
@@ -211,7 +211,7 @@ public class Game extends IdentifiableEntity {
 
 	/**
 	 * Clears the <em>playersInGame</em> feature.
-	 * 
+	 *
 	 * @generated
 	 */
 	public void clearPlayersInGame() {
@@ -223,11 +223,11 @@ public class Game extends IdentifiableEntity {
 	/**
 	 * Sets the '{@link Game#getPlayersInGame() <em>playersInGame</em>}'
 	 * feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-	 * 
+	 *
 	 * <!-- end-model-doc -->
-	 * 
+	 *
 	 * @param the
 	 *            new value of the '{@link Game#getPlayersInGame()
 	 *            playersInGame}' feature.
@@ -240,7 +240,7 @@ public class Game extends IdentifiableEntity {
 	/**
 	 * A toString method which prints the values of all EAttributes of this
 	 * instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

@@ -24,7 +24,7 @@ public interface InvitationConfirmationView {
 
 	void setTournamentLabel(String tournamentLabel);
 	
-	void setInvitation(Invitation invitation, int tournamentCapacity);
+	void setInvitation(Invitation invitation, int tournamentCapacity, int acceptedCount, boolean invitationsClosed, String contact);
 
 	void setInvitations(List<Invitation> invitations);
 	

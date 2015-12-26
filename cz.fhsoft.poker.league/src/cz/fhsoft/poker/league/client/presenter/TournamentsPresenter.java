@@ -137,6 +137,8 @@ public class TournamentsPresenter extends PresenterWithVersionedData implements 
 				newTournament.setMaxPlayers(resolvedCompetition.getDefaultMaxPlayers());
 				newTournament.setDefaultBuyIn(resolvedCompetition.getDefaultBuyIn());
 				newTournament.setTournamentAnnouncementLead(resolvedCompetition.getDefaultTournamentAnnouncementLead());
+				newTournament.setTournamentInvitationClosure(resolvedCompetition.getDefaultTournamentInvitationClosure());
+				newTournament.setTournamentInvitationContact(resolvedCompetition.getDefaultTournamentInvitationContact());
 				newTournament.setDefaultPrizeMoneyRuleSet(resolvedCompetition.getDefaultPrizeMoneyRuleSet());
 				
 				Util.resolve(resolvedCompetition.getPlayers(), new AsyncCallback<Set<Player>>() {

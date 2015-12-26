@@ -8,7 +8,7 @@ import javax.persistence.ManyToOne;
 /**
  * A representation of the model object '<em><b>PrizeMoneyFormula</b></em>'.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 @Entity(name = "pl_PrizeMoneyFormula")
@@ -20,7 +20,7 @@ public class PrizeMoneyFormula extends IdentifiableEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST,
@@ -29,7 +29,7 @@ public class PrizeMoneyFormula extends IdentifiableEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Basic()
@@ -37,7 +37,7 @@ public class PrizeMoneyFormula extends IdentifiableEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Basic()
@@ -45,9 +45,9 @@ public class PrizeMoneyFormula extends IdentifiableEntity {
 
 	/**
 	 * Returns the value of '<em><b>prizeMoneyRule</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>prizeMoneyRule</b></em>' feature
 	 * @generated
 	 */
@@ -58,9 +58,9 @@ public class PrizeMoneyFormula extends IdentifiableEntity {
 	/**
 	 * Sets the '{@link PrizeMoneyFormula#getPrizeMoneyRule()
 	 * <em>prizeMoneyRule</em>}' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newPrizeMoneyRule
 	 *            the new value of the '
 	 *            {@link PrizeMoneyFormula#getPrizeMoneyRule() prizeMoneyRule}'
@@ -73,9 +73,9 @@ public class PrizeMoneyFormula extends IdentifiableEntity {
 
 	/**
 	 * Returns the value of '<em><b>rank</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>rank</b></em>' feature
 	 * @generated
 	 */
@@ -85,9 +85,9 @@ public class PrizeMoneyFormula extends IdentifiableEntity {
 
 	/**
 	 * Sets the '{@link PrizeMoneyFormula#getRank() <em>rank</em>}' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newRank
 	 *            the new value of the '{@link PrizeMoneyFormula#getRank() rank}
 	 *            ' feature.
@@ -99,9 +99,9 @@ public class PrizeMoneyFormula extends IdentifiableEntity {
 
 	/**
 	 * Returns the value of '<em><b>relativePrizeMoney</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>relativePrizeMoney</b></em>' feature
 	 * @generated
 	 */
@@ -112,9 +112,9 @@ public class PrizeMoneyFormula extends IdentifiableEntity {
 	/**
 	 * Sets the '{@link PrizeMoneyFormula#getRelativePrizeMoney()
 	 * <em>relativePrizeMoney</em>}' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newRelativePrizeMoney
 	 *            the new value of the '
 	 *            {@link PrizeMoneyFormula#getRelativePrizeMoney()
@@ -128,7 +128,7 @@ public class PrizeMoneyFormula extends IdentifiableEntity {
 	/**
 	 * A toString method which prints the values of all EAttributes of this
 	 * instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

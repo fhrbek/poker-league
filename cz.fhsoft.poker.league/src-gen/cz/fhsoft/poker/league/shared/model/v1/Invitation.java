@@ -13,7 +13,7 @@ import javax.persistence.OneToMany;
 /**
  * A representation of the model object '<em><b>Invitation</b></em>'. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 @Entity(name = "pl_Invitation")
@@ -25,7 +25,7 @@ public class Invitation extends IdentifiableEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST,
@@ -34,7 +34,7 @@ public class Invitation extends IdentifiableEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST,
@@ -43,7 +43,7 @@ public class Invitation extends IdentifiableEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Basic()
@@ -52,7 +52,7 @@ public class Invitation extends IdentifiableEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Basic()
@@ -60,7 +60,7 @@ public class Invitation extends IdentifiableEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Basic()
@@ -68,7 +68,7 @@ public class Invitation extends IdentifiableEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@OneToMany(cascade = { CascadeType.ALL }, mappedBy = "invitation", orphanRemoval = true)
@@ -76,9 +76,9 @@ public class Invitation extends IdentifiableEntity {
 
 	/**
 	 * Returns the value of '<em><b>tournament</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>tournament</b></em>' feature
 	 * @generated
 	 */
@@ -89,9 +89,9 @@ public class Invitation extends IdentifiableEntity {
 	/**
 	 * Sets the '{@link Invitation#getTournament() <em>tournament</em>}'
 	 * feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newTournament
 	 *            the new value of the '{@link Invitation#getTournament()
 	 *            tournament}' feature.
@@ -103,9 +103,9 @@ public class Invitation extends IdentifiableEntity {
 
 	/**
 	 * Returns the value of '<em><b>player</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>player</b></em>' feature
 	 * @generated
 	 */
@@ -115,9 +115,9 @@ public class Invitation extends IdentifiableEntity {
 
 	/**
 	 * Sets the '{@link Invitation#getPlayer() <em>player</em>}' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newPlayer
 	 *            the new value of the '{@link Invitation#getPlayer() player}'
 	 *            feature.
@@ -129,9 +129,9 @@ public class Invitation extends IdentifiableEntity {
 
 	/**
 	 * Returns the value of '<em><b>reply</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>reply</b></em>' feature
 	 * @generated
 	 */
@@ -141,9 +141,9 @@ public class Invitation extends IdentifiableEntity {
 
 	/**
 	 * Sets the '{@link Invitation#getReply() <em>reply</em>}' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newReply
 	 *            the new value of the '{@link Invitation#getReply() reply}'
 	 *            feature.
@@ -155,9 +155,9 @@ public class Invitation extends IdentifiableEntity {
 
 	/**
 	 * Returns the value of '<em><b>ordinal</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>ordinal</b></em>' feature
 	 * @generated
 	 */
@@ -167,9 +167,9 @@ public class Invitation extends IdentifiableEntity {
 
 	/**
 	 * Sets the '{@link Invitation#getOrdinal() <em>ordinal</em>}' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newOrdinal
 	 *            the new value of the '{@link Invitation#getOrdinal() ordinal}'
 	 *            feature.
@@ -181,9 +181,9 @@ public class Invitation extends IdentifiableEntity {
 
 	/**
 	 * Returns the value of '<em><b>uuid</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>uuid</b></em>' feature
 	 * @generated
 	 */
@@ -193,9 +193,9 @@ public class Invitation extends IdentifiableEntity {
 
 	/**
 	 * Sets the '{@link Invitation#getUuid() <em>uuid</em>}' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newUuid
 	 *            the new value of the '{@link Invitation#getUuid() uuid}'
 	 *            feature.
@@ -207,9 +207,9 @@ public class Invitation extends IdentifiableEntity {
 
 	/**
 	 * Returns the value of '<em><b>events</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>events</b></em>' feature
 	 * @generated
 	 */
@@ -219,7 +219,7 @@ public class Invitation extends IdentifiableEntity {
 
 	/**
 	 * Adds to the <em>events</em> feature.
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean addToEvents(InvitationEvent eventsValue) {
@@ -232,7 +232,7 @@ public class Invitation extends IdentifiableEntity {
 
 	/**
 	 * Removes from the <em>events</em> feature.
-	 * 
+	 *
 	 * @generated
 	 */
 	public boolean removeFromEvents(InvitationEvent eventsValue) {
@@ -245,7 +245,7 @@ public class Invitation extends IdentifiableEntity {
 
 	/**
 	 * Clears the <em>events</em> feature.
-	 * 
+	 *
 	 * @generated
 	 */
 	public void clearEvents() {
@@ -256,9 +256,9 @@ public class Invitation extends IdentifiableEntity {
 
 	/**
 	 * Sets the '{@link Invitation#getEvents() <em>events</em>}' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newEvents
 	 *            the new value of the '{@link Invitation#getEvents() events}'
 	 *            feature.
@@ -271,7 +271,7 @@ public class Invitation extends IdentifiableEntity {
 	/**
 	 * A toString method which prints the values of all EAttributes of this
 	 * instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

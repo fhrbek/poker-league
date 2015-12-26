@@ -8,14 +8,14 @@ import java.util.List;
  * A representation of the literals of the enumeration '
  * <em><b>InvitationReply</b></em>'. <!-- begin-user-doc --> <!-- end-user-doc
  * -->
- * 
+ *
  * @generated
  */
 public enum InvitationReply {
 
 	/**
 	 * The enum: NO_REPLY <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	NO_REPLY(0, "NO_REPLY", "NO_REPLY") {
@@ -31,7 +31,7 @@ public enum InvitationReply {
 	},
 	/**
 	 * The enum: ACCEPTED <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	ACCEPTED(1, "ACCEPTED", "ACCEPTED") {
@@ -47,7 +47,7 @@ public enum InvitationReply {
 	},
 	/**
 	 * The enum: REJECTED <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	REJECTED(2, "REJECTED", "REJECTED") {
@@ -65,7 +65,7 @@ public enum InvitationReply {
 	/**
 	 * An array of all the '<em><b>InvitationReply</b></em>' enumerators. <!--
 	 * begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private static final InvitationReply[] VALUES_ARRAY = new InvitationReply[] {
@@ -74,7 +74,7 @@ public enum InvitationReply {
 	/**
 	 * A public read-only list of all the '<em><b>InvitationReply</b></em>'
 	 * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	public static final List<InvitationReply> VALUES = Collections
@@ -83,7 +83,7 @@ public enum InvitationReply {
 	/**
 	 * Returns the '<em><b>InvitationReply</b></em>' literal with the specified
 	 * literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param literal
 	 *            the literal to use to get the enum instance
 	 * @return the InvitationReply, the literal enum class
@@ -102,7 +102,7 @@ public enum InvitationReply {
 	/**
 	 * Returns the '<em><b>InvitationReply</b></em>' literal with the specified
 	 * name. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param name
 	 *            the name to use to get the enum instance
 	 * @return the InvitationReply, the literal enum class
@@ -121,7 +121,7 @@ public enum InvitationReply {
 	/**
 	 * Returns the '<em><b>InvitationReply</b></em>' literal with the specified
 	 * integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param value
 	 *            the value to use to get the enum instance
 	 * @return the InvitationReply, the literal enum
@@ -138,21 +138,21 @@ public enum InvitationReply {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private final int value;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private final String name;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private final String literal;
@@ -160,7 +160,7 @@ public enum InvitationReply {
 	/**
 	 * Only this class can construct instances. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	private InvitationReply(int value, String name, String literal) {
@@ -171,7 +171,7 @@ public enum InvitationReply {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return false, is overridden by actual enum types.
 	 * @generated
 	 */
@@ -181,7 +181,7 @@ public enum InvitationReply {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return false, is overridden by actual enum types.
 	 * @generated
 	 */
@@ -191,7 +191,7 @@ public enum InvitationReply {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return false, is overridden by actual enum types.
 	 * @generated
 	 */
@@ -201,7 +201,7 @@ public enum InvitationReply {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value
 	 * @generated
 	 */
@@ -211,7 +211,7 @@ public enum InvitationReply {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the name
 	 * @generated
 	 */
@@ -221,7 +221,7 @@ public enum InvitationReply {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the literal of this enum instance
 	 * @generated
 	 */
@@ -231,7 +231,7 @@ public enum InvitationReply {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the literal value of the enumerator, which is its string
 	 *         representation.
 	 * @generated

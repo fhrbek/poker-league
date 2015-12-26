@@ -77,6 +77,10 @@
         defaultValueLiteral="10"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultTournamentAnnouncementLead"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="48"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultTournamentInvitationClosure"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="0"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultTournamentInvitationContact"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tournaments" ordered="false"
         upperBound="-1" eType="#//Tournament" containment="true" eOpposite="#//Tournament/competition"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="players" ordered="false"
@@ -88,6 +92,10 @@
         eType="#//PrizeMoneyRuleSet"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="tournamentAnnouncementLead"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tournamentInvitationClosure"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tournamentInvitationContact"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="tournamentStart" eType="#//Timestamp"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="tournamentEnd" eType="#//Timestamp"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="minPlayers" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>

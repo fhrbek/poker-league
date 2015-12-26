@@ -163,6 +163,34 @@ public class CompetitionPresenter extends RankablePresenter<Competition, Competi
 			
 		};
 		
+		private Entry<IntegerBox> defaultTournamentInvitationClosureEntry = new Entry<IntegerBox>("Výchozí uzavírka pozvánek", new IntegerBox()) {
+
+			@Override
+			public void setUpWidget(Competition entity) {
+				getWidget().setValue(entity.getDefaultTournamentInvitationClosure());
+			}
+
+			@Override
+			public void updateEntity(Competition entity) {
+				entity.setDefaultTournamentInvitationClosure(getWidget().getValue());
+			}
+			
+		};
+		
+		private Entry<TextBox> defaultTournamentInvitationContactEntry = new Entry<TextBox>("Výchozí kontakt pro řešení pozvánek", new TextBox()) {
+
+			@Override
+			public void setUpWidget(Competition entity) {
+				getWidget().setValue(entity.getDefaultTournamentInvitationContact());
+			}
+
+			@Override
+			public void updateEntity(Competition entity) {
+				entity.setDefaultTournamentInvitationContact(getWidget().getValue());
+			}
+			
+		};
+		
 		private Entry<EntityMultiSelector<Player>> playersEntry = new Entry<EntityMultiSelector<Player>>("Registrovaní hráči", new EntityMultiSelector<Player>(Player.class, Comparators.PLAYERS_COMPARATOR, DigestProviders.PLAYER_DIGEST_PROVIDER)) {
 
 			@Override
@@ -201,6 +229,8 @@ public class CompetitionPresenter extends RankablePresenter<Competition, Competi
 			addEntry(defaultMaxPlayersEntry);
 			addEntry(defaultBuyInEntry);
 			addEntry(defaultTournamentAnnouncementLeadEntry);
+			addEntry(defaultTournamentInvitationClosureEntry);
+			addEntry(defaultTournamentInvitationContactEntry);
 			addEntry(playersEntry);
 			addEntry(defaultPrizeMoneyRuleSetEntry);
 		}

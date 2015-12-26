@@ -13,7 +13,7 @@ import javax.persistence.TemporalType;
 /**
  * A representation of the model object '<em><b>InvitationEvent</b></em>'. <!--
  * begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 @Entity(name = "pl_InvitationEvent")
@@ -25,7 +25,7 @@ public class InvitationEvent extends IdentifiableEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@ManyToOne(cascade = { CascadeType.MERGE, CascadeType.PERSIST,
@@ -34,7 +34,7 @@ public class InvitationEvent extends IdentifiableEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Basic()
@@ -43,7 +43,7 @@ public class InvitationEvent extends IdentifiableEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Basic()
@@ -52,7 +52,7 @@ public class InvitationEvent extends IdentifiableEntity {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Basic()
@@ -60,9 +60,9 @@ public class InvitationEvent extends IdentifiableEntity {
 
 	/**
 	 * Returns the value of '<em><b>invitation</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>invitation</b></em>' feature
 	 * @generated
 	 */
@@ -73,9 +73,9 @@ public class InvitationEvent extends IdentifiableEntity {
 	/**
 	 * Sets the '{@link InvitationEvent#getInvitation() <em>invitation</em>}'
 	 * feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newInvitation
 	 *            the new value of the '{@link InvitationEvent#getInvitation()
 	 *            invitation}' feature.
@@ -87,9 +87,9 @@ public class InvitationEvent extends IdentifiableEntity {
 
 	/**
 	 * Returns the value of '<em><b>eventTime</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>eventTime</b></em>' feature
 	 * @generated
 	 */
@@ -100,9 +100,9 @@ public class InvitationEvent extends IdentifiableEntity {
 	/**
 	 * Sets the '{@link InvitationEvent#getEventTime() <em>eventTime</em>}'
 	 * feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newEventTime
 	 *            the new value of the '{@link InvitationEvent#getEventTime()
 	 *            eventTime}' feature.
@@ -114,9 +114,9 @@ public class InvitationEvent extends IdentifiableEntity {
 
 	/**
 	 * Returns the value of '<em><b>eventType</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>eventType</b></em>' feature
 	 * @generated
 	 */
@@ -127,9 +127,9 @@ public class InvitationEvent extends IdentifiableEntity {
 	/**
 	 * Sets the '{@link InvitationEvent#getEventType() <em>eventType</em>}'
 	 * feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newEventType
 	 *            the new value of the '{@link InvitationEvent#getEventType()
 	 *            eventType}' feature.
@@ -141,9 +141,9 @@ public class InvitationEvent extends IdentifiableEntity {
 
 	/**
 	 * Returns the value of '<em><b>sent</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>sent</b></em>' feature
 	 * @generated
 	 */
@@ -153,9 +153,9 @@ public class InvitationEvent extends IdentifiableEntity {
 
 	/**
 	 * Sets the '{@link InvitationEvent#isSent() <em>sent</em>}' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newSent
 	 *            the new value of the '{@link InvitationEvent#isSent() sent}'
 	 *            feature.
@@ -168,7 +168,7 @@ public class InvitationEvent extends IdentifiableEntity {
 	/**
 	 * A toString method which prints the values of all EAttributes of this
 	 * instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override

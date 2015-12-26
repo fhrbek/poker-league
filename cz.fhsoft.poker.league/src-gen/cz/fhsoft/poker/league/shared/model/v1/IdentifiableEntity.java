@@ -13,7 +13,7 @@ import javax.persistence.Transient;
 /**
  * A representation of the model object '<em><b>IdentifiableEntity</b></em>'.
  * <!-- begin-user-doc --> <!-- end-user-doc -->
- * 
+ *
  * @generated
  */
 @Entity(name = "pl_IdentifiableEntity")
@@ -26,7 +26,7 @@ public abstract class IdentifiableEntity implements Serializable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Id()
@@ -35,7 +35,7 @@ public abstract class IdentifiableEntity implements Serializable {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Basic()
@@ -46,9 +46,9 @@ public abstract class IdentifiableEntity implements Serializable {
 
 	/**
 	 * Returns the value of '<em><b>id</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>id</b></em>' feature
 	 * @generated
 	 */
@@ -58,9 +58,9 @@ public abstract class IdentifiableEntity implements Serializable {
 
 	/**
 	 * Sets the '{@link IdentifiableEntity#getId() <em>id</em>}' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newId
 	 *            the new value of the '{@link IdentifiableEntity#getId() id}'
 	 *            feature.
@@ -72,9 +72,9 @@ public abstract class IdentifiableEntity implements Serializable {
 
 	/**
 	 * Returns the value of '<em><b>obsolete</b></em>' feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of '<em><b>obsolete</b></em>' feature
 	 * @generated
 	 */
@@ -85,9 +85,9 @@ public abstract class IdentifiableEntity implements Serializable {
 	/**
 	 * Sets the '{@link IdentifiableEntity#isObsolete() <em>obsolete</em>}'
 	 * feature.
-	 * 
+	 *
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @param newObsolete
 	 *            the new value of the '{@link IdentifiableEntity#isObsolete()
 	 *            obsolete}' feature.
@@ -100,7 +100,7 @@ public abstract class IdentifiableEntity implements Serializable {
 	/**
 	 * A toString method which prints the values of all EAttributes of this
 	 * instance. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 *
 	 * @generated
 	 */
 	@Override
