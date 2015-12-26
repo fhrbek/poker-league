@@ -1,5 +1,6 @@
 package cz.fhsoft.poker.league.server;
 
+import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Properties;
@@ -23,6 +24,7 @@ import cz.fhsoft.poker.league.shared.model.v1.InvitationEvent;
 import cz.fhsoft.poker.league.shared.model.v1.InvitationEventType;
 import cz.fhsoft.poker.league.shared.model.v1.Settings;
 import cz.fhsoft.poker.league.shared.model.v1.Tournament;
+import cz.fhsoft.poker.league.shared.util.TransferrableException;
 
 public class InvitationSender extends HttpServlet {
 
@@ -53,63 +55,71 @@ public class InvitationSender extends HttpServlet {
 	private Settings settings;
 
 	@Override
-	public void doGet(HttpServletRequest request, HttpServletResponse response) {
-		EntityServiceImpl.doWithLock(new DataAction<Void>() {
+	public void doGet(HttpServletRequest request, HttpServletResponse response)  {
+		try {
+			EntityServiceImpl.doWithLock(new DataAction<Void>() {
 
-			@Override
-			public Void run() throws Exception {
-            	boolean change = false;
-	
-	            for(Object obj : unsentInvitations.getResultList()) {
-					InvitationEvent invitationEvent = (InvitationEvent) obj;
+				@Override
+				public Void run() throws TransferrableException {
+			    	boolean change = false;
 
-					Invitation invitation = invitationEvent.getInvitation();
-	
-					Tournament tournament = invitation.getTournament();
-					if(tournament.getTournamentStart().getTime() - new Date().getTime() <= (long) tournament.getTournamentAnnouncementLead() * 3600000L) {
-				        Properties props = new Properties();
-				        props.put("mail.smtp.host", getSettings().getSmtpHost());
-				        props.put("mail.smtp.port", getSettings().getSmtpPort());
-				        props.put("mail.smtp.starttls.enable", "true");
-				        Session session = Session.getDefaultInstance(props, null);
-				        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone(getSettings().getDefaultTimeZone()));
-				        cal.setTime(tournament.getTournamentStart());
-				        
-				        String formattedDate = String.format("%1$td.%1$tm.%1$tY %1$tH:%1$tM", cal);
-	
-				        String msgBody = MAIL_TEMPLATE
-				        		.replace(PLACEHOLDER_TOURNAMENT, tournament.getName())
-				        		.replace(PLACEHOLDER_TOURNAMENT_START, formattedDate)
-				        		.replace(PLACEHOLDER_INVITATION_UUID, invitation.getUuid())
-				        		.replace(PLACEHOLDER_URL_BASE, getSettings().getUrlBase());
-	
-				        try {
-				            Message msg = new MimeMessage(session);
-				            msg.setFrom(new InternetAddress(getSettings().getSmtpUser(), getSettings().getSmtpFrom()));
-				            msg.addRecipient(Message.RecipientType.TO,
-				                             new InternetAddress(invitation.getPlayer().getEmailAddress(), invitation.getPlayer().getNick()));
-				            msg.setSubject("WPL Turnaj " + formattedDate);
-				            msg.setText(msgBody);
-				            Transport.send(msg, getSettings().getSmtpUser(), getSettings().getSmtpPassword());
-				            
-				            invitationEvent.setSent(true);
-				            change = true;
-				            ServletInitializer.getEntityManager().merge(invitationEvent);
-				        }
-				        catch (Exception e) {
-				            // Let's log it and try again later
-				        	Logger.getLogger(InvitationSender.class.getName()).severe(e.getMessage());
-				        }
-				    }
+			        for(Object obj : unsentInvitations.getResultList()) {
+						InvitationEvent invitationEvent = (InvitationEvent) obj;
+
+						Invitation invitation = invitationEvent.getInvitation();
+
+						Tournament tournament = invitation.getTournament();
+						if(tournament.getTournamentStart().getTime() - new Date().getTime() <= (long) tournament.getTournamentAnnouncementLead() * 3600000L) {
+					        Properties props = new Properties();
+					        props.put("mail.smtp.host", getSettings().getSmtpHost());
+					        props.put("mail.smtp.port", getSettings().getSmtpPort());
+					        props.put("mail.smtp.starttls.enable", "true");
+					        Session session = Session.getDefaultInstance(props, null);
+					        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone(getSettings().getDefaultTimeZone()));
+					        cal.setTime(tournament.getTournamentStart());
+					        
+					        String formattedDate = String.format("%1$td.%1$tm.%1$tY %1$tH:%1$tM", cal);
+
+					        String msgBody = MAIL_TEMPLATE
+					        		.replace(PLACEHOLDER_TOURNAMENT, tournament.getName())
+					        		.replace(PLACEHOLDER_TOURNAMENT_START, formattedDate)
+					        		.replace(PLACEHOLDER_INVITATION_UUID, invitation.getUuid())
+					        		.replace(PLACEHOLDER_URL_BASE, getSettings().getUrlBase());
+
+					        try {
+					            Message msg = new MimeMessage(session);
+					            msg.setFrom(new InternetAddress(getSettings().getSmtpUser(), getSettings().getSmtpFrom()));
+					            msg.addRecipient(Message.RecipientType.TO,
+					                             new InternetAddress(invitation.getPlayer().getEmailAddress(), invitation.getPlayer().getNick()));
+					            msg.setSubject("WPL Turnaj " + formattedDate);
+					            msg.setText(msgBody);
+					            Transport.send(msg, getSettings().getSmtpUser(), getSettings().getSmtpPassword());
+					            
+					            invitationEvent.setSent(true);
+					            change = true;
+					            ServletInitializer.getEntityManager().merge(invitationEvent);
+					        }
+					        catch (Exception e) {
+					            // Let's log it and try again later
+					        	Logger.getLogger(InvitationSender.class.getName()).severe(e.getMessage());
+					        }
+					    }
+					}
+			        
+			        if(change)
+			        	EntityServiceImpl.updateDataVersion();
+			        
+			        return null;
 				}
-	            
-	            if(change)
-	            	EntityServiceImpl.updateDataVersion();
-	            
-	            return null;
+				
+			});
+		} catch (TransferrableException te) {
+			try {
+				response.sendError(HttpServletResponse.SC_BAD_REQUEST, te.getMessage());
+			} catch (IOException e) {
+				response.setStatus(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);
 			}
-			
-		});
+		}
 	}
 
 	private Settings getSettings() {

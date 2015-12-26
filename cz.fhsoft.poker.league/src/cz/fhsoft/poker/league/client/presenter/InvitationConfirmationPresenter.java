@@ -74,7 +74,7 @@ public class InvitationConfirmationPresenter extends PresenterWithVersionedData 
 					@Override
 					public void onSuccess(final Invitation invitation) {
 						if(invitation == null) {
-							ErrorReporter.error("Litujeme, ale tato pozvánka je neplatná");
+							ErrorReporter.error("Tato pozvánka je neplatná");
 							return;
 						}
 						

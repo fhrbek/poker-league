@@ -16,6 +16,7 @@ import cz.fhsoft.poker.league.shared.model.v1.Game;
 import cz.fhsoft.poker.league.shared.model.v1.Player;
 import cz.fhsoft.poker.league.shared.model.v1.PlayerInGame;
 import cz.fhsoft.poker.league.shared.model.v1.Tournament;
+import cz.fhsoft.poker.league.shared.util.TransferrableException;
 
 @SuppressWarnings("serial")
 public class GameServiceImpl extends AbstractServiceImpl implements GameService {
@@ -24,11 +25,11 @@ public class GameServiceImpl extends AbstractServiceImpl implements GameService 
 			"SELECT t FROM cz.fhsoft.poker.league.shared.model.v1.Tournament t WHERE t.tournamentStart <= :startLimit AND t.tournamentEnd >= :endLimit");
 
 	@Override
-	public List<Tournament> getCurrentTournaments() {
+	public List<Tournament> getCurrentTournaments() throws TransferrableException {
 		return EntityServiceImpl.doWithLock(new DataAction<List<Tournament>>() {
 
 			@Override
-			public List<Tournament> run() throws Exception {
+			public List<Tournament> run() throws TransferrableException {
 				Date currentTime = new Date();
 				Date startLimit = new Date(currentTime.getTime() + 3600000);
 				Date endLimit = new Date(currentTime.getTime() - 3600000);
@@ -55,11 +56,11 @@ public class GameServiceImpl extends AbstractServiceImpl implements GameService 
 	}
 
 	@Override
-	public long startNewGame(final Integer tournamentId, final List<Integer> playerIds) {
+	public long startNewGame(final Integer tournamentId, final List<Integer> playerIds) throws TransferrableException {
 		return EntityServiceImpl.doWithLock(new DataAction<Long>() {
 
 			@Override
-			public Long run() throws Exception {
+			public Long run() throws TransferrableException {
 				Tournament tournament = ServletInitializer.getEntityManager().find(Tournament.class, tournamentId);
 				if(tournament == null)
 					throw new IllegalArgumentException("Nebyl nalezen turnaj s ID=" + tournamentId);
@@ -97,11 +98,11 @@ public class GameServiceImpl extends AbstractServiceImpl implements GameService 
 	}
 
 	@Override
-	public long seatOpen(final List<Integer> playerInGameIds) {
+	public long seatOpen(final List<Integer> playerInGameIds) throws TransferrableException {
 		return EntityServiceImpl.doWithLock(new DataAction<Long>() {
 
 			@Override
-			public Long run() throws Exception {
+			public Long run() throws TransferrableException {
 				Game game = null;
 				
 				List<PlayerInGame> playersInGameForSeatOpen = new ArrayList<PlayerInGame>();
@@ -153,11 +154,11 @@ public class GameServiceImpl extends AbstractServiceImpl implements GameService 
 	}
 
 	@Override
-	public long undoSeatOpen(final List<Integer> playerInGameIds) {
+	public long undoSeatOpen(final List<Integer> playerInGameIds) throws TransferrableException {
 		return EntityServiceImpl.doWithLock(new DataAction<Long>() {
 
 			@Override
-			public Long run() throws Exception {
+			public Long run() throws TransferrableException {
 				Game game = null;
 				
 				List<PlayerInGame> playersInGameForUndoSeatOpen = new ArrayList<PlayerInGame>();

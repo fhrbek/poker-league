@@ -1,5 +1,6 @@
 package cz.fhsoft.poker.league.server.services;
 
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 import cz.fhsoft.poker.league.client.services.InvitationService;
@@ -10,6 +11,7 @@ import cz.fhsoft.poker.league.server.persistence.EntityServiceImpl.DataAction;
 import cz.fhsoft.poker.league.shared.model.v1.Invitation;
 import cz.fhsoft.poker.league.shared.model.v1.InvitationReply;
 import cz.fhsoft.poker.league.shared.model.v1.Tournament;
+import cz.fhsoft.poker.league.shared.util.TransferrableException;
 
 @SuppressWarnings("serial")
 public class InvitationServiceImpl extends AbstractServiceImpl implements InvitationService {
@@ -18,13 +20,19 @@ public class InvitationServiceImpl extends AbstractServiceImpl implements Invita
 			"SELECT i FROM cz.fhsoft.poker.league.shared.model.v1.Invitation i WHERE i.uuid = :uuid");
 
 	@Override
-	public Invitation findInvitation(final String invitationUUID) {
+	public Invitation findInvitation(final String invitationUUID) throws TransferrableException {
 		return EntityServiceImpl.doWithLock(new DataAction<Invitation>() {
 
 			@Override
-			public Invitation run() throws Exception {
+			public Invitation run() throws TransferrableException {
 				invitationByUUID.setParameter("uuid", invitationUUID);
-				Invitation invitation = (Invitation) invitationByUUID.getSingleResult();
+				Invitation invitation = null;
+				
+				try {
+					invitation = (Invitation) invitationByUUID.getSingleResult();
+				} catch (NoResultException e) {
+					// let invitation set to null
+				}
 
 				return EntityServiceImpl.makeTransferable(invitation);
 			}
@@ -33,11 +41,11 @@ public class InvitationServiceImpl extends AbstractServiceImpl implements Invita
 	}
 
 	@Override
-	public long acceptInvitation(final String invitationUUID) {
+	public long acceptInvitation(final String invitationUUID) throws TransferrableException {
 		return EntityServiceImpl.doWithLock(new DataAction<Long>() {
 
 			@Override
-			public Long run() throws Exception {
+			public Long run() throws TransferrableException {
 				invitationByUUID.setParameter("uuid", invitationUUID);
 				Invitation invitation = (Invitation) invitationByUUID.getSingleResult();
 				if(invitation == null)
@@ -72,11 +80,11 @@ public class InvitationServiceImpl extends AbstractServiceImpl implements Invita
 	}
 
 	@Override
-	public long rejectInvitation(final String invitationUUID) {
+	public long rejectInvitation(final String invitationUUID) throws TransferrableException {
 		return EntityServiceImpl.doWithLock(new DataAction<Long>() {
 
 			@Override
-			public Long run() throws Exception {
+			public Long run() throws TransferrableException {
 				invitationByUUID.setParameter("uuid", invitationUUID);
 				Invitation invitation = (Invitation) invitationByUUID.getSingleResult();
 				if(invitation == null)
