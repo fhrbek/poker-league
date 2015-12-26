@@ -22,8 +22,7 @@
     	<class>cz.fhsoft.poker.league.shared.model.v1.PlayerInGame</class>
     	<properties>
     		<property name="eclipselink.ddl-generation.output-mode" value="database"/>
-    		<!-- REVERT TO 5432 !!! -->
-    		<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5555/wittmannpokerleague"/>
+    		<property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/wittmannpokerleague"/>
     		<property name="javax.persistence.jdbc.user" value="wpldata"/>
     		<property name="javax.persistence.jdbc.password" value="fullHouse"/>
     		<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
