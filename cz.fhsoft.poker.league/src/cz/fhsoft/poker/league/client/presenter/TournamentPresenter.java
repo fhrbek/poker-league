@@ -4,9 +4,16 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.i18n.shared.DateTimeFormat;
+import com.google.gwt.regexp.shared.MatchResult;
+import com.google.gwt.regexp.shared.RegExp;
+import com.google.gwt.safehtml.client.SafeHtmlTemplates;
 import com.google.gwt.safehtml.shared.SafeHtml;
+import com.google.gwt.safehtml.shared.SafeHtmlBuilder;
 import com.google.gwt.safehtml.shared.SafeHtmlUtils;
+import com.google.gwt.safehtml.shared.SafeUri;
+import com.google.gwt.safehtml.shared.UriUtils;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.IntegerBox;
 import com.google.gwt.user.client.ui.TextBox;
@@ -48,6 +55,15 @@ public class TournamentPresenter extends RankablePresenter<Tournament, Tournamen
 	private GamesView gamesView;
 	
 	private static final DateTimeFormat dateFormatter = DateTimeFormat.getFormat("dd.MM.yyyy H:mm");
+	
+	private static final RegExp descriptionParser = RegExp.compile("^((?:[^\\\\\\[]|\\\\.)*)\\[((?:[^\\|\\]])+)(?:\\|((?:[^\\]])+))?\\](.*)$");
+
+	interface SHtmlTemplates extends SafeHtmlTemplates {
+		@Template("<a href='{0}' target='_blank'>{1}</a>")
+		SafeHtml link(SafeUri url, String label);
+	}
+
+	private static final SHtmlTemplates sHtmlTemplates = GWT.create(SHtmlTemplates.class);
 
 	public static final AbstractPersistentEntityEditor<Tournament> tournamentEditor = new AbstractPersistentEntityEditor<Tournament>() {
 		
@@ -328,6 +344,7 @@ public class TournamentPresenter extends RankablePresenter<Tournament, Tournamen
 				public void onSuccess(Tournament resolvedEntity) {
 					entity = resolvedEntity;
 					view.setName(entity.getName());
+					view.setDescription(parse(entity.getDescription()));
 					//TODO Refresh all displayed values
 				}
 				
@@ -364,6 +381,26 @@ public class TournamentPresenter extends RankablePresenter<Tournament, Tournamen
 	@Override
 	protected AbstractPersistentEntityEditor<Tournament> getEditor() {
 		return tournamentEditor;
+	}
+
+	protected SafeHtml parse(String markUp) {
+		MatchResult result = null;
+		String remaining = markUp;
+		SafeHtmlBuilder builder = new SafeHtmlBuilder();
+		
+		while ((result = descriptionParser.exec(remaining)) != null) {
+			builder.appendEscaped(result.getGroup(1));
+			String href = result.getGroup(2);
+			String text = result.getGroup(3);
+			if (text == null || text.length() == 0)
+				text = href;
+			builder.append(sHtmlTemplates.link(UriUtils.fromString(href), result.getGroup(3)));
+			remaining = result.getGroup(4);
+		}
+
+		builder.appendEscaped(remaining);
+
+		return builder.toSafeHtml();
 	}
 
 }

@@ -16,7 +16,12 @@
 		}
 		
 		.topBar {
-			height: 15px;
+			min-height: 15px;
+		}
+
+		.topBarLabels {
+			display: inline-block;
+			width: 100%;
 		}
 
 		.fieldSet {
@@ -26,16 +31,22 @@
 			padding: 5px;
 			margin: 5px 0px;
 		}
-		
+
+		.description {
+		}
+
 		.bottomSpace {
 			margin-bottom: 20px;
 		}
 	</ui:style>
 	<g:FlowPanel>
 		<g:FlowPanel addStyleNames="{style.topBar}, {style.fieldSet}">
-			<g:Label addStyleNames="{style.left}" ui:field="name"/>
-			<g:Label addStyleNames="{style.right}, pseudoLink" ui:field="edit">Upravit</g:Label>
-			<g:Label addStyleNames="{style.right}, pseudoLink" ui:field="remove">Odstranit</g:Label>
+			<g:FlowPanel addStyleNames="{style.topBarLabels}">
+				<g:Label addStyleNames="{style.left}" ui:field="name"/>
+				<g:Label addStyleNames="{style.right}, pseudoLink" ui:field="edit">Upravit</g:Label>
+				<g:Label addStyleNames="{style.right}, pseudoLink" ui:field="remove">Odstranit</g:Label>
+			</g:FlowPanel>
+			<g:HTML addStyleNames="{style.description}" ui:field="description"/>
 		</g:FlowPanel>
 		<g:FlowPanel addStyleNames="{style.fieldSet}">
 			<g:Label addStyleNames="pseudoLink" ui:field="toggleShowRanking">Zobrazit/skrýt výsledkovou tabulku</g:Label>

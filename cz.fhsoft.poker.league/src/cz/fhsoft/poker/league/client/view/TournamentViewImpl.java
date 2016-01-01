@@ -3,12 +3,14 @@ package cz.fhsoft.poker.league.client.view;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.dom.client.Style.Visibility;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.safehtml.shared.SafeHtml;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.uibinder.client.UiTemplate;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasWidgets;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.Widget;
@@ -27,6 +29,9 @@ public class TournamentViewImpl extends Composite implements TournamentView {
 	
 	@UiField
 	Label name;
+
+	@UiField
+	HTML description;
 
 	@UiField
 	FlowPanel rankingContainer;
@@ -109,6 +114,11 @@ public class TournamentViewImpl extends Composite implements TournamentView {
 	@Override
 	public void setName(String name) {
 		this.name.setText(name);
+	}
+
+	@Override
+	public void setDescription(SafeHtml description) {
+		this.description.setHTML(description);
 	}
 
 	@Override
