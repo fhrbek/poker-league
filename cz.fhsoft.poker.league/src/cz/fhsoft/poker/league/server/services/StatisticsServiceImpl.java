@@ -47,10 +47,14 @@ public class StatisticsServiceImpl extends AbstractServiceImpl implements Statis
 		"       SUM(prize_and_points.POINTS) AS POINTS," +
 		"       SUM(prize_and_points.PRIZE_MONEY)/SUM(g.BUYIN) AS RELATIVE_PRIZE_MONEY," +
 		"       SUM(prize_and_points.POINTS)/COUNT(DISTINCT prize_and_points.GAME_ID) AS RELATIVE_POINTS," +
-		"       SUM(CASE WHEN prize_and_points.RANK = 1 THEN 1 ELSE 0 END) AS RANK_1_COUNT," +
-		"       SUM(CASE WHEN prize_and_points.RANK = 2 THEN 1 ELSE 0 END) AS RANK_2_COUNT," +
-		"       SUM(CASE WHEN prize_and_points.RANK = 3 THEN 1 ELSE 0 END) AS RANK_3_COUNT," +
-		"       SUM(CASE WHEN prize_and_points.RANK = 4 THEN 1 ELSE 0 END) AS RANK_4_COUNT" +
+		"       SUM(CASE WHEN prize_and_points.RANK = 1 AND prize_and_points.PRIZE_MONEY > 0 THEN 1 ELSE 0 END) AS RANK_1_COUNT," +
+		"       SUM(CASE WHEN prize_and_points.RANK = 2 AND prize_and_points.PRIZE_MONEY > 0 THEN 1 ELSE 0 END) AS RANK_2_COUNT," +
+		"       SUM(CASE WHEN prize_and_points.RANK = 3 AND prize_and_points.PRIZE_MONEY > 0 THEN 1 ELSE 0 END) AS RANK_3_COUNT," +
+		"       SUM(CASE WHEN prize_and_points.RANK = 4 AND prize_and_points.PRIZE_MONEY > 0 THEN 1 ELSE 0 END) AS RANK_4_COUNT," +
+		"       SUM(CASE WHEN prize_and_points.RANK = 1 THEN 1 ELSE 0 END) AS RANK_1_COUNT_TOTAL," +
+		"       SUM(CASE WHEN prize_and_points.RANK = 2 THEN 1 ELSE 0 END) AS RANK_2_COUNT_TOTAL," +
+		"       SUM(CASE WHEN prize_and_points.RANK = 3 THEN 1 ELSE 0 END) AS RANK_3_COUNT_TOTAL," +
+		"       SUM(CASE WHEN prize_and_points.RANK = 4 THEN 1 ELSE 0 END) AS RANK_4_COUNT_TOTAL" +
 		"  FROM (" +
 		"    SELECT" +
 		"      prize.COMPETITION_ID," +
@@ -121,7 +125,7 @@ public class StatisticsServiceImpl extends AbstractServiceImpl implements Statis
 		SQL_MAP.put(Tournament.class.getName(), TOURNAMENT_SQL);
 		SQL_MAP.put(Game.class.getName(), GAME_SQL);
 	}
-
+	
 	@Override
 	public List<RankingRecord> getRanking(String entityClass, Number id) {
 		return getRanking(entityClass, id, null);

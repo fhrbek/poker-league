@@ -91,11 +91,14 @@ public class RankingRecord implements Rankable, Serializable {
 		return ((BigDecimal) row.get(11)).doubleValue();
 	}
 
-	public int getRankCount(int rank) {
-		if(rank >= 1 && rank <= 4)
-			return ((Long) row.get(11+rank)).intValue();
+	public int[] getRankCount(int rank) {
+		int[] result = new int[] {0, 0};
+		if(rank >= 1 && rank <= 4) {
+			result[0] = ((Long) row.get(11+rank)).intValue();
+			result[1] = ((Long) row.get(15+rank)).intValue();
+		}
 		
-		return 0;
+		return result;
 	}
 
 }

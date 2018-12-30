@@ -85,7 +85,7 @@ public class RankingViewImpl extends Composite implements RankingView {
 		
 			@Override
 			public String getValue(RankingRecord record) {
-				return Formatter.format(record.getPrizeMoney(), 2);
+				return Formatter.format(record.getPrizeMoney(), 0);
 			}
 		
 		}, "Výhra");
@@ -124,7 +124,10 @@ public class RankingViewImpl extends Composite implements RankingView {
 				
 					@Override
 					public String getValue(RankingRecord record) {
-						return "" + record.getRankCount(rank);
+						int[] rankCount = record.getRankCount(rank); 
+						return rankCount[0] == rankCount[1]
+								? ("" + rankCount[0])
+								: (rankCount[0] + "(+" + (rankCount[1]-rankCount[0]) + ")");
 					}
 				
 				}, rank + ".");
