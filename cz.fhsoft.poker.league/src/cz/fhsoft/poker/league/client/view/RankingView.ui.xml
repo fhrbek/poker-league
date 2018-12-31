@@ -3,7 +3,23 @@
     xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui"
 	xmlns:cell="urn:import:com.google.gwt.user.cellview.client">
-	<ui:style>
+	<ui:style type="cz.fhsoft.poker.league.client.view.RankingViewImpl.LocalStyle">
+
+	  .rowValid {
+	  }
+
+	  .rowScratched {
+	    color: #999;
+        font-style: italic;
+	  }
+
+	  .colPlayer {
+	    min-width: 50px;
+	  }
+
+	  .colAttendance {
+	    min-width: 90px;
+	  }
 	</ui:style>
 	<g:FlowPanel>
 		<cell:CellTable ui:field="rankingTable"/>

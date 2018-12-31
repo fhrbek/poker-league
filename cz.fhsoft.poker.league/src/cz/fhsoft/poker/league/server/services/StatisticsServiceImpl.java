@@ -54,7 +54,8 @@ public class StatisticsServiceImpl extends AbstractServiceImpl implements Statis
 		"       SUM(CASE WHEN prize_and_points.RANK = 1 THEN 1 ELSE 0 END) AS RANK_1_COUNT_TOTAL," +
 		"       SUM(CASE WHEN prize_and_points.RANK = 2 THEN 1 ELSE 0 END) AS RANK_2_COUNT_TOTAL," +
 		"       SUM(CASE WHEN prize_and_points.RANK = 3 THEN 1 ELSE 0 END) AS RANK_3_COUNT_TOTAL," +
-		"       SUM(CASE WHEN prize_and_points.RANK = 4 THEN 1 ELSE 0 END) AS RANK_4_COUNT_TOTAL" +
+		"       SUM(CASE WHEN prize_and_points.RANK = 4 THEN 1 ELSE 0 END) AS RANK_4_COUNT_TOTAL," +
+		"       SUM(CASE WHEN prize_and_points.BUBBLE_INDECES > 0 THEN 1 ELSE 0 END) AS BUBBLES" +
 		"  FROM (" +
 		"    SELECT" +
 		"      prize.COMPETITION_ID," +
@@ -63,6 +64,7 @@ public class StatisticsServiceImpl extends AbstractServiceImpl implements Statis
 		"      prize.PLAYER_ID," +
 		"      prize.RANK," +
 		"      prize.PRIZE_MONEY," +
+		"      prize.BUBBLE_INDECES," +
 		"      CASE WHEN prize.RANK > 0 THEN (2*(SUM(CASE WHEN pig_worse.RANK >= prize.RANK THEN 1 ELSE 0 END)-1) -" +
 		"         (SUM(CASE WHEN pig_worse.RANK = prize.RANK THEN 1 ELSE 0 END)-1)) / 2.0 ELSE 0.0 END AS POINTS" +
 		"      FROM (" +
@@ -76,7 +78,8 @@ public class StatisticsServiceImpl extends AbstractServiceImpl implements Statis
 		"          / (SELECT COUNT(*)" +
 		"               FROM PL_PLAYERINGAME pig_split" +
 		"               WHERE pig_split.GAME_ID = g.ID" +
-		"                 AND pig_split.RANK = pig.RANK) AS PRIZE_MONEY" +
+		"                 AND pig_split.RANK = pig.RANK) AS PRIZE_MONEY," +
+		"          SUM(CASE WHEN COALESCE(pmf.RELATIVEPRIZEMONEY, 0) = 0 AND pmfb.RELATIVEPRIZEMONEY > 0 THEN 1 ELSE 0 END) AS BUBBLE_INDECES" +
 		"          FROM PL_COMPETITION c" +
 		"            JOIN PL_TOURNAMENT t ON t.COMPETITION_ID = c.ID" +
 		"            JOIN PL_GAME g ON g.TOURNAMENT_ID = t.ID" +
@@ -93,11 +96,13 @@ public class StatisticsServiceImpl extends AbstractServiceImpl implements Statis
 		"                                                                                FROM PL_PLAYERINGAME pig_split" +
 		"                                                                                WHERE pig_split.GAME_ID = g.ID" +
 		"                                                                                  AND pig_split.RANK = pig.RANK) - 1)" +
+        "            LEFT OUTER JOIN PL_PRIZEMONEYFORMULA pmfb ON pmfb.PRIZEMONEYRULE_ID = pmr.ID AND" +
+        "                                                         pmfb.RANK = pig.RANK - 1" +
 		"          WHERE " + ALIAS_PLACEHOLDER + ".ID = ?" + UNFINISHED_FILTER_PLACEHOLDER + TOURNAMENT_START_FILTER_PLACEHOLDER +
 		"          GROUP BY c.ID, t.ID, g.ID, pig.PLAYER_ID, pig.RANK) prize" +
 		"        LEFT OUTER JOIN PL_PLAYERINGAME pig_worse ON pig_worse.GAME_ID = prize.GAME_ID AND" +
 		"                                                     pig_worse.RANK >= prize.RANK" +
-		"        GROUP BY prize.COMPETITION_ID, prize.TOURNAMENT_ID, prize.GAME_ID, prize.PLAYER_ID, prize.RANK, prize.PRIZE_MONEY) prize_and_points" +
+		"        GROUP BY prize.COMPETITION_ID, prize.TOURNAMENT_ID, prize.GAME_ID, prize.PLAYER_ID, prize.RANK, prize.PRIZE_MONEY, prize.BUBBLE_INDECES) prize_and_points" +
 		"    JOIN PL_PLAYER p ON p.ID = prize_and_points.PLAYER_ID" +
 		"    JOIN PL_GAME g ON g.ID = prize_and_points.GAME_ID" +
 		"    JOIN PL_COMPETITION c ON c.ID = prize_and_points.COMPETITION_ID" +

@@ -4,11 +4,13 @@ import java.util.List;
 
 import com.google.gwt.cell.client.TextCell;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.resources.client.CssResource;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.uibinder.client.UiTemplate;
 import com.google.gwt.user.cellview.client.CellTable;
 import com.google.gwt.user.cellview.client.Column;
+import com.google.gwt.user.cellview.client.RowStyles;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.Widget;
@@ -26,6 +28,19 @@ public class RankingViewImpl extends Composite implements RankingView {
 	interface RankingUiBinder extends UiBinder<Widget, RankingViewImpl> {
 	}
 
+	interface LocalStyle extends CssResource {
+		String rowValid();
+		
+		String rowScratched();
+
+		String colPlayer();
+
+		String colAttendance();
+	}
+
+	@UiField
+	LocalStyle style;
+
 	@SuppressWarnings("unused")
 	private Presenter presenter;
 
@@ -35,7 +50,19 @@ public class RankingViewImpl extends Composite implements RankingView {
 	public RankingViewImpl(boolean showNumberOfGames) {
 		initWidget(uiBinder.createAndBindUi(this));
 		
-		rankingTable.addColumn(new Column<RankingRecord, String>(new TextCell()) {
+		rankingTable.setRowStyles(new RowStyles<RankingRecord>() {
+		    @Override
+		    public String getStyleNames(RankingRecord record, int rowIndex) {
+		        if ((double) record.getGamesPlayed() / (double) record.getTotalGames() * 100 >= record.getMinimalAttendance()) {
+		            return style.rowValid();
+		        } else {
+		            return style.rowScratched();
+		        } 
+		    }});
+
+		Column<RankingRecord, String> column;
+
+		rankingTable.addColumn(column = new Column<RankingRecord, String>(new TextCell()) {
 
 			@Override
 			public String getValue(RankingRecord record) {
@@ -46,7 +73,7 @@ public class RankingViewImpl extends Composite implements RankingView {
 			
 		}, "Pořadí");
 		
-		rankingTable.addColumn(new Column<RankingRecord, String>(new TextCell()) {
+		rankingTable.addColumn(column = new Column<RankingRecord, String>(new TextCell()) {
 
 			@Override
 			public String getValue(RankingRecord record) {
@@ -54,9 +81,10 @@ public class RankingViewImpl extends Composite implements RankingView {
 			}
 			
 		}, "Hráč");
+		column.setCellStyleNames(style.colPlayer());
 		
-		if(showNumberOfGames)
-			rankingTable.addColumn(new Column<RankingRecord, String>(new TextCell()) {
+		if(showNumberOfGames) {
+			rankingTable.addColumn(column = new Column<RankingRecord, String>(new TextCell()) {
 
 				@Override
 				public String getValue(RankingRecord record) {
@@ -71,6 +99,8 @@ public class RankingViewImpl extends Composite implements RankingView {
 				}
 				
 			}, "Účast");
+		  column.setCellStyleNames(style.colAttendance());
+		}
 		
 		rankingTable.addColumn(new AlignedColumn<RankingRecord, String>(new TextCell(), HasHorizontalAlignment.ALIGN_RIGHT) {
 	
@@ -132,6 +162,15 @@ public class RankingViewImpl extends Composite implements RankingView {
 				
 				}, rank + ".");
 			}
+
+			rankingTable.addColumn(new AlignedColumn<RankingRecord, String>(new TextCell(), HasHorizontalAlignment.ALIGN_RIGHT) {
+				
+				@Override
+				public String getValue(RankingRecord record) {
+					return "" + record.getBubbles();
+				}
+			
+			}, "Bub");
 		}
 	}
 	

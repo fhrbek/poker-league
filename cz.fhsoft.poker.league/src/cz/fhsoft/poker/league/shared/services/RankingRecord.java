@@ -101,4 +101,7 @@ public class RankingRecord implements Rankable, Serializable {
 		return result;
 	}
 
+	public long getBubbles() {
+		return (Long) row.get(20);
+	}
 }
